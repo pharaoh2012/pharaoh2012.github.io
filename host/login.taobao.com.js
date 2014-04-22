@@ -26,7 +26,7 @@
 
     }
 
-    if (location.href.indexOf('login.do') >= 0) {
+    if (location.href.indexOf('login.jhtml') >= 0) {
         var username = pharaoh_get("username");
         var password = pharaoh_get("password");
         if (username && password) {
