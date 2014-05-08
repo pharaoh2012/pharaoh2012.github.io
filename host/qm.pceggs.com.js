@@ -21,6 +21,18 @@ if (fmhref.indexOf('ADQuestion.aspx') > 0) {
         if ((key >= 5) || (key <= 0)) return;
         var d = fmwin.document.getElementById('asw' + key);
         d.checked = !d.checked;
+        var qid=document.querySelector("#input_QID").value;
+        var mid=document.querySelector("#input_MID").value;
+        var now = new Date();
+        var today =  now.getFullYear()*10000+ (now.getMonth()+1)*100+now.getDate();
+        var id=qid+"_"+mid+"_"+today;
+        var v={};
+        for (var i = 1; i < 5; i++) {
+            d = fmwin.document.getElementById('asw' + i);
+            v[d.value] = d.checked;
+        }
+        localStorage.setItem(id,JSON.stringify(v));
+
     };
 }
 
