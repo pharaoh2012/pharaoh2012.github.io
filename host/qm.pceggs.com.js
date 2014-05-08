@@ -3,8 +3,8 @@ var fmhref = top.frames['bottomFrame'].location.href;
 var fmwin = top.frames['bottomFrame'];
 
 function savetostorg() {
-    var qid = document.querySelector("#input_QID").value;
-    var mid = document.querySelector("#input_MID").value;
+    var qid = top.frames['bottomFrame'].document.querySelector("#input_QID").value;
+    var mid = top.frames['bottomFrame'].document.querySelector("#input_MID").value;
     var now = new Date();
     var today = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
     var id = qid + "_" + mid + "_" + today;
