@@ -1,11 +1,27 @@
 //qm.pceggs.com/Web/ADQuestion.aspx?ADID=1341
 var fmhref = top.frames['bottomFrame'].location.href;
 var fmwin = top.frames['bottomFrame'];
+
+function savetostorg() {
+    var qid = document.querySelector("#input_QID").value;
+    var mid = document.querySelector("#input_MID").value;
+    var now = new Date();
+    var today = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+    var id = qid + "_" + mid + "_" + today;
+    var v = {};
+    for (var i = 1; i < 5; i++) {
+        d = fmwin.document.getElementById('asw' + i);
+        v[d.value] = d.checked;
+    }
+    localStorage.setItem(id, JSON.stringify(v));
+}
+
 if (fmhref.indexOf('ADQuestion.aspx') > 0) {
     top.frames['bottomFrame'].document.onkeydown = function(e) {
         var key = e.which;
         if (key == 13) {
             console.info(13);
+            savetostorg();
             fmwin.btnt.click();
             return;
         }
@@ -21,18 +37,6 @@ if (fmhref.indexOf('ADQuestion.aspx') > 0) {
         if ((key >= 5) || (key <= 0)) return;
         var d = fmwin.document.getElementById('asw' + key);
         d.checked = !d.checked;
-        var qid=document.querySelector("#input_QID").value;
-        var mid=document.querySelector("#input_MID").value;
-        var now = new Date();
-        var today =  now.getFullYear()*10000+ (now.getMonth()+1)*100+now.getDate();
-        var id=qid+"_"+mid+"_"+today;
-        var v={};
-        for (var i = 1; i < 5; i++) {
-            d = fmwin.document.getElementById('asw' + i);
-            v[d.value] = d.checked;
-        }
-        localStorage.setItem(id,JSON.stringify(v));
-
     };
 }
 
