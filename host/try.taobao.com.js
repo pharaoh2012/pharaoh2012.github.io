@@ -9,7 +9,7 @@ function getUrl(url, fn) {
     console.debug("getUrl:", url);
     req.onreadystatechange = function() {
         if ((req.readyState == 4) && (req.status == 200)) {
-            if (fn) fn(req.responseText);
+            if (fn) fn(req.responseText,url);
         }
     };
     req.send(null);
@@ -23,21 +23,38 @@ function HTMLDecode(txt) {
     return output;
 }
 
-function urlcontent(data) {
+function urlcontent(data,url) {
+    var index = data.indexOf('id="J_BrandAttr"');
+    if(index>0){
+        data = data.substr(index);
+    }
+    index = data.indexOf('<div id="mall-banner">');
+    if(index>0){
+        data = data.substr(0,index);
+    }   
+    //taobaotext = data.replace(/<.+?>/mg,'\n');
+
     taobaotext = HTMLDecode(data);
     console.info(taobaotext);
     var propertys = taobaotext.split('\n');
     proprty = document.getElementById('J_Question').getElementsByTagName('em')[0].innerText;
-
+    var result = '';
     for (var i = 0; i < propertys.length; i++) {
         if (propertys[i].indexOf(proprty) >= 0) {
-            taobaotext = propertys[i];
+            result = propertys[i];
             break;
         }
     }
-    document.title = 'end';
-    var result = taobaotext.replace(proprty, '').replace(":", "").substr(1);
-    setAnswer(result);
+    if(result){
+        document.title = 'end';
+        result = result.split(':')[1].replace(/ /g,'');
+        setAnswer(result);
+    }
+    else{
+        document.title = 'not find';
+        console.info(data);
+    }
+   
 }
 
 function setAnswer(answer) {
@@ -83,6 +100,7 @@ if (window.location.host == "favorite.taobao.com") {
                 console.info("申请试用成功:" + id);
                 getUrl('http://127.0.0.1:7702/taobao/ok/' + id);
                 setTimeout(function() {
+                    console.info('do close......');
                     window.close();
                 }, 5000);
             }
@@ -110,11 +128,11 @@ if (window.location.host == "favorite.taobao.com") {
         var msg = {
             "url": document.getElementById("J_Favorite").getElementsByTagName('a')[0].href,
         };
-        chrome.runtime.sendMessage(msg, function(response) {
-            console.log(response);
-        });
+        // chrome.runtime.sendMessage(msg, function(response) {
+        //     console.log(response);
+        // });
 
-        console.info("open:", document.getElementById("J_Favorite").getElementsByTagName('a')[0].href);
+        //console.info("open:", document.getElementById("J_Favorite").getElementsByTagName('a')[0].href);
         //open(document.getElementById("J_Favorite").getElementsByTagName('a')[0].href);
     }, 1000);
 }
