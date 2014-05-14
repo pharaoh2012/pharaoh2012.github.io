@@ -81,7 +81,7 @@ if (window.location.host == "favorite.taobao.com") {
                 var id = rid[1];
                 document.title = "OK:" + id;
                 console.info("申请试用成功:" + id);
-                getUrl('http://127.0.0.1:7002/taobao/ok/' + id);
+                getUrl('http://127.0.0.1:7702/taobao/ok/' + id);
                 setTimeout(function() {
                     window.close();
                 }, 5000);
@@ -104,7 +104,7 @@ if (window.location.host == "favorite.taobao.com") {
             setAnswer("报告");
         } else {
             var taobaohref = encodeURIComponent(document.getElementById('J_Question').getElementsByTagName('a')[0].href);
-            js("http://127.0.0.1:7002/taobao/item?url=" + taobaohref);
+            js("http://127.0.0.1:7702/taobao/item?url=" + taobaohref);
         }
 
         var msg = {
