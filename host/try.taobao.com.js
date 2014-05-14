@@ -9,7 +9,7 @@ function getUrl(url, fn) {
     console.debug("getUrl:", url);
     req.onreadystatechange = function() {
         if ((req.readyState == 4) && (req.status == 200)) {
-            if (fn) fn(req.responseText,url);
+            if (fn) fn(req.responseText, url);
         }
     };
     req.send(null);
@@ -23,15 +23,16 @@ function HTMLDecode(txt) {
     return output;
 }
 
-function urlcontent(data,url) {
+function urlcontent(data, url) {
     var index = data.indexOf('id="J_BrandAttr"');
-    if(index>0){
+    if (index > 0) {
         data = data.substr(index);
+        index = data.indexOf('<div id="mall-banner">');
+        if (index > 0) {
+            data = data.substr(0, index);
+        }
     }
-    index = data.indexOf('<div id="mall-banner">');
-    if(index>0){
-        data = data.substr(0,index);
-    }   
+
     //taobaotext = data.replace(/<.+?>/mg,'\n');
 
     taobaotext = HTMLDecode(data);
@@ -45,16 +46,21 @@ function urlcontent(data,url) {
             break;
         }
     }
-    if(result){
+    if (result) {
         document.title = 'end';
-        result = result.split(':')[1].replace(/ /g,'');
-        setAnswer(result);
-    }
-    else{
+        result = result.split(':')[1].replace(/ /g, '');
+        if (result) {
+            setAnswer(result);
+        } else {
+            document.title = "error find answer!";
+            console.info(data);
+            return;
+        }
+    } else {
         document.title = 'not find';
         console.info(data);
     }
-   
+
 }
 
 function setAnswer(answer) {
@@ -68,10 +74,10 @@ function setAnswer(answer) {
                 return;
             }
         }
-        var classnames = ['try-detail-buy','try-btn-submit'];
+        var classnames = ['try-detail-buy', 'try-btn-submit'];
         for (var i = classnames.length - 1; i >= 0; i--) {
             var btn = document.getElementsByClassName(classnames[i]);
-            if(btn.length>0) {
+            if (btn.length > 0) {
                 btn[0].click();
                 return;
             }
@@ -101,6 +107,7 @@ if (window.location.host == "favorite.taobao.com") {
                 getUrl('http://127.0.0.1:7702/taobao/ok/' + id);
                 setTimeout(function() {
                     console.info('do close......');
+                    document.title = "do close";
                     window.close();
                 }, 5000);
             }
