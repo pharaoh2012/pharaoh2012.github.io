@@ -129,7 +129,8 @@ if (window.location.host == "favorite.taobao.com") {
             setAnswer("报告");
         } else {
             var taobaohref = encodeURIComponent(document.getElementById('J_Question').getElementsByTagName('a')[0].href);
-            js("http://127.0.0.1:7702/taobao/item?url=" + taobaohref);
+            //js("http://127.0.0.1:7702/taobao/item?url=" + taobaohref);
+            js("http://mongotest.sinaapp.com/source?encode=gb2312&url=" + taobaohref);
         }
 
         var msg = {
