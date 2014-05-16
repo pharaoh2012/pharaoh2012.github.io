@@ -33,7 +33,7 @@ function urlcontent(data, url) {
         }
     }
 
-    //taobaotext = data.replace(/<.+?>/mg,'\n');
+    data = data.replace(/<.+?>/mg,'\n');
 
     taobaotext = HTMLDecode(data);
     console.info(taobaotext);
