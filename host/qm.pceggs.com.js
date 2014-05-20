@@ -28,21 +28,22 @@ if (fmhref.indexOf('ADQuestion.aspx') > 0) {
         console.info("10s开始自动答题,0取消");
         window.autoAnswer = true;
         ans = JSON.parse(ans);
+        var canclick = false;
+        for (var i = 1; i < 5; i++) {
+            d = fmwin.document.getElementById('asw' + i);
+            d.checked = ans[d.value];
+            canclick = canclick || ans[d.value];
+        }
+        document.title = "10s开始自动提交,0取消";
+        console.info("10s开始自动提交,0取消");
         setTimeout(function() {
             if (!window.autoAnswer) {
                 document.title = "取消自动答题.";
                 return;
             }
-            var canclick = false;
-            for (var i = 1; i < 5; i++) {
-                d = fmwin.document.getElementById('asw' + i);
-                d.checked = ans[d.value];
-                canclick = canclick || ans[d.value];
-            }
-
             if (canclick) {
-                console.info(d.value, ans);
-                fmwin.btnt.click();
+                console.info("提交答题...");
+                //fmwin.btnt.click();
             } else {
                 console.info('not can click');
                 document.title = "答案错误";
