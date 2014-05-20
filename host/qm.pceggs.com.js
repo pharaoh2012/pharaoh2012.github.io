@@ -37,14 +37,14 @@ if (fmhref.indexOf('ADQuestion.aspx') > 0) {
                 d = fmwin.document.getElementById('asw' + i);
                 d.checked = ans[d.value];
                 canclick = canclick || ans[d.value];
-                if (canclick) {
-                    console.info(d.value, ans);
-                    fmwin.btnt.click();
-                }
-                else {
-                    console.info('not can click');
-                    document.title = "答案错误";
-                }
+            }
+
+            if (canclick) {
+                console.info(d.value, ans);
+                fmwin.btnt.click();
+            } else {
+                console.info('not can click');
+                document.title = "答案错误";
             }
 
         }, 10000);
