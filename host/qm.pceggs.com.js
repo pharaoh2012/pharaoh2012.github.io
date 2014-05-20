@@ -20,28 +20,35 @@ function savetostorg() {
 
 if (fmhref.indexOf('ADQuestion.aspx') > 0) {
     var qid = top.frames['bottomFrame'].document.querySelector("#input_QID").value;
-    var mid = top.frames['bottomFrame'].document.querySelector("#input_MID").value;    
+    var mid = top.frames['bottomFrame'].document.querySelector("#input_MID").value;
     var id = qid + "_" + mid;
     var ans = localStorage.getItem(id);
-    if(ans) {
-        document.title="10s开始自动答题,0取消";
-        window.autoAnswer=true;
+    if (ans) {
+        document.title = "10s开始自动答题,0取消";
+        window.autoAnswer = true;
         ans = JSON.parse(ans);
         setTimeout(function() {
-            if(!window.autoAnswer) {
+            if (!window.autoAnswer) {
                 document.title = "取消自动答题.";
                 return;
             }
+            var canclick = false;
             for (var i = 1; i < 5; i++) {
                 d = fmwin.document.getElementById('asw' + i);
                 d.checked = ans[d.value];
-                console.info(d.value,ans);
-                fmwin.btnt.click();
+                canclick = canclick || ans[d.value];
+                if (canclick) {
+                    console.info(d.value, ans);
+                    fmwin.btnt.click();
+                }
+                else {
+                    console.info('not can click');
+                    document.title = "答案错误";
+                }
             }
 
         }, 10000);
-    }
-    else {
+    } else {
         console.info("没有找到答案");
         document.title = "没有找到答案";
     }
