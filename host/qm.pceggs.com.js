@@ -25,6 +25,7 @@ if (fmhref.indexOf('ADQuestion.aspx') > 0) {
     var ans = localStorage.getItem(id);
     if (ans) {
         document.title = "10s开始自动答题,0取消";
+        console.info("10s开始自动答题,0取消");
         window.autoAnswer = true;
         ans = JSON.parse(ans);
         setTimeout(function() {
