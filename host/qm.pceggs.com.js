@@ -7,7 +7,7 @@ function savetostorg() {
     var mid = top.frames['bottomFrame'].document.querySelector("#input_MID").value;
     var now = new Date();
     var today = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
-    var id = qid + "_" + mid + "_" + today;
+    var id = qid + "_" + mid; // + "_" + today;
     var v = {};
     for (var i = 1; i < 5; i++) {
         d = fmwin.document.getElementById('asw' + i);
@@ -16,23 +16,53 @@ function savetostorg() {
     localStorage.setItem(id, JSON.stringify(v));
 }
 
+
+
 if (fmhref.indexOf('ADQuestion.aspx') > 0) {
+    var qid = top.frames['bottomFrame'].document.querySelector("#input_QID").value;
+    var mid = top.frames['bottomFrame'].document.querySelector("#input_MID").value;    
+    var id = qid + "_" + mid;
+    var ans = localStorage.getItem(id);
+    if(ans) {
+        document.title="10s开始自动答题,0取消";
+        window.autoAnswer=true;
+        ans = JSON.parse(ans);
+        setTimeout(function() {
+            if(!window.autoAnswer) {
+                document.title = "取消自动答题.";
+                return;
+            }
+            for (var i = 1; i < 5; i++) {
+                d = fmwin.document.getElementById('asw' + i);
+                d.checked = ans[d.value];
+                console.info(d.value,ans);
+                fmwin.btnt.click();
+            }
+
+        }, 10000);
+    }
+    else {
+        console.info("没有找到答案");
+        document.title = "没有找到答案";
+    }
+
+
     top.frames['bottomFrame'].document.onkeydown = function(e) {
         var key = e.which;
         if (key == 13) {
-            console.info(13);
             savetostorg();
             fmwin.btnt.click();
             return;
         }
-        if (key >= 97) key -= 48;
+        if (key >= 96) key -= 48;
         key -= 48;
         if (key == 0) { //全选
-            for (var i = 4; i >= 1; i--) {
-                var d = fmwin.document.getElementById('asw' + i);
-                d.checked = true;
-                return;
-            }
+            window.autoAnswer = false;
+            // for (var i = 4; i >= 1; i--) {
+            //     var d = fmwin.document.getElementById('asw' + i);
+            //     d.checked = true;
+            //     return;
+            // }
         }
         if ((key >= 5) || (key <= 0)) return;
         var d = fmwin.document.getElementById('asw' + key);
