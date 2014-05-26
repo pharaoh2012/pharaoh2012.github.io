@@ -43,7 +43,7 @@ if (fmhref.indexOf('ADQuestion.aspx') > 0) {
             }
             if (canclick) {
                 console.info("提交答题...");
-                //fmwin.btnt.click();
+                fmwin.btnt.click();
             } else {
                 console.info('not can click');
                 document.title = "答案错误";
