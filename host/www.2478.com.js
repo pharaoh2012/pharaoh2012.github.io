@@ -40,6 +40,15 @@
     }
     else {
         $('#chkBut').click();
+        setInterval(function() {
+            var btn = $('.newButton');
+            btn.click();
+        }, 5000);
+
+//http://www.2478.com/qupai/
+        $('#buy0').show();
+        $("input[name='numCount']").val(1);
+        $("#buy0").submit();
     }
 })();
 
