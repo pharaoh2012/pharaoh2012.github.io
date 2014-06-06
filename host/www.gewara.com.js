@@ -27,7 +27,13 @@
     }
 
     if (location.href.indexOf('personIndex.xhtml') >= 0) {
-        clickObj(document.getElementById('my_gift'));
-
+        if (document.getElementById('my_gift')) {
+            location.href = "/everday/acct/mygift.xhtml";
+        }
+    }
+    if (location.href.indexOf('mygift.xhtml') >= 0) {
+        showBrtDiv();
+        document.getElementById('say_area').value = "微博控特权红包";
+        clickGetPoint('point', 'brt');
     }
 })();
