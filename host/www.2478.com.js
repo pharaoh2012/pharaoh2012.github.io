@@ -38,6 +38,9 @@
         console.info('username or password is null');
 
     }
+    else {
+        $('#chkBut').click();
+    }
 })();
 
 

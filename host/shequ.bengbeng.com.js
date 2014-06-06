@@ -7,4 +7,5 @@
     }
 
     $('.btn_signIn').click();
+    document.title = "auto sign in js";
 })();
