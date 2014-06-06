@@ -40,4 +40,8 @@
         console.info('username or password is null');
 
     }
+    if(location.pathname=="/") {
+        var href = $("a.mrqd").attr('href');
+        if(href) location.href=href;
+    }
 })();
