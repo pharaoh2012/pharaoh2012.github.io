@@ -104,7 +104,7 @@ if (window.location.host == "favorite.taobao.com") {
                 var id = rid[1];
                 document.title = "OK:" + id;
                 console.info("申请试用成功:" + id);
-                getUrl('http://127.0.0.1:7702/taobao/ok/' + id);
+                getUrl('http://mongotest.sinaapp.com/taobao/ok/' + id);
                 setTimeout(function() {
                     console.info('do close......');
                     document.title = "do close";
