@@ -1,8 +1,9 @@
 function pharaoh_init() {
-    if (window.location.href.indexOf('ad/advertise') >= 0) {
+    if (window.location.href.indexOf('advertise') >= 0) {
         adexper();
         return;
     }
+
     if (window.location.href.indexOf('WebSiteID') >= 0) {
         console.info("getLastIndex", getLastIndex());
         document.title = getLastIndex();
@@ -43,7 +44,7 @@ function WebSIte() {
     if (document.getElementById('viewInfo').style.display == 'none') {
         localStorage["lastIndex"] = getLastIndex() + 1;
         localStorage['time'] = (+new Date());
-        window.location.href = "http://www.cpjc365.com/winbeans/ad/advertise?type=llgg";
+        window.location.href = "http://www.cpjc365.com/winbeans/advertise?type=llgg";
     } else {
         setTimeout(function() {
             WebSIte();
