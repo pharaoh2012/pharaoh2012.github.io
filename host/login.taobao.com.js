@@ -45,7 +45,7 @@
             trysetvalue('TPL_password_1',password);
             trysetvalue('J_PwdV',password);
             //clickObj(document.getElementById('login_button'));
-            clickObj(document.getElementById('J_VerifySubmit'));
+            //clickObj(document.getElementById('J_VerifySubmit'));
             
             return;
         }
