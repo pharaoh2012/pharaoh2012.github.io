@@ -30,7 +30,8 @@
     function trysetvalue(id, value) {
         var o = document.getElementById(id);
         if (o) {
-            o.vlaue = value;
+            console.info('set element value:',id);
+            o.value = value;
             return true;
         }
         return false;
@@ -44,9 +45,7 @@
             trysetvalue('TPL_username_1',username);
             trysetvalue('TPL_password_1',password);
             trysetvalue('J_PwdV',password);
-            //clickObj(document.getElementById('login_button'));
-            //clickObj(document.getElementById('J_VerifySubmit'));
-            
+
             return;
         }
         console.info('username or password is null');
