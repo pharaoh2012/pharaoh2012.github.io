@@ -1,5 +1,6 @@
 (function() {
     function clickObj(o) {
+        if(!o) return;
         var e = document.createEvent('MouseEvent');
         e.initEvent('click', false, false);
         o.dispatchEvent(e);
@@ -26,13 +27,26 @@
 
     }
 
+    function trysetvalue(id, value) {
+        var o = document.getElementById(id);
+        if (o) {
+            o.vlaue = value;
+            return true;
+        }
+        return false;
+
+    }
+
     if (location.href.indexOf('login.jhtml') >= 0) {
         var username = pharaoh_get("username");
         var password = pharaoh_get("password");
         if (username && password) {
-            document.getElementById('TPL_username_1').value = username;
-            document.getElementById('TPL_password_1').value = password;
+            trysetvalue('TPL_username_1',username);
+            trysetvalue('TPL_password_1',password);
+            trysetvalue('J_PwdV',password);
             //clickObj(document.getElementById('login_button'));
+            clickObj(document.getElementById('J_VerifySubmit'));
+            
             return;
         }
         console.info('username or password is null');
