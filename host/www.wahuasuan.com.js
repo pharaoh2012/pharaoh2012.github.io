@@ -6,7 +6,7 @@
     }
 
 
-    if (location.href.indexOf('/item.htm') >= 0) {
+    if (location.pathname == "/") {
         clickObj(document.querySelector('div.sign'));
     }
 })();
