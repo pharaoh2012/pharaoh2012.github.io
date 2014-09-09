@@ -37,19 +37,18 @@
         }
         console.info('username or password is null');
 
-    }
-    else {
+    } else {
         $('#chkBut').click();
         setInterval(function() {
             var btn = $('.newButton');
             btn.click();
         }, 5000);
 
-//http://www.2478.com/qupai/
-        $('#buy0').show();
-        $("input[name='numCount']").val(1);
-        $("#buy0").submit();
+        //http://www.2478.com/qupai/
+        if (document.querySelector('form b').innerText == '1') {
+            $('#buy0').show();
+            $("input[name='numCount']").val(1);
+            $("#buy0").submit();
+        }
     }
 })();
-
-
