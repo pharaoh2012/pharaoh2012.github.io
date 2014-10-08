@@ -104,7 +104,7 @@ if (window.location.host == "favorite.taobao.com") {
                 var id = rid[1];
                 document.title = "OK:" + id;
                 console.info("申请试用成功:" + id);
-                getUrl('http://mongotest.sinaapp.com/taobao/ok/' + id);
+                getUrl('http://pytaobao.jd-app.com/taobao/ok/' + id);
                 setTimeout(function() {
                     console.info('do close......');
                     document.title = "do close";
@@ -130,7 +130,7 @@ if (window.location.host == "favorite.taobao.com") {
         } else {
             var taobaohref = encodeURIComponent(document.getElementById('J_Question').getElementsByTagName('a')[0].href);
             //js("http://127.0.0.1:7702/taobao/item?url=" + taobaohref);
-            js("http://mongotest.sinaapp.com/source?encode=gb2312&url=" + taobaohref);
+            js("http://pytaobao.jd-app.com/source?encode=gb2312&url=" + taobaohref);
         }
 
         var msg = {
