@@ -20,18 +20,24 @@
         var href = document.querySelector('a.j_isGuess').href;
         if (href) {
             console.info("auto:", href);
-            var thref = "http://pytaobao.jd-app.com/source?url="+encodeURIComponent(href)+"&encode=gbk";
-            getUrl(thref,function(d){
+            var thref = "http://pytaobao.jd-app.com/source?url=" + encodeURIComponent(href) + "&encode=gbk";
+            getUrl(thref, function(d) {
                 //console.info(d);
-                var indexend=d.indexOf('</title>');
-                d = d.substr(0,indexend);
+                var indexend = d.indexOf('</title>');
+                d = d.substr(0, indexend);
                 //console.info(d);
                 var indexbg = d.indexOf('<title>');
-                d = d.substr(indexbg+7);
-                
-                var title=d.replace(/\s/g,'').toLowerCase();
-                console.info("title:",title);
+                d = d.substr(indexbg + 7);
+
+                var title = d.replace(/\s/g, '').toLowerCase();
+                console.info("title:", title);
                 document.title = title;
+                var boxs = document.querySelectorAll('div.optionsArea .optionBox');
+                for (var i = boxs.length - 1; i >= 0; i--) {
+                    if (title.indexOf(boxs[i].innerText.toLowerCase()) >= 0) {
+                        boxs[i].style.color = 'red';
+                    }
+                }
             });
         }
 
