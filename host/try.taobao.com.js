@@ -57,8 +57,15 @@ function urlcontent(data, url) {
             return;
         }
     } else {
-        document.title = 'not find';
+        window.trycount++;
+        document.title = 'not find:'+window.trycount;
         console.info(data);
+        if(window.trycount > 3) return;
+        setTimeout(function() {
+            js(window.taobaoTryUrl);
+        }, 1000);
+        
+        
     }
 
 }
@@ -130,7 +137,9 @@ if (window.location.host == "favorite.taobao.com") {
         } else {
             var taobaohref = encodeURIComponent(document.getElementById('J_Question').getElementsByTagName('a')[0].href);
             //js("http://127.0.0.1:7702/taobao/item?url=" + taobaohref);
-            js("http://pytaobao.jd-app.com/source?encode=gb2312&url=" + taobaohref);
+            window.taobaoTryUrl="http://pytaobao.jd-app.com/source?encode=gb2312&url=" + taobaohref;
+            window.trycount = 0;
+            js(window.taobaoTryUrl);
         }
 
         var msg = {
