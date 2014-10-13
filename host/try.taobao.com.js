@@ -33,7 +33,7 @@ function urlcontent(data, url) {
         }
     }
 
-    data = data.replace(/<.+?>/mg,'\n');
+    data = data.replace(/<.+?>/mg, '\n');
 
     taobaotext = HTMLDecode(data);
     console.info(taobaotext);
@@ -58,14 +58,17 @@ function urlcontent(data, url) {
         }
     } else {
         window.trycount++;
-        document.title = 'not find:'+window.trycount;
+        document.title = 'not find:' + window.trycount;
         console.info(data);
-        if(window.trycount > 3) return;
+        if (window.trycount > 5) {
+            document.title = 'not find:End';
+            return;
+        }
         setTimeout(function() {
             js(window.taobaoTryUrl);
         }, 1000);
-        
-        
+
+
     }
 
 }
@@ -137,7 +140,7 @@ if (window.location.host == "favorite.taobao.com") {
         } else {
             var taobaohref = encodeURIComponent(document.getElementById('J_Question').getElementsByTagName('a')[0].href);
             //js("http://127.0.0.1:7702/taobao/item?url=" + taobaohref);
-            window.taobaoTryUrl="http://pytaobao.jd-app.com/source?encode=gb2312&url=" + taobaohref;
+            window.taobaoTryUrl = "http://pytaobao.jd-app.com/source?encode=gb2312&url=" + taobaohref;
             window.trycount = 0;
             js(window.taobaoTryUrl);
         }
