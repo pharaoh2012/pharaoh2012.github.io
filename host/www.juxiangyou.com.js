@@ -31,10 +31,10 @@
         var username = pharaoh_get("username");
         var password = pharaoh_get("password");
         if (username && password) {
-            document.getElementById('tbUserAccount').value = username;
-            document.getElementById('tbUserPwd').value = password;
+            document.getElementById('loginUser').value = username;
+            document.getElementById('loginPwd').value = password;
 
-            jxy_login.click();
+            //jxy_login.click();
             return;
         }
         console.info('username or password is null');
