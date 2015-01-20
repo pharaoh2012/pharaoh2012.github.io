@@ -79,13 +79,17 @@ if (fmhref.indexOf('ADQuestion.aspx') > 0) {
     };
 }
 
-if ((fmhref.indexOf('ADQuestionR.aspx') > 0) || (fmhref.indexOf('ADQuestionG.aspx') > 0)) {
-    var aa = top.frames['bottomFrame'].document.querySelectorAll("a");
-    for (var i = aa.length - 1; i >= 0; i--) {
-        console.info(aa[i].href);
-        if (aa[i].href.indexOf('ADQuestion.aspx') >= 0) {
-            aa[i].click();
-            return;
+function _rrrrr(argument) {
+    if ((fmhref.indexOf('ADQuestionR.aspx') > 0) || (fmhref.indexOf('ADQuestionG.aspx') > 0)) {
+        var aa = top.frames['bottomFrame'].document.querySelectorAll("a");
+        for (var i = aa.length - 1; i >= 0; i--) {
+            console.info(aa[i].href);
+            if (aa[i].href.indexOf('ADQuestion.aspx') >= 0) {
+                aa[i].click();
+                return;
+            }
         }
     }
 }
+
+_rrrrr();
