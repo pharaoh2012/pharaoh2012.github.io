@@ -85,6 +85,7 @@ function _rrrrr(argument) {
         for (var i = aa.length - 1; i >= 0; i--) {
             console.info(aa[i].href);
             if (aa[i].href.indexOf('ADQuestion.aspx') >= 0) {
+                top.frames['bottomFrame'].location.href = aa[i].href;
                 aa[i].click();
                 return;
             }
