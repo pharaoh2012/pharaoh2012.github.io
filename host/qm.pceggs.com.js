@@ -80,7 +80,7 @@ if (fmhref.indexOf('ADQuestion.aspx') > 0) {
 }
 
 function _rrrrr(argument) {
-    if ((fmhref.indexOf('ADQuestionR.aspx') > 0) || (fmhref.indexOf('ADQuestionG.aspx') > 0) || fmhref.indexOf("ADQuestionW.aspx")>0) {
+    if ((fmhref.indexOf('ADQuestionR.aspx') > 0) || (fmhref.indexOf('ADQuestionG.aspx') > 0) || (fmhref.indexOf("ADQuestionW.aspx") > 0)) {
         var aa = top.frames['bottomFrame'].document.querySelectorAll("a");
         for (var i = aa.length - 1; i >= 0; i--) {
             console.info(aa[i].href);
