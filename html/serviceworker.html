@@ -1,10 +1,10 @@
 <!-- demo.html -->
 <script>
 navigator.serviceWorker.register("worker.js", {
-    scope: "/test/a.html"
+    scope: "/html/a.html"
 }).then(function(reg) {
 	console.log("SW register success", reg);
-    fetch('/test/a.html').then(function(response) {
+    fetch('/html/a.html').then(function(response) {
         return response.text();
     }).then(function(text) {
         console.log(text);
