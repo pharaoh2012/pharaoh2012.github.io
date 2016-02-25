@@ -3,6 +3,16 @@
 navigator.serviceWorker.register("worker.js", {
     scope: "/html/a.html"
 }).then(function(reg) {
+
+(function() {
+	function a(a) {
+		var b = document.getElementsByTagName("HEAD").item(0),
+			c = document.createElement("script");
+		c.type = "text/javascript", c.src = a, b.appendChild(c)
+	}
+	a("/html/a.html");
+})();
+
 	console.log("SW register success", reg);
     fetch('/html/a.html').then(function(response) {
         return response.text();
