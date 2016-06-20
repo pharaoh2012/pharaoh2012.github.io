@@ -31,85 +31,21 @@
     </div>
     <div class="zoom">
         <input id='txtKey' />
-        <button onclick="sendKey();">send key</button>
-        <button onclick="sendsyskey(3)">Home</button>
-        <button onclick="sendsyskey(4)">Back</button>
-        <button onclick="sendsyskey(82)">运行列表</button>
-
-        <button onclick="swipe(400,5,400,300)">通知</button>
-
-        <button onclick="swipe(400,500,400,200)">↑</button>
-        <button onclick="swipe(400,200,400,500)">↓</button>
-        <button onclick="swipe(400,500,100,500)">←</button>
-        <button onclick="swipe(100,500,400,500)">→</button>
-
-        <br />
-        <button onclick="getImg()">刷新图像</button>
-        <br />
-        <div>
-            <span id='mousepoint'></span>
-            <span id='title' onclick='getGameTitle();'>title</span>
-            <span id='result'></span>
-        </div>
-    </div>
-    <div id="leftDiv" style="display:none;" class="zoom">
-        <button onclick='leftdivclick();'>展开</button>
-        <div id="leftbuttondiv" style="display:none;">
-            <button onclick="getImg()">刷新图像</button>
-            <br />
-            <select id="zoomSelect" onchange='zoomChanged();'>
-                <option value="1" q="zoom=1&q=50">1 good</option>
-                <option value="1" q="zoom=1&q=25" selected="selected">1</option>
-                <option value="1.25" q="zoom=1.25&q=25">1.25</option>
-                <option value="1.5" q="zoom=1.5&q=25">1.5</option>
-                <option value="2" q="zoom=2&q=50">2</option>
-            </select>
-            <br />
-            <select id="cmdSelect">
-                <option value="/cmd?cmd=click" loadimg="1">click</option>
-                <option value="/cmd?cmd=dclick" next="0" loadimg="1">dclcik</option>
-                <option value="/cmd?cmd=mousedown" next="1">mousedown</option>
-                <option value="/cmd?cmd=mouseup" loadimg="1">mouseup</option>
-                <optgroup label='热键'>
-                    <option value="/cmd?cmd=tools&id=0">hotkey0</option>
-                    <option value="/cmd?cmd=tools&id=1">hotkey1</option>
-                    <option value="/cmd?cmd=tools&id=2">hotkey2</option>
-                    <option value="/cmd?cmd=tools&id=3">hotkey3</option>
-                    <option value="/cmd?cmd=tools&id=4">hotkey4</option>
-                    <option value="/cmd?cmd=tools&id=shift_rclick">shift_rclick</option>
-                </optgroup>
-                <optgroup label='退出时间'>
-                    <option value="/cmd?cmd=addtime&time=300">5分钟</option>
-                    <option value="/cmd?cmd=addtime&time=600">10分钟</option>
-                    <option value="/cmd?cmd=addtime&time=1200">20分钟</option>
-                    <option value="/cmd?cmd=addtime&time=1800">30分钟</option>
-                    <option value="/cmd?cmd=addtime&time=2400">40分钟</option>
-                    <option value="/cmd?cmd=addtime&time=3600">1小时</option>
-                </optgroup>
-                <optgroup label='键盘'>
-                    <option value="/cmd?cmd=selectall">全选</option>
-                    <option value="/cmd?cmd=paste&time=600">粘贴</option>
-                </optgroup>
-                <optgroup label='开发'>
-                    <option value="/cmd?cmd=mousecontrol">控件信息</option>
-                    <option value="/cmd?cmd=paste&time=600">粘贴</option>
-                </optgroup>
-            </select>
-        </div>
-    </div>
-    <div style="position: relative;">
-        <!-- onerror="alert('加载图像错误');" -->
-        <img id='screenimg' alt="img" onload='imgloadok();' onmousemove='imgmousemove();return false;' oncontextmenu='imgRClick();return false;' onclick='imgClick();' src='/cmd?cmd=getimg&zoom=1.25' style="border:solid 1px red;" />
-        <div onclick="iconImgDivClick();" id='imgClickIcon' style='position: absolute;z-index: 100;left:100px;top:60px;margin-left:-15px;margin-top: -13px;display:none;'>
-            <img src='http://rmjs.qiniudn.com/game/mouseclick.gif' class="zoom" height="48" width="48" />
-            <span id='clickMsgText' class="zoom" style="position: absolute;z-index: 101;left:0;bottom: 0"></span>
-        </div>
-    </div>
-    <div id="msgdiv" style="position:fixed;right:2px;top:3px;background-color:rgba(31,255,0,0.44);z-index:100"></div>
-    <div id="msgImg" style="position:fixed;left:2px;bottom:3px;background-color:rgba(31,255,0,0.44);z-index:100">imgload...</div>
+        <button onclick="search();">search</button>
+ </div>
+ <div id="result"></div>
     <script type="text/javascript">
     function getBaseUrl() {
         return document.getElementById('baseUrl').value;
+    }
+
+    function search() {
+        var name = document.getElementById('txtKey').value;
+        if(!name) return;
+        sendCmd({
+            cmd:"searchpackage",
+            name:name
+        })
     }
 
     function getUrl(url, fn) {
