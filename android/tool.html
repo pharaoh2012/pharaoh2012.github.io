@@ -107,6 +107,9 @@
     </div>
     <div id="msgdiv" style="position:fixed;right:2px;top:3px;background-color:rgba(31,255,0,0.44);z-index:100"></div>
     <div id="msgImg" style="position:fixed;left:2px;bottom:3px;background-color:rgba(31,255,0,0.44);z-index:100">imgload...</div>
+
+<script src="js/servertools.js"></script>
+
     <script type="text/javascript">
     function getBaseUrl() {
         return document.getElementById('baseUrl').value;
@@ -327,12 +330,16 @@
 
     function imgRClick(e) {
         setmsg('mousecontrol');
-        // if (window.event.ctrlKey) {
-        //     loadUrl("/cmd?cmd=mousecontrol&x=" + parseInt(window.event.offsetX * zoomValue, 10) + "&y=" + parseInt(window.event.offsetY * zoomValue, 10));
-        // } else {
+        if (window.event.ctrlKey) {
+            // loadUrl("/cmd?cmd=mousecontrol&x=" + parseInt(window.event.offsetX * zoomValue, 10) + "&y=" + parseInt(window.event.offsetY * zoomValue, 10));
+            var x= parseInt(window.event.offsetX * zoomValue, 10);
+            var y = parseInt(window.event.offsetY * zoomValue, 10);
+            setmsg(x+","+y);
+            console.info(`  ServerTools.click(${x},${y},"");  `);
+        } else {
         setmsg('getimg');
         getImg();
-        // }
+        }
     }
 
     function sendsyskey(key) {
@@ -398,9 +405,9 @@
         });
     }
 
-    setTimeout(function() {
-        getGameTitle();
-    }, 2000);
+    // setTimeout(function() {
+    //     getGameTitle();
+    // }, 2000);
 
     function sendCmd(cmd) {
         console.warn(cmd);

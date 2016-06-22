@@ -4,18 +4,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="author" content="RaoMing" />
-    <title>Remote Control - by pharaoh.cnblogs.com</title>
+    <title>android运行</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <style type="text/css">
-    .zoom {
-        zoom: 1;
-    }
-    
-    #leftDiv {
-        position: fixed;
-        left: 0;
-        top: 10%;
-        z-index: 1000;
-        border: solid 1px rgba(255, 0, 0, 0.18);
+    body,input,button,select {
+        font-size: 40px;
     }
     </style>
 </head>
@@ -32,19 +25,49 @@
     <div class="zoom">
         <input id='txtKey' />
         <button onclick="search();">search</button>
- </div>
- <div id="result"></div>
+    </div>
+    <div id="result"></div>
+
+    <div>
+        <select id="jsfilename"></select> 
+        <button onclick="runjsfile();">run js</button>
+
+        <br /><br /><br />
+        <button onclick="getjslist();">获取js列表</button>
+    </div>
     <script type="text/javascript">
+    function getjslist() {
+        sendCmd({cmd:"listjs"},function(ret){
+            console.info(ret);
+            var r=JSON.parse(ret);
+            console.info(r);
+            var options = r.data.map(function(data){
+                return `<option value='${data}'>${data}</value>`;
+            });
+            document.getElementById('jsfilename').innerHTML = options.join('');
+        });
+    }
+
+
     function getBaseUrl() {
         return document.getElementById('baseUrl').value;
     }
 
+    function runjsfile() {
+        var fn = document.getElementById("jsfilename").value;
+        if(!fn) return;
+        sendCmd({
+            cmd: "runjsfile",
+            file: fn
+        })
+    }
+
     function search() {
         var name = document.getElementById('txtKey').value;
-        if(!name) return;
+        if (!name) return;
         sendCmd({
-            cmd:"searchpackage",
-            name:name
+            cmd: "searchpackage",
+            name: name
         })
     }
 
@@ -66,6 +89,7 @@
         };
         req.send(null);
     }
+
 
     //var isMobile='ontouchstart' in window;
     //if('ontouchstart' in window) { //mobile
@@ -91,18 +115,7 @@
 
     var zoomValue = 1;
 
-    function zoomChanged() {
-        zoomValue = parseFloat(document.getElementById('zoomSelect').value);
-        getImg();
-    }
 
-    function imgloadok() {
-        divImgMsg.style.display = 'none';
-        if (imgTimeId) {
-            clearInterval(imgTimeId);
-            imgTimeCount = 0;
-        }
-    }
 
     function setmsg(msg) {
         divmsg.innerText = msg;
@@ -127,46 +140,7 @@
         });
     }
 
-    function reload() {
-        if (confirm("刷新网页?")) {
-            loadUrl("/cmd?cmd=reload");
-        }
-    }
 
-    function CloseWin() {
-        if (confirm("确定要关闭远程窗口?")) {
-            loadUrl("/cmd?cmd=exit&success=0&msg=exitByUser&time=0&r=" + new Date(), function() {
-                setTimeout(function() {
-                    goback();
-                }, 1000);
-            });
-        }
-    }
-
-    function goback() {
-        window.location.href = "/";
-    }
-    getImg();
-
-    function getImg() {
-        divImgMsg.style.display = 'block';
-        if (imgTimeId) {
-            clearInterval(imgTimeId);
-        }
-        imgTimeCount = 0;
-        divImgMsg.innerText = imgTimeCount;
-        imgTimeId = setInterval(function() {
-            imgTimeCount++;
-            divImgMsg.innerText = imgTimeCount;
-        }, 1000);
-
-        //document.getElementById('screenimg').src = "?cmd=getimg&zoom="+zoomValue+"&r=" + (+new Date());
-        var dSelect = document.getElementById('zoomSelect');
-        // getUrl("/cmd/getimg64",function(res){
-        //    document.getElementById('screenimg').src = res; 
-        // });
-        document.getElementById('screenimg').src = getBaseUrl() + "/cmd?cmd=getimg&" + dSelect.options[dSelect.selectedIndex].getAttribute('q') + "&r=" + (+new Date());
-    }
 
     function hotkey(id) {
         setmsg('hotkey');
@@ -175,7 +149,7 @@
             cmd: "tools",
             x: 0,
             y: 0,
-            id:id
+            id: id
         });
     }
 
@@ -273,20 +247,20 @@
 
     function sendsyskey(key) {
         //"input swipe 100 300 100 600"
-        shellcmd("input keyevent "+key);
+        shellcmd("input keyevent " + key);
         // 3 home
         // 4 back
     }
 
     function shellcmd(cmdtxt) {
         sendCmd({
-            cmd:"shellcmd",
-            shellcmd:cmdtxt
-        });        
+            cmd: "shellcmd",
+            shellcmd: cmdtxt
+        });
     }
 
-    function swipe(x,y,x1,y1) {
-        shellcmd("input swipe "+x +" "+y+" "+x1+" "+y1);
+    function swipe(x, y, x1, y1) {
+        shellcmd("input swipe " + x + " " + y + " " + x1 + " " + y1);
     }
 
     function sendKey() {
@@ -326,26 +300,19 @@
     //     console.info("keypress:" + e.keyCode);
     // }
 
-    function getGameTitle() {
-        getUrl("/cmd?cmd=gettitle&tt=" + (+new Date()), function(ret) {
-            var cmd = JSON.parse(ret);
-            document.getElementById('title').innerText = cmd.ret;
-            document.title = cmd.ret;
-        });
-    }
 
     setTimeout(function() {
-        getGameTitle();
+        getjslist();
     }, 2000);
 
-    function sendCmd(cmd) {
+    function sendCmd(cmd,fn) {
         console.warn(cmd);
         var url = "/cmd?";
         var q = [];
         for (var key in cmd) {
             q.push(key + "=" + encodeURIComponent(cmd[key]));
         }
-        loadUrl(url + q.join("&"));
+        loadUrl(url + q.join("&"),fn);
     }
 
     function leftdivclick() {
