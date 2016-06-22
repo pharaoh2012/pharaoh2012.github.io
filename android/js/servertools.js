@@ -35,7 +35,10 @@ var ServerTools = {
 	execShellCmd:function(cmd) {
 		ph_sendCmd({cmd:"shellcmd",shellcmd:cmd});
 	},
-	end:function() {
-		//save image...
+	openUrl:function(url) {
+		ph_sendCmd({cmd:'openUrl',url:url});
+	},
+	exit:function(success) {
+		ph_sendCmd({cmd:'exit',success:success});
 	}
 }
