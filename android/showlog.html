@@ -34,7 +34,7 @@
     <div>
         <button onclick="getlogfiles();">获取log列表</button>
     </div>
-    <div id="result"></div>
+    <!-- <div id="result"></div> -->
 
     <ol id="files">
     </ol>
@@ -110,7 +110,7 @@
         //document.getElementById('result').innerText = url;
         url = getBaseUrl() + url;
         getUrl(url, function(d) {
-            document.getElementById('result').innerText = d;
+            //document.getElementById('result').innerText = d;
             if (fn) fn(d);
         });
     }
