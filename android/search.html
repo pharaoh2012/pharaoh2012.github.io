@@ -18,15 +18,15 @@
 
 <body>
     <div>
-        <input id="baseUrl" list="url_list" value="http://192.168.22.17:17701/" />
+        <input id="baseUrl" list="url_list" value="192.168.22.17" />
         <datalist id="url_list">
-            <option label="电视" value="http://192.168.31.17:17701/" />
-            <option label="5055" value="http://127.0.0.1:5055/" />
-            <option label="office" value="http://office:5055@pharaoh2012-ngrok.daoapp.io/" />
+            <option label="小米" value="192.168.22.17"></option>
+            <option label="电视" value="192.168.31.17" />
+            <option label="127.0.0.1" value="127.0.0.1" />
         </datalist>
     </div>
 
-    <div id="result"></div>
+    
 
     <div>
         <select id="jsfilename"></select> 
@@ -35,6 +35,7 @@
         <br /><br /><br />
         <button onclick="getjslist();">获取js列表</button>
     </div>
+    <div id="result"></div>
     <div class="zoom">
         <input id='txtKey' />
         <button onclick="search();">search</button>
@@ -54,7 +55,7 @@
 
 
     function getBaseUrl() {
-        return document.getElementById('baseUrl').value;
+        return "http://" + document.getElementById('baseUrl').value +":17701/";
     }
 
     function runjsfile() {
