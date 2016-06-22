@@ -10,22 +10,22 @@
     body,input,button,select {
         font-size: 40px;
     }
+    input,select {
+        width:98%;
+    }
     </style>
 </head>
 
 <body>
     <div>
-        <input id="baseUrl" list="url_list" value="http://192.168.22.17:17701/" style="width:95%" />
+        <input id="baseUrl" list="url_list" value="http://192.168.22.17:17701/" />
         <datalist id="url_list">
             <option label="电视" value="http://192.168.31.17:17701/" />
             <option label="5055" value="http://127.0.0.1:5055/" />
             <option label="office" value="http://office:5055@pharaoh2012-ngrok.daoapp.io/" />
         </datalist>
     </div>
-    <div class="zoom">
-        <input id='txtKey' />
-        <button onclick="search();">search</button>
-    </div>
+
     <div id="result"></div>
 
     <div>
@@ -35,6 +35,10 @@
         <br /><br /><br />
         <button onclick="getjslist();">获取js列表</button>
     </div>
+    <div class="zoom">
+        <input id='txtKey' />
+        <button onclick="search();">search</button>
+    </div>    
     <script type="text/javascript">
     function getjslist() {
         sendCmd({cmd:"listjs"},function(ret){
@@ -303,7 +307,7 @@
 
     setTimeout(function() {
         getjslist();
-    }, 2000);
+    }, 200);
 
     function sendCmd(cmd,fn) {
         console.warn(cmd);
@@ -315,14 +319,7 @@
         loadUrl(url + q.join("&"),fn);
     }
 
-    function leftdivclick() {
-        var d = document.getElementById('leftbuttondiv');
-        if (d.style.display == 'none') {
-            d.style.display = 'block';
-        } else {
-            d.style.display = 'none';
-        }
-    }
+
     </script>
 </body>
 
