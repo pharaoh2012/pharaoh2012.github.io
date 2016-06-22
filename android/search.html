@@ -47,7 +47,7 @@
             var r=JSON.parse(ret);
             console.info(r);
             var options = r.data.map(function(data){
-                return `<option value='${data}'>${data}</value>`;
+                return `<option value='${data}'>${data}</option>`;
             });
             document.getElementById('jsfilename').innerHTML = options.join('');
         });
