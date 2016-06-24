@@ -1,4 +1,5 @@
 <html manifest="qrcode.appcache">
+
 <head>
     <title>Cross-Browser QRCode generator for Javascript</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -28,8 +29,8 @@
         qrcode.makeCode(elText.value);
     }
 
-    if(location.search) {
-    	document.getElementById("text").value = decodeURIComponent(location.search.substr(1));
+    if (location.hash) {
+        document.getElementById("text").value = decodeURIComponent(location.hash.substr(1));
     }
 
     makeCode();
