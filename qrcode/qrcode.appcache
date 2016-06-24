@@ -1,7 +1,6 @@
 CACHE MANIFEST
 #2015-2-23 
-qrcode.min.js
+/qrcode/
+/qrcode/qrcode.min.js
 
-NETWORK:
-*
 
