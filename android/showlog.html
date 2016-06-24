@@ -46,7 +46,8 @@
             var r=JSON.parse(ret);
             console.info(r);
             var url = getBaseUrl() + "?cmd=showlogfile&name=";
-            var htmls = r.data.map(function(data){
+
+            var htmls = r.data.sort().map(function(data){
                 return `<li id="${data}"><a href='${url}${data}' target='_blank' >${data}</a> <button onclick='deletelogfile("${data}")'>删除</button> </li>`;
             });
             document.getElementById('files').innerHTML = htmls.join('');
