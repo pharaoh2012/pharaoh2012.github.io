@@ -40,5 +40,8 @@ var ServerTools = {
 	},
 	exit:function(success) {
 		ph_sendCmd({cmd:'exit',success:success});
+	},
+	copyText:function(txt) {
+		ph_sendCmd({cmd:"copyText",text:txt});
 	}
 }
