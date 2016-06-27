@@ -256,6 +256,17 @@
         var dx = parseInt(window.event.offsetX * zoomValue, 10);
         var dy = parseInt(window.event.offsetY * zoomValue, 10);
         //var url = s.value + "&x=" + dx + "&y=" + dy + "&ttemp=" + (+new Date());
+        if (window.event.ctrlKey) {
+            var msg = `ServerTools.click(${dx},${dy},"");`;
+            var txtKey = document.getElementById("txtKey");
+            txtKey.value = msg;
+            txtKey.focus();
+            txtKey.select();
+            document.execCommand("Copy",false, null);
+            console.info(`  ServerTools.click(${dx},${dy},"");  `);
+            return;
+        }
+
         var url = s.value + "&x=" + dx + "&y=" + dy;
 
         loadUrl(url);
@@ -335,6 +346,12 @@
             var x= parseInt(window.event.offsetX * zoomValue, 10);
             var y = parseInt(window.event.offsetY * zoomValue, 10);
             setmsg(x+","+y);
+            var msg = `ServerTools.click(${x},${y},"");`;
+            var txtKey = document.getElementById("txtKey");
+            txtKey.value = msg;
+            txtKey.focus();
+            txtKey.select();
+            document.execCommand("Copy",false, null);
             console.info(`  ServerTools.click(${x},${y},"");  `);
         } else {
         setmsg('getimg');
