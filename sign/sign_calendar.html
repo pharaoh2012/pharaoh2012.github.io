@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html manifest="sign_calendar.manifest">
+<!-- <html > -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="RaoMing" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />  
+    <title>签到日历</title>
+    <style type="text/css">
+    table {
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+    
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
+    }
+    
+    table {
+        width:100%;
+    }
+
+    th,
+    td {
+        padding: 5px;
+        text-align: center;
+        cursor: pointer;
+        height: 60px;
+        line-height: 20px;
+        /*width: 40px;*/
+        width:14%;
+        /*border-radius: 4px;*/
+    }
+
+    th {
+        height:30px;
+    }
+    
+    td.old,
+    td.new {
+        color: #777777;
+    }
+    
+    td.day:hover {
+        font-weight: bold;
+    }
+    
+    td.day.active {
+        font-weight: bold;
+        color: blue;
+/*        background-color: #337ab7;*/
+/*        border:1px solid #337ab7;
+        box-sizing: border-box;
+        border-radius: 4px;*/
+    }
+
+    dd span {
+        color:blue;
+        cursor:pointer;
+    }
+/*dl{clear:left;}*/
+dt,dd{
+    /*float:left;*/
+display: inline;
+margin: 0;
+font-size: 20px;
+}
+    #detailSuccess {
+        color:green;
+    }
+
+    #detailFail {
+        color:red;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <table class="table-condensed">
+            <thead>
+                <tr>
+                    <th class="prev" title="上一月">&lt;</th>
+                    <th class="showMonth" colspan="5">2015-10</th>
+                    <th class="next" title="下一月">&gt;</th>
+                </tr>
+                <tr>
+                    <th>日</th>
+                    <th>一</th>
+                    <th>二</th>
+                    <th>三</th>
+                    <th>四</th>
+                    <th>五</th>
+                    <th>六</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="day old weekend">27</td>
+                    <td class="day old">28</td>
+                    <td class="day old">29</td>
+                    <td class="day old">30</td>
+                    <td class="day old">31</td>
+                    <td class="day">1</td>
+                    <td class="day weekend">2</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <div id="msg"></div>
+    <div id="detailName"></div>
+    <ol id="detailSuccess"></ol>
+    <ol id="detailFail"></ol>
+
+    <script type="text/javascript">
+    function getJs (url) {
+        var b = document.getElementsByTagName("HEAD").item(0),
+            c = document.createElement("script");
+        c.type = "text/javascript", c.src = url, b.appendChild(c)
+    }
+
+    function getUrl(url, fn) {
+        var req = new XMLHttpRequest();
+        req.open("GET", url, true);
+        console.debug("getUrl:", url);
+        req.onreadystatechange = function() {
+            if (req.readyState == 4) {
+                if (req.status == 200) {
+                    if (req.responseText.indexOf("error:") == 0) {
+                        alert(req.responseText);
+                    }
+                    if (fn) fn(req.responseText);
+                } else {
+                    alert("getUrl Error:" + req.status + "\n" + url);
+                }
+            }
+        };
+        req.send(null);
+    }
+
+    var Calendar = function(fn) {
+    	var currentYear;
+    	var currentMonth;
+        var MonthChanged = fn;
+    	var self = this;
+    	var table = document.querySelector(".table-condensed");
+    	var formatDate=function(){
+    		var dt = new Date(currentYear,currentMonth,1);
+    		currentMonth = dt.getMonth();
+    		currentYear = dt.getFullYear();
+    	}
+    	var createTable = function() {
+    		table.querySelector("th.showMonth").innerText = currentYear+"-"+(currentMonth+1);
+    		var firstDay = new Date(currentYear,currentMonth,1);
+    		var lastDate = new Date(currentYear,currentMonth+1,0).getDate();
+    		var bgWeek = firstDay.getDay();
+    		var dttime = currentYear*10000+(currentMonth+1)*100;
+    		var days = [];
+    		for (var i = bgWeek - 1; i >= 0; i--) {
+    			days.push("<td class='day'> </td>");
+    		};
+    		for (var i = 1; i <= lastDate; i++) {
+    			days.push("<td class='day' id='d_"+ (dttime+i) +"'>"+i+"</td>");
+    		};
+    		var endweek = days.length % 7;
+    		if(endweek>0) {
+    			for (var i = 6 - endweek; i >= 0; i--) {
+    				days.push("<td class='day'> </td>");
+    			};
+    		}
+    		//console.info(days);
+    		var len = days.length;
+    		var html=[];
+    		html.push("<tr>");
+    		for (var i = 0; i < len; i++) {
+    			html.push(days[i]);
+    			if(i%7==6) {
+    				html.push("</tr>");
+    				html.push("<tr>");
+    			}
+    		};
+    		html.pop();
+    		table.querySelector("tbody").innerHTML = html.join("");
+            afterTableCreate();
+    	}
+
+        var afterTableCreate = function() {
+            if(MonthChanged) {
+                MonthChanged(currentYear,currentMonth+1);
+            }
+        }
+
+    	var next=function() {
+    		currentMonth++;
+    		formatDate();
+    		createTable();
+    	}
+    	var prev=function() {
+    		currentMonth--;
+    		formatDate();
+    		createTable();
+    	}    	
+
+    	var now = new Date();
+    	currentYear = now.getFullYear();
+    	currentMonth = now.getMonth();
+
+    	table.querySelector(".next").addEventListener("click",next,false);
+    	table.querySelector(".prev").addEventListener("click",prev,false);
+
+    	createTable();
+
+    };
+    var timeId = 0;
+    new Calendar( function(year,month){
+        console.info(year,month);
+        if(timeId>0) clearTimeout(timeId);
+        for (var d = 1; d < 32; d++) {
+            var date = year*10000+month*100+d;
+            var data = localStorage.getItem(date);
+            if(data) {
+                showTd(JSON.parse(data));
+            }
+        };        
+        timeId = setTimeout(function() {
+            timeId = 0;
+            getJs("https://log_2015.wilddogio.com/phantomStatistics/sum/"+year+"/"+month+".json?callback=datares&t="+Date.now());
+        }, 1000);
+    } );
+
+    function datares (ret) {
+        console.info(ret);
+        for (var d = 1; d < 32; d++) {
+            var data = ret[d];
+            if(data) {
+                showTd(data);
+            }
+        };
+    }
+
+    function showTd (data) {
+        var date = parseInt(data.date,10);
+        localStorage.setItem(date,JSON.stringify(data));
+        var td = document.getElementById("d_"+date);
+        if(td) {
+            //"Total:"+data.total+"\n"+"Success:"+ 
+            td.title = JSON.stringify(data);
+            td.innerText = (date%100) + "\n" + data.success+"/"+data.total;
+            if(data.total == 0) return;
+            var s = data.success/data.total;
+            var f = data.fail / data.total;
+            //(data.success/data.total)
+            var bgcolor = "rgba("+parseInt(255*f,10)+", "+parseInt(255*s,10)+", 0, 0.5)";
+            console.info(bgcolor);
+            td.style.backgroundColor = bgcolor;
+            if(data.fail>0) {
+                td.style.color = "blue";
+            }
+            else {
+                td.style.color = "black";
+            }
+            //td.style.color = "rgba(0, 255, 0, "+(data.success/data.total)+")"
+        }
+    }
+
+    document.querySelector("tbody").addEventListener("click",function(e){
+        if(e.target.tagName == "TD") {
+            var dt = e.target.id.split("_")[1];
+            console.info(dt);
+            var data = localStorage.getItem(dt);
+            if(data) {
+                console.info(data);
+                showMsg(JSON.parse(data));
+            }
+            else {
+                document.getElementById("msg").innerText = "";
+            }
+        }
+    	//console.info(e.target.tagName);
+    	//console.info(this);
+    },false);
+
+    function obj2array(obj) {
+        var i=0;
+        var ret = [];
+        if(!obj) return ret;
+        while(true) {
+            var val = obj[i];
+            if(val === undefined) {
+                return ret;
+            }
+            else {
+                ret.push(val);
+            }
+            i++;
+        }
+    }
+
+    function showMsg (data) {
+        var html=[];
+        document.getElementById("detailSuccess").innerText="";
+        document.getElementById("detailFail").innerText="";
+        document.getElementById("detailName").innerText="";
+
+
+        html.push("<dl><dt>日期：</dt>");
+        html.push("<dd id='curdate'>"+data.date+"</dd></dl>");
+
+        html.push("<dl><dt>总数：</dt>");
+        html.push("<dd>"+data.total+"</dd></dl>");
+
+        html.push("<dl><dt>成功：</dt>");
+        html.push("<dd>"+data.success+"  [<span>"+ obj2array(data.successNames).join("</span>,<span>") +"</span>]</dd></dl>");     
+        html.push("<dl><dt>失败：</dt>");
+        html.push("<dd>"+data.fail+"  [<span>"+ obj2array(data.failNames).join("</span>,<span>")+"</span>]</dd></dl>");    
+
+
+        document.getElementById("msg").innerHTML = html.join("");
+    }
+
+    document.body.onclick = function(e) {
+        if(e.target.tagName == "SPAN") {
+            var dt = document.getElementById("curdate").innerText;
+            var name = e.target.innerText;
+            console.info(dt,name);
+            document.getElementById("detailName").innerText=name + "  " + dt;
+            document.getElementById("detailFail").innerText="";
+            document.getElementById("detailSuccess").innerText="";            
+            getJs("https://log_2015.wilddogio.com/phantomSuccess/"+dt+"/"+encodeURIComponent(name)+".json?callback=showdetail");
+        }
+        console.info(e.target);
+    }
+    function showdetail (dt) {
+        var detailSuccess = document.getElementById("detailSuccess");
+        var detailFail = document.getElementById("detailFail");
+        var success = dt[0];
+        var fails = dt[1];
+        if(success) {
+            var ret = [];
+            for(var d in success) {
+                ret.push("<li>" ,success[d].msg,"</li>");
+            }
+            detailSuccess.innerHTML=ret.join("");
+        }
+
+        if(fails) {
+            var ret = [];
+            for(var d in fails) {
+                ret.push("<li>" ,fails[d].msg,"</li>");
+            }
+            detailFail.innerHTML=ret.join("");
+        }
+        document.body.scrollTop = 10000;
+
+    }
+
+    </script>
+</body>
+
+</html>

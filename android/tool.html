@@ -257,13 +257,13 @@
         var dy = parseInt(window.event.offsetY * zoomValue, 10);
         //var url = s.value + "&x=" + dx + "&y=" + dy + "&ttemp=" + (+new Date());
         if (window.event.ctrlKey) {
-            var msg = `ServerTools.click(${dx},${dy},"");`;
+            var msg = `ServerTools.click(${dx},${dy},"");  ServerTools.sleep(5000);`;
             var txtKey = document.getElementById("txtKey");
             txtKey.value = msg;
             txtKey.focus();
             txtKey.select();
             document.execCommand("Copy",false, null);
-            console.info(`  ServerTools.click(${dx},${dy},"");  `);
+            console.info("   "+msg +"    ");
             return;
         }
 

@@ -23,7 +23,7 @@ function ph_sendCmd(cmd) {
 var ServerTools = {
 	sleep: function(ms) {
 		document.title = "sleep:"+ms;
-		ph_sendCmd({cmd:"sleep",time:ms});
+		//ph_sendCmd({cmd:"sleep",time:ms});
 	},
 	click:function(x,y,msg) {
 		document.title = "Click:"+msg;
