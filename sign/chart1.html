@@ -1,0 +1,162 @@
+<html>
+<!-- <html manifest="checkcode.manifest"> -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="RaoMing" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>统计图表</title>
+</head>
+
+<body>
+    <select style="width:98%;padding:5px;margin:5px;" id="select_names" onchange="changename();">
+    </select>
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto;width:98%">加载中...</div>
+    <!-- <script type="text/javascript" src="/js/jquery.min.js"></script> -->
+    <script src="./js/echarts.common.min.js"></script>
+    <script type="text/javascript">
+    var optionMap = {
+        title: {
+            text: '加载中...',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function(params) {
+                console.info(params,typeof(params[0].data));
+                var dt = params[0].data;
+                if(typeof(dt) == 'object') {
+                    dt = dt.value;
+                }
+                var res = year + '-' + (month + 1) + '-' + params[0].name + '<br />' + dt;
+                return res;
+            }
+        },
+
+        xAxis: [{
+            type: 'category',
+            boundaryGap: true,
+            axisTick: {
+                onGap: false
+            },
+            name: '时间',
+            data: [1]
+        }],
+        yAxis: [{
+            type: 'value',
+            scale: true,
+            splitNumber: 9,
+            boundaryGap: [0.05, 0.05],
+            splitArea: {
+                show: true
+            }
+        }],
+        series: [{
+            type: 'line',
+            name: '值',
+            data: []
+        }]
+    }
+
+    var myChart = echarts.init(document.getElementById('container'));
+
+    myChart.setOption(optionMap);
+
+    function init(data) {
+        console.info(data);
+
+        var xdatas = [];
+        var dts = [];
+
+
+        var datas = [];
+        for (var d in data) {
+            if (d == 0) continue;
+
+
+            
+            //var dt = [Date.UTC(year, month, d), data[d]];
+
+            if (d == date) {
+                xdatas.push({value:d,textStyle:{color:'red',fontWeight:'bold'}});
+                var v = {
+                    symbol: 'roundRect',
+                    symbolSize: 10,
+                    value: data[d]
+                }
+                dts.push(v);
+            } else {
+                xdatas.push(d);
+                dts.push(data[d]);
+            }
+
+        }
+        //console.info(params.series[0].data);
+        //params.series[0].data = datas;
+
+        myChart.setOption({
+            title: {
+                text: window.sname + "(" + year + "-" + (month + 1) + ")"
+            },
+            xAxis: {
+                data: xdatas
+            },
+            series: [{
+                type: 'line',
+                name: '值',
+                smooth: true,
+                symbolSize: 5,
+                data: dts
+            }]
+        });
+
+        //$('#container').highcharts(params);
+    }
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth();
+    var date = now.getDate();
+
+    function loadStatic(name) {
+        window.sname = name;
+
+        var url = "https://log_2015.wilddogio.com/dayStatistics/" + encodeURIComponent(name) + "/" + year + "/" + (month + 1) + ".json?callback=init";
+        addJs(url)
+
+    }
+
+    function addJs(a) {
+        var b = document.getElementsByTagName("HEAD").item(0),
+            c = document.createElement("script");
+        c.type = "text/javascript", c.src = a, b.appendChild(c)
+    }
+
+    function loadSelectNames() {
+        var url = "https://log_2015.wilddogio.com/dayStatistics.json?callback=selectnamesResult&shallow=true";
+        addJs(url);
+    }
+    loadSelectNames();
+
+    function selectnamesResult(names) {
+        if (names) {
+            var count = 0;
+
+            var html = [];
+            for (var name in names) {
+                count++;
+                html.push('<option value="', name, '">', name, ' [', count, ']</option>');
+            }
+
+        }
+        document.getElementById('select_names').innerHTML = html.join('');
+        changename();
+    }
+
+    function changename() {
+        var name = document.getElementById('select_names').value;
+        loadStatic(name);
+    }
+    </script>
+</body>
+
+</html>

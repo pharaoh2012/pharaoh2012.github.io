@@ -1,0 +1,145 @@
+<!-- <html> -->
+<html manifest="checkcode.manifest">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="RaoMing" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>统计图表</title>
+</head>
+
+<body>
+    <select style="width:98%;padding:5px;margin:5px;" id="select_names" onchange="changename();">
+        <option value="第一调查网">第一调查网</option>
+        <option value="京东移动签到">京东移动签到</option>
+        <option value="百度知道">百度知道</option>
+        <option value="24趣吧">24趣吧</option>
+        <option value="万里通刮刮乐">万里通刮刮乐</option>
+        <option value="九元购">九元购</option>
+        <option value="京东移动签到">京东移动签到</option>
+        <option value="平安游戏签到">平安游戏签到</option>
+        <option value="惠惠网">惠惠网</option>
+        <option value="百度知道">百度知道</option>
+        <option value="聚享游">聚享游</option>
+        <option value="联通签到">联通签到</option>
+        <option value="小米论坛">小米论坛</option>
+        <option value="麻吉宝">麻吉宝</option>
+        <option value="麻吉宝_zy">麻吉宝_zy</option>
+    </select>
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto">加载中...</div>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script src="./js/highcharts.js"></script>
+    <script type="text/javascript">
+    function init(data) {
+        console.info(data);
+        var params = {
+            chart: {
+                type: 'spline'
+            },
+            title: {
+                text: window.sname
+            },
+            // subtitle: {
+            //     text: window.sname
+            // },
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: { // don't display the dummy year
+                    day: '%e',
+                    month: '%m-%e',
+                    year: '%Y'
+                },
+                title: {
+                    text: '日期'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                }
+                //min: 0
+            },
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br>',
+                pointFormat: '{point.x:%Y-%m-%e}: <b>{point.y:.0f}</b> '
+            },
+
+            plotOptions: {
+                spline: {
+                    marker: {
+                        enabled: true
+                    }
+                }
+            },
+
+            series: [{
+                name: window.sname + ' ' + year + "-" + (month + 1),
+                // Define the data points. All series have a dummy year
+                // of 1970/71 in order to be compared on the same x axis. Note
+                // that in JavaScript, months start at 0 for January, 1 for February etc.
+                data: [
+                    [Date.UTC(2005, 11, 21), 57116],
+                    [Date.UTC(2005, 11, 22), 57206],
+                    [Date.UTC(2005, 11, 23), 57326],
+                    [Date.UTC(2005, 11, 24), 57395]
+                ]
+            }]
+        };
+
+        var datas = [];
+        for (var d in data) {
+            var dt = [Date.UTC(year, month, d), data[d]];
+            datas.push(dt);
+        }
+        //console.info(params.series[0].data);
+        params.series[0].data = datas;
+
+        $('#container').highcharts(params);
+    }
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth();
+
+    function loadStatic(name) {
+        window.sname = name;
+
+        var url = "https://log_2015.wilddogio.com/dayStatistics/" + encodeURIComponent(name) + "/" + year + "/" + (month + 1) + ".json?callback=init";
+        addJs(url)
+
+    }
+
+    function addJs(a) {
+        var b = document.getElementsByTagName("HEAD").item(0),
+            c = document.createElement("script");
+        c.type = "text/javascript", c.src = a, b.appendChild(c)
+    }
+
+    function loadSelectNames() {
+        var url = "https://log_2015.wilddogio.com/dayStatistics.json?callback=selectnamesResult&shallow=true";
+        addJs(url);
+    }
+    loadSelectNames();
+
+    function selectnamesResult(names) {
+        if (names) {
+            var count = 0;
+
+            var html = [];
+            for (var name in names) {
+                count++;
+                html.push('<option value="', name, '">', name, ' [', count, ']</option>');
+            }
+
+        }
+        document.getElementById('select_names').innerHTML = html.join('');
+        changename();
+    }
+
+    function changename() {
+        var name = document.getElementById('select_names').value;
+        loadStatic(name);
+    }
+    </script>
+</body>
+
+</html>
