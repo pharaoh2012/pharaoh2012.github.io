@@ -11,7 +11,7 @@ function ph_getUrl(url) {
 
 
 function ph_sendCmd(cmd) {
-	var url = ph_baseUrl+"/cmd?";
+	var url = "/cmd?";
 	var q = [];
 	for (var key in cmd) {
 		q.push(key + "=" + encodeURIComponent(cmd[key]));
@@ -43,5 +43,8 @@ var ServerTools = {
 	},
 	copyText:function(txt) {
 		ph_sendCmd({cmd:"copyText",text:txt});
+	},
+	runJs:function (jsFilename) {
+		ph_sendCmd({cmd:"runjsfile",file:jsFilename});
 	}
 }

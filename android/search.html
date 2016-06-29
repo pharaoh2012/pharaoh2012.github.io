@@ -7,46 +7,52 @@
     <title>android运行</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <style type="text/css">
-    body,input,button,select {
+    body,
+    input,
+    button,
+    select {
         font-size: 40px;
     }
-    input,select {
-        width:98%;
+    
+    input,
+    select {
+        width: 98%;
     }
     </style>
 </head>
 
 <body>
     <div>
-        <input id="baseUrl" list="url_list" value="127.0.0.1" />
+        <input id="baseUrl" list="url_list" value="192.168.22.17" />
         <datalist id="url_list">
             <option label="小米" value="192.168.22.17"></option>
             <option label="电视" value="192.168.31.17" />
             <option label="127.0.0.1" value="127.0.0.1" />
         </datalist>
     </div>
-
-    
-
     <div>
-        <select id="jsfilename"></select> 
+        <select id="jsfilename"></select>
         <button onclick="runjsfile();">run js</button>
-
-        <br /><br /><br />
+        <button onclick="deletejsfile();">delete js</button>
+        <br />
+        <br />
+        <br />
         <button onclick="getjslist();">获取js列表</button>
     </div>
     <div id="result"></div>
     <div class="zoom">
         <input id='txtKey' />
         <button onclick="search();">search</button>
-    </div>    
+    </div>
     <script type="text/javascript">
     function getjslist() {
-        sendCmd({cmd:"listjs"},function(ret){
+        sendCmd({
+            cmd: "listjs"
+        }, function(ret) {
             console.info(ret);
-            var r=JSON.parse(ret);
+            var r = JSON.parse(ret);
             console.info(r);
-            var options = r.data.map(function(data){
+            var options = r.data.map(function(data) {
                 return `<option value='${data}'>${data}</option>`;
             });
             document.getElementById('jsfilename').innerHTML = options.join('');
@@ -55,16 +61,27 @@
 
 
     function getBaseUrl() {
-        return "http://" + document.getElementById('baseUrl').value +":17701/";
+        return "http://" + document.getElementById('baseUrl').value + ":17701/";
     }
 
     function runjsfile() {
         var fn = document.getElementById("jsfilename").value;
-        if(!fn) return;
+        if (!fn) return;
         sendCmd({
             cmd: "runjsfile",
             file: fn
         })
+    }
+
+    function deletejsfile() {
+        var fn = document.getElementById("jsfilename").value;
+        if (!fn) return;
+        if (confirm("确定要输出js文件吗？"+fn)) {
+            sendCmd({
+                cmd: "deletejsfile",
+                name: fn
+            });
+        }
     }
 
     function search() {
@@ -310,17 +327,15 @@
         getjslist();
     }, 200);
 
-    function sendCmd(cmd,fn) {
+    function sendCmd(cmd, fn) {
         console.warn(cmd);
         var url = "/cmd?";
         var q = [];
         for (var key in cmd) {
             q.push(key + "=" + encodeURIComponent(cmd[key]));
         }
-        loadUrl(url + q.join("&"),fn);
+        loadUrl(url + q.join("&"), fn);
     }
-
-
     </script>
 </body>
 
