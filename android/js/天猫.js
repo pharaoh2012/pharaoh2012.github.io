@@ -4,7 +4,7 @@ ServerTools.runPackage("com.tmall.wireless");
 ServerTools.sleep(15000);
 ServerTools.click(648,1223,"标签：我");  ServerTools.sleep(5000);
 ServerTools.click(88,1022,"领钱了");  ServerTools.sleep(10000);
-ServerTools.click(600,854,"浏览赢宝箱");  ServerTools.sleep(20000);
+ServerTools.click(600,854,"浏览赢宝箱");  ServerTools.sleep(30000);
 ServerTools.back();
 ServerTools.sleep(2000);
 ServerTools.click(608,419,"点击赢宝箱");  ServerTools.sleep(5000);

@@ -2,8 +2,8 @@
 
 ServerTools.runPackage("ctrip.android.view");
 ServerTools.sleep(15000);
-for (var i = 0; i < 3; i++) {
-	ServerTools.execShellCmd("input swipe 400 500 400 200");
+for (var i = 0; i < 5; i++) {
+	ServerTools.execShellCmd("input swipe 400 700 400 200");
 	ServerTools.sleep(1000);
 }
 ServerTools.click(158,845,"签到新玩法");  ServerTools.sleep(10000);
@@ -16,8 +16,8 @@ ServerTools.click(613,670,"QQ空间");  ServerTools.sleep(10000);
 ServerTools.click(651,101,"发表按钮");  ServerTools.sleep(5000);
 
 ServerTools.click(345,864,"我知道了");  ServerTools.sleep(5000);
-for (var i = 0; i < 3; i++) {
-	ServerTools.execShellCmd("input swipe 400 500 400 200");
+for (var i = 0; i < 5; i++) {
+	ServerTools.execShellCmd("input swipe 400 700 400 200");
 	ServerTools.sleep(1000);
 }
 
