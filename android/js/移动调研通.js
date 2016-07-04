@@ -1,18 +1,18 @@
 
 
-ServerTools.runPackage("com.ictr.smarttouch");
-ServerTools.sleep(15000);
-ServerTools.click(217,823,"每日签到");
-ServerTools.sleep(10000);
+runPackage("com.ictr.smarttouch");
+sleep(15000);
+click(217,823,"每日签到");
+sleep(10000);
 
-ServerTools.click(359,378,"签到按钮");
-ServerTools.sleep(3000);
-ServerTools.click(359,378,"签到按钮");
-ServerTools.sleep(3000);
-ServerTools.click(359,378,"签到按钮");
-ServerTools.sleep(3000);
-ServerTools.click(359,378,"签到按钮");
+click(359,378,"签到按钮");
+sleep(3000);
+click(359,378,"签到按钮");
+sleep(3000);
+click(359,378,"签到按钮");
+sleep(3000);
+click(359,378,"签到按钮");
 
-ServerTools.sleep(10000);
+// sleep(10000);
 
-ServerTools.exit(true);
+// exit(true);

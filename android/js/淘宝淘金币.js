@@ -1,13 +1,13 @@
 
 
-ServerTools.runPackage("com.taobao.taobao");
-ServerTools.sleep(15000);
-ServerTools.click(639,1229,"点击头像");
-ServerTools.sleep(5000);
-ServerTools.click(625,538,"更多工具");  ServerTools.sleep(5000);
-ServerTools.click(448,240,"领金币");  ServerTools.sleep(10000);
-ServerTools.click(580,234,"领金币");    
+runPackage("com.taobao.taobao");
+sleep(15000);
+click(639,1229,"点击头像");
+sleep(5000);
+click(625,538,"更多工具");  sleep(5000);
+click(448,240,"领金币");  sleep(10000);
+click(580,234,"领金币");    
 
-ServerTools.sleep(10000);
+// sleep(10000);
 
-ServerTools.exit(true);
+// exit(true);

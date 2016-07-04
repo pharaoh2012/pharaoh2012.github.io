@@ -1,10 +1,11 @@
 
 
-ServerTools.runPackage("com.juanpi.ui");
-ServerTools.sleep(15000);
+runPackage("com.juanpi.ui");
+sleep(15000);
 
-ServerTools.click(671,102,"右上角赚");  ServerTools.sleep(5000);
-ServerTools.click(108,240,"签到按钮");  ServerTools.sleep(5000);
-ServerTools.click(108,240,"签到按钮");  ServerTools.sleep(5000);
+click(671,102,"右上角赚");  sleep(5000);
+click(108,240,"签到按钮");  sleep(5000);
+click(108,240,"签到按钮");  
 
-ServerTools.exit(true);
+// sleep(5000);
+// exit(true);

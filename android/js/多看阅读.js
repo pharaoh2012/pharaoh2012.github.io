@@ -1,8 +1,10 @@
 
 
-ServerTools.runPackage("com.duokan.reader");
-ServerTools.sleep(15000);
-ServerTools.click(476,94,"点击书架");  ServerTools.sleep(5000);
-ServerTools.click(587,278,"签到");  ServerTools.sleep(10000);
+runPackage("com.duokan.reader");
+sleep(15000);
+click(476,94,"点击书架");  sleep(5000);
+click(587,278,"签到");  
 
-ServerTools.exit(true);
+// sleep(10000);
+
+// exit(true);
