@@ -48,3 +48,19 @@ var ServerTools = {
 		ph_sendCmd({cmd:"runjsfile",file:jsFilename});
 	}
 }
+
+function sleep(ms) {
+	ServerTools.sleep(ms);
+}
+
+function runPackage(name) {
+	ServerTools.runPackage(name);
+}
+
+function click(x,y,name,ms) {
+	ServerTools.click(x,y);
+}
+
+function execShellCmd(cmd) {
+	ServerTools.execShellCmd(cmd);
+}
