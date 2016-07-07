@@ -1,7 +1,7 @@
 
 
-runPackage("com.netease.newsreader.activity");
-sleep(10000);
+runPackage("com.netease.newsreader.activity",15000);
+
 click(163,149,"点击重庆");
 sleep(10000);
 click(181,849,"第二条新闻");

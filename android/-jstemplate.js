@@ -1,15 +1,25 @@
 var G_jsName = "//jsname//";
+var G_isRunning = true;
+var G_packageName;
 
 function G_Running() {
 	ServerTools.toast("***开始运行：" + G_jsName);
+	
 	//jscode//
 
 	toast("准备退出：" + G_jsName, 1);
+	if (!G_isRunning) {
+		toast("非主动退出！exit");
+		return;
+	}
+
 	sleep(10000, true);
+
 	ServerTools.exit(G_jsName);
 	ServerTools.toast("退出app:" + G_jsName, 1);
-	
-	killAllApp();
+
+	//killAllApp();
+	killCurrentApp();
 	ServerTools.toast("***结束运行：" + G_jsName);
 }
 
@@ -20,20 +30,37 @@ function copyText(txt) {
 }
 
 function sleep(ms, notShowMsg) {
-	if (!notShowMsg) {
-		if (ms > 1000) toast("sleep:" + ms / 1000 + " s");
+	if (!G_isRunning) {
+		toast("非主动退出！sleep");
+		return;
 	}
-	ServerTools.sleep(ms);
+	if (!notShowMsg) {
+		if (ms > 2000) toast("sleep:" + ms / 1000 + " s");
+	}
+	if (!ServerTools.sleep(ms)) {
+		G_isRunning = false;
+	}
 
 }
 
 function click(x, y, msg, ms) {
-	if (msg) {
-		toast("click:" + msg);
+	if (!G_isRunning) {
+		toast("非主动退出！click");
+		return;
 	}
-	ServerTools.click(x, y, msg);
+	if (msg) {
+		if (ms) {
+			toast("click:" + msg + " " + ms / 1000 + "s");
+		} else {
+			toast("click:" + msg);
+		}
+	}
+	if (!ServerTools.click(x, y, msg)) {
+		G_isRunning = false;
+		return;
+	}
 	if (ms) {
-		sleep(ms);
+		sleep(ms, true);
 	}
 }
 
@@ -59,14 +86,13 @@ function inputKey(key) {
 }
 
 function back(num) {
-	if(num ==1) {
+	if (!num) num = 1;
+	if (num == 1) {
 		toast("返回");
+	} else {
+		toast("返回" + num + "次");
 	}
-	else {
-		toast("返回"+num+"次");
-	}
-	if (num) ServerTools.back(num);
-	else ServerTools.back(1);
+	ServerTools.back(num);
 }
 
 function openUrl(url) {
@@ -78,11 +104,13 @@ function goHome() {
 }
 
 function runPackage(name, ms) {
+	G_packageName = name;
 	ServerTools.runPackage(name);
+
 	if (ms) {
 		ServerTools.sleep(ms);
+		toast("运行："+name+"  sleep:"+(ms/1000)+" s");
 	}
-
 }
 
 function exit(success) {
@@ -96,8 +124,8 @@ function QQShare() { //QQ好友
 	toast("等待QQ启动", 1);
 	sleep(10000, true);
 	click(65, 437, "点击我的电脑", 5000);
-	click(503,835,"发送按钮",8000);
-	click(198,765,"返回APP",5000);    
+	click(503, 835, "发送按钮", 8000);
+	click(198, 765, "返回APP", 5000);
 }
 
 function QQZone() { //QQ空间
@@ -107,12 +135,18 @@ function QQZone() { //QQ空间
 }
 
 function killAllApp() {
-	toast("清理内存",1);
+	toast("清理内存", 1);
 	sleep(5000, true);
 	inputKey(3);
 	sleep(1000, true);
 	inputKey(82);
 	sleep(2000, true);
 	ServerTools.click(357, 1137, ""); //清理内存
-	sleep(2000, true);	
+	sleep(2000, true);
+}
+
+function killCurrentApp() {
+	if(G_packageName) {
+		execShellCmd("am force-stop "+G_packageName);
+	}
 }
