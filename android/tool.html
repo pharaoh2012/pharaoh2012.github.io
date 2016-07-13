@@ -106,12 +106,48 @@
             <span id='clickMsgText' class="zoom" style="position: absolute;z-index: 101;left:0;bottom: 0"></span>
         </div>
     </div>
+
+    <canvas id="myCanvas" width="800" height="1000"  style="width:800px;height:1000px;"></canvas>
+
+    <div id="colorResult" style="border:1px red solid; width:50px;height:50px;position:fixed;top:0;right:0;"></div>
+
     <div id="msgdiv" style="position:fixed;right:2px;top:3px;background-color:rgba(31,255,0,0.44);z-index:100"></div>
     <div id="msgImg" style="position:fixed;left:2px;bottom:3px;background-color:rgba(31,255,0,0.44);z-index:100">imgload...</div>
 
 <script src="servertools.js"></script>
 
     <script type="text/javascript">
+
+var canvas = document.getElementById("myCanvas");
+var context = canvas.getContext("2d");
+
+function loadImg(src) {
+    var imageObj = new Image();
+    imageObj.crossOrigin = "Anonymous";
+    imageObj.onload = function(){
+        context.drawImage(imageObj, 0, 0);
+    };
+    imageObj.src = src;
+}
+
+
+canvas.onmousemove = function(e) {
+    // not so sure about these... might need to offset them or so
+    var x = e.offsetX;
+    var y = e.offsetY;
+
+    // set color now
+    var canvasColor = context.getImageData(x, y, 1, 1).data; // rgba e [0,255]
+    var r = canvasColor[0];
+    var g = canvasColor[1];
+    var b = canvasColor[2];
+    console.info(canvasColor);
+
+    console.info(x ,y , 'rgb(' + r + ',' + g + ',' + b + ')');
+    document.getElementById('colorResult').style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+}
+
+
     function getBaseUrl() {
         return "http://" + document.getElementById('baseUrl').value +":17701/";
     }
