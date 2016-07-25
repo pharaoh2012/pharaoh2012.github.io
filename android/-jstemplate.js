@@ -71,6 +71,10 @@ function takePicture(fn) {
 	ServerTools.takePicture(fn);
 }
 
+function checkColors(xys,colors) {
+	return ServerTools.checkColors(xys,colors);
+}
+
 function toast(msg, time) {
 	ServerTools.toast(G_jsName +"：" +msg, time ? 0 : 1);
 }
