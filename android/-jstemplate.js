@@ -4,10 +4,10 @@ var G_packageName;
 
 function G_Running() {
 	ServerTools.toast("***开始运行：" + G_jsName);
-	
+
 	//jscode//
 
-	toast("准备退出：" + G_jsName, 1);
+	toast("准备退出.");
 	if (!G_isRunning) {
 		toast("非主动退出！exit");
 		return;
@@ -23,7 +23,9 @@ function G_Running() {
 	ServerTools.toast("***结束运行：" + G_jsName);
 }
 
-
+function swipe(x, y, x1, y1) {
+	execShellCmd("input swipe " + x + " " + y + " " + x1 + " " + y1);
+}
 
 function copyText(txt) {
 	ServerTools.copyText(txt);
@@ -70,7 +72,7 @@ function takePicture(fn) {
 }
 
 function toast(msg, time) {
-	ServerTools.toast(msg, time ? 0 : 1);
+	ServerTools.toast(G_jsName +"：" +msg, time ? 0 : 1);
 }
 
 function log(msg) {
@@ -108,8 +110,8 @@ function runPackage(name, ms) {
 	ServerTools.runPackage(name);
 
 	if (ms) {
+		toast("运行：" + name + "  sleep:" + (ms / 1000) + " s");
 		ServerTools.sleep(ms);
-		toast("运行："+name+"  sleep:"+(ms/1000)+" s");
 	}
 }
 
@@ -146,7 +148,7 @@ function killAllApp() {
 }
 
 function killCurrentApp() {
-	if(G_packageName) {
-		execShellCmd("am force-stop "+G_packageName);
+	if (G_packageName) {
+		execShellCmd("am force-stop " + G_packageName);
 	}
 }

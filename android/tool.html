@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <canvas id="myCanvas" width="800" height="1000"  style="width:800px;height:1000px;"></canvas>
+<!--     <canvas id="myCanvas" width="800" height="1000"  style="width:800px;height:1000px;"></canvas> -->
 
     <div id="colorResult" style="border:1px red solid; width:50px;height:50px;position:fixed;top:0;right:0;"></div>
 
@@ -118,8 +118,10 @@
 
     <script type="text/javascript">
 
-var canvas = document.getElementById("myCanvas");
-var context = canvas.getContext("2d");
+
+var imgcontext;
+
+document.getElementById('screenimg').crossOrigin = "anonymous";
 
 function loadImg(src) {
     var imageObj = new Image();
@@ -128,23 +130,6 @@ function loadImg(src) {
         context.drawImage(imageObj, 0, 0);
     };
     imageObj.src = src;
-}
-
-
-canvas.onmousemove = function(e) {
-    // not so sure about these... might need to offset them or so
-    var x = e.offsetX;
-    var y = e.offsetY;
-
-    // set color now
-    var canvasColor = context.getImageData(x, y, 1, 1).data; // rgba e [0,255]
-    var r = canvasColor[0];
-    var g = canvasColor[1];
-    var b = canvasColor[2];
-    console.info(canvasColor);
-
-    console.info(x ,y , 'rgb(' + r + ',' + g + ',' + b + ')');
-    document.getElementById('colorResult').style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
 }
 
 
@@ -201,7 +186,17 @@ canvas.onmousemove = function(e) {
     }
 
     function imgloadok() {
+
         divImgMsg.style.display = 'none';
+        var img = document.getElementById("screenimg");
+        if(!imgcontext) {
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;    
+            imgcontext = canvas.getContext("2d");        
+        }
+        imgcontext.drawImage(img,0,0);
+
         if (imgTimeId) {
             clearInterval(imgTimeId);
             imgTimeCount = 0;
@@ -426,6 +421,17 @@ canvas.onmousemove = function(e) {
     function imgmousemove(e) {
         if (window.event.ctrlKey) {
             mousepoint.innerText = parseInt(window.event.offsetX * zoomValue, 10) + "," + parseInt(window.event.offsetY * zoomValue, 10);
+            return;
+        }
+        var x=parseInt(window.event.offsetX * zoomValue, 10);
+        var y=parseInt(window.event.offsetY * zoomValue, 10);
+        if(imgcontext) {
+            var canvasColor = imgcontext.getImageData(x, y, 1, 1).data;
+            var r = canvasColor[0];
+            var g = canvasColor[1];
+            var b = canvasColor[2];
+            console.info(canvasColor);
+        document.getElementById('colorResult').style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
         }
     }
     var txtKey = document.getElementById('txtKey')
