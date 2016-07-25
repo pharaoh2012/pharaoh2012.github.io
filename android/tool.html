@@ -36,14 +36,11 @@
         <button onclick="sendsyskey(3)">Home</button>
         <button onclick="sendsyskey(4)">Back</button>
         <button onclick="sendsyskey(82)">运行列表</button>
-
         <button onclick="swipe(400,5,400,300)">通知</button>
-
         <button onclick="swipe(400,500,400,200)">↑</button>
         <button onclick="swipe(400,200,400,500)">↓</button>
         <button onclick="swipe(400,500,100,500)">←</button>
         <button onclick="swipe(100,500,400,500)">→</button>
-
         <br />
         <button onclick="getImg()">刷新图像</button>
         <br />
@@ -106,35 +103,28 @@
             <span id='clickMsgText' class="zoom" style="position: absolute;z-index: 101;left:0;bottom: 0"></span>
         </div>
     </div>
-
-<!--     <canvas id="myCanvas" width="800" height="1000"  style="width:800px;height:1000px;"></canvas> -->
-
+    <!--     <canvas id="myCanvas" width="800" height="1000"  style="width:800px;height:1000px;"></canvas> -->
     <div id="colorResult" style="border:1px red solid; width:50px;height:50px;position:fixed;top:0;right:0;"></div>
-
     <div id="msgdiv" style="position:fixed;right:2px;top:3px;background-color:rgba(31,255,0,0.44);z-index:100"></div>
     <div id="msgImg" style="position:fixed;left:2px;bottom:3px;background-color:rgba(31,255,0,0.44);z-index:100">imgload...</div>
-
-<script src="servertools.js"></script>
-
+    <script src="servertools.js"></script>
     <script type="text/javascript">
+    var imgcontext;
 
+    document.getElementById('screenimg').crossOrigin = "anonymous";
 
-var imgcontext;
-
-document.getElementById('screenimg').crossOrigin = "anonymous";
-
-function loadImg(src) {
-    var imageObj = new Image();
-    imageObj.crossOrigin = "Anonymous";
-    imageObj.onload = function(){
-        context.drawImage(imageObj, 0, 0);
-    };
-    imageObj.src = src;
-}
+    function loadImg(src) {
+        var imageObj = new Image();
+        imageObj.crossOrigin = "Anonymous";
+        imageObj.onload = function() {
+            context.drawImage(imageObj, 0, 0);
+        };
+        imageObj.src = src;
+    }
 
 
     function getBaseUrl() {
-        return "http://" + document.getElementById('baseUrl').value +":17701/";
+        return "http://" + document.getElementById('baseUrl').value + ":17701/";
     }
 
     function getUrl(url, fn) {
@@ -189,13 +179,13 @@ function loadImg(src) {
 
         divImgMsg.style.display = 'none';
         var img = document.getElementById("screenimg");
-        if(!imgcontext) {
+        if (!imgcontext) {
             var canvas = document.createElement("canvas");
             canvas.width = img.width;
-            canvas.height = img.height;    
-            imgcontext = canvas.getContext("2d");        
+            canvas.height = img.height;
+            imgcontext = canvas.getContext("2d");
         }
-        imgcontext.drawImage(img,0,0);
+        imgcontext.drawImage(img, 0, 0);
 
         if (imgTimeId) {
             clearInterval(imgTimeId);
@@ -274,7 +264,7 @@ function loadImg(src) {
             cmd: "tools",
             x: 0,
             y: 0,
-            id:id
+            id: id
         });
     }
 
@@ -294,8 +284,27 @@ function loadImg(src) {
             txtKey.value = msg;
             txtKey.focus();
             txtKey.select();
-            document.execCommand("Copy",false, null);
-            console.info("   "+msg +"    ");
+            document.execCommand("Copy", false, null);
+            console.info("   " + msg + "    ");
+            return;
+        } else if (window.event.altKey) {
+            sendCmd({
+                cmd: "getColors",
+                xys: dx + "," + dy
+            }, function(ret) {
+                console.info(ret);
+            });
+            var color = getImageColor(dx, dy);
+            console.info(color);
+            color = (color[0] << 16) + (color[1] << 8) + color[2];
+            console.info(color - 16777216);
+            //console.info()
+            return;
+        } else if (window.event.shiftKey) {
+            var color = getImageColor(dx, dy);
+            console.info(color);
+            color = (color[0] << 16) + (color[1] << 8) + color[2];
+            console.info(dx + "," + dy, color - 16777216);
             return;
         }
 
@@ -375,38 +384,38 @@ function loadImg(src) {
         setmsg('mousecontrol');
         if (window.event.ctrlKey) {
             // loadUrl("/cmd?cmd=mousecontrol&x=" + parseInt(window.event.offsetX * zoomValue, 10) + "&y=" + parseInt(window.event.offsetY * zoomValue, 10));
-            var x= parseInt(window.event.offsetX * zoomValue, 10);
+            var x = parseInt(window.event.offsetX * zoomValue, 10);
             var y = parseInt(window.event.offsetY * zoomValue, 10);
-            setmsg(x+","+y);
+            setmsg(x + "," + y);
             var msg = `ServerTools.click(${x},${y},"");`;
             var txtKey = document.getElementById("txtKey");
             txtKey.value = msg;
             txtKey.focus();
             txtKey.select();
-            document.execCommand("Copy",false, null);
+            document.execCommand("Copy", false, null);
             console.info(`  ServerTools.click(${x},${y},"");  `);
         } else {
-        setmsg('getimg');
-        getImg();
+            setmsg('getimg');
+            getImg();
         }
     }
 
     function sendsyskey(key) {
         //"input swipe 100 300 100 600"
-        shellcmd("input keyevent "+key);
+        shellcmd("input keyevent " + key);
         // 3 home
         // 4 back
     }
 
     function shellcmd(cmdtxt) {
         sendCmd({
-            cmd:"shellcmd",
-            shellcmd:cmdtxt
-        });        
+            cmd: "shellcmd",
+            shellcmd: cmdtxt
+        });
     }
 
-    function swipe(x,y,x1,y1) {
-        shellcmd("input swipe "+x +" "+y+" "+x1+" "+y1);
+    function swipe(x, y, x1, y1) {
+        shellcmd("input swipe " + x + " " + y + " " + x1 + " " + y1);
     }
 
     function sendKey() {
@@ -423,17 +432,23 @@ function loadImg(src) {
             mousepoint.innerText = parseInt(window.event.offsetX * zoomValue, 10) + "," + parseInt(window.event.offsetY * zoomValue, 10);
             return;
         }
-        var x=parseInt(window.event.offsetX * zoomValue, 10);
-        var y=parseInt(window.event.offsetY * zoomValue, 10);
-        if(imgcontext) {
+        var x = parseInt(window.event.offsetX * zoomValue, 10);
+        var y = parseInt(window.event.offsetY * zoomValue, 10);
+        getImageColor(x, y);
+    }
+
+    function getImageColor(x, y) {
+        if (imgcontext) {
             var canvasColor = imgcontext.getImageData(x, y, 1, 1).data;
             var r = canvasColor[0];
             var g = canvasColor[1];
             var b = canvasColor[2];
-            console.info(canvasColor);
-        document.getElementById('colorResult').style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+            //console.info(canvasColor);
+            document.getElementById('colorResult').style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+            return [r, g, b];
         }
     }
+
     var txtKey = document.getElementById('txtKey')
     var lastDownkey = -1;
     // txtKey.onkeydown = function(e) {
@@ -469,14 +484,14 @@ function loadImg(src) {
     //     getGameTitle();
     // }, 2000);
 
-    function sendCmd(cmd) {
+    function sendCmd(cmd, fn) {
         console.warn(cmd);
         var url = "/cmd?";
         var q = [];
         for (var key in cmd) {
             q.push(key + "=" + encodeURIComponent(cmd[key]));
         }
-        loadUrl(url + q.join("&"));
+        loadUrl(url + q.join("&"), fn);
     }
 
     function leftdivclick() {
