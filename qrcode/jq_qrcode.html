@@ -1,0 +1,41 @@
+<html manifest="jqqrcode.appcache">
+
+<head>
+    <title>Cross-Browser QRCode generator for Javascript</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-qrcode-0.14.0.min.js"></script>
+</head>
+
+<body>
+    <input id="text" type="text" value="input text" style="width:80%" />
+    <br />
+    <div id="qrcode" style="width:200px; height:200px; margin: 15px auto;"></div>
+    <script type="text/javascript">
+
+
+    function makeCode() {
+        var elText = document.getElementById("text");
+
+        if (!elText.value) {
+            document.title = "Input a text";
+            //alert("Input a text");
+            elText.focus();
+            return;
+        }
+        $("#qrcode").empty().qrcode({"text":elText.value});
+
+    }
+
+    if (location.hash) {
+        document.getElementById("text").value = decodeURIComponent(location.hash.substr(1));
+    }
+
+    makeCode();
+
+    document.getElementById("text").onkeyup = function(e) {
+        makeCode();
+    };
+    </script>
+</body>
