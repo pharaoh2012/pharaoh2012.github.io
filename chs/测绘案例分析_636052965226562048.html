@@ -1,0 +1,401 @@
+<html><HEAD><TITLE>MyModel</TITLE>
+<STYLE type=text/css>
+            html{scrollbar-face-color:#e7f4f9;scrollbar-arrow-color:#8bd5fd;scrollbar-track-color:#f9fdff;scrollbar-highlight-color:#ffffff;scrollbar-3dlight-color:#8bd5fd;scrollbar-shadow-color:#ffffff;scrollbar-darkshadow-color:#8bd5fd;}
+            body {margin: 10px; line-height: 150%; width:950px; margin-left:auto; margin-right:auto;font-family: 宋体;}
+           .ti_content {font-size: 14px; color: #000000; font-family: 宋体,serif;
+            font-size: 14px; line-height: 150%; width: auto; clear:both;}
+           .ti_content ul li {list-style:none;margin-top:5px;margin-buttom:5px;}
+           .ti_content ul{padding-left:0px;}
+           .ti_content #anwer_r li{float:left; margin-left:10px;}
+           .ti_title {font-size: 18px; font-weight: bold; margin-top:10px;clear:both;}
+           .style_anwser_r {float: right; margin-right: 20px;}
+           .style_anwser {clear: both; background-color: #ecf5fa; border: 1px #B7CACE solid; display:none;}
+           .inputFill {BORDER-BOTTOM: #417ac1 1px dashed; BORDER-LEFT: 0px; LINE-HEIGHT: 22px; WIDTH: 200px; BACKGROUND: #ffffff; HEIGHT: 22px; COLOR: #ff0000; BORDER-TOP: 0px; BORDER-RIGHT: 0px;TEXT-ALIGN:CENTER;}
+	       .btnClass{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAZCAYAAACmRqkJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAA0BJREFUaEPt2UlLW1EYBuCbVrqS+hd04TzPQ4yzoAbjgPM8gyC6UwRt6cJV9W9Iu6mz1qkZTDRNjDGOTa0pjUJxd2+Xgebre6JFF/H8ghN4V+HbPLznnnPuVa2Eh4e+Cgt7+zo8vPllSEgY+f2SRCSJXxABlUpSvXgh/fX5lD9e70eforyT1iIj31xNTvru5ub8txMTdDM2Rt7RUZEgBszmdnycfs/M+L+NjvpgNy1Zqqs9d7Oz5Onpoe86HbmrqshdWSkSzAA2zMjT3U3eqSkylJVdS7b6eoWpMrQLjYbOcnPvk5Mj8tTgwYUZubVauhoZoa3SUkWy6nTyr+FhOi8poZOsLDrJyBDhGcDosqyMLnt7ab2wUJasWq3sGRqis+JicmHQlZ4uwjOA0QXKdt7VResajSwdAPB6cJBOi4roGH8eY1iEYwCjc5TtDIBr/wF/DAzQSWEhOYHnTEsT4RnAiJXttLPzEfCqv5+OCwrIgUFHaqoIzwBGLpTN1dFBq/n5WMJVVbK7r4+OsLvYMWhPSRHhGcDIibIdt7c/AOIZ6MaO4sjPJxsGbcnJIjwDGDlRNmdb2z2gBYBsS7ar1WTFoDUpSYRnACNWNkdrK60EALGEzwFoA+A+/tzHsAjHAEZ2AB4+BTzFNc6al0dm4JkTE0V4BjD6irLZGKBaLUtmNNCFu90+riomDJoSEkR4BjA6QNmsLS20HACsrJRdOBRacO8zYtAYHy/CM4ARK5u1ufkecA+AThwK97KzSY9BfVycCM8ARmaUbb+p6RHwCIBGXJJ3MbgbGyvCM4CRCWUzNzbSUl6eLJnQQAdO1YbMTNrB4E5MjAjPAEasbHsAXAwAVlTIhzhV6xkgBrejo0U4BswoANjQ8ACIBtqxhL/gLcMWBjejokQ4BsxID0AjnoGLgU1Eq1UO8TbGgMPhNrboLaxxkecNmJEJVzk9Vu1CQYEiGcrLPYf4WGKprSUDXtPoccYRed7AgDcxezU1tILb26pG8zPwVc7Y3e3bHhz0b6KWG3V1tAFMkSAGzAabx6fOTv9SU5NvPSpqWlqNiAj9nJT0flmjufmQlaXMZ2Qo8+npIsEMmA2MFtTqG2bG7P4Bz7tu9/lP8/oAAAAASUVORK5CYII=) no-repeat;width:80px;height:25px;color:#fff;border:none;cursor:pointer;}
+	       .anwser-card{position:fixed;right:0px;top:10px;bottom:10px;width:240px;border:1px solid #ccc;background:#FFF;overflow:hidden;}
+	       .anwser-card-hide{cursor:pointer;position:fixed;right:0px;top:10px;bottom:10px;border:1px solid #ccc;overflow:hidden;height:130px;line-height:30px;width:40px;text-align:center;background: #39f;color:#FFF;font-family:微软雅黑;}
+	       .card-body{overflow-y:scroll;text-align:center;}
+	       .card-body a{text-decoration:none;float:left;width:35px;height:35px;line-height:35px;margin:3px;cursor:pointer;text-align:center;border:1px solid #ff0000;display:block;font-size:14px;}
+	       .card-body a.chose{background:#39f;color:#FFF;border:1px solid #FFF;}
+	       .card-title{position:relative;height:30px;line-height:30px;text-align:center;background: #39f;color:#FFF;font-family:微软雅黑;font-size:16px;}
+	       .card-title-hide{text-align:center;background: #39f;color:#FFF;font-family:微软雅黑;word-wrap: break-word;letter-spacing: 20px;width: 40px;font-size:16px; padding-left: 10px;}
+	       .card-title a{position:absolute;right:20px;bottom:10px;width:20px;height:20px;display:block;text-align:center;cursor:pointer;}
+    </STYLE>
+
+<SCRIPT type=text/javascript>
+        //document.oncontextmenu=new Function("return false") ;
+        
+        function onReady() {
+            var cardH = document.getElementById('anwser-card').offsetHeight;
+            document.getElementById('card-body').style.height = (cardH - 30) + "px";
+        }
+        window.onresize = function () { onReady(); }
+        var cardState = 1;
+        function hideCard() {
+            if (cardState == 1) {
+                document.getElementById('anwser-card').style.height = "130px";
+                document.getElementById('card-body').style.display = "none";
+                document.getElementById('card-title').className = "card-title-hide";
+                document.getElementById('card-hide').innerHTML = "┼";
+                document.getElementById('anwser-card').className = "anwser-card-hide";
+                cardState = 0;
+            }
+            else {
+                document.getElementById('anwser-card').style.height = "auto";
+                document.getElementById('card-body').style.display = "";
+                document.getElementById('card-title').className = "card-title";
+                document.getElementById('card-hide').innerHTML = "─";
+                document.getElementById('anwser-card').className = "anwser-card";
+                cardState = 1;
+            }
+        }
+        function HideAnwserCard()
+        {
+            document.getElementById('anwser-card').style.display = "none";
+        }
+        function SetAnwserCard(id)
+        {
+               document.getElementById("Tip_" + id).className= "chose";
+        }
+        function ShowAnwser(obj1, obj2) {
+            var anwser = document.getElementById(obj2);
+            var button = document.getElementById(obj1);
+            var value = button.value;
+            if (value == "隐藏答案") {
+                anwser.style.display = "none";
+                button.value = "显示答案";
+            }
+            else if (value == "显示答案") {
+                button.value = "隐藏答案";
+                anwser.style.display = "block";
+            }
+        }
+        function TeacherMark(qid) {
+            window.external.TeacherMark(qid);
+        }
+        function clickAnwser(qid, trueA, choseA, tid, total, zhid, kw, zid, kid) {
+            SetAnwserCard(qid);
+            window.external.recordAnwser(qid, trueA, kw, choseA, tid, total, zhid, zid, kid);
+        }
+        function checkBoxAnwser(divid, qid, trueA, tid, total, zhid, kw, zid, kid) {
+            SetAnwserCard(qid);
+            var divClass = document.getElementById(divid);
+            var check = divClass.getElementsByTagName("input");
+            var anwser = "";
+            for (var i = 0; i < check.length; i++) {
+                if (check[i].type == "checkbox") {
+                    if (check[i].checked) {
+                        anwser += check[i].title + ",";
+                    }
+                }
+            }
+            anwser = anwser.substr(0, anwser.length - 1);
+            window.external.recordAnwser(qid, trueA, kw, anwser, tid, total, zhid, zid, kid);
+        }
+        function updateXmlFill(divid, qid, trueA, tid, total, zhid, kw, zid, kid) {
+            var divClass = document.getElementById(divid);
+            var check = divClass.getElementsByTagName("input");
+            var anwser = "";
+            for (var i = 0; i < check.length; i++) {
+                if (check[i].type == "text") {
+                    anwser += check[i].value + "*";
+                }
+            }
+            if (anwser.replace(/\*/g, "").replace(/ /g, "") != "") {
+                SetAnwserCard(qid);
+                window.external.recordAnwser(qid, trueA, kw, anwser, tid, total, zhid, zid, kid);
+            }
+        }
+
+        function KeepQuestion(id, zhid, typeid) {
+            var scTypeid = document.getElementById(typeid).value;
+            window.external.KeepQuestion(id, zhid, scTypeid);
+        }
+        function ShowAllResolve(ok) {
+            var classElement = getElementsByClass("style_anwser", null, "div");
+            if (ok) {
+                for (var i = 0; i < classElement.length; i++) {
+                    classElement[i].style.display = "block";
+                }
+            }
+            else {
+                for (var i = 0; i < classElement.length; i++) {
+                    classElement[i].style.display = "none";
+                }
+            }
+        }
+        function showLSPY() {
+            var classElement = getElementsByClass("class_lspy", null, "input");
+            for (var i = 0; i < classElement.length; i++) {
+                classElement[i].style.display = "block";
+            }
+        }
+        function getElementsByClass(searchClass, node, tag) {
+            var classElements = new Array();
+            if (node == null)
+                node = document;
+            if (tag == null)
+                tag = "*";
+            var els = node.getElementsByTagName(tag);
+            var elsLen = els.length;
+            var pattern = new RegExp("(^|\\s)" + searchClass + "(\\s|$)");
+            for (i = 0, j = 0; i < elsLen; i++) {
+                if (pattern.test(els[i].className)) {
+                    classElements[j] = els[i];
+                    j++;
+                }
+            }
+            return classElements;
+        }
+        function updateXmlAnswer(qid, trueA, anwser, tid, total, zhid, kw, zid, kid) {
+            if (anwser.replace(/ /g, "") != "") {
+                SetAnwserCard(qid);
+                window.external.recordAnwser(qid, trueA, kw, anwser, tid, total, zhid, zid, kid);
+            }
+        }
+        function hideXSDA() {
+            var classElement = getElementsByClass("class_xsda", null, "input");
+            for (var i = 0; i < classElement.length; i++) {
+                classElement[i].style.display = "none";
+            }
+        }
+        function ErrorHandUP(qid, zhid) {
+            window.external.ErrorHandUP(qid, zhid);
+        }
+        function StudyNote(qid, zhid) {
+            window.external.StudyNote(qid, zhid);
+        }
+    </SCRIPT>
+</HEAD>
+<BODY onload=onReady();>
+<DIV style="OVERFLOW: hidden; WIDTH: 95%; MARGIN-LEFT: auto; LINE-HEIGHT: 150%; MARGIN-RIGHT: auto">
+<DIV class=ti_title>案例分析</DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>为满足×××工程的需求，拟进行三等水准测量。主要工作内容包括选点埋石、外业水准观测、数据处理等。高程基准采用1985国家高程基准。<BR>1.已有资料情况<BR>（1）测区现有1∶1万、1∶5万地形图可供设计、选点使用。<BR>（2）国家二等水准点4个，其中2个基岩点、2个基本点，采用1985国家高程基准。<BR>2.作业单位概况<BR>（1）技术人员：具有高、中、初级职业资格人员×××名，长年从事水准测量工作，具有丰富的水准控制网布测经验，可组织×××个水准测量班组同时作业。<BR>（2）仪器设备：具有×××套经过检定合格的DS1、DS05水准仪，可满足×××个水准测量班组同时作业需求。</LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid1 class=ti_content>
+<UL>
+<LI id=Qid_141231>1．简述高程控制测量技术设计方案的主要内容。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141231',this.name,this.value,this.id,'7','151117','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="（1）水准测量仪器的类型、数量、精度指标及对仪器校准或检定的要求，测量和计算所需的专业应用软件及其他配置。&#10;（2）规定作业的主要过程、各工序作业方法和精度质量要求。&#10;（3）上交和归档成果及其资料的内容与要求。&#10;（4）有关附录。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show1','anwser1')" id=show1 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser1 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：（1）水准测量仪器的类型、数量、精度指标及对仪器校准或检定的要求，测量和计算所需的专业应用软件及其他配置。（2）规定作业的主要过程、各工序作业方法和精度质量要求。（3）上交和归档成果及其资料的内容与要求。（4）有关附录。<BR>解析：</DIV></DIV>
+<DIV id=divid2 class=ti_content>
+<UL>
+<LI id=Qid_141231>2．试列举具有代表性的不适合设立水准点的地点。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141231',this.name,this.value,this.id,'7','151118','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="下列地点不应选设水准点：&#10;（1）易受水淹、潮湿或地下水位较高处。&#10;（2）易发土崩、滑坡、沉陷、隆起等地面局部变形的地点。&#10;（3）路堤、河堤、冲击层河岸及地下水位变化较大（如油井、机井附近）的地点。&#10;（4）距铁路50m、距公路30m以内（道路水准点除外）或其他受剧烈振动的地点。&#10;（5）不坚固或准备拆修的建筑物上。&#10;（6）短期内由于建设发展，可能毁坏标石或阻碍观测的地点。&#10;（7）道路上填方的地段。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show2','anwser2')" id=show2 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser2 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：下列地点不应选设水准点：（1）易受水淹、潮湿或地下水位较高处。（2）易发土崩、滑坡、沉陷、隆起等地面局部变形的地点。（3）路堤、河堤、冲击层河岸及地下水位变化较大（如油井、机井附近）的地点。（4）距铁路50m、距公路30m以内（道路水准点除外）或其他受剧烈振动的地点。（5）不坚固或准备拆修的建筑物上。（6）短期内由于建设发展，可能毁坏标石或阻碍观测的地点。（7）道路上填方的地段。<BR>解析：</DIV></DIV>
+<DIV id=divid3 class=ti_content>
+<UL>
+<LI id=Qid_141231>3．工程完成后应提交哪些成果？</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141231',this.name,this.value,this.id,'7','151119','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="（1）技术设计书。&#10;（2）水准点之记的纸质文本及其数字化后的电子文本。&#10;（3）水准路线图、结点接测图及其数字化后的电子文本。&#10;（4）测量标志委托保管书（两份）。&#10;（5）水准仪、水准标尺检验资料及标尺长度改正数综合表。&#10;（6）观测手簿，磁带、磁盘、光盘等能长期保存的其他介质。&#10;（7）外业高差及概略高程表（两份）。&#10;（8）外业高差改正数计算资料。&#10;（9）外业技术总结。&#10;（10）验收报告。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show3','anwser3')" id=show3 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser3 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：（1）技术设计书。（2）水准点之记的纸质文本及其数字化后的电子文本。（3）水准路线图、结点接测图及其数字化后的电子文本。（4）测量标志委托保管书（两份）。（5）水准仪、水准标尺检验资料及标尺长度改正数综合表。（6）观测手簿，磁带、磁盘、光盘等能长期保存的其他介质。（7）外业高差及概略高程表（两份）。（8）外业高差改正数计算资料。（9）外业技术总结。（10）验收报告。<BR>解析：</DIV></DIV></DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>某测绘单位承担了某机械厂1∶500数字地形图测绘项目，厂区面积1.5km2。项目要求严格执行国家有关技术标准，主要包括《1∶5001∶10001∶2000外业数字测图技术规范》（HGB/T 14912—2005）、《国家基本比例尺地图图式第1部分：1∶5001∶10001∶2000地形图图式》（GB/T 20257.1—2007），地形图图幅按地形分幅，规格为50cm×50cm。<BR>根据厂区的情况，布设了一附合导线进行图根控制测量，如下图所示：<IMG alt="" src="img\ch.alfx.yt2.2t.jpg"></LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid4 class=ti_content>
+<UL>
+<LI id=Qid_141232>4．附合导线有哪几个检核条件？</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141232',this.name,this.value,this.id,'7','151120','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=附合导线检核条件包括：一个坐标方位角条件，两个坐标增量条件。></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show4','anwser4')" id=show4 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser4 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：附合导线检核条件包括：一个坐标方位角条件，两个坐标增量条件。<BR>解析：</DIV></DIV>
+<DIV id=divid5 class=ti_content>
+<UL>
+<LI id=Qid_141232>5．完成以上附合导线的内业计算。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141232',this.name,this.value,this.id,'7','151121','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=完成以上附合导线的内业计算，见下表。【ch.alfx.yt2.daan2t.2.jpg】></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show5','anwser5')" id=show5 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser5 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：完成以上附合导线的内业计算，见下表。【ch.alfx.yt2.daan2t.2.jpg】<BR>解析：</DIV></DIV></DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>1995年11月，国务院确定从1996年开始用5年时间完成全国陆地（不含港澳界）省、县两级陆地行政区域界线的勘定任务。根据这一要求，某省在民政部门的牵头组织下，于2000年4月开始对本区的县级行政区域界线进行勘定工作。</LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid6 class=ti_content>
+<UL>
+<LI id=Qid_141233>6．简述界桩点位置选定的原则。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141233',this.name,this.value,this.id,'7','151122','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="界桩点位置选定原则如下：&#10;（1）界线走向明显转折处。&#10;（2）地形复杂、界线不易辨认的地区。&#10;（3）铁路、重要公路、主要河流与界线的交接处。&#10;（4）边界经过的重要居民点地区。&#10;（5）内河与界河或界江的汇合处。&#10;（6）界河与界江易改道处。&#10;（7）水陆界转换处。&#10;（8）必要高程点及地形特征点处。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show6','anwser6')" id=show6 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser6 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：界桩点位置选定原则如下：（1）界线走向明显转折处。（2）地形复杂、界线不易辨认的地区。（3）铁路、重要公路、主要河流与界线的交接处。（4）边界经过的重要居民点地区。（5）内河与界河或界江的汇合处。（6）界河与界江易改道处。（7）水陆界转换处。（8）必要高程点及地形特征点处。<BR>解析：</DIV></DIV>
+<DIV id=divid7 class=ti_content>
+<UL>
+<LI id=Qid_141233>7．简述界桩的形状。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141233',this.name,this.value,this.id,'7','151123','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=界桩形状分三面型和双面型两种。></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show7','anwser7')" id=show7 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser7 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：界桩形状分三面型和双面型两种。<BR>解析：</DIV></DIV>
+<DIV id=divid8 class=ti_content>
+<UL>
+<LI id=Qid_141233>8．简述边界线标绘的内容、方法、技术及精度要求。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141233',this.name,this.value,this.id,'7','151124','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="边界线标绘的内容、方法、技术及精度要求如下：&#10;（1）边界线标绘的内容。确定了的边界线、界桩点位置，都应准确地标绘在经调绘整理后的边界地形图上。&#10;（2）边界线标绘的方法。边界线标绘一般要求在边界调绘的基础上进行。对地形要素变化不大的地区，也可与边界调绘内容一并进行。对有明显分界线（如分水线、道路、河流等）且地形要素变化不大的边界地段或以边界点连线作为边界线的地段，也可由界线测绘双方在室内直接将边界线标绘在边界地形图上。&#10;（3）边界线标绘的技术要求。边界线在图上用0.3mm红色实线不间断表示，以线状地物中心线为界且地物符号宽度小于1.0mm时，界线符号在线状地物符号两侧调绘；界桩符号用直径15mm红色小圆圈表示；界桩号用红色注出。&#10;（4）边界线标绘的精度。界桩点、界线转折点及界线经过的独立地物点相对于邻近固定地物点的平面位置中误差一般不应超过图上±0.4mm。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show8','anwser8')" id=show8 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser8 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：边界线标绘的内容、方法、技术及精度要求如下：（1）边界线标绘的内容。确定了的边界线、界桩点位置，都应准确地标绘在经调绘整理后的边界地形图上。（2）边界线标绘的方法。边界线标绘一般要求在边界调绘的基础上进行。对地形要素变化不大的地区，也可与边界调绘内容一并进行。对有明显分界线（如分水线、道路、河流等）且地形要素变化不大的边界地段或以边界点连线作为边界线的地段，也可由界线测绘双方在室内直接将边界线标绘在边界地形图上。（3）边界线标绘的技术要求。边界线在图上用0.3mm红色实线不间断表示，以线状地物中心线为界且地物符号宽度小于1.0mm时，界线符号在线状地物符号两侧调绘；界桩符号用直径15mm红色小圆圈表示；界桩号用红色注出。（4）边界线标绘的精度。界桩点、界线转折点及界线经过的独立地物点相对于邻近固定地物点的平面位置中误差一般不应超过图上±0.4mm。<BR>解析：</DIV></DIV></DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>根据××市政府工作需求，需要编制《××市地图集》，制图区范围包括整个市域。《××市地图集》分序图、区域详图、社会经济、自然环境、发展规划5个图组。各图组的内容如下：<BR>（1）序图组：××市的地理位置、历史、行政区、地势地形。<BR>（2）区域详图组：××市各行政区的城区详图。<BR>（3）社会经济图组：××市人口、经济、文教体育等内容。<BR>（4）自然环境图组：××市的自然资源状况及分布。<BR>（5）发展规划图组：××市的发展规划。</LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid9 class=ti_content>
+<UL>
+<LI id=Qid_141234>9．试述地图集的结构。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141234',this.name,this.value,this.id,'7','151125','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="地图集的结构包括：&#10;（1）主要技术参数。主要技术参数包括开本、比例尺、纸张、用色数、印数等。&#10;（2）图组及图幅顺序。地图集包括几个图组，每个图组包括哪些图幅，其先后顺序如何排列，体现了图集的科学性与逻辑性，直接影响图集的传递效果。&#10;（3）地图分幅。地图分幅指确定各图幅的制图区域范围、占用的幅面及拼版形式。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show9','anwser9')" id=show9 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser9 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：地图集的结构包括：（1）主要技术参数。主要技术参数包括开本、比例尺、纸张、用色数、印数等。（2）图组及图幅顺序。地图集包括几个图组，每个图组包括哪些图幅，其先后顺序如何排列，体现了图集的科学性与逻辑性，直接影响图集的传递效果。（3）地图分幅。地图分幅指确定各图幅的制图区域范围、占用的幅面及拼版形式。<BR>解析：</DIV></DIV>
+<DIV id=divid10 class=ti_content>
+<UL>
+<LI id=Qid_141234>10．试述统计图的设计与编制方法。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141234',this.name,this.value,this.id,'7','151126','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=《××市地图集》中大部分专题地图属于统计图图型。其资料多为统计资料。通过统计图可以为市一级领导和管理部门提供各区域的经济实力，作对比分析用。这些图一般从相对和绝对两方面描述各区域的经济状况。可采用主题图加统计图表表达，以相对指标为主的现象用分级统计图法表示，而以绝对指标为主的现象则用分区统计图表法表示。统计图表的形式要求多样、多变，以增加图面的生动和活跃。></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show10','anwser10')" id=show10 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser10 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：《××市地图集》中大部分专题地图属于统计图图型。其资料多为统计资料。通过统计图可以为市一级领导和管理部门提供各区域的经济实力，作对比分析用。这些图一般从相对和绝对两方面描述各区域的经济状况。可采用主题图加统计图表表达，以相对指标为主的现象用分级统计图法表示，而以绝对指标为主的现象则用分区统计图表法表示。统计图表的形式要求多样、多变，以增加图面的生动和活跃。<BR>解析：</DIV></DIV>
+<DIV id=divid11 class=ti_content>
+<UL>
+<LI id=Qid_141234>11．试述分布图的设计与编制方法。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141234',this.name,this.value,this.id,'7','151127','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=分布图是地图集中的一个主要图形，反映以点状、线状和间断成片为特征的现象分布，凡是内容要素在图上呈点状分布的，均以符号法表示；用符号的形状或颜色反映其质量特征，用符号的大小表示其数量特征。凡是内容要素呈线状分布特征的，均以线状符号表示；用线状符号的颜色或图案反映质量特征，用线状符号的粗细反映重要性及等级差异；凡是内容要素呈间断成片的面状分布的，均以范围法表示；界限范围明确的以轮廓线表示。></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show11','anwser11')" id=show11 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser11 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：分布图是地图集中的一个主要图形，反映以点状、线状和间断成片为特征的现象分布，凡是内容要素在图上呈点状分布的，均以符号法表示；用符号的形状或颜色反映其质量特征，用符号的大小表示其数量特征。凡是内容要素呈线状分布特征的，均以线状符号表示；用线状符号的颜色或图案反映质量特征，用线状符号的粗细反映重要性及等级差异；凡是内容要素呈间断成片的面状分布的，均以范围法表示；界限范围明确的以轮廓线表示。<BR>解析：</DIV></DIV></DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>某市计划建立该市基础地理信息库，先期进行地形要素数据库的建设。为了保证质量，对地形要素数据库进行质量控制设计。主要内容如下：<BR>（1）制定数据检查验收规定。<BR>（2）制定DLG数据汇交技术规定。<BR>（3）开发检查验收软件。<BR>（4）数据检查验收的试验与技术培训。<BR>（5）开展数据检查验收。</LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid12 class=ti_content>
+<UL>
+<LI id=Qid_141235>12．地理信息系统数据质量检查包括哪些内容?</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141235',this.name,this.value,this.id,'7','151128','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=地理信息系统数据质量检查包括：数据组织正确性，数据库结构正确性，空间参考系正确性，数据质量，各类基础地理数据一致性。></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show12','anwser12')" id=show12 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser12 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：地理信息系统数据质量检查包括：数据组织正确性，数据库结构正确性，空间参考系正确性，数据质量，各类基础地理数据一致性。<BR>解析：</DIV></DIV>
+<DIV id=divid13 class=ti_content>
+<UL>
+<LI id=Qid_141235>13．试对生产阶段检查工作的实施进行设计。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141235',this.name,this.value,this.id,'7','151129','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="生产阶段检查工作的实施设计如下：&#10;（1）自查、互查。作业人员对成果进行自查、互查，发现问题及时修改。确认无误后方可按规定整理上交资料成果。&#10;（2）过程检查。作业部门对作业人员提交的成果逐单位100%进行详查，检查出的问题、错误，记录到检查记录中。对于检查出的问题、错误修改后进行复查，并记录到检查记录中。直到检查无误为止。&#10;（3）最终检查。生产单位质量管理部门对通过过程检查的成果逐单位100%进行详查，并审核过程检查记录。检查出的问题、错误，记录到检查记录中。最终检查不合格的单位成果退回处理，处理后再进行检查，直到检查合格为止。&#10;最终检查完成后，编写检查报告，随成果一并提交验收。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show13','anwser13')" id=show13 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser13 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：生产阶段检查工作的实施设计如下：（1）自查、互查。作业人员对成果进行自查、互查，发现问题及时修改。确认无误后方可按规定整理上交资料成果。（2）过程检查。作业部门对作业人员提交的成果逐单位100%进行详查，检查出的问题、错误，记录到检查记录中。对于检查出的问题、错误修改后进行复查，并记录到检查记录中。直到检查无误为止。（3）最终检查。生产单位质量管理部门对通过过程检查的成果逐单位100%进行详查，并审核过程检查记录。检查出的问题、错误，记录到检查记录中。最终检查不合格的单位成果退回处理，处理后再进行检查，直到检查合格为止。最终检查完成后，编写检查报告，随成果一并提交验收。<BR>解析：</DIV></DIV></DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>根据上级政府的工作安排，某市决定开展该地区的土地调查工作。现已完成了土地权属调查的工作，下一步的主要任务是完成该地区农村土地利用现状分类调查的工作。<BR>1.测区概况<BR>测区为一个地级市，总面积约6000km2。全测区以丘陵地为主，测区东部有少量的平地。<BR>2.主要技术依据<BR>（1）《中华人民共和国土地管理法》（2004年修订版）。<BR>（2）《第二次全国土地调查技术规程》（TD/T 1014—2007）。<BR>（3）国务院第二次土地调查领导小组办公室发布的《第二次全国土地调查底图生产技术规范》。<BR>（4）国务院第二次土地调查领导小组办公室发布的《第二次全国土地调查成果检查验收办法》。<BR>（5）《土地利用现状分类标准》（GB/T 21010—2007）。<BR>（6）《城镇地籍调查规程》（TD 1001—93）。<BR>（7）《城市测量规范》（CJJ 8—99）。<BR>（8）《基础地理信息数字产品1∶100001∶50000数字高程模型》（CH/T 1008—2001）。</LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid14 class=ti_content>
+<UL>
+<LI id=Qid_141236>14．简述土地利用现状分类调查面积量算的原则。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141236',this.name,this.value,this.id,'7','151130','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="面积量算原则如下：&#10;（1）图幅为基本控制。以图幅的理论面积为基本控制，是指一切量算工作最终都要与图幅理论面积相吻合，这样使各部分面积的可靠性最高。&#10;（2）分幅进行量算。由于每幅图有其自身的理论面积，因而面积量算工作应当一幅一幅地进行。运用分幅进行量算不仅有利于分布在不同图幅的单位汇总出可靠的总面积，也有利于同图幅内相邻单位量测面积的闭合工作。&#10;（3）按面积比例平差。在同一图幅内的同一级面积量算中，除道路、河流等线状地物外，其他同一级内的各部分面积都应参加量算、平差。当闭合差超过允许误差时，需要重新量算。当闭合差小于允许误差时，可以进行平差。&#10;（4）自下而上逐级汇总。在分幅分级量算工作全部结束后，应自下而上，按村、乡、县（行政系统）逐级将分布在相邻图幅上的同一单位的面积汇总成整体面积。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show14','anwser14')" id=show14 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser14 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：面积量算原则如下：（1）图幅为基本控制。以图幅的理论面积为基本控制，是指一切量算工作最终都要与图幅理论面积相吻合，这样使各部分面积的可靠性最高。（2）分幅进行量算。由于每幅图有其自身的理论面积，因而面积量算工作应当一幅一幅地进行。运用分幅进行量算不仅有利于分布在不同图幅的单位汇总出可靠的总面积，也有利于同图幅内相邻单位量测面积的闭合工作。（3）按面积比例平差。在同一图幅内的同一级面积量算中，除道路、河流等线状地物外，其他同一级内的各部分面积都应参加量算、平差。当闭合差超过允许误差时，需要重新量算。当闭合差小于允许误差时，可以进行平差。（4）自下而上逐级汇总。在分幅分级量算工作全部结束后，应自下而上，按村、乡、县（行政系统）逐级将分布在相邻图幅上的同一单位的面积汇总成整体面积。<BR>解析：</DIV></DIV>
+<DIV id=divid15 class=ti_content>
+<UL>
+<LI id=Qid_141236>15．土地利用现状调查应准备哪些资料？</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141236',this.name,this.value,this.id,'7','151131','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="土地利用现状调查应准备的资料：&#10;（1）县级以上行政界线资料；&#10;（2）该地区市、区（县）建成区土地权属调查成果；&#10;（3）该地区乡、镇和村级土地权属调查成果；&#10;（4）该地区土地利用总体规划资料；&#10;（5）该地区以前所有的土地利用现状分类调查资料；&#10;（6）覆盖该地区的国家四等平面控制点资料；&#10;（7）相关的其他技术资料等。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show15','anwser15')" id=show15 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser15 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：土地利用现状调查应准备的资料：（1）县级以上行政界线资料；（2）该地区市、区（县）建成区土地权属调查成果；（3）该地区乡、镇和村级土地权属调查成果；（4）该地区土地利用总体规划资料；（5）该地区以前所有的土地利用现状分类调查资料；（6）覆盖该地区的国家四等平面控制点资料；（7）相关的其他技术资料等。<BR>解析：</DIV></DIV>
+<DIV id=divid16 class=ti_content>
+<UL>
+<LI id=Qid_141236>16．用框图表示土地利用现状分类调查的工作流程。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141236',this.name,this.value,this.id,'7','151132','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=土地利用现状分类调查的工作流程如下图所示。【ch.alfx.yt2.daan6t.3.jpg】></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show16','anwser16')" id=show16 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser16 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：土地利用现状分类调查的工作流程如下图所示。【ch.alfx.yt2.daan6t.3.jpg】<BR>解析：</DIV></DIV></DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>××地区的导航电子地图数据产品经开发完成，在此基础上，根据导航应用软件开发流程与要求，对数据进行编译、功能设计，并集成开发导航应用软件，为××地区的导航市场提供一套完整的导航电子地图产品。</LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid17 class=ti_content>
+<UL>
+<LI id=Qid_141237>17．简述导航电子地图数据编译的主要过程。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141237',this.name,this.value,this.id,'7','151133','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="导航电子地图数据编译的过程是数据的集成化管理过程，主要过程如下：&#10;（1）地图分区。把地图划分成标准的区域。&#10;（2）创建路径层。把不同的道路网络放置到不同比例尺层次上。路径层的道路网络是用节点模型来描述的，只考虑路网的连接关系，不考虑道路的形状和走向。&#10;（3）创建显示层。在不同比例尺的显示层次上放置不同等级的道路、水系、植被、建筑物、显示文字等地图要素，便于不同比例尺下地图浏览。&#10;（4）创建检索层。用于用户进行地图查询和目的地检索，解决地理要素名称、地址、电话、交叉点等信息按照行政区划、不同类别、不同品牌、不同的同类属性等方法对地图要素进行重新分类、储存并建立索引。&#10;（5）创建图形文件、语音文件、地标建筑信息、数字地面模型等，增强导航应用的效果体验。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show17','anwser17')" id=show17 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser17 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：导航电子地图数据编译的过程是数据的集成化管理过程，主要过程如下：（1）地图分区。把地图划分成标准的区域。（2）创建路径层。把不同的道路网络放置到不同比例尺层次上。路径层的道路网络是用节点模型来描述的，只考虑路网的连接关系，不考虑道路的形状和走向。（3）创建显示层。在不同比例尺的显示层次上放置不同等级的道路、水系、植被、建筑物、显示文字等地图要素，便于不同比例尺下地图浏览。（4）创建检索层。用于用户进行地图查询和目的地检索，解决地理要素名称、地址、电话、交叉点等信息按照行政区划、不同类别、不同品牌、不同的同类属性等方法对地图要素进行重新分类、储存并建立索引。（5）创建图形文件、语音文件、地标建筑信息、数字地面模型等，增强导航应用的效果体验。<BR>解析：</DIV></DIV>
+<DIV id=divid18 class=ti_content>
+<UL>
+<LI id=Qid_141237>18．简述导航电子地图产品系统集成工作的主要内容。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141237',this.name,this.value,this.id,'7','151134','','9','2056');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=导航电子地图的系统集成是将导航应用软件、编译后的导航电子地图产品装载到导航设备上，并将导航设备与GPS系统、车辆等载体的电源及其他必要设备连接（如车速线、转向陀螺、声音控制系统等），从而组成导航整体系统。></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show18','anwser18')" id=show18 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser18 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：导航电子地图的系统集成是将导航应用软件、编译后的导航电子地图产品装载到导航设备上，并将导航设备与GPS系统、车辆等载体的电源及其他必要设备连接（如车速线、转向陀螺、声音控制系统等），从而组成导航整体系统。<BR>解析：</DIV></DIV></DIV></DIV>
+<DIV id=anwser-card class=anwser-card>
+<DIV id=card-title class=card-title>答题卡 <A onclick=hideCard(); id=card-hide>─</A> </DIV>
+<DIV id=card-body class=card-body style="HEIGHT: 611px"><A id=Tip_141231 href="#Qid_141231">1</A><A id=Tip_141231 href="#Qid_141231">2</A><A id=Tip_141231 href="#Qid_141231">3</A><A id=Tip_141232 href="#Qid_141232">4</A><A id=Tip_141232 href="#Qid_141232">5</A><A id=Tip_141233 href="#Qid_141233">6</A><A id=Tip_141233 href="#Qid_141233">7</A><A id=Tip_141233 href="#Qid_141233">8</A><A id=Tip_141234 href="#Qid_141234">9</A><A id=Tip_141234 href="#Qid_141234">10</A><A id=Tip_141234 href="#Qid_141234">11</A><A id=Tip_141235 href="#Qid_141235">12</A><A id=Tip_141235 href="#Qid_141235">13</A><A id=Tip_141236 href="#Qid_141236">14</A><A id=Tip_141236 href="#Qid_141236">15</A><A id=Tip_141236 href="#Qid_141236">16</A><A id=Tip_141237 href="#Qid_141237">17</A><A id=Tip_141237 href="#Qid_141237">18</A> </DIV></DIV><script src='js/ph.js'></script></BODY></html>

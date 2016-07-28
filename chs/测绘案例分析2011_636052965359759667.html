@@ -1,0 +1,478 @@
+<html><HEAD><TITLE>MyModel</TITLE>
+<STYLE type=text/css>
+            html{scrollbar-face-color:#e7f4f9;scrollbar-arrow-color:#8bd5fd;scrollbar-track-color:#f9fdff;scrollbar-highlight-color:#ffffff;scrollbar-3dlight-color:#8bd5fd;scrollbar-shadow-color:#ffffff;scrollbar-darkshadow-color:#8bd5fd;}
+            body {margin: 10px; line-height: 150%; width:950px; margin-left:auto; margin-right:auto;font-family: 宋体;}
+           .ti_content {font-size: 14px; color: #000000; font-family: 宋体,serif;
+            font-size: 14px; line-height: 150%; width: auto; clear:both;}
+           .ti_content ul li {list-style:none;margin-top:5px;margin-buttom:5px;}
+           .ti_content ul{padding-left:0px;}
+           .ti_content #anwer_r li{float:left; margin-left:10px;}
+           .ti_title {font-size: 18px; font-weight: bold; margin-top:10px;clear:both;}
+           .style_anwser_r {float: right; margin-right: 20px;}
+           .style_anwser {clear: both; background-color: #ecf5fa; border: 1px #B7CACE solid; display:none;}
+           .inputFill {BORDER-BOTTOM: #417ac1 1px dashed; BORDER-LEFT: 0px; LINE-HEIGHT: 22px; WIDTH: 200px; BACKGROUND: #ffffff; HEIGHT: 22px; COLOR: #ff0000; BORDER-TOP: 0px; BORDER-RIGHT: 0px;TEXT-ALIGN:CENTER;}
+	       .btnClass{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAZCAYAAACmRqkJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAA0BJREFUaEPt2UlLW1EYBuCbVrqS+hd04TzPQ4yzoAbjgPM8gyC6UwRt6cJV9W9Iu6mz1qkZTDRNjDGOTa0pjUJxd2+Xgebre6JFF/H8ghN4V+HbPLznnnPuVa2Eh4e+Cgt7+zo8vPllSEgY+f2SRCSJXxABlUpSvXgh/fX5lD9e70eforyT1iIj31xNTvru5ub8txMTdDM2Rt7RUZEgBszmdnycfs/M+L+NjvpgNy1Zqqs9d7Oz5Onpoe86HbmrqshdWSkSzAA2zMjT3U3eqSkylJVdS7b6eoWpMrQLjYbOcnPvk5Mj8tTgwYUZubVauhoZoa3SUkWy6nTyr+FhOi8poZOsLDrJyBDhGcDosqyMLnt7ab2wUJasWq3sGRqis+JicmHQlZ4uwjOA0QXKdt7VResajSwdAPB6cJBOi4roGH8eY1iEYwCjc5TtDIBr/wF/DAzQSWEhOYHnTEsT4RnAiJXttLPzEfCqv5+OCwrIgUFHaqoIzwBGLpTN1dFBq/n5WMJVVbK7r4+OsLvYMWhPSRHhGcDIibIdt7c/AOIZ6MaO4sjPJxsGbcnJIjwDGDlRNmdb2z2gBYBsS7ar1WTFoDUpSYRnACNWNkdrK60EALGEzwFoA+A+/tzHsAjHAEZ2AB4+BTzFNc6al0dm4JkTE0V4BjD6irLZGKBaLUtmNNCFu90+riomDJoSEkR4BjA6QNmsLS20HACsrJRdOBRacO8zYtAYHy/CM4ARK5u1ufkecA+AThwK97KzSY9BfVycCM8ARmaUbb+p6RHwCIBGXJJ3MbgbGyvCM4CRCWUzNzbSUl6eLJnQQAdO1YbMTNrB4E5MjAjPAEasbHsAXAwAVlTIhzhV6xkgBrejo0U4BswoANjQ8ACIBtqxhL/gLcMWBjejokQ4BsxID0AjnoGLgU1Eq1UO8TbGgMPhNrboLaxxkecNmJEJVzk9Vu1CQYEiGcrLPYf4WGKprSUDXtPoccYRed7AgDcxezU1tILb26pG8zPwVc7Y3e3bHhz0b6KWG3V1tAFMkSAGzAabx6fOTv9SU5NvPSpqWlqNiAj9nJT0flmjufmQlaXMZ2Qo8+npIsEMmA2MFtTqG2bG7P4Bz7tu9/lP8/oAAAAASUVORK5CYII=) no-repeat;width:80px;height:25px;color:#fff;border:none;cursor:pointer;}
+	       .anwser-card{position:fixed;right:0px;top:10px;bottom:10px;width:240px;border:1px solid #ccc;background:#FFF;overflow:hidden;}
+	       .anwser-card-hide{cursor:pointer;position:fixed;right:0px;top:10px;bottom:10px;border:1px solid #ccc;overflow:hidden;height:130px;line-height:30px;width:40px;text-align:center;background: #39f;color:#FFF;font-family:微软雅黑;}
+	       .card-body{overflow-y:scroll;text-align:center;}
+	       .card-body a{text-decoration:none;float:left;width:35px;height:35px;line-height:35px;margin:3px;cursor:pointer;text-align:center;border:1px solid #ff0000;display:block;font-size:14px;}
+	       .card-body a.chose{background:#39f;color:#FFF;border:1px solid #FFF;}
+	       .card-title{position:relative;height:30px;line-height:30px;text-align:center;background: #39f;color:#FFF;font-family:微软雅黑;font-size:16px;}
+	       .card-title-hide{text-align:center;background: #39f;color:#FFF;font-family:微软雅黑;word-wrap: break-word;letter-spacing: 20px;width: 40px;font-size:16px; padding-left: 10px;}
+	       .card-title a{position:absolute;right:20px;bottom:10px;width:20px;height:20px;display:block;text-align:center;cursor:pointer;}
+    </STYLE>
+
+<SCRIPT type=text/javascript>
+        //document.oncontextmenu=new Function("return false") ;
+        
+        function onReady() {
+            var cardH = document.getElementById('anwser-card').offsetHeight;
+            document.getElementById('card-body').style.height = (cardH - 30) + "px";
+        }
+        window.onresize = function () { onReady(); }
+        var cardState = 1;
+        function hideCard() {
+            if (cardState == 1) {
+                document.getElementById('anwser-card').style.height = "130px";
+                document.getElementById('card-body').style.display = "none";
+                document.getElementById('card-title').className = "card-title-hide";
+                document.getElementById('card-hide').innerHTML = "┼";
+                document.getElementById('anwser-card').className = "anwser-card-hide";
+                cardState = 0;
+            }
+            else {
+                document.getElementById('anwser-card').style.height = "auto";
+                document.getElementById('card-body').style.display = "";
+                document.getElementById('card-title').className = "card-title";
+                document.getElementById('card-hide').innerHTML = "─";
+                document.getElementById('anwser-card').className = "anwser-card";
+                cardState = 1;
+            }
+        }
+        function HideAnwserCard()
+        {
+            document.getElementById('anwser-card').style.display = "none";
+        }
+        function SetAnwserCard(id)
+        {
+               document.getElementById("Tip_" + id).className= "chose";
+        }
+        function ShowAnwser(obj1, obj2) {
+            var anwser = document.getElementById(obj2);
+            var button = document.getElementById(obj1);
+            var value = button.value;
+            if (value == "隐藏答案") {
+                anwser.style.display = "none";
+                button.value = "显示答案";
+            }
+            else if (value == "显示答案") {
+                button.value = "隐藏答案";
+                anwser.style.display = "block";
+            }
+        }
+        function TeacherMark(qid) {
+            window.external.TeacherMark(qid);
+        }
+        function clickAnwser(qid, trueA, choseA, tid, total, zhid, kw, zid, kid) {
+            SetAnwserCard(qid);
+            window.external.recordAnwser(qid, trueA, kw, choseA, tid, total, zhid, zid, kid);
+        }
+        function checkBoxAnwser(divid, qid, trueA, tid, total, zhid, kw, zid, kid) {
+            SetAnwserCard(qid);
+            var divClass = document.getElementById(divid);
+            var check = divClass.getElementsByTagName("input");
+            var anwser = "";
+            for (var i = 0; i < check.length; i++) {
+                if (check[i].type == "checkbox") {
+                    if (check[i].checked) {
+                        anwser += check[i].title + ",";
+                    }
+                }
+            }
+            anwser = anwser.substr(0, anwser.length - 1);
+            window.external.recordAnwser(qid, trueA, kw, anwser, tid, total, zhid, zid, kid);
+        }
+        function updateXmlFill(divid, qid, trueA, tid, total, zhid, kw, zid, kid) {
+            var divClass = document.getElementById(divid);
+            var check = divClass.getElementsByTagName("input");
+            var anwser = "";
+            for (var i = 0; i < check.length; i++) {
+                if (check[i].type == "text") {
+                    anwser += check[i].value + "*";
+                }
+            }
+            if (anwser.replace(/\*/g, "").replace(/ /g, "") != "") {
+                SetAnwserCard(qid);
+                window.external.recordAnwser(qid, trueA, kw, anwser, tid, total, zhid, zid, kid);
+            }
+        }
+
+        function KeepQuestion(id, zhid, typeid) {
+            var scTypeid = document.getElementById(typeid).value;
+            window.external.KeepQuestion(id, zhid, scTypeid);
+        }
+        function ShowAllResolve(ok) {
+            var classElement = getElementsByClass("style_anwser", null, "div");
+            if (ok) {
+                for (var i = 0; i < classElement.length; i++) {
+                    classElement[i].style.display = "block";
+                }
+            }
+            else {
+                for (var i = 0; i < classElement.length; i++) {
+                    classElement[i].style.display = "none";
+                }
+            }
+        }
+        function showLSPY() {
+            var classElement = getElementsByClass("class_lspy", null, "input");
+            for (var i = 0; i < classElement.length; i++) {
+                classElement[i].style.display = "block";
+            }
+        }
+        function getElementsByClass(searchClass, node, tag) {
+            var classElements = new Array();
+            if (node == null)
+                node = document;
+            if (tag == null)
+                tag = "*";
+            var els = node.getElementsByTagName(tag);
+            var elsLen = els.length;
+            var pattern = new RegExp("(^|\\s)" + searchClass + "(\\s|$)");
+            for (i = 0, j = 0; i < elsLen; i++) {
+                if (pattern.test(els[i].className)) {
+                    classElements[j] = els[i];
+                    j++;
+                }
+            }
+            return classElements;
+        }
+        function updateXmlAnswer(qid, trueA, anwser, tid, total, zhid, kw, zid, kid) {
+            if (anwser.replace(/ /g, "") != "") {
+                SetAnwserCard(qid);
+                window.external.recordAnwser(qid, trueA, kw, anwser, tid, total, zhid, zid, kid);
+            }
+        }
+        function hideXSDA() {
+            var classElement = getElementsByClass("class_xsda", null, "input");
+            for (var i = 0; i < classElement.length; i++) {
+                classElement[i].style.display = "none";
+            }
+        }
+        function ErrorHandUP(qid, zhid) {
+            window.external.ErrorHandUP(qid, zhid);
+        }
+        function StudyNote(qid, zhid) {
+            window.external.StudyNote(qid, zhid);
+        }
+    </SCRIPT>
+</HEAD>
+<BODY onload=onReady();>
+<DIV style="OVERFLOW: hidden; WIDTH: 95%; MARGIN-LEFT: auto; LINE-HEIGHT: 150%; MARGIN-RIGHT: auto">
+<DIV class=ti_title>案例分析</DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>某市的基础控制网，因受城市建设、自然环境、人为活动等因素的影响，测量标志不断损坏、减少。为了保证基础控制网的功能，该市决定对基础控制网进行维护，主要工作内容包括控制点的普查、补埋、观测、计算及成果的坐标转换等。<BR>1.已有资料情况<BR>该市基础控制网的观测数据及成果；联测国家高等级三角点5个，基本均匀覆盖整个城市区域，各三角点均有1980西安坐标系成果；城市及周边地区的GPS连续运行参考站观测数据及精确坐标；城市及周边地区近期布设的国家GPS点和成果。<BR>2.控制网测量精度指标要求<BR>控制网采用三等GPS网，主要技术指标见下表：<IMG alt="" src="img\2011.ch.alfx.1t.jpg"><IMG alt="" src="img\2011.ch.alfx.1t.1.jpg"></LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid1 class=ti_content>
+<UL>
+<LI id=Qid_141217>1．计算该重复基线长度较差的最大允许值，并判定其是否超限。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141217',this.name,this.value,this.id,'7','151071','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=【2011.ch.alfx.daan1t.1.jpg】></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show1','anwser1')" id=show1 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser1 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：【2011.ch.alfx.daan1t.1.jpg】<BR>解析：</DIV></DIV>
+<DIV id=divid2 class=ti_content>
+<UL>
+<LI id=Qid_141217>2．计算该独立闭合环坐标与坐标分量闭合差的限差值，并判定闭合差是否超限。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141217',this.name,this.value,this.id,'7','151072','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=【2011.ch.alfx.daan1t.2.jpg】></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show2','anwser2')" id=show2 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser2 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：【2011.ch.alfx.daan1t.2.jpg】<BR>解析：</DIV></DIV>
+<DIV id=divid3 class=ti_content>
+<UL>
+<LI id=Qid_141217>3．简述该项目GPS数据处理的基本流程。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141217',this.name,this.value,this.id,'7','151073','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="该项目GPS数据处理流程如下：&#10;（1）数据准备，将全部数据文件导入处理软件。&#10;（2）已知数据导入（5个高等级三角点的1980西安坐标系坐标）。&#10;（3）基线解算，主要完成外业观测数据质量检核和基线精处理结果检核，具体包括对基线精度、同步环、独立环和重复基线闭合差、较差情况的考察、分析与处理，必要时对某些测站进行重测。&#10;（4）WGS-84坐标系下三维平差（无约束平差）及其精度分析并决定处理办法。&#10;（5）1980西安坐标系下二维平差（利用5个高等级三角点1980西安坐标系坐标作为约束条件的约束平差）及其精度分析并决定处理办法。&#10;（6）输出平差结果。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show3','anwser3')" id=show3 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser3 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：该项目GPS数据处理流程如下：（1）数据准备，将全部数据文件导入处理软件。（2）已知数据导入（5个高等级三角点的1980西安坐标系坐标）。（3）基线解算，主要完成外业观测数据质量检核和基线精处理结果检核，具体包括对基线精度、同步环、独立环和重复基线闭合差、较差情况的考察、分析与处理，必要时对某些测站进行重测。（4）WGS-84坐标系下三维平差（无约束平差）及其精度分析并决定处理办法。（5）1980西安坐标系下二维平差（利用5个高等级三角点1980西安坐标系坐标作为约束条件的约束平差）及其精度分析并决定处理办法。（6）输出平差结果。<BR>解析：</DIV></DIV>
+<DIV id=divid4 class=ti_content>
+<UL>
+<LI id=Qid_141217>4．简述该项目1980西安坐标系与独立坐标系转换关系建立方法及步骤。（上述计算：计算过程保留小数点后两位，结果保留小数点后一位）</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141217',this.name,this.value,this.id,'7','151074','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="根据题中已有观测条件，可利用联测的5个高等级三角点成果，采用平面二维四参数转换模型整体进行坐标转换方法。具体步骤如下：&#10;（1）将5个高等级三角点的1980西安坐标系坐标通过换带计算转换为中央子午线与城市独立坐标系中央子午线（××°××′××″）相同的任意带坐标（X、Y）。&#10;（2）选定用于计算坐标转换参数的重合点（不得少于2个）。&#10;（3）确定计算坐标转换参数方法与模型。若5个高等级三角点的1980西安坐标系坐标为（X,Y）及城市独立坐标系坐标为（A,B），可利用下面的计算坐标转换参数模型：A=Δx+k·cosα·X-k·sinα·Y，B=Δy+k·sinα·X+k·cosα·Y。根据最小二乘原理，即可求出Δx、Δy、k、α等转换参数。&#10;（4）分析重合点坐标转换残差，若残差合限，则转换参数计算完成；否则，剔除粗差点，重新计算转换参数。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show4','anwser4')" id=show4 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser4 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：根据题中已有观测条件，可利用联测的5个高等级三角点成果，采用平面二维四参数转换模型整体进行坐标转换方法。具体步骤如下：（1）将5个高等级三角点的1980西安坐标系坐标通过换带计算转换为中央子午线与城市独立坐标系中央子午线（××°××′××″）相同的任意带坐标（X、Y）。（2）选定用于计算坐标转换参数的重合点（不得少于2个）。（3）确定计算坐标转换参数方法与模型。若5个高等级三角点的1980西安坐标系坐标为（X,Y）及城市独立坐标系坐标为（A,B），可利用下面的计算坐标转换参数模型：A=Δx+k·cosα·X-k·sinα·Y，B=Δy+k·sinα·X+k·cosα·Y。根据最小二乘原理，即可求出Δx、Δy、k、α等转换参数。（4）分析重合点坐标转换残差，若残差合限，则转换参数计算完成；否则，剔除粗差点，重新计算转换参数。<BR>解析：</DIV></DIV></DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>某化工厂全部建设完成后，某测绘单位承担1∶500数字地形图测绘项目，厂区面积1.5km2。<BR>项目要求严格执行国家有关技术标准，主要包括《1∶5001∶10001∶2000外业数字测图技术规程》（GB/T 14912—2005）、《国家基本比例尺地图图式第1部分：1∶5001∶10001∶2000地形图图式》（GB/T 20257.1—2007）。<BR>地形图图幅按矩形分幅，规格为50cm×50cm。<BR>在测区首级控制完成后，按三个作业组测图进行了测区划分，作业组按野外全要素进行了外业数据采集、编辑处理、测区接边等工作，最终提交的成果资料包括：（1）测图控制点展点图、水准路线图、埋石点点之记；（2）地形图数据文件、元数据文件等各种数据文件；（3）输出的地形图；（4）产品检查报告等内容。</LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid5 class=ti_content>
+<UL>
+<LI id=Qid_141218>5．计算该厂区面积折合满幅1∶500地形图图幅数量。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141218',this.name,this.value,this.id,'7','151075','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=根据题意，地形图图幅按矩形分幅，规格为50cm×50cm，则每幅图的实际面积为0.0625km2，厂区面积1.5km2，所以该厂区面积折合满幅1∶500地形图图幅数量为：地形图折合整幅数=1.5/0.0625=24（幅）。></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show5','anwser5')" id=show5 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser5 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：根据题意，地形图图幅按矩形分幅，规格为50cm×50cm，则每幅图的实际面积为0.0625km2，厂区面积1.5km2，所以该厂区面积折合满幅1∶500地形图图幅数量为：地形图折合整幅数=1.5/0.0625=24（幅）。<BR>解析：</DIV></DIV>
+<DIV id=divid6 class=ti_content>
+<UL>
+<LI id=Qid_141218>6．简述测区划分的原则。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141218',this.name,this.value,this.id,'7','151076','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=测区划分原则：分界线两侧相互联系的地物最少（如厂区道路），三个组工作量基本相同（兼顾面积大小、难易程度和交通耗时），同一组的范围尽量相邻或相近。></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show6','anwser6')" id=show6 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser6 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：测区划分原则：分界线两侧相互联系的地物最少（如厂区道路），三个组工作量基本相同（兼顾面积大小、难易程度和交通耗时），同一组的范围尽量相邻或相近。<BR>解析：</DIV></DIV>
+<DIV id=divid7 class=ti_content>
+<UL>
+<LI id=Qid_141218>7．补充完善提交的成果资料中所缺少的内容。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141218',this.name,this.value,this.id,'7','151077','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="提交资料还应包括如下内容:&#10;（1）测量技术设计书（含项目设计书）。&#10;（2）测量技术总结。&#10;（3）控制测量平差计算成果表。&#10;（4）仪器检验报告（复印件）。&#10;（5）测绘资质证书（复印件）。&#10;（6）产品验收报告。&#10;（7）委托方要求而国家法律法规又允许提供的其他资料。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show7','anwser7')" id=show7 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser7 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：提交资料还应包括如下内容: （1）测量技术设计书（含项目设计书）。（2）测量技术总结。（3）控制测量平差计算成果表。（4）仪器检验报告（复印件）。（5）测绘资质证书（复印件）。（6）产品验收报告。（7）委托方要求而国家法律法规又允许提供的其他资料。<BR>解析：</DIV></DIV></DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>某测绘项目采用航空摄影测量方法生产某测区1∶2000比例尺的数字地形图。<BR>测区面积约5000km2，东西长约100km，南北长约60km，测区内陆地最低点高程为20m，最高点高程为200m。<BR>原始影像采用真彩色胶片航空摄影获取，摄影像机型号为RC-30，像幅为230mm×230mm，焦距为152mm,摄影比例尺为1∶8000，胶片的航向重叠度为65%，旁向重叠度为35%，影像扫描分辨率为20μm。<BR>航摄公司完成测区摄影后，向项目承担单位提交了下列资料：<BR>（1）测区航摄底片、晒印的像片；<BR>（2）成果质量检查记录；<BR>（3）各种登记表和提交资料清单。<BR>项目承担单位认为航摄公司提交的资料不全，要求航摄公司补齐有关资料。<BR>项目承担单位在完成整个测区外业控制点布设、测量及验收工作后，进行解析空中三角测量内业加密，平面坐标采用2000国家大地坐标系，高程采用1985国家高程基准。<BR>在野外调绘工作完成后，进行内业立体测量，然后对立体测图数据成果进行点位精度、属性精度、逻辑一致性和附件质量等方面的质量检查。</LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid8 class=ti_content>
+<UL>
+<LI id=Qid_141219>8．航摄公司应补交哪些资料？</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141219',this.name,this.value,this.id,'7','151078','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="《1∶5001∶10001∶2000地形图航空摄影规范》（GB/T 6962—2005）规定，航摄公司应补交的资料主要有：&#10;（1）测区范围图（摄区略图）。&#10;（2）像片索引图底片和像片。&#10;（3）航摄仪技术参数（航摄仪检定表）。&#10;（4）航摄底片压平质量检测数据表。&#10;（5）航摄底片密度抽样测定数据表。&#10;（6）航摄飞行记录（或航摄飞行报告）。&#10;（7）附属仪器记录数据和相关资料。&#10;（8）合同规定的其他资料等。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show8','anwser8')" id=show8 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser8 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：《1∶5001∶10001∶2000地形图航空摄影规范》（GB/T 6962—2005）规定，航摄公司应补交的资料主要有：（1）测区范围图（摄区略图）。（2）像片索引图底片和像片。（3）航摄仪技术参数（航摄仪检定表）。（4）航摄底片压平质量检测数据表。（5）航摄底片密度抽样测定数据表。（6）航摄飞行记录（或航摄飞行报告）。（7）附属仪器记录数据和相关资料。（8）合同规定的其他资料等。<BR>解析：</DIV></DIV>
+<DIV id=divid9 class=ti_content>
+<UL>
+<LI id=Qid_141219>9．以框图形式表示本项目立体测图的工作流程。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141219',this.name,this.value,this.id,'7','151079','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=本项目是在野外调绘工作完成后，进行内业立体测图的，所以该项目立体测图的工作流程如下图所示。【2011.ch.alfx.daan3t.2.jpg】></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show9','anwser9')" id=show9 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser9 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：本项目是在野外调绘工作完成后，进行内业立体测图的，所以该项目立体测图的工作流程如下图所示。【2011.ch.alfx.daan3t.2.jpg】<BR>解析：</DIV></DIV>
+<DIV id=divid10 class=ti_content>
+<UL>
+<LI id=Qid_141219>10．简述解析空中三角测量内业加密的主要工作流程。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141219',this.name,this.value,this.id,'7','151080','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=【2011.ch.alfx.daan3t.3.jpg】></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show10','anwser10')" id=show10 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser10 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：【2011.ch.alfx.daan3t.3.jpg】<BR>解析：</DIV></DIV>
+<DIV id=divid11 class=ti_content>
+<UL>
+<LI id=Qid_141219>11．该项目立体测图数据成果检查内容是否全面？若不全面，予以补全。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141219',this.name,this.value,this.id,'7','151081','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="该项目立体测图数据成果检查内容不全，根据《数字测绘成果质量检查与验收》（GB/T 18316—2008）规范要求，应增加空间参考系、完整性、时间精度、影像/栅格质量、表征质量5个方面的内容。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show11','anwser11')" id=show11 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser11 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：该项目立体测图数据成果检查内容不全，根据《数字测绘成果质量检查与验收》（GB/T 18316—2008）规范要求，应增加空间参考系、完整性、时间精度、影像/栅格质量、表征质量5个方面的内容。<BR>解析：</DIV></DIV></DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>某测绘单位为某省编制一幅综合经济挂图，该省东西方向宽约400km，南北方向长约550km。<BR>挂图采用数字制图技术进行编绘，地理底图要素需从收集的资料中选择一种基本资料或数据进行编绘，按照中小比例尺专题地图编绘要求表示要素和进行制图综合，包括要素取舍、分类合并及图形概括等，制作形成符合四色印刷的印前数据，印前应进行严格的质量检查，确保挂图内容正确，要素的详细程度适中，各要素制图综合及图层关系处理合理，叠置顺序无误，地图设色、符号及注记配置和地图整饰美观。<BR>1.具体要求<BR>（1）挂图比例尺为1∶600000，选用等角圆锥地图投影，幅面根据实际情况选择全开（1024mm×787mm）或对开（787mm×546mm）；<BR>（2）挂图的地理底图应表示主要基础地理要素，包括县级（含）以上境界、铁路、乡级（含）以上公路、乡镇（含）以上居民地，以及主要河流、湖泊、大型水库等；<BR>（3）专题要素表示全省各县（市）的人均生产总值，各县（市）第一、二、三产业的比例构成等；<BR>（4）境界、公路及居民地名称的现势性应达到2009年底；<BR>（5）需公开出版发行，同时提交印前数据。<BR>2.收集的资料<BR>（1）2007年更新生产的公开版1∶250000地图数据，内容与1∶250000地形图基本一致；<BR>（2）全省行政区划简册，资料截至2009年年底；<BR>（3）2010年发布的经济统计数据，含各县（市）人口数，生产总值，以及各县（市）第一、二、三产业的总值，资料截至2009年年底；<BR>（4）全省旅游交通图，比例尺1∶900000，2010年年初出版。</LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid12 class=ti_content>
+<UL>
+<LI id=Qid_141220>12．说明该挂图选择的幅面尺寸及理由。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141220',this.name,this.value,this.id,'7','151082','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=根据题意，该省东西方向宽约400km，南北方向长约550km，所以该省东西方向图上距离：400×1000×1000/600000≈667（mm），该省南北方向图上距离：550×1000×1000/600000≈917（mm），根据上述情况，幅面应选择全开（1024mm×787mm）。></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show12','anwser12')" id=show12 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser12 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：根据题意，该省东西方向宽约400km，南北方向长约550km，所以该省东西方向图上距离：400×1000×1000/600000≈667（mm），该省南北方向图上距离：550×1000×1000/600000≈917（mm），根据上述情况，幅面应选择全开（1024mm×787mm）。<BR>解析：</DIV></DIV>
+<DIV id=divid13 class=ti_content>
+<UL>
+<LI id=Qid_141220>13．说明编图中如何使用所收集的各种资料。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141220',this.name,this.value,this.id,'7','151083','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="综合经济挂图绘制过程中需要收集的资料主要包括地理要素和专题要素两大类。具体如下：&#10;（1）地理要素，包括县级（含）以上境界、铁路，乡级（含）以上公路、乡镇（含）以上居民地，以及主要河流、湖泊、大型水库等，可根据2007年更新生产的公开版1∶250000地图数据进行编制。境界、公路及居民地名称的信息可采用全省旅游交通图编制。&#10;（2）专题要素表示全省各县（市）的人均生产总值，各县（市）第一、二、三产业的比例构成等，根据2010年发布的经济统计数据和全省行政区划简册编制。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show13','anwser13')" id=show13 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser13 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：综合经济挂图绘制过程中需要收集的资料主要包括地理要素和专题要素两大类。具体如下：（1）地理要素，包括县级（含）以上境界、铁路，乡级（含）以上公路、乡镇（含）以上居民地，以及主要河流、湖泊、大型水库等，可根据2007年更新生产的公开版1∶250000地图数据进行编制。境界、公路及居民地名称的信息可采用全省旅游交通图编制。（2）专题要素表示全省各县（市）的人均生产总值，各县（市）第一、二、三产业的比例构成等，根据2010年发布的经济统计数据和全省行政区划简册编制。<BR>解析：</DIV></DIV>
+<DIV id=divid14 class=ti_content>
+<UL>
+<LI id=Qid_141220>14．简述如何编绘居民地和水系等地理底图要素。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141220',this.name,this.value,this.id,'7','151084','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="根据编制要求，乡镇（含）以上居民地都予以表示，可以用比例符号表示的居民地，用简单的水平轮廓表示，其余的用点状符号表示。各级政府驻地用符号和注记表明。&#10;河流长度大于等于8mm（图上）的加以表示，主流加注记，正确反映河流的主支流关系，正确反映河系的形状。湖泊面积大于等于8mm2（图上）时全部选取，并选取表示名称注记。大型水库用真形符号加名称注记表示。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show14','anwser14')" id=show14 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser14 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：根据编制要求，乡镇（含）以上居民地都予以表示，可以用比例符号表示的居民地，用简单的水平轮廓表示，其余的用点状符号表示。各级政府驻地用符号和注记表明。河流长度大于等于8mm（图上）的加以表示，主流加注记，正确反映河流的主支流关系，正确反映河系的形状。湖泊面积大于等于8mm2（图上）时全部选取，并选取表示名称注记。大型水库用真形符号加名称注记表示。<BR>解析：</DIV></DIV>
+<DIV id=divid15 class=ti_content>
+<UL>
+<LI id=Qid_141220>15．简述如何用饼图和柱状图方法表示专题要素，以及如何配置符号。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141220',this.name,this.value,this.id,'7','151085','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=饼图主要用于表示制图要素的整体属性与组成部分之间的比例关系；柱状图常用于表示制图要素的两项可比较的属性或者是变化趋势；累计柱状图既可以表示相互关系与比例，也可以表示相互比较与趋势。用饼图表示各县（市）第一、二、三产业的比例构成，用柱状图表示全省各县（市）的人均生产总值。></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show15','anwser15')" id=show15 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser15 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：饼图主要用于表示制图要素的整体属性与组成部分之间的比例关系；柱状图常用于表示制图要素的两项可比较的属性或者是变化趋势；累计柱状图既可以表示相互关系与比例，也可以表示相互比较与趋势。用饼图表示各县（市）第一、二、三产业的比例构成，用柱状图表示全省各县（市）的人均生产总值。<BR>解析：</DIV></DIV></DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>某市拟建设市政设施管理与更新信息系统，项目内容包括建设全市市政设施数据库，开发数据库管理与服务系统。<BR>1.已有数据<BR>（1）基础地理信息数据<BR>由基础地理信息服务平台提供地图服务，包括全市0.5m彩色正射影像，以及1∶500、1∶2000地形图数据等，采用城市独立坐标系，高斯-克吕格投影。<BR>（2）市政设施数据<BR>道路和桥梁要素：根据1∶500地形图按图幅采集存储，以多边形表示道路和桥梁的路面范围，同时采集道路和桥梁的中心线；属性信息包括其分类编号、宽度、路面材料、名称等。<BR>路灯要素：利用GPS采集道路和桥梁沿线路灯的定位点数据，为WGS-84坐标系；属性信息包括其分类编码，所在道路和桥梁的编号及名称，按照片区存储；其他路灯暂不采集。<BR>燃气管线、燃气井要素：根据1∶500地形图按图幅采集，燃气管线的属性信息包括分类编号、管径、管材等；燃气井采集点位及类型等属性。<BR>供水、排水、电力、通信等要素的采集和存储参照燃气设施数据方式进行。<BR>2.全市市政设施数据库要求<BR>对数据进行分层组织，具有相同几何特征的道路、桥梁、路灯、燃气、供水、排水、电力、通信等设施要素划分为相同层；全市范围连续无缝，要素对象应进行接边和保持唯一；数据库坐标系与1∶500地图数据一致，利用WGS-84与城市独立坐标系之间的转换参数对路灯数据进行转换；入库数据必须经过严格的质量检查，包括内业数据检查和野外抽查核实。<BR>3.数据库管理与服务系统开发<BR>包括数据采集与更新、数据库管理与服务2个子系统，在互联网环境中运行，并可调用已在运行的基础地理信息服务平台。<BR>数据采集与更新子系统，在掌上电脑（PDA）上开发，利用无线网络与互联网连接，要求利用携带的GPS实地采集与更新市政设施数据，并自动转换到城市独立坐标系；同时可调用基础地理信息服务平台的地图和影像数据服务为背景，实地调绘对市政设施数据进行更新。<BR>数据库管理与服务子系统的主要功能包括数据建库、管理、更新，以及对外数据目录发布，信息查询、数据编辑处理、数据提取、地图服务等。<BR>基础地理信息服务平台可以提供网络地图服务和有关功能服务接口。</LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid16 class=ti_content>
+<UL>
+<LI id=Qid_141221>16．设计该市政设施数据库的要素分层方案。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141221',this.name,this.value,this.id,'7','151086','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="根据题目要求，该市市政设施数据库的要素分层方案应包括以下内容:&#10;（1）道路和桥梁要素层，以多边形表示道路和桥梁的路面范围，道路和桥梁的中心线；属性信息包括其分类编码、宽度、路面材料、名称。&#10;（2）路灯要素层，表示道路和桥梁沿线路灯的定位点数据；属性信息包括其分类编码、所在道路和桥梁的编号及名称，按照片区存储，其他路灯暂不表示。&#10;（3）燃气管线、燃气井要素层，表示燃气管线、燃气井的位置及类型属性，燃气管线的属性信息包括分类编码、管径、管材等。&#10;（4）供水、排水要素层，表示供水、排水管线的位置和检修井的位置及类型属性，供排水管线的属性信息包括分类编码、管径、管材等。&#10;（5）电力、通信要素层，表示电力、通信管线的位置和检修井的位置及类型属性，电力、通信管线的属性信息包括分类编码、管径、管材等。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show16','anwser16')" id=show16 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser16 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：根据题目要求，该市市政设施数据库的要素分层方案应包括以下内容: （1）道路和桥梁要素层，以多边形表示道路和桥梁的路面范围，道路和桥梁的中心线；属性信息包括其分类编码、宽度、路面材料、名称。（2）路灯要素层，表示道路和桥梁沿线路灯的定位点数据；属性信息包括其分类编码、所在道路和桥梁的编号及名称，按照片区存储，其他路灯暂不表示。（3）燃气管线、燃气井要素层，表示燃气管线、燃气井的位置及类型属性，燃气管线的属性信息包括分类编码、管径、管材等。（4）供水、排水要素层，表示供水、排水管线的位置和检修井的位置及类型属性，供排水管线的属性信息包括分类编码、管径、管材等。（5）电力、通信要素层，表示电力、通信管线的位置和检修井的位置及类型属性，电力、通信管线的属性信息包括分类编码、管径、管材等。<BR>解析：</DIV></DIV>
+<DIV id=divid17 class=ti_content>
+<UL>
+<LI id=Qid_141221>17．简述将采集的市政设施数据整理入库的主要工作步骤及内容。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141221',this.name,this.value,this.id,'7','151087','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="（1）数据收集与整理。包括全市市政设施数据、0.5m彩色正射影像，以及1∶500、1∶2000地形图数据等，将其转换为系统支持的格式，数据库坐标系与1∶500地形图数据一致，利用WGS-84与城市独立坐标系之间的转换参数对路灯数据进行转换。&#10;（2）数据预入库。按照数据库整体结构的设计与分层要求，将采集数据按照数据的存储要求入库到相应的数据层。&#10;（3）数据处理、修改。系统要求全市范围连续无缝，要素对象应进行接边和保持唯一；临时数据库矢量数据是按照图幅为单元存放的，在图幅接边处可能会存在要素目标的断线。在这个过程中，对于线要素，要将要素在图幅分割处进行连接使其连续；对于面要素，要将由于图幅分割成多个目标进行合并，生成一个目标；对于市政设施数据，要将对应的原始数据进行重新整合生成。&#10;（4）入库数据必须经过严格的质量检查，包括内业数据检查和野外抽查核实。&#10;（5）元数据整理。将元数据进行汇总整理，并将文本格式转换为关系表格形式，以利于元数据的入库。&#10;（6）数据正式入库。把经过处理符合数据库设计要求的数据进行正式入库，形成正式的数据库成果。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show17','anwser17')" id=show17 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser17 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：（1）数据收集与整理。包括全市市政设施数据、0.5m彩色正射影像，以及1∶500、1∶2000地形图数据等，将其转换为系统支持的格式，数据库坐标系与1∶500地形图数据一致，利用WGS-84与城市独立坐标系之间的转换参数对路灯数据进行转换。（2）数据预入库。按照数据库整体结构的设计与分层要求，将采集数据按照数据的存储要求入库到相应的数据层。（3）数据处理、修改。系统要求全市范围连续无缝，要素对象应进行接边和保持唯一；临时数据库矢量数据是按照图幅为单元存放的，在图幅接边处可能会存在要素目标的断线。在这个过程中，对于线要素，要将要素在图幅分割处进行连接使其连续；对于面要素，要将由于图幅分割成多个目标进行合并，生成一个目标；对于市政设施数据，要将对应的原始数据进行重新整合生成。（4）入库数据必须经过严格的质量检查，包括内业数据检查和野外抽查核实。（5）元数据整理。将元数据进行汇总整理，并将文本格式转换为关系表格形式，以利于元数据的入库。（6）数据正式入库。把经过处理符合数据库设计要求的数据进行正式入库，形成正式的数据库成果。<BR>解析：</DIV></DIV>
+<DIV id=divid18 class=ti_content>
+<UL>
+<LI id=Qid_141221>18．设计数据采集更新子系统的主要功能。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141221',this.name,this.value,this.id,'7','151088','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="数据采集更新子系统主要功能有：&#10;（1）通过掌上电脑（PDA），利用无线网络与互联网连接，利用携带的GPS实地采集更新市政设施数据，并自动转换到城市独立坐标系。&#10;（2）可调用基础地理信息服务平台的地图和影像数据服务，实地调绘对市政设施数据进行更新。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show18','anwser18')" id=show18 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser18 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：数据采集更新子系统主要功能有：（1）通过掌上电脑（PDA），利用无线网络与互联网连接，利用携带的GPS实地采集更新市政设施数据，并自动转换到城市独立坐标系。（2）可调用基础地理信息服务平台的地图和影像数据服务，实地调绘对市政设施数据进行更新。<BR>解析：</DIV></DIV>
+<DIV id=divid19 class=ti_content>
+<UL>
+<LI id=Qid_141221>19．简述检查数据质量时，如何将位置偏离道路5m的路灯点检查出来。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141221',this.name,this.value,this.id,'7','151089','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name=可以利用GIS系统最基本的缓冲区分析方法来解决这一问题。缓冲区分析是地理信息系统重要的空间分析功能之一，它在交通、林业、资源管理、城市规划中有着广泛的应用，如湖泊和河流周围的保护区的定界、汽车服务区的选择、民宅区远离街道网络的缓冲区的建立等。先建立缓冲区图层，再进行叠置分析，以道路边线为中心轴线，距中心轴线5～10m的平行条带建立缓冲区，然后进行路灯图形元素的检索即可。></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show19','anwser19')" id=show19 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser19 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：可以利用GIS系统最基本的缓冲区分析方法来解决这一问题。缓冲区分析是地理信息系统重要的空间分析功能之一，它在交通、林业、资源管理、城市规划中有着广泛的应用，如湖泊和河流周围的保护区的定界、汽车服务区的选择、民宅区远离街道网络的缓冲区的建立等。先建立缓冲区图层，再进行叠置分析，以道路边线为中心轴线，距中心轴线5～10m的平行条带建立缓冲区，然后进行路灯图形元素的检索即可。<BR>解析：</DIV></DIV></DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>某市某区按照国家第二次土地调查的技术规定和要求，完成了全区城镇地籍调查项目，调查范围涉及区政府所在地、乡政府所在地、各类开发区和园区的调查面积约36km2。<BR>项目的主要内容包括：权属调查、地籍控制测量、界址点测量、1∶500地籍测绘、宗地图测绘、面积计算、城镇地籍数据库及管理系统建设等。<BR>该市第二次土地调查领导小组办公室组织成立了验收组，依据《第二次土地调查成果检查验收办法》，对城镇地籍调查成果进行验收。在验收城镇地籍成果时，对数据库、元数据、地籍图、宗地图、统计表格、文字报告进行了检查；在验收地籍调查成果时，内业抽取50%、外业抽取5%进行了检查，其中地籍控制测量成果内业检查了：（1）平面坐标系统选择是否合理，长度变形是否超限；（2）观测记录是否齐全、规范；（3）高程基准选择是否正确，高程施测精度是否满足相关技术设计；（4）资料是否齐全，内容是否完整规范等。在细部测量外业检查时，验收组实地采集了10个地物特征点进行检查并评定了精度。</LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid20 class=ti_content>
+<UL>
+<LI id=Qid_141222>20．简述在城镇地籍数据库验收中，地籍图和宗地图检查的内容。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141222',this.name,this.value,this.id,'7','151090','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="（1）地籍图应检查的内容：&#10;图内要素包括：①地籍要素。行政界线、界址点线、街坊界、地籍号、地类、面积、使用者名称、土地等级注记等。②数学要素。图廓线、坐标格网、坐标注记、测量控制网、测量控制点及其注记等。③地物要素。建筑物及构筑物、楼层、门牌号等，围墙、栅栏、道路、水系等线状要素，独立地物、地形地貌注记、高程注记、等高线要素，其他注记等。&#10;图外要素：包括图种名、图名、图号，图幅接合表，坐标系及高程系，成图比例尺，制图单位全称，说明注记（含调绘时间、制图时间），辅助说明，图例。&#10;图内外要素的颜色、图案、线型等表示是否符合现行《城镇地籍调查规程》要求。&#10;（2）宗地图应检查的内容：&#10;图内要素包括：图幅号、地籍号，本宗地号、地类号、门牌号、面积及宗地使用者名称，界址点、界址点号、界址线及边长，本宗地内建、构筑物，邻宗地址界址线（示意）；相邻道路、街巷及名称；指北针等。&#10;图外要素：包括图种名、宗地面积、绘图员签名、审检员等，制图时间及其他说明注记等。&#10;图内外要素的颜色、图案、线型等表示是否符合现行《城镇地籍调查规程》要求。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show20','anwser20')" id=show20 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser20 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：（1）地籍图应检查的内容：图内要素包括：①地籍要素。行政界线、界址点线、街坊界、地籍号、地类、面积、使用者名称、土地等级注记等。②数学要素。图廓线、坐标格网、坐标注记、测量控制网、测量控制点及其注记等。③地物要素。建筑物及构筑物、楼层、门牌号等，围墙、栅栏、道路、水系等线状要素，独立地物、地形地貌注记、高程注记、等高线要素，其他注记等。图外要素：包括图种名、图名、图号，图幅接合表，坐标系及高程系，成图比例尺，制图单位全称，说明注记（含调绘时间、制图时间），辅助说明，图例。图内外要素的颜色、图案、线型等表示是否符合现行《城镇地籍调查规程》要求。（2）宗地图应检查的内容：图内要素包括：图幅号、地籍号，本宗地号、地类号、门牌号、面积及宗地使用者名称，界址点、界址点号、界址线及边长，本宗地内建、构筑物，邻宗地址界址线（示意）；相邻道路、街巷及名称；指北针等。图外要素：包括图种名、宗地面积、绘图员签名、审检员等，制图时间及其他说明注记等。图内外要素的颜色、图案、线型等表示是否符合现行《城镇地籍调查规程》要求。<BR>解析：</DIV></DIV>
+<DIV id=divid21 class=ti_content>
+<UL>
+<LI id=Qid_141222>21．补充完善地籍控制测量成果内业检查的内容。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141222',this.name,this.value,this.id,'7','151091','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="根据题意，应补充完善地籍控制测量成果内业检查的内容如下：&#10;（1）起算数据是否可靠，首级控制等级选择是否适当，施测方法是否正确。&#10;（2）各级控制网布设、点位密度是否适当，精度是否符合要求，是否能同时满足界址点测定，地籍图测绘和像片联测要求。&#10;（3）首级控制、加密控制与图根控制施测方法是否正确，精度和密度是否符合要求。&#10;（4）平差方法、数据处理方法是否符合现行《城镇地籍调查规程》要求。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show21','anwser21')" id=show21 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser21 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：根据题意，应补充完善地籍控制测量成果内业检查的内容如下：（1）起算数据是否可靠，首级控制等级选择是否适当，施测方法是否正确。（2）各级控制网布设、点位密度是否适当，精度是否符合要求，是否能同时满足界址点测定，地籍图测绘和像片联测要求。（3）首级控制、加密控制与图根控制施测方法是否正确，精度和密度是否符合要求。（4）平差方法、数据处理方法是否符合现行《城镇地籍调查规程》要求。<BR>解析：</DIV></DIV>
+<DIV id=divid22 class=ti_content>
+<UL>
+<LI id=Qid_141222>22．细部测量外业检查的方法和内容是否合理？若不合理。说明正确的方法和内容。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141222',this.name,this.value,this.id,'7','151092','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="细部测量外业检查的方法和内容均不太合理，抽样太少，检查方法太单一。依据《第二次全国土地调查成果检查验收办法》，外业抽检已为3%～5%，正确检查方法应该是外业选择适当的测站，利用全站仪、光电测距仪等仪器采用高精度或同精度方法检测，界址点、地物点实地检测点数均不少于25个，并与已有坐标进行比较，评定精度。&#10;检查的主要内容包括：界址点点位中误差是否超限，最大误差是否超限；地物点点位中误差是否超限，邻近地物点间距是否超限；界址点与邻近地物间距误差是否超限。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show22','anwser22')" id=show22 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser22 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：细部测量外业检查的方法和内容均不太合理，抽样太少，检查方法太单一。依据《第二次全国土地调查成果检查验收办法》，外业抽检已为3%～5%，正确检查方法应该是外业选择适当的测站，利用全站仪、光电测距仪等仪器采用高精度或同精度方法检测，界址点、地物点实地检测点数均不少于25个，并与已有坐标进行比较，评定精度。检查的主要内容包括：界址点点位中误差是否超限，最大误差是否超限；地物点点位中误差是否超限，邻近地物点间距是否超限；界址点与邻近地物间距误差是否超限。<BR>解析：</DIV></DIV></DIV>
+<DIV id=[DIVID] class=ti_content>
+<UL>
+<LI>某测绘单位承担大厦建设过程中的变形监测任务。该大厦位于城市的中部，设计楼层80层（含地下4层），楼高约360m，总建筑面积约250000m2，为钢结构地标性建筑物。<BR>已有资料：<BR>（1）建筑物总平面图、施工设计图及相关说明文档；<BR>（2）施工首级GPS控制网资料（城市独立坐标系）；<BR>（3）周边地区一、二等水准点资料（1985国家高程基准）；<BR>（4）其他相关资料。<BR>投入的主要测量设备：<BR>（1）0.5秒级全站仪1台套；<BR>（2）双频GPS接收机5台套；<BR>（3）精度为1/10万的激光垂准仪1台套；<BR>（4）DS0.5型水准仪1台套；<BR>（5）50m钢卷尺1个。<BR>测绘单位按规范要求在建筑物基坑周边外埋设了2个垂直位移监测工作基点和4个水平位移监测工作基点。垂直位移监测工作基点为钢管标；水平位移监测基点为带有强制对中装置的观测墩，其中2个建于周边10层楼的楼顶，2个建于地面上。<BR>变形监测的内容包括基坑支护边坡顶部水平位移及垂直位移、基坑回弹测量、基础沉降监测及主体工程倾斜测量、基坑周边50m范围内建筑物的沉降监测等。<BR>变形监测要求提交符合规范要求的以图和表形式表达的成果。</LI></UL>
+<DIV class=ti_title>&nbsp;&nbsp;&nbsp;&nbsp;简答题</DIV>
+<DIV id=divid23 class=ti_content>
+<UL>
+<LI id=Qid_141223>23．为测定垂直位移监测工作基点的高程，应布设垂直位移监测基准点，简述垂直基准点布设的位置和数量要求，以及垂直位移监测的等级要求。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141223',this.name,this.value,this.id,'7','151093','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="垂直基准点布设的位置和数量要求：高程基准点设置4个，位置设在基坑四周，距离基坑上边缘100m以外，可以设在稳定的建筑物墙面、地面以上0.3～0.5m处（墙上水准点），或者设在适合接收卫星信号的路边地面上，埋设足够深度的混凝土标桩，以便兼作位移基准点使用。高程基准点位置选择要考虑基础稳定、便于使用、不易被破坏等因素。&#10;垂直位移监测的等级要求：根据变形监测工程需要和现有仪器设备所能达到的精度，建议采用“变形测量二级”精度标准施测，即沉降观测，观测点测站高差中误差±0.5mm；位移观测，观测点坐标中误差±3.0mm。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show23','anwser23')" id=show23 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser23 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：垂直基准点布设的位置和数量要求：高程基准点设置4个，位置设在基坑四周，距离基坑上边缘100m以外，可以设在稳定的建筑物墙面、地面以上0.3～0.5m处（墙上水准点），或者设在适合接收卫星信号的路边地面上，埋设足够深度的混凝土标桩，以便兼作位移基准点使用。高程基准点位置选择要考虑基础稳定、便于使用、不易被破坏等因素。垂直位移监测的等级要求：根据变形监测工程需要和现有仪器设备所能达到的精度，建议采用“变形测量二级”精度标准施测，即沉降观测，观测点测站高差中误差±0.5mm；位移观测，观测点坐标中误差±3.0mm。<BR>解析：</DIV></DIV>
+<DIV id=divid24 class=ti_content>
+<UL>
+<LI id=Qid_141223>24．在投入的主要测量设备中，选择一种最适合用于监测水平位移监测工作的稳定性的设备，并说明观测时的注意事项。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141223',this.name,this.value,this.id,'7','151094','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="依据题意可知，本项目设置了4个水平工作基点，其中2个建于周边10层楼的楼顶，2个建于地面上。所以，水平工作基点的稳定性监测采用双频GPS接收机较为合适，它具有精度高、操作方便、数据处理简便、劳动强度低等优点，尤其是基准点选择困难不得不远离工作基点时，优点更为突出。&#10;观测时应按规范规定注意以下事项：&#10;（1）正确架设仪器：对于一、二级GPS测量，应使用零相位天线和强制对中器安置GPS接收机天线，对中精度应高于±0.5mm，天线应统一指向北方。&#10;（2）作业中应严格按规定的时间计划进行观测。&#10;（3）做好开机前检查，开机后经检验有关指示灯与仪表显示正常后，方可进行自测试，输入测站名和时段等控制信息。&#10;（4）应填写好测量手簿中的记录项目；每时段开始、结束时，应分别量测一次天线高，并取其平均值作为天线高；进行一次气象观测。&#10;（5）观测期间应防止接收设备振动，并防止人员和其他物体碰动天线或阻挡信号；观测期间，不得在天线附近使用电台、对讲机和手机等无线电通信设备。&#10;（6）天气太冷时，接收机应适当保暖。天气很热时，接收机应避免阳光直晒，确保接收机正常工作。雷电、风暴天气不宜进行测量。&#10;（7）同一时段观测过程中，不得将接收机关闭又重新启动；不可进行自测试；不得改变卫星截止高度角，改变数据采样间隔，改变天线位置；不能按动关闭文件和删除文件功能键。&#10;（8）施工场地，注意人员和仪器的安全。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show24','anwser24')" id=show24 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser24 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：依据题意可知，本项目设置了4个水平工作基点，其中2个建于周边10层楼的楼顶，2个建于地面上。所以，水平工作基点的稳定性监测采用双频GPS接收机较为合适，它具有精度高、操作方便、数据处理简便、劳动强度低等优点，尤其是基准点选择困难不得不远离工作基点时，优点更为突出。观测时应按规范规定注意以下事项：（1）正确架设仪器：对于一、二级GPS测量，应使用零相位天线和强制对中器安置GPS接收机天线，对中精度应高于±0.5mm，天线应统一指向北方。（2）作业中应严格按规定的时间计划进行观测。（3）做好开机前检查，开机后经检验有关指示灯与仪表显示正常后，方可进行自测试，输入测站名和时段等控制信息。（4）应填写好测量手簿中的记录项目；每时段开始、结束时，应分别量测一次天线高，并取其平均值作为天线高；进行一次气象观测。（5）观测期间应防止接收设备振动，并防止人员和其他物体碰动天线或阻挡信号；观测期间，不得在天线附近使用电台、对讲机和手机等无线电通信设备。（6）天气太冷时，接收机应适当保暖。天气很热时，接收机应避免阳光直晒，确保接收机正常工作。雷电、风暴天气不宜进行测量。（7）同一时段观测过程中，不得将接收机关闭又重新启动；不可进行自测试；不得改变卫星截止高度角，改变数据采样间隔，改变天线位置；不能按动关闭文件和删除文件功能键。（8）施工场地，注意人员和仪器的安全。<BR>解析：</DIV></DIV>
+<DIV id=divid25 class=ti_content>
+<UL>
+<LI id=Qid_141223>25．简述变形监测成果中图和表的主要内容。</LI></UL>
+<UL style="MARGIN-TOP: 10px"><TEXTAREA onblur="updateXmlAnswer('141223',this.name,this.value,this.id,'7','151095','','9','2053');" id=5 style="WIDTH: 90%" rows=10 cols=100 name="根据《建筑变形测量规范》（JGJ 8—2007）规定，变形监测成果中图和表主要包括变形测量工程的平面位置图，基准点与观测点分布平面图，标石、标志规格及埋设图，变形量计算表，成果质量评定资料及成果表，反映变形过程的图表等。&#10;基准点与观测点分布平面图表达了基准点、工作基点与观测点的点数，以及土木之间平面位置关系。&#10;变形量计算表的注意内容应包括各周期观测日期与时间,初始观测值、上次观测值、本次观测值,本周期变形量、本周期平均变形量、本周期最大变形量，总变形量、平均总变形量、最大总变形量，观测对象相关记录、计算、统计、绘图等人员的签名、日期等。&#10;变形过程图是根据变形量计算表中相关记录绘制的，包括时间-荷载-沉降曲线图等沉降曲线图、沉降等值线图、水平位移曲线图、水平位移向量图等。图中一般都应有绘图等人员的签名、日期等信息。"></TEXTAREA></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show25','anwser25')" id=show25 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser25 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：根据《建筑变形测量规范》（JGJ 8—2007）规定，变形监测成果中图和表主要包括变形测量工程的平面位置图，基准点与观测点分布平面图，标石、标志规格及埋设图，变形量计算表，成果质量评定资料及成果表，反映变形过程的图表等。基准点与观测点分布平面图表达了基准点、工作基点与观测点的点数，以及土木之间平面位置关系。变形量计算表的注意内容应包括各周期观测日期与时间,初始观测值、上次观测值、本次观测值,本周期变形量、本周期平均变形量、本周期最大变形量，总变形量、平均总变形量、最大总变形量，观测对象相关记录、计算、统计、绘图等人员的签名、日期等。变形过程图是根据变形量计算表中相关记录绘制的，包括时间-荷载-沉降曲线图等沉降曲线图、沉降等值线图、水平位移曲线图、水平位移向量图等。图中一般都应有绘图等人员的签名、日期等信息。<BR>解析：</DIV></DIV></DIV></DIV>
+<DIV id=anwser-card class=anwser-card>
+<DIV id=card-title class=card-title>答题卡 <A onclick=hideCard(); id=card-hide>─</A> </DIV>
+<DIV id=card-body class=card-body style="HEIGHT: 611px"><A id=Tip_141217 href="#Qid_141217">1</A><A id=Tip_141217 href="#Qid_141217">2</A><A id=Tip_141217 href="#Qid_141217">3</A><A id=Tip_141217 href="#Qid_141217">4</A><A id=Tip_141218 href="#Qid_141218">5</A><A id=Tip_141218 href="#Qid_141218">6</A><A id=Tip_141218 href="#Qid_141218">7</A><A id=Tip_141219 href="#Qid_141219">8</A><A id=Tip_141219 href="#Qid_141219">9</A><A id=Tip_141219 href="#Qid_141219">10</A><A id=Tip_141219 href="#Qid_141219">11</A><A id=Tip_141220 href="#Qid_141220">12</A><A id=Tip_141220 href="#Qid_141220">13</A><A id=Tip_141220 href="#Qid_141220">14</A><A id=Tip_141220 href="#Qid_141220">15</A><A id=Tip_141221 href="#Qid_141221">16</A><A id=Tip_141221 href="#Qid_141221">17</A><A id=Tip_141221 href="#Qid_141221">18</A><A id=Tip_141221 href="#Qid_141221">19</A><A id=Tip_141222 href="#Qid_141222">20</A><A id=Tip_141222 href="#Qid_141222">21</A><A id=Tip_141222 href="#Qid_141222">22</A><A id=Tip_141223 href="#Qid_141223">23</A><A id=Tip_141223 href="#Qid_141223">24</A><A id=Tip_141223 href="#Qid_141223">25</A> </DIV></DIV><script src='js/ph.js'></script></BODY></html>

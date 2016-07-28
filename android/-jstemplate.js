@@ -127,7 +127,7 @@ G_Running();
 
 
 function QQShare() { //QQ好友
-	toast("等待QQ启动", 1);
+	toast("等待QQ启动,10s", 1);
 	sleep(10000, true);
 	click(65, 437, "点击我的电脑", 5000);
 	click(503, 835, "发送按钮", 8000);
@@ -135,7 +135,7 @@ function QQShare() { //QQ好友
 }
 
 function QQZone() { //QQ空间
-	toast("等待QQ启动", 1);
+	toast("等待QQ启动,10s", 1);
 	sleep(10000, true);
 	click(649, 98, "点击发表按钮", 5000);
 }

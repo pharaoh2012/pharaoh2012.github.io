@@ -1,0 +1,1696 @@
+<html><HEAD><TITLE>MyModel</TITLE>
+<STYLE type=text/css>
+            html{scrollbar-face-color:#e7f4f9;scrollbar-arrow-color:#8bd5fd;scrollbar-track-color:#f9fdff;scrollbar-highlight-color:#ffffff;scrollbar-3dlight-color:#8bd5fd;scrollbar-shadow-color:#ffffff;scrollbar-darkshadow-color:#8bd5fd;}
+            body {margin: 10px; line-height: 150%; width:950px; margin-left:auto; margin-right:auto;font-family: 宋体;}
+           .ti_content {font-size: 14px; color: #000000; font-family: 宋体,serif;
+            font-size: 14px; line-height: 150%; width: auto; clear:both;}
+           .ti_content ul li {list-style:none;margin-top:5px;margin-buttom:5px;}
+           .ti_content ul{padding-left:0px;}
+           .ti_content #anwer_r li{float:left; margin-left:10px;}
+           .ti_title {font-size: 18px; font-weight: bold; margin-top:10px;clear:both;}
+           .style_anwser_r {float: right; margin-right: 20px;}
+           .style_anwser {clear: both; background-color: #ecf5fa; border: 1px #B7CACE solid; display:none;}
+           .inputFill {BORDER-BOTTOM: #417ac1 1px dashed; BORDER-LEFT: 0px; LINE-HEIGHT: 22px; WIDTH: 200px; BACKGROUND: #ffffff; HEIGHT: 22px; COLOR: #ff0000; BORDER-TOP: 0px; BORDER-RIGHT: 0px;TEXT-ALIGN:CENTER;}
+	       .btnClass{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAZCAYAAACmRqkJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAA0BJREFUaEPt2UlLW1EYBuCbVrqS+hd04TzPQ4yzoAbjgPM8gyC6UwRt6cJV9W9Iu6mz1qkZTDRNjDGOTa0pjUJxd2+Xgebre6JFF/H8ghN4V+HbPLznnnPuVa2Eh4e+Cgt7+zo8vPllSEgY+f2SRCSJXxABlUpSvXgh/fX5lD9e70eforyT1iIj31xNTvru5ub8txMTdDM2Rt7RUZEgBszmdnycfs/M+L+NjvpgNy1Zqqs9d7Oz5Onpoe86HbmrqshdWSkSzAA2zMjT3U3eqSkylJVdS7b6eoWpMrQLjYbOcnPvk5Mj8tTgwYUZubVauhoZoa3SUkWy6nTyr+FhOi8poZOsLDrJyBDhGcDosqyMLnt7ab2wUJasWq3sGRqis+JicmHQlZ4uwjOA0QXKdt7VResajSwdAPB6cJBOi4roGH8eY1iEYwCjc5TtDIBr/wF/DAzQSWEhOYHnTEsT4RnAiJXttLPzEfCqv5+OCwrIgUFHaqoIzwBGLpTN1dFBq/n5WMJVVbK7r4+OsLvYMWhPSRHhGcDIibIdt7c/AOIZ6MaO4sjPJxsGbcnJIjwDGDlRNmdb2z2gBYBsS7ar1WTFoDUpSYRnACNWNkdrK60EALGEzwFoA+A+/tzHsAjHAEZ2AB4+BTzFNc6al0dm4JkTE0V4BjD6irLZGKBaLUtmNNCFu90+riomDJoSEkR4BjA6QNmsLS20HACsrJRdOBRacO8zYtAYHy/CM4ARK5u1ufkecA+AThwK97KzSY9BfVycCM8ARmaUbb+p6RHwCIBGXJJ3MbgbGyvCM4CRCWUzNzbSUl6eLJnQQAdO1YbMTNrB4E5MjAjPAEasbHsAXAwAVlTIhzhV6xkgBrejo0U4BswoANjQ8ACIBtqxhL/gLcMWBjejokQ4BsxID0AjnoGLgU1Eq1UO8TbGgMPhNrboLaxxkecNmJEJVzk9Vu1CQYEiGcrLPYf4WGKprSUDXtPoccYRed7AgDcxezU1tILb26pG8zPwVc7Y3e3bHhz0b6KWG3V1tAFMkSAGzAabx6fOTv9SU5NvPSpqWlqNiAj9nJT0flmjufmQlaXMZ2Qo8+npIsEMmA2MFtTqG2bG7P4Bz7tu9/lP8/oAAAAASUVORK5CYII=) no-repeat;width:80px;height:25px;color:#fff;border:none;cursor:pointer;}
+	       .anwser-card{position:fixed;right:0px;top:10px;bottom:10px;width:240px;border:1px solid #ccc;background:#FFF;overflow:hidden;}
+	       .anwser-card-hide{cursor:pointer;position:fixed;right:0px;top:10px;bottom:10px;border:1px solid #ccc;overflow:hidden;height:130px;line-height:30px;width:40px;text-align:center;background: #39f;color:#FFF;font-family:微软雅黑;}
+	       .card-body{overflow-y:scroll;text-align:center;}
+	       .card-body a{text-decoration:none;float:left;width:35px;height:35px;line-height:35px;margin:3px;cursor:pointer;text-align:center;border:1px solid #ff0000;display:block;font-size:14px;}
+	       .card-body a.chose{background:#39f;color:#FFF;border:1px solid #FFF;}
+	       .card-title{position:relative;height:30px;line-height:30px;text-align:center;background: #39f;color:#FFF;font-family:微软雅黑;font-size:16px;}
+	       .card-title-hide{text-align:center;background: #39f;color:#FFF;font-family:微软雅黑;word-wrap: break-word;letter-spacing: 20px;width: 40px;font-size:16px; padding-left: 10px;}
+	       .card-title a{position:absolute;right:20px;bottom:10px;width:20px;height:20px;display:block;text-align:center;cursor:pointer;}
+    </STYLE>
+
+<SCRIPT type=text/javascript>
+        //document.oncontextmenu=new Function("return false") ;
+        
+        function onReady() {
+            var cardH = document.getElementById('anwser-card').offsetHeight;
+            document.getElementById('card-body').style.height = (cardH - 30) + "px";
+        }
+        window.onresize = function () { onReady(); }
+        var cardState = 1;
+        function hideCard() {
+            if (cardState == 1) {
+                document.getElementById('anwser-card').style.height = "130px";
+                document.getElementById('card-body').style.display = "none";
+                document.getElementById('card-title').className = "card-title-hide";
+                document.getElementById('card-hide').innerHTML = "┼";
+                document.getElementById('anwser-card').className = "anwser-card-hide";
+                cardState = 0;
+            }
+            else {
+                document.getElementById('anwser-card').style.height = "auto";
+                document.getElementById('card-body').style.display = "";
+                document.getElementById('card-title').className = "card-title";
+                document.getElementById('card-hide').innerHTML = "─";
+                document.getElementById('anwser-card').className = "anwser-card";
+                cardState = 1;
+            }
+        }
+        function HideAnwserCard()
+        {
+            document.getElementById('anwser-card').style.display = "none";
+        }
+        function SetAnwserCard(id)
+        {
+               document.getElementById("Tip_" + id).className= "chose";
+        }
+        function ShowAnwser(obj1, obj2) {
+            var anwser = document.getElementById(obj2);
+            var button = document.getElementById(obj1);
+            var value = button.value;
+            if (value == "隐藏答案") {
+                anwser.style.display = "none";
+                button.value = "显示答案";
+            }
+            else if (value == "显示答案") {
+                button.value = "隐藏答案";
+                anwser.style.display = "block";
+            }
+        }
+        function TeacherMark(qid) {
+            window.external.TeacherMark(qid);
+        }
+        function clickAnwser(qid, trueA, choseA, tid, total, zhid, kw, zid, kid) {
+            SetAnwserCard(qid);
+            window.external.recordAnwser(qid, trueA, kw, choseA, tid, total, zhid, zid, kid);
+        }
+        function checkBoxAnwser(divid, qid, trueA, tid, total, zhid, kw, zid, kid) {
+            SetAnwserCard(qid);
+            var divClass = document.getElementById(divid);
+            var check = divClass.getElementsByTagName("input");
+            var anwser = "";
+            for (var i = 0; i < check.length; i++) {
+                if (check[i].type == "checkbox") {
+                    if (check[i].checked) {
+                        anwser += check[i].title + ",";
+                    }
+                }
+            }
+            anwser = anwser.substr(0, anwser.length - 1);
+            window.external.recordAnwser(qid, trueA, kw, anwser, tid, total, zhid, zid, kid);
+        }
+        function updateXmlFill(divid, qid, trueA, tid, total, zhid, kw, zid, kid) {
+            var divClass = document.getElementById(divid);
+            var check = divClass.getElementsByTagName("input");
+            var anwser = "";
+            for (var i = 0; i < check.length; i++) {
+                if (check[i].type == "text") {
+                    anwser += check[i].value + "*";
+                }
+            }
+            if (anwser.replace(/\*/g, "").replace(/ /g, "") != "") {
+                SetAnwserCard(qid);
+                window.external.recordAnwser(qid, trueA, kw, anwser, tid, total, zhid, zid, kid);
+            }
+        }
+
+        function KeepQuestion(id, zhid, typeid) {
+            var scTypeid = document.getElementById(typeid).value;
+            window.external.KeepQuestion(id, zhid, scTypeid);
+        }
+        function ShowAllResolve(ok) {
+            var classElement = getElementsByClass("style_anwser", null, "div");
+            if (ok) {
+                for (var i = 0; i < classElement.length; i++) {
+                    classElement[i].style.display = "block";
+                }
+            }
+            else {
+                for (var i = 0; i < classElement.length; i++) {
+                    classElement[i].style.display = "none";
+                }
+            }
+        }
+        function showLSPY() {
+            var classElement = getElementsByClass("class_lspy", null, "input");
+            for (var i = 0; i < classElement.length; i++) {
+                classElement[i].style.display = "block";
+            }
+        }
+        function getElementsByClass(searchClass, node, tag) {
+            var classElements = new Array();
+            if (node == null)
+                node = document;
+            if (tag == null)
+                tag = "*";
+            var els = node.getElementsByTagName(tag);
+            var elsLen = els.length;
+            var pattern = new RegExp("(^|\\s)" + searchClass + "(\\s|$)");
+            for (i = 0, j = 0; i < elsLen; i++) {
+                if (pattern.test(els[i].className)) {
+                    classElements[j] = els[i];
+                    j++;
+                }
+            }
+            return classElements;
+        }
+        function updateXmlAnswer(qid, trueA, anwser, tid, total, zhid, kw, zid, kid) {
+            if (anwser.replace(/ /g, "") != "") {
+                SetAnwserCard(qid);
+                window.external.recordAnwser(qid, trueA, kw, anwser, tid, total, zhid, zid, kid);
+            }
+        }
+        function hideXSDA() {
+            var classElement = getElementsByClass("class_xsda", null, "input");
+            for (var i = 0; i < classElement.length; i++) {
+                classElement[i].style.display = "none";
+            }
+        }
+        function ErrorHandUP(qid, zhid) {
+            window.external.ErrorHandUP(qid, zhid);
+        }
+        function StudyNote(qid, zhid) {
+            window.external.StudyNote(qid, zhid);
+        }
+    </SCRIPT>
+</HEAD>
+<BODY onload=onReady();>
+<DIV style="OVERFLOW: hidden; WIDTH: 95%; MARGIN-LEFT: auto; LINE-HEIGHT: 150%; MARGIN-RIGHT: auto">
+<DIV class=ti_title>单选题</DIV>
+<DIV id=divid1 class=ti_content>
+<UL>
+<LI id=Qid_136429>1．测绘项目的发包单位将测绘项目发包给不具有相应资质等级的测绘单位或者迫使测绘单位以低于测绘成本承包的，责令改正，可以处测绘约定报酬（）倍以下的罚款。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136429',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group1><LABEL>A．1</LABEL>
+<LI><INPUT onclick="clickAnwser('136429',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group1><LABEL>B．2</LABEL>
+<LI><INPUT onclick="clickAnwser('136429',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group1><LABEL>C．3</LABEL>
+<LI><INPUT onclick="clickAnwser('136429',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group1><LABEL>D．5</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show1','anwser1')" id=show1 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser1 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：《中华人民共和国测绘法》第四十四条规定，违反本法规定，测绘项目的发包单位将测绘项目发包给不具有相应资质等级的测绘单位或者迫使测绘单位以低于测绘成本承包的，责令改正，可以处测绘约定报酬2倍以下的罚款。</DIV></DIV>
+<DIV id=divid2 class=ti_content>
+<UL>
+<LI id=Qid_136430>2．《测绘法》规定，海洋基础测绘工作由（）具体负责。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136430',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group2><LABEL>A．军事测绘主管部门</LABEL>
+<LI><INPUT onclick="clickAnwser('136430',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group2><LABEL>B．国家海洋局</LABEL>
+<LI><INPUT onclick="clickAnwser('136430',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group2><LABEL>C．国务院测绘的主管部门</LABEL>
+<LI><INPUT onclick="clickAnwser('136430',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group2><LABEL>D．省级测绘主管部门</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show2','anwser2')" id=show2 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser2 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：根据《测绘法》规定，海洋基础测绘工作由军事测绘主管部门按照国务院、中央军事委员会规定的职责分工具体负责。</DIV></DIV>
+<DIV id=divid3 class=ti_content>
+<UL>
+<LI id=Qid_136431>3．我国《测绘法》实施的日期为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136431',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group3><LABEL>A．1992-12-1</LABEL>
+<LI><INPUT onclick="clickAnwser('136431',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group3><LABEL>B．1993-7-1</LABEL>
+<LI><INPUT onclick="clickAnwser('136431',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group3><LABEL>C．2002-8-1</LABEL>
+<LI><INPUT onclick="clickAnwser('136431',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group3><LABEL>D．2005-7-1</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show3','anwser3')" id=show3 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser3 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：我国的《测绘法》于1992年12月28日第七届全国人民代表大会常务委员会第29次会议通过，并于1993年7月1日起施行。</DIV></DIV>
+<DIV id=divid4 class=ti_content>
+<UL>
+<LI id=Qid_136432>4．投标者串通投标，抬高标价或者压低标价；投标者和招标者相互勾结，以排挤竞争对手的公平竞争的，其中标无效。监督检查部门可以根据情节处以（）的罚款。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136432',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group4><LABEL>A．1万元以上10万元以下</LABEL>
+<LI><INPUT onclick="clickAnwser('136432',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group4><LABEL>B．5万以上</LABEL>
+<LI><INPUT onclick="clickAnwser('136432',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group4><LABEL>C．1万元以上20万元以下</LABEL>
+<LI><INPUT onclick="clickAnwser('136432',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group4><LABEL>D．10万元以上20万元以下</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show4','anwser4')" id=show4 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser4 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：《中华人民共和国反不正当竞争法》第二十七条规定，投标者串通投标，抬高标价或者压低标价；投标者和招标者相互勾结，以排挤竞争对手的公平竞争的，其中标无效。监督检查部门可以根据情节处以1万元以上20万元以下的罚款。</DIV></DIV>
+<DIV id=divid5 class=ti_content>
+<UL>
+<LI id=Qid_136433>5．合同的权利义务，除法律规定的以外，主要由（）确定。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136433',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group5><LABEL>A．合同的条款</LABEL>
+<LI><INPUT onclick="clickAnwser('136433',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group5><LABEL>B．双方口头说明</LABEL>
+<LI><INPUT onclick="clickAnwser('136433',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group5><LABEL>C．双方的意愿</LABEL>
+<LI><INPUT onclick="clickAnwser('136433',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group5><LABEL>D．私下协议</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show5','anwser5')" id=show5 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser5 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：合同的条款就是合同的内容。合同的权利义务，除法律规定的以外，主要由合同的条款确定。</DIV></DIV>
+<DIV id=divid6 class=ti_content>
+<UL>
+<LI id=Qid_136434>6．《测绘资质证书》编号形式正确的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136434',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group6><LABEL>A．省、自治区、直辖市编号＋顺序号＋测资字＋等级</LABEL>
+<LI><INPUT onclick="clickAnwser('136434',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group6><LABEL>B．等级＋省、自治区、直辖市编号＋顺序号＋测资字</LABEL>
+<LI><INPUT onclick="clickAnwser('136434',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group6><LABEL>C．等级＋测资字＋省、自治区、直辖市编号＋顺序号</LABEL>
+<LI><INPUT onclick="clickAnwser('136434',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group6><LABEL>D．省、自治区、直辖市编号＋顺序号＋等级＋测资字</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show6','anwser6')" id=show6 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser6 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：《测绘资质证书》分为正本和副本，由国家测绘地理信息局统一规定，正、副本具有同等法律效力。《测绘资质证书》编号形式为：等级＋测资字＋省、自治区、直辖市编号＋顺序号。</DIV></DIV>
+<DIV id=divid7 class=ti_content>
+<UL>
+<LI id=Qid_136435>7．（）是指由测绘基准延伸，在一定范围内布设的各种测量控制网，它们是各类测绘成果的依据。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136435',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group7><LABEL>A．测绘系统</LABEL>
+<LI><INPUT onclick="clickAnwser('136435',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group7><LABEL>B．地理信息系统</LABEL>
+<LI><INPUT onclick="clickAnwser('136435',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group7><LABEL>C．坐标系统</LABEL>
+<LI><INPUT onclick="clickAnwser('136435',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group7><LABEL>D．高程系统</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show7','anwser7')" id=show7 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser7 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：测绘系统是指由测绘基准延伸，在一定范围内布设的各种测量控制网，它们是各类测绘成果的依据，包括大地坐标系统、平面坐标系统、高程系统、地心坐标系统和重力测量系统。</DIV></DIV>
+<DIV id=divid8 class=ti_content>
+<UL>
+<LI id=Qid_136436>8．强制性测绘行业标准编号为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136436',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group8><LABEL>A．CH××××（顺序号）—××××（发布年号）</LABEL>
+<LI><INPUT onclick="clickAnwser('136436',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group8><LABEL>B．CH/T××××（顺序号）—××××（发布年号）</LABEL>
+<LI><INPUT onclick="clickAnwser('136436',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group8><LABEL>C．CH/Z××××（顺序号）—××××（发布年号）</LABEL>
+<LI><INPUT onclick="clickAnwser('136436',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group8><LABEL>D．CH/G××××（顺序号）—××××（发布年号）</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show8','anwser8')" id=show8 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser8 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：测绘行业标准和行业标准化指导性技术文件的编号由行业标准代号、标准发布的顺序号及标准发布的年号构成。强制性测绘行业标准编号：CH××××（顺序号）—××××（发布年号）；推荐性测绘行业标准编号：CH/T××××（顺序号）—××××（发布年号）；测绘行业标准化指导性技术文件编号：CH/Z××××（顺序号）—××××（发布年号）。</DIV></DIV>
+<DIV id=divid9 class=ti_content>
+<UL>
+<LI id=Qid_136437>9．J2级以上经纬仪的检定周期为（）年。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136437',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group9><LABEL>A．1</LABEL>
+<LI><INPUT onclick="clickAnwser('136437',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group9><LABEL>B．2</LABEL>
+<LI><INPUT onclick="clickAnwser('136437',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group9><LABEL>C．3</LABEL>
+<LI><INPUT onclick="clickAnwser('136437',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group9><LABEL>D．4</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show9','anwser9')" id=show9 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser9 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：《测绘计量管理暂行办法》在测绘计量器具目录中，明确规定了J2级以上经纬仪、S3级以上水准仪、GPS接收机、精度优于5mm＋5×10-6D的测距仪、全站仪、微伽级重力仪，以及尺类等仪器设备的检定周期为1年；其他精度的仪器设备检定周期一般为2年。</DIV></DIV>
+<DIV id=divid10 class=ti_content>
+<UL>
+<LI id=Qid_136438>10．外国的组织或者个人来华测绘，必须采取（）的形式进行，并不得涉及国家秘密和危害国家安全。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136438',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group10><LABEL>A．独资</LABEL>
+<LI><INPUT onclick="clickAnwser('136438',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group10><LABEL>B．依法与中华人民共和国有关部门或者单位合资、合作</LABEL>
+<LI><INPUT onclick="clickAnwser('136438',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group10><LABEL>C．自负盈亏</LABEL>
+<LI><INPUT onclick="clickAnwser('136438',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group10><LABEL>D．事后备案</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show10','anwser10')" id=show10 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser10 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：《中华人民共和国测绘法》第七条规定，外国的组织或个人在中华人民共和国领域从事测绘活动，必须与中华人民共和国有关部门或者单位依法采取合资、合作的形式进行，并不得涉及国家秘密和危害国家安全。</DIV></DIV>
+<DIV id=divid11 class=ti_content>
+<UL>
+<LI id=Qid_136439>11．《中华人民共和国注册测绘师注册证》每一次注册有效期为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136439',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group11><LABEL>A．1年</LABEL>
+<LI><INPUT onclick="clickAnwser('136439',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group11><LABEL>B．2年</LABEL>
+<LI><INPUT onclick="clickAnwser('136439',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group11><LABEL>C．3年</LABEL>
+<LI><INPUT onclick="clickAnwser('136439',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group11><LABEL>D．4年</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show11','anwser11')" id=show11 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser11 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：《中华人民共和国注册测绘师注册证》每一注册有效期为3年。中华人民共和国注册测绘师注册证和执业印章在有效期内是注册测绘师的执业凭证，由注册测绘师本人保管、使用。</DIV></DIV>
+<DIV id=divid12 class=ti_content>
+<UL>
+<LI id=Qid_136440>12．国家标准的代号为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136440',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group12><LABEL>A．TB</LABEL>
+<LI><INPUT onclick="clickAnwser('136440',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group12><LABEL>B．CB</LABEL>
+<LI><INPUT onclick="clickAnwser('136440',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group12><LABEL>C．GB</LABEL>
+<LI><INPUT onclick="clickAnwser('136440',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group12><LABEL>D．HB</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show12','anwser12')" id=show12 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser12 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：国家标准的代号为“GB”，其含义是“国标”两个字汉语拼音的第一个字母“G”和“B”的组合。</DIV></DIV>
+<DIV id=divid13 class=ti_content>
+<UL>
+<LI id=Qid_136441>13．房产测绘单位应当依照《测绘法》的规定，取得（）测绘行政主管部门颁发的载明房产测绘业务的《测绘资质证书》。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136441',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group13><LABEL>A．县级政府</LABEL>
+<LI><INPUT onclick="clickAnwser('136441',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group13><LABEL>B．市级政府</LABEL>
+<LI><INPUT onclick="clickAnwser('136441',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group13><LABEL>C．省级以上人民政府</LABEL>
+<LI><INPUT onclick="clickAnwser('136441',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group13><LABEL>D．国务院</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show13','anwser13')" id=show13 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser13 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：《房产测绘管理办法》第十二条规定，房产测绘单位应当依照《测绘法》的规定，取得省级以上人民政府测绘行政主管部门颁发的载明房产测绘业务的《测绘资质证书》。</DIV></DIV>
+<DIV id=divid14 class=ti_content>
+<UL>
+<LI id=Qid_136442>14．测绘成果目录应向（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136442',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group14><LABEL>A．内部公布</LABEL>
+<LI><INPUT onclick="clickAnwser('136442',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group14><LABEL>B．部分公布</LABEL>
+<LI><INPUT onclick="clickAnwser('136442',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group14><LABEL>C．社会公布</LABEL>
+<LI><INPUT onclick="clickAnwser('136442',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group14><LABEL>D．不公布</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show14','anwser14')" id=show14 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser14 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：《测绘法》第二十八条规定，国务院测绘行政主管部门和省、自治区、直辖市人民政府测绘行政主管部门应当定期编制测绘成果目录，向社会公布。</DIV></DIV>
+<DIV id=divid15 class=ti_content>
+<UL>
+<LI id=Qid_136443>15．（）属于国家基本比例尺地图。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136443',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group15><LABEL>A．1∶200万地图</LABEL>
+<LI><INPUT onclick="clickAnwser('136443',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group15><LABEL>B．1∶30万地图</LABEL>
+<LI><INPUT onclick="clickAnwser('136443',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group15><LABEL>C．1∶15万地图</LABEL>
+<LI><INPUT onclick="clickAnwser('136443',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group15><LABEL>D．1∶10万地图</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show15','anwser15')" id=show15 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser15 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：我国目前确定的国家基本比例尺地图包括1∶500、1∶1000、1∶2000、1∶5000、1∶1万、1∶2.5万、1∶5万、1∶10万、1∶25万、1∶50万、1∶100万共11种。</DIV></DIV>
+<DIV id=divid16 class=ti_content>
+<UL>
+<LI id=Qid_136444>16．建设永久性测量标志需要占用土地，其中地面标准占用土地的范围是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136444',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group16><LABEL>A．30～100平方米</LABEL>
+<LI><INPUT onclick="clickAnwser('136444',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group16><LABEL>B．36～50平方米</LABEL>
+<LI><INPUT onclick="clickAnwser('136444',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group16><LABEL>C．36～100平方米</LABEL>
+<LI><INPUT onclick="clickAnwser('136444',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group16><LABEL>D．30～150平方米</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show16','anwser16')" id=show16 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser16 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：建设永久性测量标志需要占用土地的，地面标志占用土地的范围为36～100m2，地下标志占用土地的范围为16～36m2。</DIV></DIV>
+<DIV id=divid17 class=ti_content>
+<UL>
+<LI id=Qid_136445>17．基础测绘是公益性事业，国家对基础测绘实行（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136445',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group17><LABEL>A．统一管理</LABEL>
+<LI><INPUT onclick="clickAnwser('136445',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group17><LABEL>B．分部门管理</LABEL>
+<LI><INPUT onclick="clickAnwser('136445',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group17><LABEL>C．市场调节</LABEL>
+<LI><INPUT onclick="clickAnwser('136445',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group17><LABEL>D．分级管理</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show17','anwser17')" id=show17 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser17 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：根据《中华人民共和国测绘法》第十一条规定，基础测绘是公益性事业，国家对基础测绘实行分级管理。</DIV></DIV>
+<DIV id=divid18 class=ti_content>
+<UL>
+<LI id=Qid_136446>18．测绘项目出资人或者承担国家投资的测绘项目的单位应当自测绘项目验收完成之日起（）个月内，向测绘行政主管部门汇交测绘成果副本或者目录。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136446',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group18><LABEL>A．1</LABEL>
+<LI><INPUT onclick="clickAnwser('136446',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group18><LABEL>B．2</LABEL>
+<LI><INPUT onclick="clickAnwser('136446',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group18><LABEL>C．3</LABEL>
+<LI><INPUT onclick="clickAnwser('136446',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group18><LABEL>D．4</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show18','anwser18')" id=show18 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser18 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：《中华人民共和国测绘成果管理条例》第九条规定，测绘项目出资人或者承担国家投资的测绘项目的单位应当自测绘项目验收完成之日起3个月内，向测绘行政主管部门汇交测绘成果副本或者目录。</DIV></DIV>
+<DIV id=divid19 class=ti_content>
+<UL>
+<LI id=Qid_136447>19．基础测绘成果应当（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136447',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group19><LABEL>A．时时更新</LABEL>
+<LI><INPUT onclick="clickAnwser('136447',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group19><LABEL>B．定期更新</LABEL>
+<LI><INPUT onclick="clickAnwser('136447',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group19><LABEL>C．按需更新</LABEL>
+<LI><INPUT onclick="clickAnwser('136447',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group19><LABEL>D．不用更新</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show19','anwser19')" id=show19 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser19 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：为了在诸多因素制约下获得的基础测绘成果实用价值最大化，我国实行基础测绘成果定期更新制度，即按一定时间间隔更新基础测绘成果。</DIV></DIV>
+<DIV id=divid20 class=ti_content>
+<UL>
+<LI id=Qid_136448>20．机密级测绘成果的分辨率为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136448',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group20><LABEL>A．分辨率高于5′×5′</LABEL>
+<LI><INPUT onclick="clickAnwser('136448',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group20><LABEL>B．分辨率高于30′×30′</LABEL>
+<LI><INPUT onclick="clickAnwser('136448',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group20><LABEL>C．分辨率高于30′×30′～1°×1°</LABEL>
+<LI><INPUT onclick="clickAnwser('136448',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group20><LABEL>D．分辨率高于50′×50′</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show20','anwser20')" id=show20 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser20 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：机密级测绘成果包括：国家等级控制点坐标成果以及其他精度相当的坐标成果；国家等级天文测量、三角测量、导线测量、卫星大地测量的观测成果；国家等级重力点成果及其他精度相当的重力点成果；分辨率高于30′×30′，精度优于±5毫伽的重力异常成果；精度优于±1m的高程异常成果，精度优于±3″的垂线偏差成果；涉及军事禁区的大于或等于1∶1万国家基本比例尺地形图及其数字化成果；1∶2.5万、1∶5万、1∶10万国家基本比例尺地形图及其数字化成果；空间精度及涉及的要素和范围相当于上述机密基础测绘成果的非基础测绘成果。</DIV></DIV>
+<DIV id=divid21 class=ti_content>
+<UL>
+<LI id=Qid_136449>21．下列哪项属于测绘成果基本特征（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136449',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group21><LABEL>A．法定性</LABEL>
+<LI><INPUT onclick="clickAnwser('136449',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group21><LABEL>B．无偿性</LABEL>
+<LI><INPUT onclick="clickAnwser('136449',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group21><LABEL>C．完整性</LABEL>
+<LI><INPUT onclick="clickAnwser('136449',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group21><LABEL>D．科学性</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show21','anwser21')" id=show21 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser21 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：测绘成果基本特征包括：科学性、保密性、系统性和专业性。</DIV></DIV>
+<DIV id=divid22 class=ti_content>
+<UL>
+<LI id=Qid_136450>22．下列不属于永久性测量标志的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136450',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group22><LABEL>A．卫星定位点的标石标志</LABEL>
+<LI><INPUT onclick="clickAnwser('136450',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group22><LABEL>B．国家各等级的三角点、水准点</LABEL>
+<LI><INPUT onclick="clickAnwser('136450',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group22><LABEL>C．卫星定位点的木质觇标</LABEL>
+<LI><INPUT onclick="clickAnwser('136450',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group22><LABEL>D．航空摄影的地面标志</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show22','anwser22')" id=show22 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser22 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：测量标志分为永久性测量标志和临时性测量标志。永久性测量标志包括国家各等级的三角点、基线点、导线点、军用控制点、重力点、天文点、水准点和卫星定位点的木质觇标、钢质觇标和标石标志，以及用于地形测图、工程测量和形变测量等的固定标志和海底大地点设施等。</DIV></DIV>
+<DIV id=divid23 class=ti_content>
+<UL>
+<LI id=Qid_136451>23．《测绘资质证书》有效期最长不超过（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136451',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group23><LABEL>A．3年</LABEL>
+<LI><INPUT onclick="clickAnwser('136451',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group23><LABEL>B．5年</LABEL>
+<LI><INPUT onclick="clickAnwser('136451',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group23><LABEL>C．7年</LABEL>
+<LI><INPUT onclick="clickAnwser('136451',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group23><LABEL>D．8年</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show23','anwser23')" id=show23 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser23 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：《测绘资质证书》有效期最长不超过5年。其有效期满需要延续的，测绘单位应当在有效期满60日前，向测绘资质审批机关申请办理延续手续。</DIV></DIV>
+<DIV id=divid24 class=ti_content>
+<UL>
+<LI id=Qid_136452>24．下面（）不是取得注册测绘师资格应该具备的基本条件。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136452',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group24><LABEL>A．政治条件</LABEL>
+<LI><INPUT onclick="clickAnwser('136452',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group24><LABEL>B．业务条件</LABEL>
+<LI><INPUT onclick="clickAnwser('136452',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group24><LABEL>C．经济条件</LABEL>
+<LI><INPUT onclick="clickAnwser('136452',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group24><LABEL>D．考试合格</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show24','anwser24')" id=show24 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser24 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：取得注册测绘师资格应当具备的基本条件：政治条件、业务条件和考试合格。</DIV></DIV>
+<DIV id=divid25 class=ti_content>
+<UL>
+<LI id=Qid_136453>25．建立地理信息系统，必须采用符合（）的基础地理信息数据。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136453',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group25><LABEL>A．社会标准</LABEL>
+<LI><INPUT onclick="clickAnwser('136453',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group25><LABEL>B．国家标准</LABEL>
+<LI><INPUT onclick="clickAnwser('136453',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group25><LABEL>C．个人标准</LABEL>
+<LI><INPUT onclick="clickAnwser('136453',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group25><LABEL>D．公司标准</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show25','anwser25')" id=show25 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser25 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：《测绘法》第二十一条规定，建立地理信息系统，必须采用符合国家标准的基础地理信息数据。</DIV></DIV>
+<DIV id=divid26 class=ti_content>
+<UL>
+<LI id=Qid_136454>26．测绘计量器具是指用于直接或间接（）的测绘工作用仪器、仪表和器具。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136454',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group26><LABEL>A．检定</LABEL>
+<LI><INPUT onclick="clickAnwser('136454',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group26><LABEL>B．测量</LABEL>
+<LI><INPUT onclick="clickAnwser('136454',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group26><LABEL>C．测试</LABEL>
+<LI><INPUT onclick="clickAnwser('136454',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group26><LABEL>D．传递量值</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show26','anwser26')" id=show26 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser26 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：《测绘计量管理暂行办法》规定，本办法所称的测绘计量标准是指用于检定、测试各类测绘计量器具的标准装置、器具和设施；测绘计量器具是指用于直接或间接传递量值的测绘工作用仪器、仪表和器具。</DIV></DIV>
+<DIV id=divid27 class=ti_content>
+<UL>
+<LI id=Qid_136455>27．测绘人员进行测绘活动时，应当持有（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136455',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group27><LABEL>A．身份证</LABEL>
+<LI><INPUT onclick="clickAnwser('136455',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group27><LABEL>B．工作证</LABEL>
+<LI><INPUT onclick="clickAnwser('136455',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group27><LABEL>C．单位介绍信</LABEL>
+<LI><INPUT onclick="clickAnwser('136455',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group27><LABEL>D．测绘作业证件</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show27','anwser27')" id=show27 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser27 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：《测绘法》第二十六条规定，测绘人员进行测绘活动时，应当持有测绘作业证件。任何单位和个人不得妨碍、阻挠测绘人员依法进行测绘活动。</DIV></DIV>
+<DIV id=divid28 class=ti_content>
+<UL>
+<LI id=Qid_136456>28．测绘项目完成后，测绘项目出资人或者承担国家投资的测绘项目的单位，应当向国务院测绘行政主管部门或者省、自治区、直辖市人民政府测绘行政主管部门（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136456',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group28><LABEL>A．交技术总结</LABEL>
+<LI><INPUT onclick="clickAnwser('136456',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group28><LABEL>B．汇交测绘成果资料</LABEL>
+<LI><INPUT onclick="clickAnwser('136456',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group28><LABEL>C．汇交成果目录</LABEL>
+<LI><INPUT onclick="clickAnwser('136456',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group28><LABEL>D．汇交成果副本</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show28','anwser28')" id=show28 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser28 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：《测绘法》第二十八条规定，国家实行测绘成果汇交制度。测绘项目完成后，测绘项目出资人或者承担国家投资的测绘项目的单位，应当向国务院测绘行政主管部门或者省、自治区、直辖市人民政府测绘行政主管部门汇交测绘成果资料。</DIV></DIV>
+<DIV id=divid29 class=ti_content>
+<UL>
+<LI id=Qid_136457>29．基础测绘成果和国家投资完成的其他测绘成果，用于（）的，应当无偿提供。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136457',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group29><LABEL>A．进行大范围商业开发</LABEL>
+<LI><INPUT onclick="clickAnwser('136457',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group29><LABEL>B．编制出版地图</LABEL>
+<LI><INPUT onclick="clickAnwser('136457',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group29><LABEL>C．建立移动通信营业管理系统</LABEL>
+<LI><INPUT onclick="clickAnwser('136457',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group29><LABEL>D．国家机关决策和社会公益性事业</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show29','anwser29')" id=show29 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser29 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：《测绘法》第三十一条规定，基础测绘成果和国家投资完成的其他测绘成果，用于国家机关决策和社会公益性事业的，应当无偿提供。</DIV></DIV>
+<DIV id=divid30 class=ti_content>
+<UL>
+<LI id=Qid_136458>30．中华人民共和国领域和管辖的其他海域的位置、高程、深度、面积、长度等重要地理信息数据，由（）审核，并与国务院其他有关部门、军队测绘主管部门会商后，报国务院批准，由（）公布。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136458',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group30><LABEL>A．国家测绘局省级测绘行政主管部门</LABEL>
+<LI><INPUT onclick="clickAnwser('136458',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group30><LABEL>B．省级测绘行政主管部门国家测绘局</LABEL>
+<LI><INPUT onclick="clickAnwser('136458',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group30><LABEL>C．国家测绘局国务院</LABEL>
+<LI><INPUT onclick="clickAnwser('136458',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group30><LABEL>D．国务院测绘行政主管部门国务院或国务院授权的部门</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show30','anwser30')" id=show30 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser30 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：《测绘法》第三十二条规定，中华人民共和国领域和管辖的其他海域的位置、高程、深度、面积、长度等重要地理信息数据，由国务院测绘行政主管部门审核，并与国务院其他有关部门、军队测绘主管部门会商后，报国务院批准，由国务院或者国务院授权的部门公布。</DIV></DIV>
+<DIV id=divid31 class=ti_content>
+<UL>
+<LI id=Qid_136459>31．外国的组织或者个人依法与中华人民共和国有关部门或者单位合资、合作，经批准在中华人民共和国领域内从事测绘活动的，测绘成果归（）所有，并由中方部门或者单位向国务院测绘行政主管部门汇交测绘成果（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136459',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group31><LABEL>A．中方部门或者单位副本</LABEL>
+<LI><INPUT onclick="clickAnwser('136459',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group31><LABEL>B．中方部门或者单位目录</LABEL>
+<LI><INPUT onclick="clickAnwser('136459',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group31><LABEL>C．外国的组织或者个人目录</LABEL>
+<LI><INPUT onclick="clickAnwser('136459',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group31><LABEL>D．外国的组织或者个人副本</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show31','anwser31')" id=show31 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser31 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：《中华人民共和国测绘成果管理条例》第八条规定，外国的组织或者个人依法与中华人民共和国有关部门或者单位合资、合作，经批准在中华人民共和国领域内从事测绘活动的，测绘成果归中方部门或者单位所有，并由中方部门或者单位向国务院测绘行政主管部门汇交测绘成果副本。外国的组织或者个人依法在中华人民共和国管辖的其他海域从事测绘活动的，由其按照国务院测绘行政主管部门的规定汇交测绘成果副本或者目录。</DIV></DIV>
+<DIV id=divid32 class=ti_content>
+<UL>
+<LI id=Qid_136460>32．测绘成果保管单位应当建立健全测绘成果资料的保管制度，配备必要的设施，确保测绘成果资料的安全，并对基础测绘成果资料实行（）制度。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136460',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group32><LABEL>A．备份存放</LABEL>
+<LI><INPUT onclick="clickAnwser('136460',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group32><LABEL>B．异地备份存放</LABEL>
+<LI><INPUT onclick="clickAnwser('136460',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group32><LABEL>C．严格管理</LABEL>
+<LI><INPUT onclick="clickAnwser('136460',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group32><LABEL>D．专人保管</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show32','anwser32')" id=show32 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser32 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：《测绘成果管理条例》规定，测绘成果保管单位应当建立健全测绘成果资料的保管制度，配备必要的设施，确保测绘成果资料的安全，并对基础测绘成果资料实行异地备份存放制度。</DIV></DIV>
+<DIV id=divid33 class=ti_content>
+<UL>
+<LI id=Qid_136461>33．利用涉及国家秘密的测绘成果开发生产的产品，未经国务院测绘行政主管部门或者省、自治区、直辖市人民政府测绘行政主管部门进行保密技术处理的，其（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136461',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group33><LABEL>A．秘密等级不得低于所用测绘成果的秘密等级</LABEL>
+<LI><INPUT onclick="clickAnwser('136461',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group33><LABEL>B．秘密等级不变</LABEL>
+<LI><INPUT onclick="clickAnwser('136461',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group33><LABEL>C．秘密等级必须高于所用测绘成果的秘密等级</LABEL>
+<LI><INPUT onclick="clickAnwser('136461',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group33><LABEL>D．产品可以对外提供</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show33','anwser33')" id=show33 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser33 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：《中华人民共和国测绘成果管理条例》第十六条规定，国家保密工作部门、国务院测绘行政主管部门应当商军队测绘主管部门，依照有关保密法律、行政法规的规定，确定测绘成果的秘密范围和秘密等级。利用涉及国家秘密的测绘成果开发生产的产品，未经国务院测绘行政主管部门或者省、自治区、直辖市人民政府测绘行政主管部门进行保密技术处理的，其秘密等级不得低于所用测绘成果的秘密等级。</DIV></DIV>
+<DIV id=divid34 class=ti_content>
+<UL>
+<LI id=Qid_136462>34．从事测绘活动的单位申请测绘资质，必须具备相应的条件。下列不是测绘单位必须具备的是（）</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136462',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group34><LABEL>A．有与其从事的测绘活动相适应的专业技术人员</LABEL>
+<LI><INPUT onclick="clickAnwser('136462',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group34><LABEL>B．有与其从事的测绘活动相适应的技术装备和设施</LABEL>
+<LI><INPUT onclick="clickAnwser('136462',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group34><LABEL>C．有健全技术、质量保证体系和测绘成果及资料档案管理制度</LABEL>
+<LI><INPUT onclick="clickAnwser('136462',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group34><LABEL>D．系统的人才培养制度</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show34','anwser34')" id=show34 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser34 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：从事测绘活动的单位应当具备下列条件，并依法取得相应等级的测绘资质证书后，方可从事测绘活动：（1）有与其从事的测绘活动相适应的专业技术人员；（2）有与其从事的测绘活动相适应的技术装备和设施；（3）有健全的技术、质量保证体系和测绘成果及资料档案管理制度；（4）具备国务院测绘行政主管部门规定的其他条件。</DIV></DIV>
+<DIV id=divid35 class=ti_content>
+<UL>
+<LI id=Qid_136463>35．在地图上绘制中华人民共和国国界，下列做法不正确的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136463',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group35><LABEL>A．按照中华人民共和国同有关邻国签订的边界条约、协定、议定及其附图绘制</LABEL>
+<LI><INPUT onclick="clickAnwser('136463',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group35><LABEL>B．中华人民共和国尚未同有关邻国签订边界条约的界段，按照中华人民共和国地图的国界线标准样图绘制</LABEL>
+<LI><INPUT onclick="clickAnwser('136463',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group35><LABEL>C．按照某些网站上的中国国家地图绘制</LABEL>
+<LI><INPUT onclick="clickAnwser('136463',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group35><LABEL>D．按照各级测绘行政主管部门提供的国家标准样图绘制</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show35','anwser35')" id=show35 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser35 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：《中华人民共和国地图管理条例》第九条规定，在地图上绘制中华人民共和国国界、中国历史疆界、世界各国国界，应当遵守下列规定：（1）中华人民共和国国界，按照中华人民共和国地图的国界线标准样图绘制。（2）中国历史疆界，1840年至中华人民共和国成立期间的，按照中国历史疆界标准样图绘制；1840年以前的，依据有关历史资料，按照实际历史疆界绘制。（3）世界各国国界，按照世界各国间边界标准样图绘制；世界各国间的历史疆界，依据有关历史资料，按照实际历史疆界绘制。中华人民共和国地图的国界线标准样图、中国历史疆界标准样图、世界各国间边界标准样图，由外交部和国务院测绘行政主管部门拟订，报国务院批准后公布。</DIV></DIV>
+<DIV id=divid36 class=ti_content>
+<UL>
+<LI id=Qid_136464>36．向单位或者个人发放的土地权属证书、房屋所有权证书、海域使用权证书，应当附有（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136464',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group36><LABEL>A．具备相应资质的单位测绘的权属界址图和平面图</LABEL>
+<LI><INPUT onclick="clickAnwser('136464',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group36><LABEL>B．测绘单位测绘的权属界址图和平面图</LABEL>
+<LI><INPUT onclick="clickAnwser('136464',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group36><LABEL>C．相应主管部门认可的权属界址图和平面图</LABEL>
+<LI><INPUT onclick="clickAnwser('136464',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group36><LABEL>D．乙级以上测绘单位测绘的权属界址图和平面图</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show36','anwser36')" id=show36 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser36 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：向单位或者个人发放的土地权属证书、房屋所有权证书、海域使用权证书，应当附有具备相应资质的单位测绘的权属界址图和平面图。</DIV></DIV>
+<DIV id=divid37 class=ti_content>
+<UL>
+<LI id=Qid_136465>37．测绘成果分为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136465',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group37><LABEL>A．基础测绘成果和非基础测绘成果</LABEL>
+<LI><INPUT onclick="clickAnwser('136465',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group37><LABEL>B．重要测绘成果和普通测绘成果</LABEL>
+<LI><INPUT onclick="clickAnwser('136465',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group37><LABEL>C．高级测绘成果和低级测绘成果</LABEL>
+<LI><INPUT onclick="clickAnwser('136465',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group37><LABEL>D．秘密测绘成果和公开测绘成果</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show37','anwser37')" id=show37 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser37 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：《中华人民共和国测绘成果管理条例》第二条规定，本条例所称测绘成果，是指通过测绘形成的数据、信息、图件以及相关的技术资料。测绘成果分为基础测绘成果和非基础测绘成果。</DIV></DIV>
+<DIV id=divid38 class=ti_content>
+<UL>
+<LI id=Qid_136466>38．测绘计量检定人员应当在有效期届满（）前按照相关规定，向原颁证机关提出《计量检定员证》的复审申请。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136466',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group38><LABEL>A．30日</LABEL>
+<LI><INPUT onclick="clickAnwser('136466',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group38><LABEL>B．60日</LABEL>
+<LI><INPUT onclick="clickAnwser('136466',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group38><LABEL>C．90日</LABEL>
+<LI><INPUT onclick="clickAnwser('136466',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group38><LABEL>D．120日</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show38','anwser38')" id=show38 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser38 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：《计量检定员证》有效期为5年。在有效期届满90日前，测绘计量检定人员应当按照相关规定，向原颁证机关提出复审申请；逾期未经复审的，其《计量检定员证》自动失效。</DIV></DIV>
+<DIV id=divid39 class=ti_content>
+<UL>
+<LI id=Qid_136467>39．经批准拆迁基础性测量标志或者使基础性测量标志失去使用效能的，工程建设单位应当按照国家有关规定（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136467',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group39><LABEL>A．支付迁建费用</LABEL>
+<LI><INPUT onclick="clickAnwser('136467',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group39><LABEL>B．重新建设一座</LABEL>
+<LI><INPUT onclick="clickAnwser('136467',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group39><LABEL>C．缴纳罚款</LABEL>
+<LI><INPUT onclick="clickAnwser('136467',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group39><LABEL>D．赔偿损失</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show39','anwser39')" id=show39 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser39 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：《中华人民共和国测量标志保护条例》第二十条规定，经批准拆迁基础性测量标志或者使基础性测量标志失去使用效能的，工程建设单位应当按照国家有关规定向省、自治区、直辖市人民政府管理测绘工作的部门支付迁建费用。</DIV></DIV>
+<DIV id=divid40 class=ti_content>
+<UL>
+<LI id=Qid_136468>40．测绘单位必须接受测绘主管部门和技术监督行政部门的质量监督管理，拒绝接受监督检查的，其产品质量按（）处理。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136468',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group40><LABEL>A．不合格</LABEL>
+<LI><INPUT onclick="clickAnwser('136468',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group40><LABEL>B．批不合格</LABEL>
+<LI><INPUT onclick="clickAnwser('136468',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group40><LABEL>C．样本不合格</LABEL>
+<LI><INPUT onclick="clickAnwser('136468',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group40><LABEL>D．质量差</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show40','anwser40')" id=show40 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser40 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：《测绘质量监督管理办法》第十一条规定，测绘单位必须接受测绘主管部门和技术监督行政部门的质量监督管理，按照监督检查的需要，向测绘产品质量监督检验机构无偿提供检验样品。拒绝接受监督检查的，其产品质量按“批不合格”处理。经监督检查，对产品质量被判“批不合格”持有异议的，测绘单位可以向技术监督行政部门或者测绘主管部门申请复检。</DIV></DIV>
+<DIV id=divid41 class=ti_content>
+<UL>
+<LI id=Qid_136469>41．在中华人民共和国（）从事测绘活动，应当遵守《中华人民共和国测绘法》。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136469',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group41><LABEL>A．领域和管辖的其他海域</LABEL>
+<LI><INPUT onclick="clickAnwser('136469',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group41><LABEL>B．境内</LABEL>
+<LI><INPUT onclick="clickAnwser('136469',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group41><LABEL>C．领土、领空、领海</LABEL>
+<LI><INPUT onclick="clickAnwser('136469',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group41><LABEL>D．陆地</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show41','anwser41')" id=show41 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser41 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：《测绘法》第二条规定，在中华人民共和国领域和管辖的其他海域从事测绘活动，应当遵守本法。</DIV></DIV>
+<DIV id=divid42 class=ti_content>
+<UL>
+<LI id=Qid_136470>42．县级以上地方人民政府负责管理测绘工作的行政部门负责本行政区域测绘工作的（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136470',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group42><LABEL>A．统一管理</LABEL>
+<LI><INPUT onclick="clickAnwser('136470',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group42><LABEL>B．质量控制</LABEL>
+<LI><INPUT onclick="clickAnwser('136470',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group42><LABEL>C．统一监督管理</LABEL>
+<LI><INPUT onclick="clickAnwser('136470',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group42><LABEL>D．综合协调</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show42','anwser42')" id=show42 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser42 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：《测绘法》第四条规定，县级以上地方人民政府负责管理测绘工作的行政部门负责本行政区域测绘工作的统一监督管理。县级以上地方人民政府其他有关部门按照本级人民政府规定的职责分工，负责本部门有关的测绘工作。</DIV></DIV>
+<DIV id=divid43 class=ti_content>
+<UL>
+<LI id=Qid_136471>43．投标邀请书按规定至少要向（）个潜在投标人发出。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136471',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group43><LABEL>A．2</LABEL>
+<LI><INPUT onclick="clickAnwser('136471',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group43><LABEL>B．3</LABEL>
+<LI><INPUT onclick="clickAnwser('136471',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group43><LABEL>C．4</LABEL>
+<LI><INPUT onclick="clickAnwser('136471',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group43><LABEL>D．5</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show43','anwser43')" id=show43 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser43 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：邀请招标的投标邀请书的基本内容与招标公告是一致的，特别规定了向至少3个潜在投标人发出投标邀请书，目的是保持邀请招标有一定的竞争性，防止以邀请招标为名，搞假招标，形式招标，而不起招标的作用。</DIV></DIV>
+<DIV id=divid44 class=ti_content>
+<UL>
+<LI id=Qid_136472>44．在不妨碍国家安全的情况下，确有必要采用国家坐标系统的，必须经（）会同军队测绘主管部门批准。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136472',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group44><LABEL>A．县级以上测绘行政主管部门</LABEL>
+<LI><INPUT onclick="clickAnwser('136472',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group44><LABEL>B．省级以上测绘行政主管部门</LABEL>
+<LI><INPUT onclick="clickAnwser('136472',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group44><LABEL>C．国务院测绘行政主管部门</LABEL>
+<LI><INPUT onclick="clickAnwser('136472',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group44><LABEL>D．住房和城乡建设部</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show44','anwser44')" id=show44 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser44 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：《测绘法》第九条规定，国家建立全国统一的大地坐标系统、平面坐标系统、高程系统、地心坐标系统和重力测量系统，确定国家大地测量等级和精度以及国家基本比例尺地图的系列和基本精度。具体规范和要求由国务院测绘行政主管部门会同国务院其他有关部门、军队测绘主管部门制定。在不妨碍国家安全的情况下，确有必要采用国际坐标系统的，必须经国务院测绘行政主管部门会同军队测绘主管部门批准。</DIV></DIV>
+<DIV id=divid45 class=ti_content>
+<UL>
+<LI id=Qid_136473>45．对于测绘项目发包单位来说，必须检验承包单位的（），不得把测绘项目发包给没有测绘资质或者测绘资质等级不符合要求的测绘单位。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136473',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group45><LABEL>A．测绘资质</LABEL>
+<LI><INPUT onclick="clickAnwser('136473',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group45><LABEL>B．工作业绩</LABEL>
+<LI><INPUT onclick="clickAnwser('136473',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group45><LABEL>C．营业执照</LABEL>
+<LI><INPUT onclick="clickAnwser('136473',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group45><LABEL>D．经济实力</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show45','anwser45')" id=show45 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser45 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：《测绘法》第二十四条规定，测绘单位不得超越资质等级许可的范围从事测绘活动或者以其他测绘单位的名义从事测绘活动，并不得允许其他单位以本单位的名义从事测绘活动。测绘项目实行承发包的，测绘项目的发包单位不得向不具有相应测绘资质等级的单位发包或者迫使测绘单位以低于测绘成本承包。测绘单位不得将承包的测绘项目转包。</DIV></DIV>
+<DIV id=divid46 class=ti_content>
+<UL>
+<LI id=Qid_136474>46．缔约过失责任指当事人在订立合同过程中，因违背（）而给对方造成损失的赔偿责任。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136474',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group46><LABEL>A．遵守法律和不得损害社会公共利益的原则</LABEL>
+<LI><INPUT onclick="clickAnwser('136474',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group46><LABEL>B．自愿的原则</LABEL>
+<LI><INPUT onclick="clickAnwser('136474',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group46><LABEL>C．公平的原则</LABEL>
+<LI><INPUT onclick="clickAnwser('136474',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group46><LABEL>D．诚实信用原则</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show46','anwser46')" id=show46 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser46 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：缔约过失责任指因当事人在订立合同过程中，因违背诚实信用原则而给对方造成损失的赔偿责任。</DIV></DIV>
+<DIV id=divid47 class=ti_content>
+<UL>
+<LI id=Qid_136475>47．下面内容中表示测绘范围的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136475',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group47><LABEL>A．测绘数量</LABEL>
+<LI><INPUT onclick="clickAnwser('136475',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group47><LABEL>B．测区边界</LABEL>
+<LI><INPUT onclick="clickAnwser('136475',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group47><LABEL>C．测绘目的</LABEL>
+<LI><INPUT onclick="clickAnwser('136475',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group47><LABEL>D．测区条件</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show47','anwser47')" id=show47 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser47 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：测绘项目有别于其他工程项目，它是针对特定的地理位置和空间范围展开的工作，所以在测绘合同中，首先必须明确该测绘项目所涉及的工作地点、具体的地理位置、测区边界和所覆盖的测区面积等内容。这同时也是合同标的的重要内容之一，测绘范围、测绘内容和测绘技术依据及质量标准构成了对测绘合同标的的完整描述。</DIV></DIV>
+<DIV id=divid48 class=ti_content>
+<UL>
+<LI id=Qid_136476>48．法人或者其他组织需要利用属于国家秘密的基础测绘成果的，应当提出明确的利用目的和范围，报（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136476',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group48><LABEL>A．测绘行政主管部门审批</LABEL>
+<LI><INPUT onclick="clickAnwser('136476',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group48><LABEL>B．测绘成果所在地的测绘行政主管部门审批</LABEL>
+<LI><INPUT onclick="clickAnwser('136476',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group48><LABEL>C．省级以上人民政府测绘行政主管部门审核</LABEL>
+<LI><INPUT onclick="clickAnwser('136476',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group48><LABEL>D．县级以上人民政府测绘行政主管部门审批</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show48','anwser48')" id=show48 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser48 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：《中华人民共和国测绘成果管理条例》第十七条规定，法人或者其他组织需要利用属于国家秘密的基础测绘成果的，应当提出明确的利用目的和范围，报测绘成果所在地的测绘行政主管部门审批。</DIV></DIV>
+<DIV id=divid49 class=ti_content>
+<UL>
+<LI id=Qid_136477>49．合同中，甲方应尽的义务中，下列说法正确的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136477',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group49><LABEL>A．对乙方提交的技术设计书进行审定</LABEL>
+<LI><INPUT onclick="clickAnwser('136477',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group49><LABEL>B．对乙方的项目参与人员进行审定</LABEL>
+<LI><INPUT onclick="clickAnwser('136477',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group49><LABEL>C．对乙方进行项目监理</LABEL>
+<LI><INPUT onclick="clickAnwser('136477',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group49><LABEL>D．对项目实施进行进度安排</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show49','anwser49')" id=show49 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser49 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：在测绘合同管理中，甲方应尽的义务主要包括：（1）向乙方提交该测绘项目相关的资料；（2）完成对乙方提交的技术设计书的审定工作；（3）保证乙方的测绘队伍顺利进入现场工作，并对乙方进场人员的工作、生活提供必要的条件，保证工程款按时到位；（4）允许乙方内部使用执行本合同所生产的测绘成果等。</DIV></DIV>
+<DIV id=divid50 class=ti_content>
+<UL>
+<LI id=Qid_136478>50．直接用于完成特定项目所需的直接费用称为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136478',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group50><LABEL>A．项目成本</LABEL>
+<LI><INPUT onclick="clickAnwser('136478',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group50><LABEL>B．管理成本</LABEL>
+<LI><INPUT onclick="clickAnwser('136478',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group50><LABEL>C．生产成本</LABEL>
+<LI><INPUT onclick="clickAnwser('136478',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group50><LABEL>D．运营成本</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show50','anwser50')" id=show50 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser50 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：生产成本即直接用于完成特定项目所需的直接费用，主要包括直接人工费、直接材料费、交通差旅费、折旧费等，实行项目承包（或费用包干）的情形只需计算直接承包费和折旧费等。</DIV></DIV>
+<DIV id=divid51 class=ti_content>
+<UL>
+<LI id=Qid_136479>51．下列内容中，表示测绘内容的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136479',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group51><LABEL>A．质量标准</LABEL>
+<LI><INPUT onclick="clickAnwser('136479',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group51><LABEL>B．测绘数量</LABEL>
+<LI><INPUT onclick="clickAnwser('136479',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group51><LABEL>C．测绘成果种类</LABEL>
+<LI><INPUT onclick="clickAnwser('136479',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group51><LABEL>D．技术依据</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show51','anwser51')" id=show51 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser51 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：合同中的测绘内容是直接规约受托方所必须完成的实际测绘任务，它必须用准确简洁的语言加以描述，明确地逐一列出所需完成的任务及需要提交的测绘成果种类、等级、数量及质量。</DIV></DIV>
+<DIV id=divid52 class=ti_content>
+<UL>
+<LI id=Qid_136480>52．测绘单位变更单位名称、地址、法定代表人的，应当持有关批准文件办理（）手续。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136480',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group52><LABEL>A．变更</LABEL>
+<LI><INPUT onclick="clickAnwser('136480',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group52><LABEL>B．备案</LABEL>
+<LI><INPUT onclick="clickAnwser('136480',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group52><LABEL>C．注销</LABEL>
+<LI><INPUT onclick="clickAnwser('136480',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group52><LABEL>D．登记</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show52','anwser52')" id=show52 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser52 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：测绘单位变更单位名称、地址、法定代表人或者终止测绘业务的，应当持有关批准文件办理变更或者注销手续。</DIV></DIV>
+<DIV id=divid53 class=ti_content>
+<UL>
+<LI id=Qid_136481>53．测绘项目发包的方式包括（）两种方式。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136481',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group53><LABEL>A．招标发包和委托发包</LABEL>
+<LI><INPUT onclick="clickAnwser('136481',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group53><LABEL>B．招标发包和直接发包</LABEL>
+<LI><INPUT onclick="clickAnwser('136481',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group53><LABEL>C．直接发包和委托发包</LABEL>
+<LI><INPUT onclick="clickAnwser('136481',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group53><LABEL>D．直接发包和转包</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show53','anwser53')" id=show53 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser53 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：一般来说，发包的方式包括招标发包和直接发包两种方式。测绘项目的发包方式也是按照这两种方式进行。由于基础测绘成果往往属于保密范畴，基础测绘项目尚不宜采用招标的方式确定承担单位，目前仍以直接发包为主。</DIV></DIV>
+<DIV id=divid54 class=ti_content>
+<UL>
+<LI id=Qid_136482>54．下列内容属于空中三角测量技术设计方案内容的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136482',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group54><LABEL>A．采用的数据系统</LABEL>
+<LI><INPUT onclick="clickAnwser('136482',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group54><LABEL>B．采用的空三系统</LABEL>
+<LI><INPUT onclick="clickAnwser('136482',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group54><LABEL>C．采用的测绘系统</LABEL>
+<LI><INPUT onclick="clickAnwser('136482',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group54><LABEL>D．采用的格网系统</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show54','anwser54')" id=show54 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser54 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：空中三角测量确定加密方案及其要求，内容包括采用的空三系统、平差方法、检测点的选点规则和数量及其精度指标、技术要求和上交成果要求等。</DIV></DIV>
+<DIV id=divid55 class=ti_content>
+<UL>
+<LI id=Qid_136483>55．测绘技术设计输出的表现形式为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136483',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group55><LABEL>A．设计策划书</LABEL>
+<LI><INPUT onclick="clickAnwser('136483',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group55><LABEL>B．设计评审文件</LABEL>
+<LI><INPUT onclick="clickAnwser('136483',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group55><LABEL>C．技术设计文件</LABEL>
+<LI><INPUT onclick="clickAnwser('136483',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group55><LABEL>D．设计验证文件</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show55','anwser55')" id=show55 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser55 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：设计输出是指设计过程的结果，测绘技术设计输出的表现形式为测绘技术设计文件。</DIV></DIV>
+<DIV id=divid56 class=ti_content>
+<UL>
+<LI id=Qid_136484>56．技术设计文件审批单位是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136484',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group56><LABEL>A．测绘任务的委托单位</LABEL>
+<LI><INPUT onclick="clickAnwser('136484',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group56><LABEL>B．测绘任务承担单位的上级主管部门</LABEL>
+<LI><INPUT onclick="clickAnwser('136484',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group56><LABEL>C．设计评审单位</LABEL>
+<LI><INPUT onclick="clickAnwser('136484',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group56><LABEL>D．测绘任务承担单位</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show56','anwser56')" id=show56 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser56 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：设计审批方法：（1）技术设计文件报批之前，承担测绘任务的法人单位必须对其进行全面审核，并在技术设计文件和（或）产品样品上签署意见并签名（或章）；（2）技术设计文件经审核签字后，一式二至四份报测绘任务的委托单位审批。</DIV></DIV>
+<DIV id=divid57 class=ti_content>
+<UL>
+<LI id=Qid_136485>57．境界测绘作业方法和技术要求的内容中，有（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136485',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group57><LABEL>A．对界址点实测和界桩埋设的方法和要求</LABEL>
+<LI><INPUT onclick="clickAnwser('136485',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group57><LABEL>B．对仪器校准或检定的要求</LABEL>
+<LI><INPUT onclick="clickAnwser('136485',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group57><LABEL>C．对图形量算方法的要求</LABEL>
+<LI><INPUT onclick="clickAnwser('136485',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group57><LABEL>D．对成果资料内容的要求</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show57','anwser57')" id=show57 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser57 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：境界测绘作业方法和技术要求：（1）控制测量，规定平面控制的布设方案，觇标和埋石的规格、观测方法、新旧点联测方案及控制网的精度估算；（2）外业调绘，确定调绘的内容、方法和技术要求等；（3）规定界址点实测和界桩埋设的方法和要求；（4）其他技术要求。</DIV></DIV>
+<DIV id=divid58 class=ti_content>
+<UL>
+<LI id=Qid_136486>58．质量控制的核心思想是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136486',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group58><LABEL>A．使工序质量受控</LABEL>
+<LI><INPUT onclick="clickAnwser('136486',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group58><LABEL>B．以预防为主</LABEL>
+<LI><INPUT onclick="clickAnwser('136486',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group58><LABEL>C．及时纠正质量问题</LABEL>
+<LI><INPUT onclick="clickAnwser('136486',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group58><LABEL>D．及时发现质量问题</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show58','anwser58')" id=show58 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser58 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：质量控制的目的是保证质量，满足要求，即为了使各项质量活动及结果达到质量要求。质量控制的核心思想是以预防为主。</DIV></DIV>
+<DIV id=divid59 class=ti_content>
+<UL>
+<LI id=Qid_136487>59．受控状态下工序对加工质量的保证能力称为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136487',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group59><LABEL>A．工艺能力</LABEL>
+<LI><INPUT onclick="clickAnwser('136487',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group59><LABEL>B．技术能力</LABEL>
+<LI><INPUT onclick="clickAnwser('136487',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group59><LABEL>C．工序能力</LABEL>
+<LI><INPUT onclick="clickAnwser('136487',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group59><LABEL>D．管理能力</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show59','anwser59')" id=show59 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser59 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：工序能力是受控状态下工序对加工质量的保证能力，具有再现性或一致性的固有特性。</DIV></DIV>
+<DIV id=divid60 class=ti_content>
+<UL>
+<LI id=Qid_136488>60．组织在质量上的追求、宗旨和方向称为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136488',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group60><LABEL>A．质量计划</LABEL>
+<LI><INPUT onclick="clickAnwser('136488',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group60><LABEL>B．质量管理</LABEL>
+<LI><INPUT onclick="clickAnwser('136488',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group60><LABEL>C．质量方针</LABEL>
+<LI><INPUT onclick="clickAnwser('136488',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group60><LABEL>D．质量目的</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show60','anwser60')" id=show60 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser60 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：质量方针是组织在质量上的追求、宗旨和方向。质量方针体现了组织的质量管理水准，通过组织的产品实现与质量管理体系的各个过程和结果，反映质量方针的实现程度。</DIV></DIV>
+<DIV id=divid61 class=ti_content>
+<UL>
+<LI id=Qid_136489>61．生产系统涉及的质量控制职能活动称为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136489',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group61><LABEL>A．广义的质量控制</LABEL>
+<LI><INPUT onclick="clickAnwser('136489',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group61><LABEL>B．狭义的质量控制</LABEL>
+<LI><INPUT onclick="clickAnwser('136489',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group61><LABEL>C．生产的质量控制</LABEL>
+<LI><INPUT onclick="clickAnwser('136489',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group61><LABEL>D．管理的质量控制</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show61','anwser61')" id=show61 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser61 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：狭义的质量控制，通常是指生产系统涉及的质量控制职能活动，大体包括设计与规范的编制和产品开发、采购、工艺策划和开发、生产制造、检验、试验和检查，共6个环节的控制职能活动。</DIV></DIV>
+<DIV id=divid62 class=ti_content>
+<UL>
+<LI id=Qid_136490>62．质量管理体系认证基本原则是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136490',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group62><LABEL>A．合作性、和谐性和科学性</LABEL>
+<LI><INPUT onclick="clickAnwser('136490',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group62><LABEL>B．广泛性、群众性和科学性</LABEL>
+<LI><INPUT onclick="clickAnwser('136490',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group62><LABEL>C．独立性、公正性和科学性</LABEL>
+<LI><INPUT onclick="clickAnwser('136490',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group62><LABEL>D．独立性、和谐性和科学性</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show62','anwser62')" id=show62 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser62 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：质量管理体系认证的基本原则是独立性、公正性和科学性，获得认证的测绘单位有义务履行认证机构颁发的有关认证制度和有权力使用认证证书和认证标志。</DIV></DIV>
+<DIV id=divid63 class=ti_content>
+<UL>
+<LI id=Qid_136491>63．面积大于100m2的作业场所的安全出口不少于（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136491',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group63><LABEL>A．2个</LABEL>
+<LI><INPUT onclick="clickAnwser('136491',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group63><LABEL>B．3个</LABEL>
+<LI><INPUT onclick="clickAnwser('136491',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group63><LABEL>C．4个</LABEL>
+<LI><INPUT onclick="clickAnwser('136491',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group63><LABEL>D．5个</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show63','anwser63')" id=show63 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser63 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：面积大于100m2的作业场所的安全出口不少于两个。安全出口、通道、楼梯等应保持畅通并设有明显标志和应急照明设施。</DIV></DIV>
+<DIV id=divid64 class=ti_content>
+<UL>
+<LI id=Qid_136492>64．测绘仪器防霉措施中规定，内业仪器一般情况下应对仪器未封闭部分进行一次全面的擦拭时间是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136492',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group64><LABEL>A．3个月</LABEL>
+<LI><INPUT onclick="clickAnwser('136492',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group64><LABEL>B．6个月</LABEL>
+<LI><INPUT onclick="clickAnwser('136492',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group64><LABEL>C．9个月</LABEL>
+<LI><INPUT onclick="clickAnwser('136492',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group64><LABEL>D．12个月</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show64','anwser64')" id=show64 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser64 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：测绘仪器防霉措施规定，外业仪器一般情况下6个月（湿热季节或湿热地区1～3个月）应对仪器的光学零件外露表面进行一次全面的擦拭，内业仪器一般1年（湿热季节或湿热地区6个月）须对仪器未密封的部分进行一次全面的擦拭。</DIV></DIV>
+<DIV id=divid65 class=ti_content>
+<UL>
+<LI id=Qid_136493>65．应由（）负责撰写专业技术总结。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136493',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group65><LABEL>A．具体承担测绘任务的单位</LABEL>
+<LI><INPUT onclick="clickAnwser('136493',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group65><LABEL>B．项目的委托单位</LABEL>
+<LI><INPUT onclick="clickAnwser('136493',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group65><LABEL>C．项目的监理单位</LABEL>
+<LI><INPUT onclick="clickAnwser('136493',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group65><LABEL>D．质量检查单位</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show65','anwser65')" id=show65 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser65 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：测绘技术总结分为项目总结与专业技术总结。项目总结由承担项目的法人单位负责编写或组织编写；专业技术总结由具体承担相应测绘专业任务的法人单位负责编写。</DIV></DIV>
+<DIV id=divid66 class=ti_content>
+<UL>
+<LI id=Qid_136494>66．技术总结经（）后，随测绘成果（或产品）、测绘技术设计文件和成果检查报告一并上交和归档。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136494',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group66><LABEL>A．编写完成</LABEL>
+<LI><INPUT onclick="clickAnwser('136494',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group66><LABEL>B．领导审阅</LABEL>
+<LI><INPUT onclick="clickAnwser('136494',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group66><LABEL>C．审核签字</LABEL>
+<LI><INPUT onclick="clickAnwser('136494',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group66><LABEL>D．委托方同意</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show66','anwser66')" id=show66 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser66 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：技术总结编写完成后，单位总工程师或技术负责人应对技术总结编写的客观性、完整性等进行审查并签字，并对技术总结编写的质量负责。技术总结经审核、签字后，随测绘成果（或产品）、测绘技术设计文件和成果（或产品）检查报告一并上交和归档。</DIV></DIV>
+<DIV id=divid67 class=ti_content>
+<UL>
+<LI id=Qid_136495>67．下列说法正确的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136495',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group67><LABEL>A．仪器入出库根据测绘需要安排</LABEL>
+<LI><INPUT onclick="clickAnwser('136495',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group67><LABEL>B．仪器入出库须经单位领导批准</LABEL>
+<LI><INPUT onclick="clickAnwser('136495',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group67><LABEL>C．仪器入出库由保管人员登记即可</LABEL>
+<LI><INPUT onclick="clickAnwser('136495',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group67><LABEL>D．仪器入出库必须有严格的检查和登记制度</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show67','anwser67')" id=show67 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser67 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：仪器设备的管理制度包括：（1）根据单位仪器设备情况，专设仪器管理员（或组），负责仪器设备的保管、维护、检校和一般鉴定、修理。（2）仪器设备必须建立技术档案，其内容包括仪器规格、性能、附件、精度鉴定、损伤记录、修理记录及移交验收记录等。（3）仪器设备的借用、转借、调拨、大修、报废等应有一定的审批手续。（4）外业队使用的仪器设备，必须由专人管理、使用。作业队的负责人，应经常了解仪器设备维护、保养、使用等情况，及时解决有关问题。（5）仪器入出库必须有严格的检查和登记制度。</DIV></DIV>
+<DIV id=divid68 class=ti_content>
+<UL>
+<LI id=Qid_136496>68．国家基础地理信息使用许可协议是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136496',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group68><LABEL>A．有偿的、专用的</LABEL>
+<LI><INPUT onclick="clickAnwser('136496',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group68><LABEL>B．共享的、可转让的</LABEL>
+<LI><INPUT onclick="clickAnwser('136496',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group68><LABEL>C．独有的、唯一的</LABEL>
+<LI><INPUT onclick="clickAnwser('136496',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group68><LABEL>D．非独占的、不可转让的</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show68','anwser68')" id=show68 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser68 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：使用国家基础地理信息数据的部门、单位和个人，必须得到使用许可，并签订《国家基础地理信息数据使用许可协议》（以下简称“使用许可协议”）。使用许可协议是非独占和不可转让的。</DIV></DIV>
+<DIV id=divid69 class=ti_content>
+<UL>
+<LI id=Qid_136497>69．（）适用于中央、国家机关、省级政府等用于宏观决策和社会公益事业。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136497',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group69><LABEL>A．甲类使用许可协议</LABEL>
+<LI><INPUT onclick="clickAnwser('136497',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group69><LABEL>B．乙类使用许可协议</LABEL>
+<LI><INPUT onclick="clickAnwser('136497',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group69><LABEL>C．丙类使用许可协议</LABEL>
+<LI><INPUT onclick="clickAnwser('136497',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group69><LABEL>D．公益类许可协议</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show69','anwser69')" id=show69 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser69 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：使用许可协议分为甲、乙、丙三类。甲类使用许可协议适用于中央、国家机关、省级政府等用于宏观决策和社会公益事业；乙类使用许可协议适用于非企业单位、个人为教学或者科学研究、规划管理等目的在本单位内部或者个人使用，或者将研究成果向中央国家机关、省级政府等部门提供用于宏观决策和社会公益事业；丙类使用许可协议适用于企业单位，或者非企业单位用于商业目的、营利或者直接为建设工程项目服务。其他类型的使用许可协议由国务院测绘行政主管部门制定。</DIV></DIV>
+<DIV id=divid70 class=ti_content>
+<UL>
+<LI id=Qid_136498>70．《测绘法》规定，测量土地、建筑物、构筑物和地面其他附着物的权属界址线，应当按照（）确定的权属界线的界址点、界址线或者提供的有关登记资料和附图进行。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136498',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group70><LABEL>A．村委会</LABEL>
+<LI><INPUT onclick="clickAnwser('136498',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group70><LABEL>B．当事人</LABEL>
+<LI><INPUT onclick="clickAnwser('136498',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group70><LABEL>C．县级以上人民政府</LABEL>
+<LI><INPUT onclick="clickAnwser('136498',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group70><LABEL>D．测绘队伍</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show70','anwser70')" id=show70 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser70 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：《测绘法》第十九条规定，测量土地、建筑物、构筑物和地面其他附着物的权属界址线，应当按照县级以上人民政府确定的权属界线的界址点、界址线或者提供的有关登记资料和附图进行。权属界址线发生变化时，有关当事人应当及时进行变更测绘。</DIV></DIV>
+<DIV id=divid71 class=ti_content>
+<UL>
+<LI id=Qid_136499>71．对已列入《测绘收费标准》的测绘产品，计费不得低于《测绘收费标准》规定的（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136499',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group71><LABEL>A．65%</LABEL>
+<LI><INPUT onclick="clickAnwser('136499',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group71><LABEL>B．75%</LABEL>
+<LI><INPUT onclick="clickAnwser('136499',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group71><LABEL>C．85%</LABEL>
+<LI><INPUT onclick="clickAnwser('136499',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group71><LABEL>D．95%</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show71','anwser71')" id=show71 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser71 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：根据《测绘收费管理试行办法》和《测绘收费标准》的规定，对已列入《测绘收费标准》的测绘产品，计费不得低于《测绘收费标准》规定标准的85%。</DIV></DIV>
+<DIV id=divid72 class=ti_content>
+<UL>
+<LI id=Qid_136500>72．（）不属于永久性测量标志。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136500',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group72><LABEL>A．国家等级三角点</LABEL>
+<LI><INPUT onclick="clickAnwser('136500',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group72><LABEL>B．测站点的木桩</LABEL>
+<LI><INPUT onclick="clickAnwser('136500',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group72><LABEL>C．国家等级基线点</LABEL>
+<LI><INPUT onclick="clickAnwser('136500',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group72><LABEL>D．海底大地点设施</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show72','anwser72')" id=show72 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser72 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：测量标志分为永久性测量标志和临时性测量标志。永久性测量标志包括国家各等级的三角点、基线点、导线点、军用控制点、重力点、天文点、水准点和卫星定位点的木质觇标、钢质觇标和标石标志，以及用于地形测图、工程测量和形变测量等的固定标志和海底大地点设施等。</DIV></DIV>
+<DIV id=divid73 class=ti_content>
+<UL>
+<LI id=Qid_136501>73．国家法定计量检定机构的计量检定人员，必须经（）考试合格，并取得计量检定证书。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136501',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group73><LABEL>A．国务院测绘行政主管部门</LABEL>
+<LI><INPUT onclick="clickAnwser('136501',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group73><LABEL>B．省级以上人民政府计量行政部门</LABEL>
+<LI><INPUT onclick="clickAnwser('136501',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group73><LABEL>C．省级测绘行政主管部门</LABEL>
+<LI><INPUT onclick="clickAnwser('136501',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group73><LABEL>D．县级以上人民政府计量行政部门</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show73','anwser73')" id=show73 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser73 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：《计量法实施细则》第二十九条规定，国家法定计量检定机构的计量检定人员，必须经县级以上人民政府计量行政部门考核合格，并取得计量检定证件。其他单位的计量检定人员由其主管部门考核发证。无计量检定证件的，不得从事计量检定工作。</DIV></DIV>
+<DIV id=divid74 class=ti_content>
+<UL>
+<LI id=Qid_136502>74．军事测绘的基本比例尺地图为（）地形图，属于国家机密。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136502',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group74><LABEL>A．1∶5万</LABEL>
+<LI><INPUT onclick="clickAnwser('136502',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group74><LABEL>B．1∶5000</LABEL>
+<LI><INPUT onclick="clickAnwser('136502',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group74><LABEL>C．1∶500</LABEL>
+<LI><INPUT onclick="clickAnwser('136502',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group74><LABEL>D．1∶1万</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show74','anwser74')" id=show74 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser74 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：军事测绘是为军队作战、训练、军事工程、战场准备而实施的测绘工作，军事测绘成果承载了大量军事设施、军事工程和军队作战、训练等重要信息，这些信息与国家安全和利益紧密相关，属于军事秘密，军事测绘的基本比例尺地图为1∶5万地形图，属于国家机密。</DIV></DIV>
+<DIV id=divid75 class=ti_content>
+<UL>
+<LI id=Qid_136503>75．一个设定标准、测量结果、评定是否达到预期要求，对质量问题采取措施进行纠正、补救，并防止再发生的过程称为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136503',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group75><LABEL>A．生成控制</LABEL>
+<LI><INPUT onclick="clickAnwser('136503',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group75><LABEL>B．工序控制</LABEL>
+<LI><INPUT onclick="clickAnwser('136503',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group75><LABEL>C．产品控制</LABEL>
+<LI><INPUT onclick="clickAnwser('136503',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group75><LABEL>D．质量控制</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show75','anwser75')" id=show75 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser75 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：质量控制是一个设定标准、测量结果，判定是否达到了预期要求，对质量问题采取措施进行补救并防止再发生的过程，但质量控制不是检验。</DIV></DIV>
+<DIV id=divid76 class=ti_content>
+<UL>
+<LI id=Qid_136504>76．国家基础地理数据是（）智力成果，受国家知识产权法律法规保护。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136504',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group76><LABEL>A．具有科学含量的</LABEL>
+<LI><INPUT onclick="clickAnwser('136504',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group76><LABEL>B．具有知识产权的</LABEL>
+<LI><INPUT onclick="clickAnwser('136504',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group76><LABEL>C．具有法律效力的</LABEL>
+<LI><INPUT onclick="clickAnwser('136504',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group76><LABEL>D．具有技术先进性的</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show76','anwser76')" id=show76 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser76 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：国家基础地理信息数据是具有知识产权的智力成果，受国家知识产权法律法规的保护。获得国家基础地理信息数据的使用部门、单位和个人，未经提供单位许可，不得以任何方式向第三方提供或者转让。任何部门、单位以及个人未经许可而使用国家基础地理信息数据的行为，是侵权行为。</DIV></DIV>
+<DIV id=divid77 class=ti_content>
+<UL>
+<LI id=Qid_136505>77．技术总结编写完成后，单位（）应对技术总结编写的客观性、完整性等进行审查并签字，并对技术总结编写的质量负责。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136505',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group77><LABEL>A．法人</LABEL>
+<LI><INPUT onclick="clickAnwser('136505',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group77><LABEL>B．最高管理者</LABEL>
+<LI><INPUT onclick="clickAnwser('136505',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group77><LABEL>C．生产主管领导</LABEL>
+<LI><INPUT onclick="clickAnwser('136505',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=D name=group77><LABEL>D．总工程师或技术负责人</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show77','anwser77')" id=show77 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser77 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：技术总结编写完成后，单位总工程师或技术负责人应对技术总结编写的客观性、完整性等进行审查并签字，并对技术总结编写的质量负责。技术总结经审核、签字后，随测绘成果（或产品）、测绘技术设计文件和成果（或产品）检查报告一并上交和归档。</DIV></DIV>
+<DIV id=divid78 class=ti_content>
+<UL>
+<LI id=Qid_136506>78．《测绘法》规定，（）应当采取有效措施加强测量标志的保护工作。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136506',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group78><LABEL>A．乡级人民政府</LABEL>
+<LI><INPUT onclick="clickAnwser('136506',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group78><LABEL>B．县级以上人民政府</LABEL>
+<LI><INPUT onclick="clickAnwser('136506',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group78><LABEL>C．省级人民政府</LABEL>
+<LI><INPUT onclick="clickAnwser('136506',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=B name=group78><LABEL>D．国务院测绘行政主管部门</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show78','anwser78')" id=show78 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser78 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：《测绘法》第三十九条规定，县级以上人民政府应当采取有效措施加强测量标志的保护工作。县级以上人民政府测绘行政主管部门应当按照规定检查、维护永久性测量标志。乡级人民政府应当做好本行政区域内的测量标志保护工作。</DIV></DIV>
+<DIV id=divid79 class=ti_content>
+<UL>
+<LI id=Qid_136507>79．《测绘法》规定，我国对从事测绘活动的专业技术人员，实行（）管理制度。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136507',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group79><LABEL>A．执业资格</LABEL>
+<LI><INPUT onclick="clickAnwser('136507',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group79><LABEL>B．职称资格</LABEL>
+<LI><INPUT onclick="clickAnwser('136507',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group79><LABEL>C．行业准入</LABEL>
+<LI><INPUT onclick="clickAnwser('136507',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=A name=group79><LABEL>D．专业资格</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show79','anwser79')" id=show79 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser79 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：《测绘法》第二十五条规定，从事测绘活动的专业技术人员应当具备相应的执业资格条件，具体办法由国务院测绘行政主管部门会同国务院人事行政主管部门规定。</DIV></DIV>
+<DIV id=divid80 class=ti_content>
+<UL>
+<LI id=Qid_136508>80．测绘基准不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('136508',this.value,'A',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group80><LABEL>A．所选用的各种大地测量参数</LABEL>
+<LI><INPUT onclick="clickAnwser('136508',this.value,'B',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group80><LABEL>B．统一的起算面</LABEL>
+<LI><INPUT onclick="clickAnwser('136508',this.value,'C',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group80><LABEL>C．各种测量控制网</LABEL>
+<LI><INPUT onclick="clickAnwser('136508',this.value,'D',this.id,'80','-1','','-1','1994')" id=1 type=radio value=C name=group80><LABEL>D．起算方位及有关的地点、设施和名称等</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show80','anwser80')" id=show80 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser80 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：测绘基准是指一个国家的整个测绘的起算依据和各种测绘系统的基础，测绘基准包括所选用的各种大地测量参数、统一的起算面、起算基准点、起算方位以及有关的地点、设施和名称等。</DIV></DIV>
+<DIV class=ti_title>多选题</DIV>
+<DIV id=divid81 class=ti_content>
+<UL>
+<LI id=Qid_136509>81．我国已经初步建立的测绘法律法规体系组成部分包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid81','136509',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,B,D><LABEL>A．测绘法</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid81','136509',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,B,D><LABEL>B．政府规章</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid81','136509',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,B,D><LABEL>C．领导批示</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid81','136509',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,B,D><LABEL>D．规范性文件</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid81','136509',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,B,D><LABEL>E．测绘企业内部条例</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show81','anwser81')" id=show81 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser81 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,D<BR>解析：目前，我国已经初步建立了由法律、行政法规、地方性法规、部门规章、政府规章、重要规范性文件等共同组成的测绘法律法规体系，为测绘管理提供了依据，为从事测绘活动提供了基本准则。</DIV></DIV>
+<DIV id=divid82 class=ti_content>
+<UL>
+<LI id=Qid_136510>82．合同一旦生效后，任何单位和个人（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid82','136510',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,B><LABEL>A．都不得侵犯当事人的合同权利</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid82','136510',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,B><LABEL>B．不得非法阻挠当事人履行义务</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid82','136510',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,B><LABEL>C．都要配合双方开展工作</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid82','136510',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,B><LABEL>D．都要支持当事人的行为</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid82','136510',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,B><LABEL>E．不得视而不见</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show82','anwser82')" id=show82 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser82 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B<BR>解析：一旦合同成立生效后，当事人应当依合同的规定，享受权利，承担义务。合同生效后产生的法律效果还表现在对当事人以外的第三人产生一定的法律拘束力。合同一旦生效后，任何单位或个人都不得侵犯当事人的合同权利，不得非法阻挠当事人履行义务。</DIV></DIV>
+<DIV id=divid83 class=ti_content>
+<UL>
+<LI id=Qid_136511>83．目前，测绘行政法规包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid83','136511',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,B,C,D><LABEL>A．《中华人民共和国地图编制出版管理条例》</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid83','136511',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,B,C,D><LABEL>B．《中华人民共和国测绘成果管理条例》</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid83','136511',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,B,C,D><LABEL>C．《中华人民共和国测量标志保护条例》</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid83','136511',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,B,C,D><LABEL>D．《基础测绘条例》</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid83','136511',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,B,C,D><LABEL>E．《重要地理信息数据审核公布管理规定》</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show83','anwser83')" id=show83 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser83 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C,D<BR>解析：目前，测绘行政法规主要有《中华人民共和国地图编制出版管理条例》、《中华人民共和国测量标志保护条例》、《中华人民共和国测绘成果管理条例》和《基础测绘条例》。</DIV></DIV>
+<DIV id=divid84 class=ti_content>
+<UL>
+<LI id=Qid_136512>84．注册测绘师的定义具有的特征包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid84','136512',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,C,D,E><LABEL>A．注册测绘师资格的法定证件是《中华人民共和国注册测绘师资格证书》，只有取得该证书的人员，才具有注册测绘师资格；未取得该证书的人员，不具有注册测绘师资格</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid84','136512',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,C,D,E><LABEL>B．甲级测绘资质单位的总工程师必须由注册测绘师担任</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid84','136512',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,C,D,E><LABEL>C．取得注册测绘师资格的人员，必须经过注册后，才能以注册测绘师的名义执业</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid84','136512',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,C,D,E><LABEL>D．注册测绘师是从事测绘活动的专业技术人员</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid84','136512',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,C,D,E><LABEL>E．取得注册测绘师资格必须经过考试，未经考试或者考试不合格的，不能取得注册测绘师资格，也就不能获得《中华人民共和国注册测绘师资格证书》</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show84','anwser84')" id=show84 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser84 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,C,D,E<BR>解析：注册测绘师的定义具有以下几个特征：（1）注册测绘师资格的法定证件是《中华人民共和国注册测绘师资格证书》，只有取得该证的人员，才具有注册测绘师资格；未取得该证书的人员，不具有注册测绘师资格。（2）取得注册测绘师资格必须经过考试，未经考试或者考试不合格的，不能取得注册测绘师资格，也就不能获得《中华人民共和国注册测绘师资格证书》。（3）取得注册测绘师资格的人员，必须经过注册后，才能以注册测绘师的名义执业。（4）注册测绘师是从事测绘活动的专业技术人员。</DIV></DIV>
+<DIV id=divid85 class=ti_content>
+<UL>
+<LI id=Qid_136513>85．测绘项目发包是指将工程项目、加工生产项目等生产经营项目交给承担单位或个人来完成。其方式有（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid85','136513',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,C><LABEL>A．招标发包</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid85','136513',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,C><LABEL>B．间接发包</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid85','136513',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,C><LABEL>C．直接发包</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid85','136513',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,C><LABEL>D．自由发包</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid85','136513',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,C><LABEL>E．定向发包</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show85','anwser85')" id=show85 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser85 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,C<BR>解析：发包是指将工程项目、加工生产项目等生产经营项目交给承担单位或者个人来完成。一般来说，发包的方式包括招标发包和直接发包两种方式。测绘项目的发包方式也是按照这两种方式进行。</DIV></DIV>
+<DIV id=divid86 class=ti_content>
+<UL>
+<LI id=Qid_136514>86．我国目前采用的测绘基准主要包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid86','136514',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,B,D,E><LABEL>A．大地基准</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid86','136514',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,B,D,E><LABEL>B．高程基准</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid86','136514',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,B,D,E><LABEL>C．平面基准</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid86','136514',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,B,D,E><LABEL>D．重力基准</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid86','136514',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,B,D,E><LABEL>E．深度基准</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show86','anwser86')" id=show86 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser86 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,D,E<BR>解析：我国目前采用的测绘基准主要包括大地基准、高程基准、深度基准和重力基准。</DIV></DIV>
+<DIV id=divid87 class=ti_content>
+<UL>
+<LI id=Qid_136515>87．《测绘法》规定乡级人民政府应当做好本行政区域内的测量标志保护工作，主要体现在（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid87','136515',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,B,C,E><LABEL>A．宣传贯彻测量标志保护的法律、法规、规章和测量标志保护政策</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid87','136515',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,B,C,E><LABEL>B．确定永久性测量标志的保管单位或者人员，并对其保管责任的落实情况进行监督检查</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid87','136515',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,B,C,E><LABEL>C．根据测绘行政主管部门委托，办理永久性测量标志委托保管手续</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid87','136515',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,B,C,E><LABEL>D．定期对测量标志进行检测和复测</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid87','136515',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,B,C,E><LABEL>E．负责永久性测量标志的日常检查，制止损毁永久性测量标志的行为，并定期向当地测绘行政主管部门报告测量标志保护情况</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show87','anwser87')" id=show87 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser87 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C,E<BR>解析：《测绘法》规定乡级人民政府应当做好本行政区域内的测量标志保护工作，主要体现在以下几个方面：（1）宣传贯彻测量标志保护的法律、法规、规章和测量标志保护政策；（2）确定永久性测量标志的保管单位或者人员，并对其保管责任的落实情况进行监督检查；（3）根据测绘行政主管部门委托，办理永久性测量标志委托保管手续；（4）负责永久性测量标志的日常检查，制止损毁永久性测量标志的行为，并定期向当地测绘行政主管部门报告测量标志保护情况。</DIV></DIV>
+<DIV id=divid88 class=ti_content>
+<UL>
+<LI id=Qid_136516>88．在测绘项目的承包中，对承担测绘项目的单位的要求有（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid88','136516',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,B,C><LABEL>A．必须具备相应的测绘资质</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid88','136516',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,B,C><LABEL>B．要有完成所承担测绘项目的能力，不能将测绘项目转包给他人</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid88','136516',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,B,C><LABEL>C．应当对测绘成果质量负责</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid88','136516',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,B,C><LABEL>D．没有违法记录</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid88','136516',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,B,C><LABEL>E．承担过类似测绘内容的项目</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show88','anwser88')" id=show88 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser88 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C<BR>解析：在测绘项目的承包中，承担测绘项目的单位首先必须具备相应的测绘资质；其次要有完成所承担测绘项目的能力，不能将测绘项目转包给他人；最后应当对测绘成果质量负责。</DIV></DIV>
+<DIV id=divid89 class=ti_content>
+<UL>
+<LI id=Qid_136517>89．根据《合同法》规定，订立合同应遵循的基本原则有（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid89','136517',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,B,C,D><LABEL>A．当事人法律地位平等</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid89','136517',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,B,C,D><LABEL>B．自愿的原则</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid89','136517',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,B,C,D><LABEL>C．公平的原则</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid89','136517',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,B,C,D><LABEL>D．诚实信用的原则</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid89','136517',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,B,C,D><LABEL>E．公开的原则</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show89','anwser89')" id=show89 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser89 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C,D<BR>解析：根据《合同法》规定，订立合同应遵循以下基本原则：当事人法律地位平等；自愿的原则；公平的原则；诚实信用的原则；遵守法律和不得损害社会公共利益的原则；合同效力。</DIV></DIV>
+<DIV id=divid90 class=ti_content>
+<UL>
+<LI id=Qid_136518>90．关于测量标志的使用说法中，正确的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid90','136518',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=B,C,D,E><LABEL>A．国家对测量标志实行无偿使用</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid90','136518',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=B,C,D,E><LABEL>B．测绘人员使用永久性测量标志，必须持有测绘作业证件</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid90','136518',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=B,C,D,E><LABEL>C．测绘人员接受县级以上人民政府管理测绘工作的部门的监督和负责保管测量标志的单位和人员的查询</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid90','136518',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=B,C,D,E><LABEL>D．设置永久性测量标志的，应当对永久性测量标志设立明显标记</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid90','136518',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=B,C,D,E><LABEL>E．国家对测量标志实行义务保管制度</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show90','anwser90')" id=show90 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser90 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B,C,D,E<BR>解析：《测量标志保护条例》第十五条规定，国家对测量标志实行有偿使用；但是，使用测量标志从事军事测绘任务的除外。测量标志有偿使用的收入应当用于测量标志的维护、维修，不得挪作他用。</DIV></DIV>
+<DIV id=divid91 class=ti_content>
+<UL>
+<LI id=Qid_136519>91．《反不正当竞争法》规定，经营者在市场交易中，应当遵循（）的原则，遵守公认的商业道德。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid91','136519',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,B,C,D><LABEL>A．自愿</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid91','136519',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,B,C,D><LABEL>B．平等</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid91','136519',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,B,C,D><LABEL>C．公平</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid91','136519',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,B,C,D><LABEL>D．诚实信用</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid91','136519',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,B,C,D><LABEL>E．效益</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show91','anwser91')" id=show91 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser91 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C,D<BR>解析：《反不正当竞争法》第二条规定，经营者在市场交易中，应当遵循自愿、平等、公平、诚实信用的原则，遵守公认的商业道德。</DIV></DIV>
+<DIV id=divid92 class=ti_content>
+<UL>
+<LI id=Qid_136520>92．《中华人民共和国测绘法》规定（）的行政处罚，由颁发资质证书的部门确定。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid92','136520',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=B,C,D><LABEL>A．罚款</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid92','136520',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=B,C,D><LABEL>B．吊销测绘资质证书</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid92','136520',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=B,C,D><LABEL>C．暂扣测绘资质证书</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid92','136520',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=B,C,D><LABEL>D．降低资质等级</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid92','136520',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=B,C,D><LABEL>E．没收测绘成果</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show92','anwser92')" id=show92 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser92 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B,C,D<BR>解析：《中华人民共和国测绘法》第五十二条规定，本法规定的降低资质等级、暂扣测绘资质证书、吊销测绘资质证书的行政处罚，由颁发资质证书的部门决定；其他行政处罚由县级以上人民政府测绘行政主管部门决定。</DIV></DIV>
+<DIV id=divid93 class=ti_content>
+<UL>
+<LI id=Qid_136521>93．基础测绘的内容包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid93','136521',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,C,D,E><LABEL>A．建立全国统一的测绘基准和测绘系统</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid93','136521',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,C,D,E><LABEL>B．进行遥感监测</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid93','136521',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,C,D,E><LABEL>C．获取基础地理信息的遥感资料</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid93','136521',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,C,D,E><LABEL>D．测制和更新国家基本比例尺地图、影像图和数字化产品</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid93','136521',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,C,D,E><LABEL>E．建立、更新基础地理信息系统</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show93','anwser93')" id=show93 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser93 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,C,D,E<BR>解析：基础测绘的内容包括：（1）建立全国统一的测绘基准和测绘系统；（2）进行基础航空摄影；（3）获取基础地理信息的遥感资料；（4）测制和更新国家基本比例尺地图、影像图和数字化产品；（5）建立、更新基础地理信息系统。</DIV></DIV>
+<DIV id=divid94 class=ti_content>
+<UL>
+<LI id=Qid_136522>94．测绘标准的特征包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid94','136522',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,B,D,E><LABEL>A．科学性</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid94','136522',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,B,D,E><LABEL>B．实用性</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid94','136522',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,B,D,E><LABEL>C．强制性</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid94','136522',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,B,D,E><LABEL>D．权威性</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid94','136522',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,B,D,E><LABEL>E．协调性</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show94','anwser94')" id=show94 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser94 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,D,E<BR>解析：测绘标准的特征：（1）科学性；（2）实用性；（3）权威性；（4）法定性；（5）协调性。</DIV></DIV>
+<DIV id=divid95 class=ti_content>
+<UL>
+<LI id=Qid_136523>95．依照《外国的组织或者个人来华测绘管理暂行办法》的规定，外国的组织或者个人与中华人民共和国有关部门或者单位合资、合作，不得从事（）测绘活动。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid95','136523',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,B,C,E><LABEL>A．大地测量和测绘航空摄影</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid95','136523',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,B,C,E><LABEL>B．行政区域界线测绘和海洋测绘</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid95','136523',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,B,C,E><LABEL>C．地形图和普通地图编制</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid95','136523',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,B,C,E><LABEL>D．大坝变形监测</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid95','136523',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,B,C,E><LABEL>E．导航电子地图编制</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show95','anwser95')" id=show95 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser95 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C,E<BR>解析：依照《外国的组织或者个人来华测绘管理暂行办法》的规定，外国的组织或者个人与中华人民共和国有关部门或者单位合资、合作，不得从事下列测绘活动：（1）大地测量；（2）测绘航空摄影；（3）行政区域界线测绘；（4）海洋测绘；（5）地形图和普通地图编制；（6）导航电子地图编制；（7）国务院测绘行政主管部门规定的其他测绘活动。</DIV></DIV>
+<DIV id=divid96 class=ti_content>
+<UL>
+<LI id=Qid_136524>96．测绘仪器的“三防”措施是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid96','136524',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=B,D,E><LABEL>A．防盗</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid96','136524',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=B,D,E><LABEL>B．防雾</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid96','136524',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=B,D,E><LABEL>C．防损</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid96','136524',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=B,D,E><LABEL>D．防霉</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid96','136524',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=B,D,E><LABEL>E．防锈</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show96','anwser96')" id=show96 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser96 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B,D,E<BR>解析：生霉、生雾、生锈是测绘仪器的“三害”，直接影响测绘仪器的质量和使用寿命，影响观测使用。因此,需按不同仪器的性能要求，采取必要的防霉、防雾、防锈措施，确保仪器处于良好状态。</DIV></DIV>
+<DIV id=divid97 class=ti_content>
+<UL>
+<LI id=Qid_136525>97．以下属于测绘项目外业设备的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid97','136525',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,B,C,D><LABEL>A．水准仪</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid97','136525',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,B,C,D><LABEL>B．GPS测量系统</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid97','136525',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,B,C,D><LABEL>C．航空摄影机</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid97','136525',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,B,C,D><LABEL>D．全站仪</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid97','136525',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,B,C,D><LABEL>E．数字成图系统</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show97','anwser97')" id=show97 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser97 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C,D<BR>解析：测绘项目的主要设备包括水准仪、经纬仪、全站仪、GPS测量系统、航空摄影机、数字摄影测量工作站和数字成图系统等，这7类设备前5类属于外业设备，后2类属于内业设备。</DIV></DIV>
+<DIV id=divid98 class=ti_content>
+<UL>
+<LI id=Qid_136526>98．在测绘资质管理中，除了依法原则、统一管理原则、公开透明原则外，还有（）等原则。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid98','136526',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=B,C,D,E><LABEL>A．属地管理</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid98','136526',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=B,C,D,E><LABEL>B．救济</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid98','136526',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=B,C,D,E><LABEL>C．诚实信用、信赖保护</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid98','136526',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=B,C,D,E><LABEL>D．公开公平原则</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid98','136526',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=B,C,D,E><LABEL>E．便民效率原则</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show98','anwser98')" id=show98 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser98 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B,C,D,E<BR>解析：测绘资质管理原则包括：依法原则、统一管理原则、公开透明原则、公正公平原则、便民高效原则、救济原则、诚实信用和信赖保护原则、监督和责任原则。</DIV></DIV>
+<DIV id=divid99 class=ti_content>
+<UL>
+<LI id=Qid_136527>99．上交和归档测绘成果及资料清单内容主要包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid99','136527',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,D,E><LABEL>A．文档资料</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid99','136527',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,D,E><LABEL>B．项目任务书或合同书</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid99','136527',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,D,E><LABEL>C．项目工作计划</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid99','136527',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,D,E><LABEL>D．测绘成果</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid99','136527',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,D,E><LABEL>E．其他需要上交和归档的资料</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show99','anwser99')" id=show99 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser99 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,D,E<BR>解析：上交和归档测绘成果及资料清单内容主要包括：（1）测绘成果（或产品）；（2）文档资料；（3）其他需上交和归档的资料。</DIV></DIV>
+<DIV id=divid100 class=ti_content>
+<UL>
+<LI id=Qid_136528>100．按照《合同法》规定，合同的内容由当事人约定，合同一般内容包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid100','136528',this.value,this.id,'20','-1','','-1','1994');" id=2 title=A type=checkbox value=A,B,C,E><LABEL>A．履行期限</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid100','136528',this.value,this.id,'20','-1','','-1','1994');" id=2 title=B type=checkbox value=A,B,C,E><LABEL>B．标的</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid100','136528',this.value,this.id,'20','-1','','-1','1994');" id=2 title=C type=checkbox value=A,B,C,E><LABEL>C．数量</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid100','136528',this.value,this.id,'20','-1','','-1','1994');" id=2 title=D type=checkbox value=A,B,C,E><LABEL>D．运输方式</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid100','136528',this.value,this.id,'20','-1','','-1','1994');" id=2 title=E type=checkbox value=A,B,C,E><LABEL>E．价款或报酬</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show100','anwser100')" id=show100 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser100 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C,E<BR>解析：《合同法》第十二条规定，合同的内容由当事人约定，一般应包括以下条款：（1）当事人的名称或者姓名和住所；（2）标的；（3）数量；（4）质量；（5）价款或者报酬；（6）履行期限、地点和方式；（7）违约责任；（8）解决争议的方法。当事人可以参照各类合同的示范文本订立合同。</DIV></DIV></DIV>
+<DIV id=anwser-card class=anwser-card>
+<DIV id=card-title class=card-title>答题卡 <A onclick=hideCard(); id=card-hide>─</A> </DIV>
+<DIV id=card-body class=card-body style="HEIGHT: 611px"><A id=Tip_136429 href="#Qid_136429">1</A><A id=Tip_136430 href="#Qid_136430">2</A><A id=Tip_136431 href="#Qid_136431">3</A><A id=Tip_136432 href="#Qid_136432">4</A><A id=Tip_136433 href="#Qid_136433">5</A><A id=Tip_136434 href="#Qid_136434">6</A><A id=Tip_136435 href="#Qid_136435">7</A><A id=Tip_136436 href="#Qid_136436">8</A><A id=Tip_136437 href="#Qid_136437">9</A><A id=Tip_136438 href="#Qid_136438">10</A><A id=Tip_136439 href="#Qid_136439">11</A><A id=Tip_136440 href="#Qid_136440">12</A><A id=Tip_136441 href="#Qid_136441">13</A><A id=Tip_136442 href="#Qid_136442">14</A><A id=Tip_136443 href="#Qid_136443">15</A><A id=Tip_136444 href="#Qid_136444">16</A><A id=Tip_136445 href="#Qid_136445">17</A><A id=Tip_136446 href="#Qid_136446">18</A><A id=Tip_136447 href="#Qid_136447">19</A><A id=Tip_136448 href="#Qid_136448">20</A><A id=Tip_136449 href="#Qid_136449">21</A><A id=Tip_136450 href="#Qid_136450">22</A><A id=Tip_136451 href="#Qid_136451">23</A><A id=Tip_136452 href="#Qid_136452">24</A><A id=Tip_136453 href="#Qid_136453">25</A><A id=Tip_136454 href="#Qid_136454">26</A><A id=Tip_136455 href="#Qid_136455">27</A><A id=Tip_136456 href="#Qid_136456">28</A><A id=Tip_136457 href="#Qid_136457">29</A><A id=Tip_136458 href="#Qid_136458">30</A><A id=Tip_136459 href="#Qid_136459">31</A><A id=Tip_136460 href="#Qid_136460">32</A><A id=Tip_136461 href="#Qid_136461">33</A><A id=Tip_136462 href="#Qid_136462">34</A><A id=Tip_136463 href="#Qid_136463">35</A><A id=Tip_136464 href="#Qid_136464">36</A><A id=Tip_136465 href="#Qid_136465">37</A><A id=Tip_136466 href="#Qid_136466">38</A><A id=Tip_136467 href="#Qid_136467">39</A><A id=Tip_136468 href="#Qid_136468">40</A><A id=Tip_136469 href="#Qid_136469">41</A><A id=Tip_136470 href="#Qid_136470">42</A><A id=Tip_136471 href="#Qid_136471">43</A><A id=Tip_136472 href="#Qid_136472">44</A><A id=Tip_136473 href="#Qid_136473">45</A><A id=Tip_136474 href="#Qid_136474">46</A><A id=Tip_136475 href="#Qid_136475">47</A><A id=Tip_136476 href="#Qid_136476">48</A><A id=Tip_136477 href="#Qid_136477">49</A><A id=Tip_136478 href="#Qid_136478">50</A><A id=Tip_136479 href="#Qid_136479">51</A><A id=Tip_136480 href="#Qid_136480">52</A><A id=Tip_136481 href="#Qid_136481">53</A><A id=Tip_136482 href="#Qid_136482">54</A><A id=Tip_136483 href="#Qid_136483">55</A><A id=Tip_136484 href="#Qid_136484">56</A><A id=Tip_136485 href="#Qid_136485">57</A><A id=Tip_136486 href="#Qid_136486">58</A><A id=Tip_136487 href="#Qid_136487">59</A><A id=Tip_136488 href="#Qid_136488">60</A><A id=Tip_136489 href="#Qid_136489">61</A><A id=Tip_136490 href="#Qid_136490">62</A><A id=Tip_136491 href="#Qid_136491">63</A><A id=Tip_136492 href="#Qid_136492">64</A><A id=Tip_136493 href="#Qid_136493">65</A><A id=Tip_136494 href="#Qid_136494">66</A><A id=Tip_136495 href="#Qid_136495">67</A><A id=Tip_136496 href="#Qid_136496">68</A><A id=Tip_136497 href="#Qid_136497">69</A><A id=Tip_136498 href="#Qid_136498">70</A><A id=Tip_136499 href="#Qid_136499">71</A><A id=Tip_136500 href="#Qid_136500">72</A><A id=Tip_136501 href="#Qid_136501">73</A><A id=Tip_136502 href="#Qid_136502">74</A><A id=Tip_136503 href="#Qid_136503">75</A><A id=Tip_136504 href="#Qid_136504">76</A><A id=Tip_136505 href="#Qid_136505">77</A><A id=Tip_136506 href="#Qid_136506">78</A><A id=Tip_136507 href="#Qid_136507">79</A><A id=Tip_136508 href="#Qid_136508">80</A><A id=Tip_136509 href="#Qid_136509">81</A><A id=Tip_136510 href="#Qid_136510">82</A><A id=Tip_136511 href="#Qid_136511">83</A><A id=Tip_136512 href="#Qid_136512">84</A><A id=Tip_136513 href="#Qid_136513">85</A><A id=Tip_136514 href="#Qid_136514">86</A><A id=Tip_136515 href="#Qid_136515">87</A><A id=Tip_136516 href="#Qid_136516">88</A><A id=Tip_136517 href="#Qid_136517">89</A><A id=Tip_136518 href="#Qid_136518">90</A><A id=Tip_136519 href="#Qid_136519">91</A><A id=Tip_136520 href="#Qid_136520">92</A><A id=Tip_136521 href="#Qid_136521">93</A><A id=Tip_136522 href="#Qid_136522">94</A><A id=Tip_136523 href="#Qid_136523">95</A><A id=Tip_136524 href="#Qid_136524">96</A><A id=Tip_136525 href="#Qid_136525">97</A><A id=Tip_136526 href="#Qid_136526">98</A><A id=Tip_136527 href="#Qid_136527">99</A><A id=Tip_136528 href="#Qid_136528">100</A> </DIV></DIV><script src='js/ph.js'></script></BODY></html>

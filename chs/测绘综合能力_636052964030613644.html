@@ -1,0 +1,1680 @@
+<html><HEAD><TITLE>MyModel</TITLE>
+<STYLE type=text/css>
+            html{scrollbar-face-color:#e7f4f9;scrollbar-arrow-color:#8bd5fd;scrollbar-track-color:#f9fdff;scrollbar-highlight-color:#ffffff;scrollbar-3dlight-color:#8bd5fd;scrollbar-shadow-color:#ffffff;scrollbar-darkshadow-color:#8bd5fd;}
+            body {margin: 10px; line-height: 150%; width:950px; margin-left:auto; margin-right:auto;font-family: 宋体;}
+           .ti_content {font-size: 14px; color: #000000; font-family: 宋体,serif;
+            font-size: 14px; line-height: 150%; width: auto; clear:both;}
+           .ti_content ul li {list-style:none;margin-top:5px;margin-buttom:5px;}
+           .ti_content ul{padding-left:0px;}
+           .ti_content #anwer_r li{float:left; margin-left:10px;}
+           .ti_title {font-size: 18px; font-weight: bold; margin-top:10px;clear:both;}
+           .style_anwser_r {float: right; margin-right: 20px;}
+           .style_anwser {clear: both; background-color: #ecf5fa; border: 1px #B7CACE solid; display:none;}
+           .inputFill {BORDER-BOTTOM: #417ac1 1px dashed; BORDER-LEFT: 0px; LINE-HEIGHT: 22px; WIDTH: 200px; BACKGROUND: #ffffff; HEIGHT: 22px; COLOR: #ff0000; BORDER-TOP: 0px; BORDER-RIGHT: 0px;TEXT-ALIGN:CENTER;}
+	       .btnClass{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAZCAYAAACmRqkJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAA0BJREFUaEPt2UlLW1EYBuCbVrqS+hd04TzPQ4yzoAbjgPM8gyC6UwRt6cJV9W9Iu6mz1qkZTDRNjDGOTa0pjUJxd2+Xgebre6JFF/H8ghN4V+HbPLznnnPuVa2Eh4e+Cgt7+zo8vPllSEgY+f2SRCSJXxABlUpSvXgh/fX5lD9e70eforyT1iIj31xNTvru5ub8txMTdDM2Rt7RUZEgBszmdnycfs/M+L+NjvpgNy1Zqqs9d7Oz5Onpoe86HbmrqshdWSkSzAA2zMjT3U3eqSkylJVdS7b6eoWpMrQLjYbOcnPvk5Mj8tTgwYUZubVauhoZoa3SUkWy6nTyr+FhOi8poZOsLDrJyBDhGcDosqyMLnt7ab2wUJasWq3sGRqis+JicmHQlZ4uwjOA0QXKdt7VResajSwdAPB6cJBOi4roGH8eY1iEYwCjc5TtDIBr/wF/DAzQSWEhOYHnTEsT4RnAiJXttLPzEfCqv5+OCwrIgUFHaqoIzwBGLpTN1dFBq/n5WMJVVbK7r4+OsLvYMWhPSRHhGcDIibIdt7c/AOIZ6MaO4sjPJxsGbcnJIjwDGDlRNmdb2z2gBYBsS7ar1WTFoDUpSYRnACNWNkdrK60EALGEzwFoA+A+/tzHsAjHAEZ2AB4+BTzFNc6al0dm4JkTE0V4BjD6irLZGKBaLUtmNNCFu90+riomDJoSEkR4BjA6QNmsLS20HACsrJRdOBRacO8zYtAYHy/CM4ARK5u1ufkecA+AThwK97KzSY9BfVycCM8ARmaUbb+p6RHwCIBGXJJ3MbgbGyvCM4CRCWUzNzbSUl6eLJnQQAdO1YbMTNrB4E5MjAjPAEasbHsAXAwAVlTIhzhV6xkgBrejo0U4BswoANjQ8ACIBtqxhL/gLcMWBjejokQ4BsxID0AjnoGLgU1Eq1UO8TbGgMPhNrboLaxxkecNmJEJVzk9Vu1CQYEiGcrLPYf4WGKprSUDXtPoccYRed7AgDcxezU1tILb26pG8zPwVc7Y3e3bHhz0b6KWG3V1tAFMkSAGzAabx6fOTv9SU5NvPSpqWlqNiAj9nJT0flmjufmQlaXMZ2Qo8+npIsEMmA2MFtTqG2bG7P4Bz7tu9/lP8/oAAAAASUVORK5CYII=) no-repeat;width:80px;height:25px;color:#fff;border:none;cursor:pointer;}
+	       .anwser-card{position:fixed;right:0px;top:10px;bottom:10px;width:240px;border:1px solid #ccc;background:#FFF;overflow:hidden;}
+	       .anwser-card-hide{cursor:pointer;position:fixed;right:0px;top:10px;bottom:10px;border:1px solid #ccc;overflow:hidden;height:130px;line-height:30px;width:40px;text-align:center;background: #39f;color:#FFF;font-family:微软雅黑;}
+	       .card-body{overflow-y:scroll;text-align:center;}
+	       .card-body a{text-decoration:none;float:left;width:35px;height:35px;line-height:35px;margin:3px;cursor:pointer;text-align:center;border:1px solid #ff0000;display:block;font-size:14px;}
+	       .card-body a.chose{background:#39f;color:#FFF;border:1px solid #FFF;}
+	       .card-title{position:relative;height:30px;line-height:30px;text-align:center;background: #39f;color:#FFF;font-family:微软雅黑;font-size:16px;}
+	       .card-title-hide{text-align:center;background: #39f;color:#FFF;font-family:微软雅黑;word-wrap: break-word;letter-spacing: 20px;width: 40px;font-size:16px; padding-left: 10px;}
+	       .card-title a{position:absolute;right:20px;bottom:10px;width:20px;height:20px;display:block;text-align:center;cursor:pointer;}
+    </STYLE>
+
+<SCRIPT type=text/javascript>
+        //document.oncontextmenu=new Function("return false") ;
+        
+        function onReady() {
+            var cardH = document.getElementById('anwser-card').offsetHeight;
+            document.getElementById('card-body').style.height = (cardH - 30) + "px";
+        }
+        window.onresize = function () { onReady(); }
+        var cardState = 1;
+        function hideCard() {
+            if (cardState == 1) {
+                document.getElementById('anwser-card').style.height = "130px";
+                document.getElementById('card-body').style.display = "none";
+                document.getElementById('card-title').className = "card-title-hide";
+                document.getElementById('card-hide').innerHTML = "┼";
+                document.getElementById('anwser-card').className = "anwser-card-hide";
+                cardState = 0;
+            }
+            else {
+                document.getElementById('anwser-card').style.height = "auto";
+                document.getElementById('card-body').style.display = "";
+                document.getElementById('card-title').className = "card-title";
+                document.getElementById('card-hide').innerHTML = "─";
+                document.getElementById('anwser-card').className = "anwser-card";
+                cardState = 1;
+            }
+        }
+        function HideAnwserCard()
+        {
+            document.getElementById('anwser-card').style.display = "none";
+        }
+        function SetAnwserCard(id)
+        {
+               document.getElementById("Tip_" + id).className= "chose";
+        }
+        function ShowAnwser(obj1, obj2) {
+            var anwser = document.getElementById(obj2);
+            var button = document.getElementById(obj1);
+            var value = button.value;
+            if (value == "隐藏答案") {
+                anwser.style.display = "none";
+                button.value = "显示答案";
+            }
+            else if (value == "显示答案") {
+                button.value = "隐藏答案";
+                anwser.style.display = "block";
+            }
+        }
+        function TeacherMark(qid) {
+            window.external.TeacherMark(qid);
+        }
+        function clickAnwser(qid, trueA, choseA, tid, total, zhid, kw, zid, kid) {
+            SetAnwserCard(qid);
+            window.external.recordAnwser(qid, trueA, kw, choseA, tid, total, zhid, zid, kid);
+        }
+        function checkBoxAnwser(divid, qid, trueA, tid, total, zhid, kw, zid, kid) {
+            SetAnwserCard(qid);
+            var divClass = document.getElementById(divid);
+            var check = divClass.getElementsByTagName("input");
+            var anwser = "";
+            for (var i = 0; i < check.length; i++) {
+                if (check[i].type == "checkbox") {
+                    if (check[i].checked) {
+                        anwser += check[i].title + ",";
+                    }
+                }
+            }
+            anwser = anwser.substr(0, anwser.length - 1);
+            window.external.recordAnwser(qid, trueA, kw, anwser, tid, total, zhid, zid, kid);
+        }
+        function updateXmlFill(divid, qid, trueA, tid, total, zhid, kw, zid, kid) {
+            var divClass = document.getElementById(divid);
+            var check = divClass.getElementsByTagName("input");
+            var anwser = "";
+            for (var i = 0; i < check.length; i++) {
+                if (check[i].type == "text") {
+                    anwser += check[i].value + "*";
+                }
+            }
+            if (anwser.replace(/\*/g, "").replace(/ /g, "") != "") {
+                SetAnwserCard(qid);
+                window.external.recordAnwser(qid, trueA, kw, anwser, tid, total, zhid, zid, kid);
+            }
+        }
+
+        function KeepQuestion(id, zhid, typeid) {
+            var scTypeid = document.getElementById(typeid).value;
+            window.external.KeepQuestion(id, zhid, scTypeid);
+        }
+        function ShowAllResolve(ok) {
+            var classElement = getElementsByClass("style_anwser", null, "div");
+            if (ok) {
+                for (var i = 0; i < classElement.length; i++) {
+                    classElement[i].style.display = "block";
+                }
+            }
+            else {
+                for (var i = 0; i < classElement.length; i++) {
+                    classElement[i].style.display = "none";
+                }
+            }
+        }
+        function showLSPY() {
+            var classElement = getElementsByClass("class_lspy", null, "input");
+            for (var i = 0; i < classElement.length; i++) {
+                classElement[i].style.display = "block";
+            }
+        }
+        function getElementsByClass(searchClass, node, tag) {
+            var classElements = new Array();
+            if (node == null)
+                node = document;
+            if (tag == null)
+                tag = "*";
+            var els = node.getElementsByTagName(tag);
+            var elsLen = els.length;
+            var pattern = new RegExp("(^|\\s)" + searchClass + "(\\s|$)");
+            for (i = 0, j = 0; i < elsLen; i++) {
+                if (pattern.test(els[i].className)) {
+                    classElements[j] = els[i];
+                    j++;
+                }
+            }
+            return classElements;
+        }
+        function updateXmlAnswer(qid, trueA, anwser, tid, total, zhid, kw, zid, kid) {
+            if (anwser.replace(/ /g, "") != "") {
+                SetAnwserCard(qid);
+                window.external.recordAnwser(qid, trueA, kw, anwser, tid, total, zhid, zid, kid);
+            }
+        }
+        function hideXSDA() {
+            var classElement = getElementsByClass("class_xsda", null, "input");
+            for (var i = 0; i < classElement.length; i++) {
+                classElement[i].style.display = "none";
+            }
+        }
+        function ErrorHandUP(qid, zhid) {
+            window.external.ErrorHandUP(qid, zhid);
+        }
+        function StudyNote(qid, zhid) {
+            window.external.StudyNote(qid, zhid);
+        }
+    </SCRIPT>
+</HEAD>
+<BODY onload=onReady();>
+<DIV style="OVERFLOW: hidden; WIDTH: 95%; MARGIN-LEFT: auto; LINE-HEIGHT: 150%; MARGIN-RIGHT: auto">
+<DIV class=ti_title>单选题</DIV>
+<DIV id=divid1 class=ti_content>
+<UL>
+<LI id=Qid_140997>1．高程框架的实现形式是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('140997',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group1><LABEL>A．三角高程测量</LABEL>
+<LI><INPUT onclick="clickAnwser('140997',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group1><LABEL>B．水准测量</LABEL>
+<LI><INPUT onclick="clickAnwser('140997',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group1><LABEL>C．GPS水准高程测量</LABEL>
+<LI><INPUT onclick="clickAnwser('140997',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group1><LABEL>D．高程测量系统</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show1','anwser1')" id=show1 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser1 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：高程框架的实现形式，是以高程系统和通过（似）大地水准面精化来实现的。</DIV></DIV>
+<DIV id=divid2 class=ti_content>
+<UL>
+<LI id=Qid_140998>2．导线测量中必须进行的外业测量工作是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('140998',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group2><LABEL>A．测竖直角</LABEL>
+<LI><INPUT onclick="clickAnwser('140998',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group2><LABEL>B．测仪器高</LABEL>
+<LI><INPUT onclick="clickAnwser('140998',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group2><LABEL>C．测气压</LABEL>
+<LI><INPUT onclick="clickAnwser('140998',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group2><LABEL>D．测水平角</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show2','anwser2')" id=show2 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser2 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：导线测量是平面控制测量的一种方法，主要的外业测量工作是水平角观测和导线边长。</DIV></DIV>
+<DIV id=divid3 class=ti_content>
+<UL>
+<LI id=Qid_140999>3．GPS测量按其精度可分（）个等级。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('140999',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group3><LABEL>A．2</LABEL>
+<LI><INPUT onclick="clickAnwser('140999',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group3><LABEL>B．3</LABEL>
+<LI><INPUT onclick="clickAnwser('140999',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group3><LABEL>C．1900-1-4</LABEL>
+<LI><INPUT onclick="clickAnwser('140999',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group3><LABEL>D．1900-1-5</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show3','anwser3')" id=show3 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser3 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：根据国家标准《全球定位系统（GPS）测量规范》（GB/T 18314—2009），GPS测量按其精度分为A、B、C、D、E五级。</DIV></DIV>
+<DIV id=divid4 class=ti_content>
+<UL>
+<LI id=Qid_141000>4．比例尺为1∶2000的地形图的比例尺精度是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141000',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group4><LABEL>A．0.2cm</LABEL>
+<LI><INPUT onclick="clickAnwser('141000',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group4><LABEL>B．2cm</LABEL>
+<LI><INPUT onclick="clickAnwser('141000',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group4><LABEL>C．0.2m</LABEL>
+<LI><INPUT onclick="clickAnwser('141000',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group4><LABEL>D．2m</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show4','anwser4')" id=show4 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser4 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：通常把图上0.1mm所表示的实地水平长度，称为比例尺的精度。根据此定义，本题结果为：0.1×2000=200（mm）=0.2（m）。</DIV></DIV>
+<DIV id=divid5 class=ti_content>
+<UL>
+<LI id=Qid_141001>5．基准站GNSS天线应具备（），以抑制多路径效应。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141001',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group5><LABEL>A．相位中心稳定性优于3mm</LABEL>
+<LI><INPUT onclick="clickAnwser('141001',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group5><LABEL>B．抗电磁干扰能力</LABEL>
+<LI><INPUT onclick="clickAnwser('141001',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group5><LABEL>C．扼流圈或抑径板</LABEL>
+<LI><INPUT onclick="clickAnwser('141001',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group5><LABEL>D．定向指北标志</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show5','anwser5')" id=show5 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser5 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：基准站GNSS天线应具备以下功能：①相位中心稳定性应优于3mm；②具备抗多路径效应的扼流圈或抑径板；③具有抗电磁干扰能力；④具有定向指北标志；⑤在-40~+65℃的环境下能正常工作；⑥气候条件恶劣地区应配有防护罩。</DIV></DIV>
+<DIV id=divid6 class=ti_content>
+<UL>
+<LI id=Qid_141002>6．测量误差来源于（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141002',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group6><LABEL>A．仪器、观测者、外界条件</LABEL>
+<LI><INPUT onclick="clickAnwser('141002',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group6><LABEL>B．角度误差、边长误差、高差误差</LABEL>
+<LI><INPUT onclick="clickAnwser('141002',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group6><LABEL>C．系统误差、偶然误差、粗差</LABEL>
+<LI><INPUT onclick="clickAnwser('141002',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group6><LABEL>D．仪器、观测值、计算机</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show6','anwser6')" id=show6 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser6 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：水准测量误差来源于仪器测量、外界因素引起的误差、观测误差。</DIV></DIV>
+<DIV id=divid7 class=ti_content>
+<UL>
+<LI id=Qid_141003>7．按性质分类，高斯投影属于（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141003',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group7><LABEL>A．正轴投影 </LABEL>
+<LI><INPUT onclick="clickAnwser('141003',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group7><LABEL>B．等角投影 </LABEL>
+<LI><INPUT onclick="clickAnwser('141003',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group7><LABEL>C．等积投影 </LABEL>
+<LI><INPUT onclick="clickAnwser('141003',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group7><LABEL>D．等边投影</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show7','anwser7')" id=show7 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser7 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：高斯投影是等角投影，投影前后角度不发生变化。</DIV></DIV>
+<DIV id=divid8 class=ti_content>
+<UL>
+<LI id=Qid_141004>8．钢尺精密量距时，丈量温度低于标准温度，如不加温度改正，则所量距离（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141004',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group8><LABEL>A．小于实际距离</LABEL>
+<LI><INPUT onclick="clickAnwser('141004',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group8><LABEL>B．等于实际距离</LABEL>
+<LI><INPUT onclick="clickAnwser('141004',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group8><LABEL>C．大于实际距离</LABEL>
+<LI><INPUT onclick="clickAnwser('141004',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group8><LABEL>D．可能大于也可能小于实际距离</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show8','anwser8')" id=show8 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser8 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：在精密量距时，往往需要三项改正，即尺寸改正、温度改正、倾斜改正。如果丈量温度低于标准温度时，由于钢尺的热胀冷缩，钢尺的实际长度变短，数据变大。</DIV></DIV>
+<DIV id=divid9 class=ti_content>
+<UL>
+<LI id=Qid_141005>9．网络RTK根据其解算模式不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141005',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group9><LABEL>A．动态RTK技术</LABEL>
+<LI><INPUT onclick="clickAnwser('141005',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group9><LABEL>B．单基站RTK技术</LABEL>
+<LI><INPUT onclick="clickAnwser('141005',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group9><LABEL>C．虚拟基站技术</LABEL>
+<LI><INPUT onclick="clickAnwser('141005',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group9><LABEL>D．主副站技术</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show9','anwser9')" id=show9 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser9 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：实时网络RTK服务，是利用基准站的载波相位观测数据，与流动站的观测数据进行实时差分处理，并解算整周模糊度。按其解算模式可分为单基站RTK技术、虚拟基站技术和主副站技术三种。</DIV></DIV>
+<DIV id=divid10 class=ti_content>
+<UL>
+<LI id=Qid_141006>10．重力基本网由重力基准点和（）组成。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141006',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group10><LABEL>A．一等重力点</LABEL>
+<LI><INPUT onclick="clickAnwser('141006',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group10><LABEL>B．基本点</LABEL>
+<LI><INPUT onclick="clickAnwser('141006',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group10><LABEL>C．加密重力点</LABEL>
+<LI><INPUT onclick="clickAnwser('141006',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group10><LABEL>D．基本点以及引点</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show10','anwser10')" id=show10 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser10 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：国家重力控制测量分为国家重力基本网、一等重力网和二等重力网三个级别。重力基本网是重力控制网中最高级控制，它由重力基准点和基本点以及引点组成。</DIV></DIV>
+<DIV id=divid11 class=ti_content>
+<UL>
+<LI id=Qid_141007>11．似大地水准面实施过程中可能包括的工作中不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141007',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group11><LABEL>A．水准测量</LABEL>
+<LI><INPUT onclick="clickAnwser('141007',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group11><LABEL>B．GNSS测量</LABEL>
+<LI><INPUT onclick="clickAnwser('141007',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group11><LABEL>C．垂直测量</LABEL>
+<LI><INPUT onclick="clickAnwser('141007',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group11><LABEL>D．重力似大地水准面计算</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show11','anwser11')" id=show11 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser11 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：确定大地水准面的方法有：几何法（天文水准、卫星测高、GPS水准）、重力学法及组合法。因此，求算似大地水准面的过程中的工作就有水准测量、GNSS测量、重力似大地水准面计算和重力似大地水准面与GPS水准计算的似大地水准面拟合。</DIV></DIV>
+<DIV id=divid12 class=ti_content>
+<UL>
+<LI id=Qid_141008>12．海图上灯高一般从（）起算。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141008',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group12><LABEL>A．大地水准面</LABEL>
+<LI><INPUT onclick="clickAnwser('141008',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group12><LABEL>B．水面</LABEL>
+<LI><INPUT onclick="clickAnwser('141008',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group12><LABEL>C．平均大潮高潮面</LABEL>
+<LI><INPUT onclick="clickAnwser('141008',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group12><LABEL>D．深度基准面</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show12','anwser12')" id=show12 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser12 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：灯塔、灯桩的灯光中心高度从平均大潮高潮面起算，同时还应测量灯塔底部高程。</DIV></DIV>
+<DIV id=divid13 class=ti_content>
+<UL>
+<LI id=Qid_141009>13．已知道路交点桩号为2+316.24m，圆曲线切线长为62.75m，则圆曲线起点的桩号为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141009',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group13><LABEL>A．2+190.74m</LABEL>
+<LI><INPUT onclick="clickAnwser('141009',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group13><LABEL>B．2+253.49m </LABEL>
+<LI><INPUT onclick="clickAnwser('141009',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group13><LABEL>C．2+378.99m</LABEL>
+<LI><INPUT onclick="clickAnwser('141009',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group13><LABEL>D．2+441.74m</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show13','anwser13')" id=show13 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser13 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：因为里程ZY=JD-T，计算得2+253.49m。</DIV></DIV>
+<DIV id=divid14 class=ti_content>
+<UL>
+<LI id=Qid_141010>14．在GPS进行导航定位时，GPS接收机不能直接获得的信息是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141010',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group14><LABEL>A．位置</LABEL>
+<LI><INPUT onclick="clickAnwser('141010',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group14><LABEL>B．速度</LABEL>
+<LI><INPUT onclick="clickAnwser('141010',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group14><LABEL>C．运行方向</LABEL>
+<LI><INPUT onclick="clickAnwser('141010',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group14><LABEL>D．飞机的海拔高</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show14','anwser14')" id=show14 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser14 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：GPS接收机可以采集点的瞬时三维坐标，是WGS-84坐标系的坐标值，同时也可以采集观测时间，进而能获得物体的位置、速度和运行的方向。而海拔指的是正高，是以大地水准面起算的，不能直接获取。</DIV></DIV>
+<DIV id=divid15 class=ti_content>
+<UL>
+<LI id=Qid_141011>15．下列选项不属于立交桥测量内容的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141011',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group15><LABEL>A．桥址地形图测绘</LABEL>
+<LI><INPUT onclick="clickAnwser('141011',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group15><LABEL>B．桥梁施工控制网建立</LABEL>
+<LI><INPUT onclick="clickAnwser('141011',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group15><LABEL>C．桥梁施工放样</LABEL>
+<LI><INPUT onclick="clickAnwser('141011',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group15><LABEL>D．桥梁的变形监测</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show15','anwser15')" id=show15 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser15 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：立交桥测量内容包括：桥址地形图测绘、桥梁施工控制网建立、桥梁高程控制网建立、桥梁施工放样及桥梁竣工测量等。</DIV></DIV>
+<DIV id=divid16 class=ti_content>
+<UL>
+<LI id=Qid_141012>16．海控二级点相对于相邻起算点的点位中误差为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141012',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group16><LABEL>A．±0.2m</LABEL>
+<LI><INPUT onclick="clickAnwser('141012',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group16><LABEL>B．±0.5m</LABEL>
+<LI><INPUT onclick="clickAnwser('141012',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group16><LABEL>C．±0.6m</LABEL>
+<LI><INPUT onclick="clickAnwser('141012',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group16><LABEL>D．±1.0m</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show16','anwser16')" id=show16 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser16 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：海控一级点相对于相邻起算点的点位中误差为±0.2m，海控二级点相对于相邻起算点的点位中误差为±0.5m。</DIV></DIV>
+<DIV id=divid17 class=ti_content>
+<UL>
+<LI id=Qid_141013>17．线路竣工测量不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141013',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group17><LABEL>A．放样测量 </LABEL>
+<LI><INPUT onclick="clickAnwser('141013',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group17><LABEL>B．中线测量 </LABEL>
+<LI><INPUT onclick="clickAnwser('141013',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group17><LABEL>C．高程测量 </LABEL>
+<LI><INPUT onclick="clickAnwser('141013',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group17><LABEL>D．横断面测量</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show17','anwser17')" id=show17 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser17 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：线路的竣工测量包括中线测量、高程测量、横断面测量三个方面。</DIV></DIV>
+<DIV id=divid18 class=ti_content>
+<UL>
+<LI id=Qid_141014>18．以下定位模式中，需要确定整周模糊度的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141014',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group18><LABEL>A．C/A码伪距定位</LABEL>
+<LI><INPUT onclick="clickAnwser('141014',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group18><LABEL>B．P码伪距定位</LABEL>
+<LI><INPUT onclick="clickAnwser('141014',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group18><LABEL>C．高精度动态定位</LABEL>
+<LI><INPUT onclick="clickAnwser('141014',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group18><LABEL>D．采用三差观测值</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show18','anwser18')" id=show18 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser18 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：在通过三差观测值时，要确定整周模糊度。</DIV></DIV>
+<DIV id=divid19 class=ti_content>
+<UL>
+<LI id=Qid_141015>19．矿井工业场地井筒附近布设的平面控制点称为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141015',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group19><LABEL>A．导线点</LABEL>
+<LI><INPUT onclick="clickAnwser('141015',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group19><LABEL>B．三角点</LABEL>
+<LI><INPUT onclick="clickAnwser('141015',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group19><LABEL>C．近井点 </LABEL>
+<LI><INPUT onclick="clickAnwser('141015',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group19><LABEL>D．井口水准基点</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show19','anwser19')" id=show19 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser19 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：近井点就是矿井工业场地井筒附近布设的平面控制点。</DIV></DIV>
+<DIV id=divid20 class=ti_content>
+<UL>
+<LI id=Qid_141016>20．坐标反算就是根据直线的起、终点坐标，计算直线的（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141016',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group20><LABEL>A．斜距、水平角</LABEL>
+<LI><INPUT onclick="clickAnwser('141016',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group20><LABEL>B．水平距离、方位角</LABEL>
+<LI><INPUT onclick="clickAnwser('141016',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group20><LABEL>C．斜距、方位角</LABEL>
+<LI><INPUT onclick="clickAnwser('141016',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group20><LABEL>D．水平距离、水平角</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show20','anwser20')" id=show20 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser20 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：由两点坐标计算直线的水平距离和方位角的过程称为坐标反算，由起点坐标和水平距离以及直线方位角求终点坐标的过程称为坐标正算。</DIV></DIV>
+<DIV id=divid21 class=ti_content>
+<UL>
+<LI id=Qid_141017>21．工程高程控制测量过程中，精度最高的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141017',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group21><LABEL>A．目估法</LABEL>
+<LI><INPUT onclick="clickAnwser('141017',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group21><LABEL>B．三角高程测量</LABEL>
+<LI><INPUT onclick="clickAnwser('141017',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group21><LABEL>C．水准测量</LABEL>
+<LI><INPUT onclick="clickAnwser('141017',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group21><LABEL>D．GPS水准</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show21','anwser21')" id=show21 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser21 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：高程控制测量可采用水准测量、三角高程测量和GPS水准测量方法。在这三种方法中，水准测量的精度最高。</DIV></DIV>
+<DIV id=divid22 class=ti_content>
+<UL>
+<LI id=Qid_141018>22．工程控制网的质量准则不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141018',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group22><LABEL>A．时间准则</LABEL>
+<LI><INPUT onclick="clickAnwser('141018',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group22><LABEL>B．灵敏度准则</LABEL>
+<LI><INPUT onclick="clickAnwser('141018',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group22><LABEL>C．精度准则</LABEL>
+<LI><INPUT onclick="clickAnwser('141018',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group22><LABEL>D．费用准则</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show22','anwser22')" id=show22 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser22 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：工程控制网的质量准则包括：精度准则、可靠性准则、灵敏度准则、费用准则。</DIV></DIV>
+<DIV id=divid23 class=ti_content>
+<UL>
+<LI id=Qid_141019>23．导线角度闭合差的调整方法是将闭合差反符号后（）</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141019',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group23><LABEL>A．按角度大小成正比例分配</LABEL>
+<LI><INPUT onclick="clickAnwser('141019',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group23><LABEL>B．按角度大小成反比例分配</LABEL>
+<LI><INPUT onclick="clickAnwser('141019',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group23><LABEL>C．按角的个数平均分配</LABEL>
+<LI><INPUT onclick="clickAnwser('141019',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group23><LABEL>D．按边长成比例分配</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show23','anwser23')" id=show23 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser23 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：导线测量的平差属于近似平差，是将角度和边长分开进行的。其中角度闭合差的调整方法是反符号后按角的个数平均分配的原则进行。</DIV></DIV>
+<DIV id=divid24 class=ti_content>
+<UL>
+<LI id=Qid_141020>24．采用数字法成图，1∶1000比例尺进行测图，每平方千米图根数量为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141020',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group24><LABEL>A．64</LABEL>
+<LI><INPUT onclick="clickAnwser('141020',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group24><LABEL>B．16</LABEL>
+<LI><INPUT onclick="clickAnwser('141020',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group24><LABEL>C．8</LABEL>
+<LI><INPUT onclick="clickAnwser('141020',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group24><LABEL>D．4</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show24','anwser24')" id=show24 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser24 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：采用数字测图方法，每平方千米图根点的密度，对于1∶500比例尺测图不少于64个，对于1∶1000比例尺测图不少于16个，对于1∶2000比例尺测图不少于4个。</DIV></DIV>
+<DIV id=divid25 class=ti_content>
+<UL>
+<LI id=Qid_141021>25．地形图可以进行修测，但修测的面积超过原图总面积（）时，应重新进行测绘。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141021',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group25><LABEL>A．2015-1-5</LABEL>
+<LI><INPUT onclick="clickAnwser('141021',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group25><LABEL>B．2015-1-3</LABEL>
+<LI><INPUT onclick="clickAnwser('141021',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group25><LABEL>C．2015-1-2</LABEL>
+<LI><INPUT onclick="clickAnwser('141021',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group25><LABEL>D．2015-1-4</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show25','anwser25')" id=show25 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser25 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：按照测量规范规定，地形图可以进行修测，但修测的面积超过原图总面积1/5时，应重新进行测绘。</DIV></DIV>
+<DIV id=divid26 class=ti_content>
+<UL>
+<LI id=Qid_141022>26．线路定测的主要工作内容不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141022',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group26><LABEL>A．中线测量</LABEL>
+<LI><INPUT onclick="clickAnwser('141022',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group26><LABEL>B．地形图测量</LABEL>
+<LI><INPUT onclick="clickAnwser('141022',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group26><LABEL>C．纵断面测量</LABEL>
+<LI><INPUT onclick="clickAnwser('141022',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group26><LABEL>D．横断面测量</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show26','anwser26')" id=show26 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser26 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：线路定测是线路施工设计的基础和依据，其主要任务是将初步设计所定线路测设到实地，并结合现场情况改善线路位置，其工作内容包括线路中线测量和纵横断面测量。</DIV></DIV>
+<DIV id=divid27 class=ti_content>
+<UL>
+<LI id=Qid_141023>27．地下管线探测方法不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141023',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group27><LABEL>A．实地调查法</LABEL>
+<LI><INPUT onclick="clickAnwser('141023',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group27><LABEL>B．物探调查法</LABEL>
+<LI><INPUT onclick="clickAnwser('141023',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group27><LABEL>C．开挖调查法</LABEL>
+<LI><INPUT onclick="clickAnwser('141023',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group27><LABEL>D．目估调查法</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show27','anwser27')" id=show27 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser27 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：地下管线探测方法包括明显管线点的实地调查、隐蔽管线点的物探调查和开挖调查3种方法。</DIV></DIV>
+<DIV id=divid28 class=ti_content>
+<UL>
+<LI id=Qid_141024>28．下列不属于变形物理解释方法的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141024',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group28><LABEL>A．统计分析法</LABEL>
+<LI><INPUT onclick="clickAnwser('141024',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group28><LABEL>B．平均间隙法</LABEL>
+<LI><INPUT onclick="clickAnwser('141024',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group28><LABEL>C．确定函数法</LABEL>
+<LI><INPUT onclick="clickAnwser('141024',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group28><LABEL>D．混合模型法</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show28','anwser28')" id=show28 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser28 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：变形物理解释的方法可分为统计分析法、确定函数法（力学模型分析法）和混合模型法3种。</DIV></DIV>
+<DIV id=divid29 class=ti_content>
+<UL>
+<LI id=Qid_141025>29．数百米至数千米的精密距离测量宜选用（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141025',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group29><LABEL>A．精密钢尺</LABEL>
+<LI><INPUT onclick="clickAnwser('141025',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group29><LABEL>B．精密经纬仪</LABEL>
+<LI><INPUT onclick="clickAnwser('141025',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group29><LABEL>C．精密水准仪</LABEL>
+<LI><INPUT onclick="clickAnwser('141025',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group29><LABEL>D．精密全站仪</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show29','anwser29')" id=show29 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser29 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：数百米至数千米的精密距离测量宜使用精密的光电测距仪（或全站仪）。光电测距仪须经过严格的检验。</DIV></DIV>
+<DIV id=divid30 class=ti_content>
+<UL>
+<LI id=Qid_141026>30．房产图绘制时，对全野外采集数据所测的房地产要素点和地物点，相对于邻近控制点的点位中误差不超过（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141026',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group30><LABEL>A．±0.05m</LABEL>
+<LI><INPUT onclick="clickAnwser('141026',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group30><LABEL>B．±0.08m</LABEL>
+<LI><INPUT onclick="clickAnwser('141026',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group30><LABEL>C．图上±0.5mm</LABEL>
+<LI><INPUT onclick="clickAnwser('141026',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group30><LABEL>D．图上±0.1mm</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show30','anwser30')" id=show30 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser30 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：全野外采集数据或野外解析测量等方法所测量的房地产要素点和地物点，相对于邻近控制点的点位中误差不超过±0.05m。</DIV></DIV>
+<DIV id=divid31 class=ti_content>
+<UL>
+<LI id=Qid_141027>31．地籍要素测量包括界址点测量和（）要素测量。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141027',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group31><LABEL>A．地貌</LABEL>
+<LI><INPUT onclick="clickAnwser('141027',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group31><LABEL>B．地物</LABEL>
+<LI><INPUT onclick="clickAnwser('141027',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group31><LABEL>C．地形</LABEL>
+<LI><INPUT onclick="clickAnwser('141027',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group31><LABEL>D．宗地草图</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show31','anwser31')" id=show31 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser31 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：地籍要素指宗地的属性，地籍要素测量主要包括界址点测量和地形要素测量。</DIV></DIV>
+<DIV id=divid32 class=ti_content>
+<UL>
+<LI id=Qid_141028>32．以相对均衡的详细程度表示制图区域各种自然地理要素和社会经济要素的基本特征、分布规律及其相互联系的地图，被称为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141028',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group32><LABEL>A．专题地图</LABEL>
+<LI><INPUT onclick="clickAnwser('141028',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group32><LABEL>B．专用地图</LABEL>
+<LI><INPUT onclick="clickAnwser('141028',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group32><LABEL>C．普通地图</LABEL>
+<LI><INPUT onclick="clickAnwser('141028',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group32><LABEL>D．通用地图</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show32','anwser32')" id=show32 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser32 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：普通地图是反映地表基本要素的一般特征的地图。它是以相对均衡的详细程度表示制图区域各种自然地理要素和社会经济要素的基本特征、分布规律及其相互联系。</DIV></DIV>
+<DIV id=divid33 class=ti_content>
+<UL>
+<LI id=Qid_141029>33．界线测绘应采用的坐标系统与高程基准是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141029',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group33><LABEL>A．2000国家大地坐标系和1985国家高程基准</LABEL>
+<LI><INPUT onclick="clickAnwser('141029',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group33><LABEL>B．1980西安坐标系和1985国家高程基准</LABEL>
+<LI><INPUT onclick="clickAnwser('141029',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group33><LABEL>C．2000国家大地坐标系和1956黄海高程系</LABEL>
+<LI><INPUT onclick="clickAnwser('141029',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group33><LABEL>D．1980西安坐标系和1956黄海高程系</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show33','anwser33')" id=show33 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser33 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：界线测绘宜采用国家统一的2000国家大地坐标系和1985国家高程基准。</DIV></DIV>
+<DIV id=divid34 class=ti_content>
+<UL>
+<LI id=Qid_141030>34．边界线走向说明是对边界线走向和边界点位置的（）描述。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141030',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group34><LABEL>A．文字</LABEL>
+<LI><INPUT onclick="clickAnwser('141030',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group34><LABEL>B．地图</LABEL>
+<LI><INPUT onclick="clickAnwser('141030',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group34><LABEL>C．表格</LABEL>
+<LI><INPUT onclick="clickAnwser('141030',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group34><LABEL>D．数据</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show34','anwser34')" id=show34 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser34 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：边界线走向说明是对边界线走向和边界点位置的文字描述，是边界协议书的核心内容。</DIV></DIV>
+<DIV id=divid35 class=ti_content>
+<UL>
+<LI id=Qid_141031>35．栅格结构与矢量结构相比较（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141031',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group35><LABEL>A．数据结构复杂，冗余度小 </LABEL>
+<LI><INPUT onclick="clickAnwser('141031',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group35><LABEL>B．数据结构复杂，冗余度大</LABEL>
+<LI><INPUT onclick="clickAnwser('141031',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group35><LABEL>C．数据结构简单，冗余度大 </LABEL>
+<LI><INPUT onclick="clickAnwser('141031',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group35><LABEL>D．数据结构简单，冗余度大</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show35','anwser35')" id=show35 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser35 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：矢量结构的优点是结构紧凑，冗余度低；缺点是数据复杂，不便于数据标准化和规范化。栅格结构的优点是结构简单，易于数据变换；缺点是图形数据量大，数据结构不严密紧凑。</DIV></DIV>
+<DIV id=divid36 class=ti_content>
+<UL>
+<LI id=Qid_141032>36．在多光谱遥感成像中，波段0.40~0.76μm属于（）波段。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141032',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group36><LABEL>A．可见光</LABEL>
+<LI><INPUT onclick="clickAnwser('141032',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group36><LABEL>B．近红外</LABEL>
+<LI><INPUT onclick="clickAnwser('141032',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group36><LABEL>C．远红外</LABEL>
+<LI><INPUT onclick="clickAnwser('141032',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group36><LABEL>D．微波</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show36','anwser36')" id=show36 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser36 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：紫外光的波长为10nm~0.4μm，可见光的波长为0.40~0.76μm，红外光的波长为0.76~1000μm，微波的波长为0.01~100cm。</DIV></DIV>
+<DIV id=divid37 class=ti_content>
+<UL>
+<LI id=Qid_141033>37．使用GPS测量法进行线路平面控制，在选取GPS点位时，除了满足GPS控制要求外，一般每隔（）km左右布设一对相互通视、间距500m至1000m的GPS点。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141033',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group37><LABEL>A．2</LABEL>
+<LI><INPUT onclick="clickAnwser('141033',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group37><LABEL>B．3</LABEL>
+<LI><INPUT onclick="clickAnwser('141033',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group37><LABEL>C．4</LABEL>
+<LI><INPUT onclick="clickAnwser('141033',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group37><LABEL>D．5</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show37','anwser37')" id=show37 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser37 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：使用GPS测量法进行线路平面控制，在选取GPS点位时，除了满足GPS控制要求，尚需考虑有利于后续加密附合导线或施工放样的需要。点位应选在离线路中线50~300m、稳固可靠且不容易被施工破坏的范围内，一般每隔5km左右布设一对相互通视、间距在500~1000m的GPS点。</DIV></DIV>
+<DIV id=divid38 class=ti_content>
+<UL>
+<LI id=Qid_141034>38．摄影测量测绘技术设计分为项目设计和（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141034',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group38><LABEL>A．测区概况调查</LABEL>
+<LI><INPUT onclick="clickAnwser('141034',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group38><LABEL>B．实施方案设计</LABEL>
+<LI><INPUT onclick="clickAnwser('141034',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group38><LABEL>C．专业技术设计</LABEL>
+<LI><INPUT onclick="clickAnwser('141034',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group38><LABEL>D．技术引用标准</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show38','anwser38')" id=show38 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser38 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：摄影测量测绘技术设计分为项目设计和专业技术设计。项目设计是对测绘项目进行的综合性整体设计；专业技术设计也称分项设计，是在项目设计的基础上，对测绘专业活动的技术要求进行设计，是按照测绘活动内容进行的具体设计。</DIV></DIV>
+<DIV id=divid39 class=ti_content>
+<UL>
+<LI id=Qid_141035>39．数字线划图的精度指标包括位置精度和（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141035',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group39><LABEL>A．点位误差</LABEL>
+<LI><INPUT onclick="clickAnwser('141035',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group39><LABEL>B．点位相对误差</LABEL>
+<LI><INPUT onclick="clickAnwser('141035',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group39><LABEL>C．属性精度</LABEL>
+<LI><INPUT onclick="clickAnwser('141035',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group39><LABEL>D．方向误差</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show39','anwser39')" id=show39 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser39 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：数字线划图的精度指标包括位置精度和属性精度。</DIV></DIV>
+<DIV id=divid40 class=ti_content>
+<UL>
+<LI id=Qid_141036>40．地图内容的“三要素”是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141036',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group40><LABEL>A．色相、亮度和饱和度</LABEL>
+<LI><INPUT onclick="clickAnwser('141036',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group40><LABEL>B．自然要素、社会经济要素和其他专题要素</LABEL>
+<LI><INPUT onclick="clickAnwser('141036',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group40><LABEL>C．数学要素、地理要素和图外辅助要素</LABEL>
+<LI><INPUT onclick="clickAnwser('141036',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group40><LABEL>D．图名、图号和图例</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show40','anwser40')" id=show40 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser40 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：地图的内容由数字要素、地理要素（或主题要素）、辅助要素构成，通称地图“三要素”。</DIV></DIV>
+<DIV id=divid41 class=ti_content>
+<UL>
+<LI id=Qid_141037>41．以下是1∶5万地形图图号的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141037',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group41><LABEL>A．J50C003004</LABEL>
+<LI><INPUT onclick="clickAnwser('141037',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group41><LABEL>B．J50D010008 </LABEL>
+<LI><INPUT onclick="clickAnwser('141037',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group41><LABEL>C．J50E004012 </LABEL>
+<LI><INPUT onclick="clickAnwser('141037',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group41><LABEL>D．J50F034023</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show41','anwser41')" id=show41 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser41 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：根据新的地形图分幅与编号方法，从左至右第4位是比例尺的代码，其中E代表1∶5万。</DIV></DIV>
+<DIV id=divid42 class=ti_content>
+<UL>
+<LI id=Qid_141038>42．地图以其特有的数字基础、地图语言、抽象概括法则表现地球或其他星球自然表面的时空现象，主要特性不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141038',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group42><LABEL>A．可量测性</LABEL>
+<LI><INPUT onclick="clickAnwser('141038',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group42><LABEL>B．多样性</LABEL>
+<LI><INPUT onclick="clickAnwser('141038',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group42><LABEL>C．直观性</LABEL>
+<LI><INPUT onclick="clickAnwser('141038',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group42><LABEL>D．一览性</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show42','anwser42')" id=show42 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser42 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：地图以其特有的数学基础、地图语言、抽象概括法则表现地球或其他星球自然表面的时空现象。它具有可量测性、直观性、一览性等基本特性。</DIV></DIV>
+<DIV id=divid43 class=ti_content>
+<UL>
+<LI id=Qid_141039>43．一幅1∶25万地形图可划分为（）1∶5万地形图。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141039',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group43><LABEL>A．9幅</LABEL>
+<LI><INPUT onclick="clickAnwser('141039',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group43><LABEL>B．16幅</LABEL>
+<LI><INPUT onclick="clickAnwser('141039',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group43><LABEL>C．36幅</LABEL>
+<LI><INPUT onclick="clickAnwser('141039',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group43><LABEL>D．64幅</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show43','anwser43')" id=show43 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser43 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：将1∶100万的地形图分为4行4列，每一小块就是1∶25万地形图。而将1∶100万地形图分成12行12列，每一小块就是1∶10万的地形图；再将1∶10万的地形图分成2行2列，每一小块就是1∶5万的地形图。通过计算可得，一幅1∶25万地形图可划分为6行6列，即36幅1∶5万地形图。</DIV></DIV>
+<DIV id=divid44 class=ti_content>
+<UL>
+<LI id=Qid_141040>44．组成普通地图的主体要素部分是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141040',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group44><LABEL>A．数学要素</LABEL>
+<LI><INPUT onclick="clickAnwser('141040',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group44><LABEL>B．地理要素</LABEL>
+<LI><INPUT onclick="clickAnwser('141040',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group44><LABEL>C．辅助要素</LABEL>
+<LI><INPUT onclick="clickAnwser('141040',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group44><LABEL>D．补充说明</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show44','anwser44')" id=show44 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser44 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：地图的内容由数学要素、地理要素（或主题要素）和辅助要素构成。对普通地图而言，地图的主体是基本地理要素。</DIV></DIV>
+<DIV id=divid45 class=ti_content>
+<UL>
+<LI id=Qid_141041>45．专题地理数据的更新原则不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141041',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group45><LABEL>A．精度匹配原则</LABEL>
+<LI><INPUT onclick="clickAnwser('141041',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group45><LABEL>B．现势性原则</LABEL>
+<LI><INPUT onclick="clickAnwser('141041',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group45><LABEL>C．全面性原则</LABEL>
+<LI><INPUT onclick="clickAnwser('141041',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group45><LABEL>D．空间信息与属性信息同步更新原则</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show45','anwser45')" id=show45 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser45 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：专题地理数据的更新原则包括：精度匹配原则、现势性原则以及空间信息与属性信息同步更新原则。</DIV></DIV>
+<DIV id=divid46 class=ti_content>
+<UL>
+<LI id=Qid_141042>46．最适合中纬度地带沿东西伸展区域的地图使用的投影方式是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141042',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group46><LABEL>A．圆锥投影</LABEL>
+<LI><INPUT onclick="clickAnwser('141042',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group46><LABEL>B．圆柱投影</LABEL>
+<LI><INPUT onclick="clickAnwser('141042',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group46><LABEL>C．方位投影</LABEL>
+<LI><INPUT onclick="clickAnwser('141042',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group46><LABEL>D．高斯投影</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show46','anwser46')" id=show46 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser46 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：圆锥投影方式最适合于中纬度地带沿东西伸展区域的地图使用，地球上广大陆地都处于中纬度地带，所以被广泛使用。</DIV></DIV>
+<DIV id=divid47 class=ti_content>
+<UL>
+<LI id=Qid_141043>47．地图符号设计的原则不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141043',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group47><LABEL>A．可定位性</LABEL>
+<LI><INPUT onclick="clickAnwser('141043',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group47><LABEL>B．依比例性</LABEL>
+<LI><INPUT onclick="clickAnwser('141043',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group47><LABEL>C．逻辑性</LABEL>
+<LI><INPUT onclick="clickAnwser('141043',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group47><LABEL>D．概括性</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show47','anwser47')" id=show47 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser47 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：地图符号设计中要把握的原则是使符号具有可定位性、概括性、可感受性、组合性、逻辑性和系统性。</DIV></DIV>
+<DIV id=divid48 class=ti_content>
+<UL>
+<LI id=Qid_141044>48．制图综合对制图现象进行的两种基本的处理是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141044',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group48><LABEL>A．概括和移位</LABEL>
+<LI><INPUT onclick="clickAnwser('141044',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group48><LABEL>B．取舍和概括</LABEL>
+<LI><INPUT onclick="clickAnwser('141044',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group48><LABEL>C．夸大和合并</LABEL>
+<LI><INPUT onclick="clickAnwser('141044',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group48><LABEL>D．压盖和位移</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show48','anwser48')" id=show48 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser48 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：制图综合是对制图现象进行两种基本的处理——取舍和概括。</DIV></DIV>
+<DIV id=divid49 class=ti_content>
+<UL>
+<LI id=Qid_141045>49．普通地图编绘中常用的编绘指标形式不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141045',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group49><LABEL>A．详细指标</LABEL>
+<LI><INPUT onclick="clickAnwser('141045',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group49><LABEL>B．定额指标</LABEL>
+<LI><INPUT onclick="clickAnwser('141045',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group49><LABEL>C．等级指标</LABEL>
+<LI><INPUT onclick="clickAnwser('141045',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group49><LABEL>D．分界尺度</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show49','anwser49')" id=show49 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser49 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：普通地图编绘中常用的编绘指标主要有定额指标、等级指标、分界尺度。</DIV></DIV>
+<DIV id=divid50 class=ti_content>
+<UL>
+<LI id=Qid_141046>50．电子地图的功能不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141046',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group50><LABEL>A．输入功能</LABEL>
+<LI><INPUT onclick="clickAnwser('141046',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group50><LABEL>B．管理功能</LABEL>
+<LI><INPUT onclick="clickAnwser('141046',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group50><LABEL>C．数据更新功能</LABEL>
+<LI><INPUT onclick="clickAnwser('141046',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group50><LABEL>D．检索查询功能</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show50','anwser50')" id=show50 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser50 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：电子地图的主要功能包括：地图构建功能、管理功能、检索查询功能、数据统计分析和处理功能、数据更新功能、地图概括功能、输出功能。</DIV></DIV>
+<DIV id=divid51 class=ti_content>
+<UL>
+<LI id=Qid_141047>51．按（）可以把GIS分为专题地理信息系统、区域地理信息系统与地理信息系统工具。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141047',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group51><LABEL>A．数据容量</LABEL>
+<LI><INPUT onclick="clickAnwser('141047',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group51><LABEL>B．用户类型</LABEL>
+<LI><INPUT onclick="clickAnwser('141047',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group51><LABEL>C．内容</LABEL>
+<LI><INPUT onclick="clickAnwser('141047',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group51><LABEL>D．用途</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show51','anwser51')" id=show51 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser51 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：按内容可以将GIS分为专题地理信息系统、区域地理信息系统与地理信息系统工具。</DIV></DIV>
+<DIV id=divid52 class=ti_content>
+<UL>
+<LI id=Qid_141048>52．在GIS数据中，属性数据属于（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141048',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group52><LABEL>A．关系数据</LABEL>
+<LI><INPUT onclick="clickAnwser('141048',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group52><LABEL>B．空间数据</LABEL>
+<LI><INPUT onclick="clickAnwser('141048',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group52><LABEL>C．非空间数据 </LABEL>
+<LI><INPUT onclick="clickAnwser('141048',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group52><LABEL>D．几何数据</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show52','anwser52')" id=show52 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser52 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：属性数据本身属于非空间数据，但在GIS中，它必须与空间数据相结合，才能表达空间实体，才有意义。</DIV></DIV>
+<DIV id=divid53 class=ti_content>
+<UL>
+<LI id=Qid_141049>53．在地籍GPS RTK图根控制测量时，基准站至少应联测（）个高级控制点。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141049',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group53><LABEL>A．1</LABEL>
+<LI><INPUT onclick="clickAnwser('141049',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group53><LABEL>B．2</LABEL>
+<LI><INPUT onclick="clickAnwser('141049',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group53><LABEL>C．3</LABEL>
+<LI><INPUT onclick="clickAnwser('141049',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group53><LABEL>D．4</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show53','anwser53')" id=show53 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser53 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：GPS RTK基准站至少应联测3个高级控制点。高级控制点所组成的平面图形应对相关的RTK流动站点有足够控制面积，并对GPS基准站坐标系统进行有效检核。</DIV></DIV>
+<DIV id=divid54 class=ti_content>
+<UL>
+<LI id=Qid_141050>54．一个3km长的隧道进行对向贯通，横向贯通误差限差应为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141050',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group54><LABEL>A．±70mm</LABEL>
+<LI><INPUT onclick="clickAnwser('141050',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group54><LABEL>B．±100mm</LABEL>
+<LI><INPUT onclick="clickAnwser('141050',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group54><LABEL>C．±150mm</LABEL>
+<LI><INPUT onclick="clickAnwser('141050',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group54><LABEL>D．±200mm</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show54','anwser54')" id=show54 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser54 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：根据现行《工程测量规范》（GB 50026—2007），两开挖洞口间长度小于4km的横向贯通误差限差为100mm。</DIV></DIV>
+<DIV id=divid55 class=ti_content>
+<UL>
+<LI id=Qid_141051>55．下列选项不属于数据库模式创建优化指标的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141051',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group55><LABEL>A．单位时间内所访问的逻辑记录个数要少</LABEL>
+<LI><INPUT onclick="clickAnwser('141051',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group55><LABEL>B．分析用户活动所涉及的数据</LABEL>
+<LI><INPUT onclick="clickAnwser('141051',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group55><LABEL>C．单位时间内数据传送量要少</LABEL>
+<LI><INPUT onclick="clickAnwser('141051',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group55><LABEL>D．系统占用的储存空间尽量要少</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show55','anwser55')" id=show55 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser55 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：数据库模式优化是在性能预测的基础上进行的，一般用三方面指标来衡量：①单位时间内所访问的逻辑记录个数要少；②单位时间内数据传送量要少；③系统占用的储存空间尽量要少。</DIV></DIV>
+<DIV id=divid56 class=ti_content>
+<UL>
+<LI id=Qid_141052>56．在专题地图表示方法中，适合表示呈间断成片分布的面状对象的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141052',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group56><LABEL>A．定位符号法</LABEL>
+<LI><INPUT onclick="clickAnwser('141052',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group56><LABEL>B．范围法</LABEL>
+<LI><INPUT onclick="clickAnwser('141052',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group56><LABEL>C．质底法</LABEL>
+<LI><INPUT onclick="clickAnwser('141052',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group56><LABEL>D．点值法</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show56','anwser56')" id=show56 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser56 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：在专题地图表示方法中，定位符号法适合表示点状分布的物体；范围法适合表示呈间断成片分布的面状对象；质底法适合表示连续分布、满布于整个区域的面状现象；点值法适合表示制图区域中呈分散的、复杂分布的现象。</DIV></DIV>
+<DIV id=divid57 class=ti_content>
+<UL>
+<LI id=Qid_141053>57．电子地图是由硬件、软件、数据和人员等部分组成。下列软件属于核心软件的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141053',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group57><LABEL>A．操作系统</LABEL>
+<LI><INPUT onclick="clickAnwser('141053',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group57><LABEL>B．地图数据库管理软件</LABEL>
+<LI><INPUT onclick="clickAnwser('141053',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group57><LABEL>C．专业软件</LABEL>
+<LI><INPUT onclick="clickAnwser('141053',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group57><LABEL>D．其他应用软件</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show57','anwser57')" id=show57 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser57 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：电子地图软件系统包括操作系统、地图数据库管理软件、专业软件及其他应用软件。其中地图数据库管理软件是核心软件。</DIV></DIV>
+<DIV id=divid58 class=ti_content>
+<UL>
+<LI id=Qid_141054>58．对于基础地理信息系统建设的技术要求，下列选项说法错误的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141054',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group58><LABEL>A．数据库应采用独立的平面坐标系统和高程系统</LABEL>
+<LI><INPUT onclick="clickAnwser('141054',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group58><LABEL>B．日期应采用公历纪元，时间应采用北京时间</LABEL>
+<LI><INPUT onclick="clickAnwser('141054',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group58><LABEL>C．数据库系统应支持有关的基础地理信息数据产品标准所规定的数据格式</LABEL>
+<LI><INPUT onclick="clickAnwser('141054',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group58><LABEL>D．要素的属性项及其名称、类型、长度、顺序、属性值等应完全正确</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show58','anwser58')" id=show58 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser58 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：数据库系统应采用统一的、符合国家规定的平面坐标系统和高程系统。</DIV></DIV>
+<DIV id=divid59 class=ti_content>
+<UL>
+<LI id=Qid_141055>59．下列选项不属于传统数据模型的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141055',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group59><LABEL>A．层次模型</LABEL>
+<LI><INPUT onclick="clickAnwser('141055',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group59><LABEL>B．网络模型</LABEL>
+<LI><INPUT onclick="clickAnwser('141055',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group59><LABEL>C．混合数据模型</LABEL>
+<LI><INPUT onclick="clickAnwser('141055',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group59><LABEL>D．关系模型</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show59','anwser59')" id=show59 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser59 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：传统的数据模型包括层次模型、网络模型和关系模型。而混合数据模型属于空间数据模型。</DIV></DIV>
+<DIV id=divid60 class=ti_content>
+<UL>
+<LI id=Qid_141056>60．地籍平面控制网点对于建筑物密集区的控制点平均间距应该在（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141056',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group60><LABEL>A．50m</LABEL>
+<LI><INPUT onclick="clickAnwser('141056',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group60><LABEL>B．100m</LABEL>
+<LI><INPUT onclick="clickAnwser('141056',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group60><LABEL>C．150m</LABEL>
+<LI><INPUT onclick="clickAnwser('141056',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group60><LABEL>D．200m</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show60','anwser60')" id=show60 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser60 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：地籍平面控制网点的密度为：建筑物密集区的控制点平均间距在100m左右，建筑物稀疏区的控制点平均间距在200m左右。</DIV></DIV>
+<DIV id=divid61 class=ti_content>
+<UL>
+<LI id=Qid_141057>61．下列不属于平面曲线的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141057',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group61><LABEL>A．圆曲线</LABEL>
+<LI><INPUT onclick="clickAnwser('141057',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group61><LABEL>B．缓和曲线</LABEL>
+<LI><INPUT onclick="clickAnwser('141057',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group61><LABEL>C．竖曲线 </LABEL>
+<LI><INPUT onclick="clickAnwser('141057',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group61><LABEL>D．回头曲线</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show61','anwser61')" id=show61 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser61 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：竖曲线是在竖面上连接不同坡度线路的曲线，不是平面曲线。</DIV></DIV>
+<DIV id=divid62 class=ti_content>
+<UL>
+<LI id=Qid_141058>62．地籍测绘成果档案的编号按（）为单位。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141058',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group62><LABEL>A．乡镇</LABEL>
+<LI><INPUT onclick="clickAnwser('141058',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group62><LABEL>B．县</LABEL>
+<LI><INPUT onclick="clickAnwser('141058',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group62><LABEL>C．市</LABEL>
+<LI><INPUT onclick="clickAnwser('141058',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group62><LABEL>D．省</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show62','anwser62')" id=show62 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser62 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：地籍测绘成果档案的编号按省为单位，由市、县代号，类目代号和案卷顺序号三部分组成。</DIV></DIV>
+<DIV id=divid63 class=ti_content>
+<UL>
+<LI id=Qid_141059>63．根据界址点的适用范围，其测定精度可分为（）类。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141059',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group63><LABEL>A．二</LABEL>
+<LI><INPUT onclick="clickAnwser('141059',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group63><LABEL>B．三</LABEL>
+<LI><INPUT onclick="clickAnwser('141059',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group63><LABEL>C．四</LABEL>
+<LI><INPUT onclick="clickAnwser('141059',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group63><LABEL>D．五</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show63','anwser63')" id=show63 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser63 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：根据界址点的适用范围，其测定精度分为两类：城镇街坊外围界址点及街坊内明显的界址点作为一类；城镇街坊内部隐蔽的界址点及村庄内部的界址点作为二类。</DIV></DIV>
+<DIV id=divid64 class=ti_content>
+<UL>
+<LI id=Qid_141060>64．在房地产产权档案的整理和管理中，常用的档案号不包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141060',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group64><LABEL>A．全宗号</LABEL>
+<LI><INPUT onclick="clickAnwser('141060',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group64><LABEL>B．产别号</LABEL>
+<LI><INPUT onclick="clickAnwser('141060',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group64><LABEL>C．宗地号</LABEL>
+<LI><INPUT onclick="clickAnwser('141060',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group64><LABEL>D．案卷号</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show64','anwser64')" id=show64 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser64 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：在房地产产权档案的整理和管理中，常用的档案号有5种：全宗号、产别号、案卷目录号、案卷号、卷内文件页号。</DIV></DIV>
+<DIV id=divid65 class=ti_content>
+<UL>
+<LI id=Qid_141061>65．桥梁施工高程控制网的建立中，每岸水准点不应少于（）个。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141061',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group65><LABEL>A．1</LABEL>
+<LI><INPUT onclick="clickAnwser('141061',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group65><LABEL>B．2</LABEL>
+<LI><INPUT onclick="clickAnwser('141061',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group65><LABEL>C．3</LABEL>
+<LI><INPUT onclick="clickAnwser('141061',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group65><LABEL>D．4</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show65','anwser65')" id=show65 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser65 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：桥梁施工高程控制网的建立，应符合下列规定：①两岸的水准测量路线，应组成一个统一的水准网；②每岸水准点不应少于3个；③跨越江河时，根据需要，可进行跨河水准测量；④施工高程控制测量其他技术要求，应符合相关规定。</DIV></DIV>
+<DIV id=divid66 class=ti_content>
+<UL>
+<LI id=Qid_141062>66．声纳图像的质量与拖鱼的高度和速度以及海底具体的目标有关，可以测量海底1m内的块状目标。一般情况下，声纳探测距离大致是拖鱼距海底的高度的（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141062',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group66><LABEL>A．1%～5%</LABEL>
+<LI><INPUT onclick="clickAnwser('141062',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group66><LABEL>B．5%～10%</LABEL>
+<LI><INPUT onclick="clickAnwser('141062',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group66><LABEL>C．8%～20%</LABEL>
+<LI><INPUT onclick="clickAnwser('141062',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group66><LABEL>D．10%～20%</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show66','anwser66')" id=show66 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser66 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：一般情况下，海底目标声波反射和散射的回波信号越强，拖鱼受背景噪声影响越小，拖鱼受测船运动影响越小，声纳图像就越清晰，质量越好。声纳探测距离一般为拖鱼距海底高度的8%～20%。</DIV></DIV>
+<DIV id=divid67 class=ti_content>
+<UL>
+<LI id=Qid_141063>67．（）是遥感进行自然资源与环境调查的主要波谱区。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141063',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group67><LABEL>A．紫外</LABEL>
+<LI><INPUT onclick="clickAnwser('141063',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group67><LABEL>B．红外</LABEL>
+<LI><INPUT onclick="clickAnwser('141063',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group67><LABEL>C．可见光 </LABEL>
+<LI><INPUT onclick="clickAnwser('141063',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group67><LABEL>D．不可见光</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show67','anwser67')" id=show67 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser67 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：波长0.4~0.76μm谱段，是人眼唯一能看见的波谱段，在该波谱段内，可用胶片和光电探测器收集和记录信息，该波谱段是进行自然资源与环境调查的主要波谱段。</DIV></DIV>
+<DIV id=divid68 class=ti_content>
+<UL>
+<LI id=Qid_141064>68．下列关于投影差的说法错误的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141064',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group68><LABEL>A．越靠近像片边缘，投影差越大，在像底点处没有投影差</LABEL>
+<LI><INPUT onclick="clickAnwser('141064',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group68><LABEL>B．地面点的高程或目标物体的高度越大，投影差也越大</LABEL>
+<LI><INPUT onclick="clickAnwser('141064',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group68><LABEL>C．在其他条件相同的情况下，摄影机的主距越大，相应的投影差越小</LABEL>
+<LI><INPUT onclick="clickAnwser('141064',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=D name=group68><LABEL>D．城区航空摄影时，为了有效减小航摄像片上投影差的影响，应选择短焦距摄影机进行摄影</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show68','anwser68')" id=show68 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser68 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：D<BR>解析：投影差具有如下性质：①越靠近像片边缘，投影差越大，在像底点处没有投影差；②地面点的高程或目标物体的高度越大，投影差也越大；③在其他条件相同的情况下，摄影机的主距越大，相应的投影差越小。而城区航空摄影时，为了有效减小航摄像片上投影差的影响，应选择长焦距摄影机进行摄影。</DIV></DIV>
+<DIV id=divid69 class=ti_content>
+<UL>
+<LI id=Qid_141065>69．为了保证GPS网一定的几何强度，国标中对各等级GPS多边形网与附合导线网的边数做出限制，就C级网而言边数应（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141065',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group69><LABEL>A．小于等于5 </LABEL>
+<LI><INPUT onclick="clickAnwser('141065',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group69><LABEL>B．小于等于8 </LABEL>
+<LI><INPUT onclick="clickAnwser('141065',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group69><LABEL>C．小于等于6 </LABEL>
+<LI><INPUT onclick="clickAnwser('141065',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group69><LABEL>D．小于等于10</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show69','anwser69')" id=show69 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser69 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：为了保证GPS网一定的几何强度，国标中对各等级GPS多边形网与附合导线网的边数做出限制，就C级网而言边数应小于等于6。</DIV></DIV>
+<DIV id=divid70 class=ti_content>
+<UL>
+<LI id=Qid_141066>70．一个好的控制网，观测值的多余观测分量应大于（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141066',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group70><LABEL>A．0.1～0.2</LABEL>
+<LI><INPUT onclick="clickAnwser('141066',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group70><LABEL>B．0.2～0.3 </LABEL>
+<LI><INPUT onclick="clickAnwser('141066',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group70><LABEL>C．0.3～0.5</LABEL>
+<LI><INPUT onclick="clickAnwser('141066',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group70><LABEL>D．0.5～0.8</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show70','anwser70')" id=show70 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser70 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：一个好的控制网，观测值的多余观测分量应大于0.3～0.5。</DIV></DIV>
+<DIV id=divid71 class=ti_content>
+<UL>
+<LI id=Qid_141067>71．属永久性建筑有柱的车棚、货棚等按柱的外围水平投影计算（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141067',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group71><LABEL>A．一半面积</LABEL>
+<LI><INPUT onclick="clickAnwser('141067',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group71><LABEL>B．全面积</LABEL>
+<LI><INPUT onclick="clickAnwser('141067',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group71><LABEL>C．不计面积</LABEL>
+<LI><INPUT onclick="clickAnwser('141067',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group71><LABEL>D．根据情况</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show71','anwser71')" id=show71 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser71 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：根据《房产测量规范》规定，对于永久性建筑有柱的车棚、货棚等按柱的外围水平投影计算全面积。</DIV></DIV>
+<DIV id=divid72 class=ti_content>
+<UL>
+<LI id=Qid_141068>72．城镇地籍图根控制点的点位应选在（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141068',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group72><LABEL>A．街道交叉口等视野开阔便于采集碎部点的地面上</LABEL>
+<LI><INPUT onclick="clickAnwser('141068',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group72><LABEL>B．楼顶上，便于保存和通视</LABEL>
+<LI><INPUT onclick="clickAnwser('141068',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group72><LABEL>C．松软路面上，便于打桩做标志</LABEL>
+<LI><INPUT onclick="clickAnwser('141068',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group72><LABEL>D．以上情况均可</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show72','anwser72')" id=show72 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser72 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：城镇地籍图根控制点应选在通视条件良好、便于观测的地方，并要埋设固定标志，以便能长期保存。</DIV></DIV>
+<DIV id=divid73 class=ti_content>
+<UL>
+<LI id=Qid_141069>73．根据宗地图的概念和内容，下列对宗地图特性的说法不正确的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141069',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group73><LABEL>A．宗地图是独立的地籍图</LABEL>
+<LI><INPUT onclick="clickAnwser('141069',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group73><LABEL>B．图中数据都是实量得到或实测得到的，精度高且可靠</LABEL>
+<LI><INPUT onclick="clickAnwser('141069',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group73><LABEL>C．图形与实地有严密的数学相似关系</LABEL>
+<LI><INPUT onclick="clickAnwser('141069',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group73><LABEL>D．相邻宗地图可以拼接</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show73','anwser73')" id=show73 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser73 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：根据宗地图的概念和内容，宗地图有以下特性：①宗地图是地籍图的一种附图，是地籍资料的一部分；②图中数据都是实量得到或实测得到的，精度高且可靠；③其图形与实地有严密的数学相似关系；④相邻宗地图可以拼接；⑤标识符齐全，人工和计算机都可方便地对其进行管理。</DIV></DIV>
+<DIV id=divid74 class=ti_content>
+<UL>
+<LI id=Qid_141070>74．关于像片控制测量说法不正确的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141070',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group74><LABEL>A．像片控制测量的布点方案分为全野外、非野外和特殊情况布点方案</LABEL>
+<LI><INPUT onclick="clickAnwser('141070',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group74><LABEL>B．非全野外布点方案中，为保证航线网内精度，必须限制每段航线的跨度</LABEL>
+<LI><INPUT onclick="clickAnwser('141070',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group74><LABEL>C．用图部门对成图精度要求较高，可采用内业加密来满足要求时，可用全野外布点方案</LABEL>
+<LI><INPUT onclick="clickAnwser('141070',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group74><LABEL>D．由于设备限制，航测内暂时无法进行加密工作时可用全野外布点方案</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show74','anwser74')" id=show74 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser74 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：当用图部门对成图精度要求较高，采用内业加密不能满足用图部门需要时，可采用全野外布点方案。</DIV></DIV>
+<DIV id=divid75 class=ti_content>
+<UL>
+<LI id=Qid_141071>75．航线弯曲度不得大于（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141071',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group75><LABEL>A．3%</LABEL>
+<LI><INPUT onclick="clickAnwser('141071',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group75><LABEL>B．5%</LABEL>
+<LI><INPUT onclick="clickAnwser('141071',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group75><LABEL>C．7%</LABEL>
+<LI><INPUT onclick="clickAnwser('141071',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group75><LABEL>D．10%</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show75','anwser75')" id=show75 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser75 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：把一条航线的航摄像片根据地物景像叠拼起来，每张像片的主点连线不在一条直线上，而呈现为弯弯曲曲的折线，称为航线弯曲。通常规定航线弯曲度不得大于3%。</DIV></DIV>
+<DIV id=divid76 class=ti_content>
+<UL>
+<LI id=Qid_141072>76．采用不同形状、大小和颜色的符号，表示呈点状分布物体的位置的方法是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141072',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group76><LABEL>A．定位图表法</LABEL>
+<LI><INPUT onclick="clickAnwser('141072',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group76><LABEL>B．点值法</LABEL>
+<LI><INPUT onclick="clickAnwser('141072',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group76><LABEL>C．定位符号法</LABEL>
+<LI><INPUT onclick="clickAnwser('141072',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group76><LABEL>D．分区统计图表法</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show76','anwser76')" id=show76 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser76 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：在制图实践中，已逐渐形成了10种约定的专题地图表示方法。其中定位符号法表示点状分布的物体，常采用不同形状、大小、颜色的符号表示其位置。</DIV></DIV>
+<DIV id=divid77 class=ti_content>
+<UL>
+<LI id=Qid_141073>77．相邻图幅之间的接边要素图上位置相差（）以内的，应将图幅两边要素平均移位进行接边。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141073',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group77><LABEL>A．0.4mm</LABEL>
+<LI><INPUT onclick="clickAnwser('141073',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group77><LABEL>B．0.6mm</LABEL>
+<LI><INPUT onclick="clickAnwser('141073',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group77><LABEL>C．0.8mm</LABEL>
+<LI><INPUT onclick="clickAnwser('141073',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group77><LABEL>D．1.0mm</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show77','anwser77')" id=show77 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser77 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：相邻图幅之间的接边要素图上位置相差0.6mm以内的，应将图幅两边要素平均移位进行接边；相差超过0.6mm的要素应检查和分析原因，处理结果需记录在元数据及图历簿中。</DIV></DIV>
+<DIV id=divid78 class=ti_content>
+<UL>
+<LI id=Qid_141074>78．水平角观测宜采用方向观测法，下列有关方向观测法的技术要求，说法错误的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141074',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group78><LABEL>A．各测回间应配置度盘</LABEL>
+<LI><INPUT onclick="clickAnwser('141074',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group78><LABEL>B．当观测方向不多于3个时，可不归零</LABEL>
+<LI><INPUT onclick="clickAnwser('141074',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group78><LABEL>C．当观测方向多于4个时，需进行分组观测</LABEL>
+<LI><INPUT onclick="clickAnwser('141074',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=C name=group78><LABEL>D．水平角的观测值应取平均数作为测站成果</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show78','anwser78')" id=show78 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser78 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：C<BR>解析：方向观测法中，当观测方向多于6个时，可进行分组观测。</DIV></DIV>
+<DIV id=divid79 class=ti_content>
+<UL>
+<LI id=Qid_141075>79．保持制图区域内的变形为最小，或者投影变形误差的分布符合设计要求，以最大的可能保证必要的地图精度和图上量测精度的是指（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141075',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group79><LABEL>A．地图集投影设计</LABEL>
+<LI><INPUT onclick="clickAnwser('141075',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group79><LABEL>B．地图集图面配置设计</LABEL>
+<LI><INPUT onclick="clickAnwser('141075',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group79><LABEL>C．地图集的整饰设计</LABEL>
+<LI><INPUT onclick="clickAnwser('141075',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=A name=group79><LABEL>D．地图集的编排设计</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show79','anwser79')" id=show79 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser79 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A<BR>解析：设计地图投影的基本宗旨在于保持制图区域内的变形为最小，或者投影变形误差的分布符合设计要求，以最大的可能保证必要的地图精度和某一图组内图幅之间内容的延续性和可比性。</DIV></DIV>
+<DIV id=divid80 class=ti_content>
+<UL>
+<LI id=Qid_141076>80．目前，主要的大型GIS应用项目在管理地理信息数据时，采用的都是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="clickAnwser('141076',this.value,'A',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group80><LABEL>A．属性数据库</LABEL>
+<LI><INPUT onclick="clickAnwser('141076',this.value,'B',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group80><LABEL>B．空间数据库</LABEL>
+<LI><INPUT onclick="clickAnwser('141076',this.value,'C',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group80><LABEL>C．数值数据库</LABEL>
+<LI><INPUT onclick="clickAnwser('141076',this.value,'D',this.id,'80','-1','','-1','2047')" id=1 type=radio value=B name=group80><LABEL>D．概念数据库</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show80','anwser80')" id=show80 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser80 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B<BR>解析：目前，主要的大型GIS应用项目在管理地理信息数据时，采用的都是空间数据库。</DIV></DIV>
+<DIV class=ti_title>多选题</DIV>
+<DIV id=divid81 class=ti_content>
+<UL>
+<LI id=Qid_141077>81．关于三角测量法叙述正确的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid81','141077',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,B,C><LABEL>A．检核条件多，图形结构强</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid81','141077',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,B,C><LABEL>B．我国建立天文大地网的主要方法</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid81','141077',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,B,C><LABEL>C．网状布设，控制面积较大</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid81','141077',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,B,C><LABEL>D．距起算边越远精度越高</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid81','141077',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,B,C><LABEL>E．主要工作是测边，受地形限制大</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show81','anwser81')" id=show81 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser81 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C<BR>解析：三角测量法优点是：检核条件多，图形结构强度高；采取网状布设，控制面积较大，精度较高；主要工作是测角，受地形限制小，扩展迅速。缺点是：在交通或隐蔽地区布网困难，网中推算的边长精度不均匀，距起始边愈远精度愈低。三角测量法是我国建立天文大地网的主要方法。</DIV></DIV>
+<DIV id=divid82 class=ti_content>
+<UL>
+<LI id=Qid_141078>82．基准站选址后提交的成果有（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid82','141078',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,B,C,E><LABEL>A．站点照片</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid82','141078',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,B,C,E><LABEL>B．选址点之记</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid82','141078',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,B,C,E><LABEL>C．土地使用意向书</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid82','141078',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,B,C,E><LABEL>D．测量标志保管书</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid82','141078',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,B,C,E><LABEL>E．实地测试数据和结果分析</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show82','anwser82')" id=show82 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser82 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C,E<BR>解析：基准站选址后提交的成果有：①勘选报告；②站点照片；③土地使用意向书或其他用地文件；④地质勘查证明；⑤选址点之记；⑥实地测试数据和结果分析；⑦收集的其他数据。</DIV></DIV>
+<DIV id=divid83 class=ti_content>
+<UL>
+<LI id=Qid_141079>83．GPS数据处理通常包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid83','141079',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=B,C,D><LABEL>A．GPS接收机检校</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid83','141079',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=B,C,D><LABEL>B．GPS网基线处理</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid83','141079',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=B,C,D><LABEL>C．GPS网平差</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid83','141079',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=B,C,D><LABEL>D．外业数据质量检核</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid83','141079',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=B,C,D><LABEL>E．GPS-RTK</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show83','anwser83')" id=show83 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser83 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B,C,D<BR>解析：GPS测量数据处理有外业数据质量检核、GPS网基线精处理结果质量检核、GPS网平差三个部分。</DIV></DIV>
+<DIV id=divid84 class=ti_content>
+<UL>
+<LI id=Qid_141080>84．水准测量中，一个测站的观测需要检查的限差包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid84','141080',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,B,C,D><LABEL>A．前后视距差</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid84','141080',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,B,C,D><LABEL>B．视线长度</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid84','141080',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,B,C,D><LABEL>C．环闭全差</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid84','141080',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,B,C,D><LABEL>D．数字水准仪重复测量次数</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid84','141080',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,B,C,D><LABEL>E．高差闭合差</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show84','anwser84')" id=show84 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser84 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C,D<BR>解析：水准测量中，一、二等水准观测中的主要限差有：测站视线长度、前后视距差、视线高度、数字水准仪重复测量次数、往返高差不符值、环闭全差和检测高差。</DIV></DIV>
+<DIV id=divid85 class=ti_content>
+<UL>
+<LI id=Qid_141081>85．海洋定位的主要方法包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid85','141081',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,B,D,E><LABEL>A．光学定位</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid85','141081',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,B,D,E><LABEL>B．卫星定位</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid85','141081',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,B,D,E><LABEL>C．传感器定位</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid85','141081',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,B,D,E><LABEL>D．水声定位</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid85','141081',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,B,D,E><LABEL>E．无线电定位</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show85','anwser85')" id=show85 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser85 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,D,E<BR>解析：目前海洋定位的方法主要有光学定位、无线电定位、卫星定位、水声定位四种。</DIV></DIV>
+<DIV id=divid86 class=ti_content>
+<UL>
+<LI id=Qid_141082>86．工程控制网的质量准则为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid86','141082',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,C,D,E><LABEL>A．灵敏度准则</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid86','141082',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,C,D,E><LABEL>B．平衡准则</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid86','141082',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,C,D,E><LABEL>C．精度准则</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid86','141082',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,C,D,E><LABEL>D．多样性准则</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid86','141082',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,C,D,E><LABEL>E．费用准则</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show86','anwser86')" id=show86 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser86 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,C,D,E<BR>解析：工程控制网的质量准则有：精度准则、可靠性准则、灵敏度准则、费用准则。</DIV></DIV>
+<DIV id=divid87 class=ti_content>
+<UL>
+<LI id=Qid_141083>87．线路的平面控制宜采用（）进行布设。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid87','141083',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,B,E><LABEL>A．导线</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid87','141083',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,B,E><LABEL>B．GPS测量</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid87','141083',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,B,E><LABEL>C．三角网</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid87','141083',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,B,E><LABEL>D．方格网</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid87','141083',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,B,E><LABEL>E．边角网</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show87','anwser87')" id=show87 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser87 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,E<BR>解析：三角网需要通视条件良好，不适用于线路的线性工程；方格网适用于建筑物轴线相互平行或垂直的场区。</DIV></DIV>
+<DIV id=divid88 class=ti_content>
+<UL>
+<LI id=Qid_141084>88．房产分丘平面图的主要内容包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid88','141084',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,C,E><LABEL>A．界址点点号</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid88','141084',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,C,E><LABEL>B．房屋所在层次</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid88','141084',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,C,E><LABEL>C．房屋权界线</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid88','141084',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,C,E><LABEL>D．分摊面积</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid88','141084',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,C,E><LABEL>E．分幅图的内容</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show88','anwser88')" id=show88 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser88 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,C,E<BR>解析：房产分丘平面图除表示房产分幅平面图的内容外，还应表示房屋权界线、界址点点号、窑洞使用范围、挑廊、阳台、建成年份、用地面积、建筑面积、墙体归属和四至关系等各项房地产要素。</DIV></DIV>
+<DIV id=divid89 class=ti_content>
+<UL>
+<LI id=Qid_141085>89．利用数字高程模型可以计算（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid89','141085',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=B,C,D,E><LABEL>A．坐标方位角</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid89','141085',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=B,C,D,E><LABEL>B．坡度</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid89','141085',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=B,C,D,E><LABEL>C．坡向</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid89','141085',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=B,C,D,E><LABEL>D．地表面积</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid89','141085',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=B,C,D,E><LABEL>E．土石方量</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show89','anwser89')" id=show89 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser89 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B,C,D,E<BR>解析：数字高程模型（DEM）是在一定范围内通过规则格网点描述地面高程信息的数据集，用于反映区域地貌形态的空间分布。数字高程模型可以计算地面坡度、坡向、地表面积和土石方量等。</DIV></DIV>
+<DIV id=divid90 class=ti_content>
+<UL>
+<LI id=Qid_141086>90．界桩登记表中的界桩位置略图应标绘出（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid90','141086',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,C,D><LABEL>A．界桩点、边界线</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid90','141086',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,C,D><LABEL>B．三北方向图</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid90','141086',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,C,D><LABEL>C．界桩方位物</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid90','141086',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,C,D><LABEL>D．边界线周边地形</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid90','141086',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,C,D><LABEL>E．备注及双方（或三方）负责人签名</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show90','anwser90')" id=show90 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser90 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,C,D<BR>解析：界桩登记表中的界桩位置略图应标绘出边界线、界桩点、界桩方位物、边界线周边地形等，具体要求按照相关规范执行。</DIV></DIV>
+<DIV id=divid91 class=ti_content>
+<UL>
+<LI id=Qid_141087>91．解析空中三角测量可分为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid91','141087',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,B,D><LABEL>A．航带法</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid91','141087',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,B,D><LABEL>B．独立模型法</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid91','141087',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,B,D><LABEL>C．模拟法</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid91','141087',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,B,D><LABEL>D．光束法</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid91','141087',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,B,D><LABEL>E．数字法</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show91','anwser91')" id=show91 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser91 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,D<BR>解析：根据平差中所采用的数学模型，解析空中三角测量可分为航带法、独立模型法和光束法；根据平差范围的大小，可分为单模型法、单航带法和区域网法。</DIV></DIV>
+<DIV id=divid92 class=ti_content>
+<UL>
+<LI id=Qid_141088>92．地图符号按比例尺关系可分为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid92','141088',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=B,C><LABEL>A．点状符号</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid92','141088',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=B,C><LABEL>B．依比例尺符号</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid92','141088',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=B,C><LABEL>C．不依比例尺符号</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid92','141088',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=B,C><LABEL>D．线状符号</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid92','141088',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=B,C><LABEL>E．面状符号</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show92','anwser92')" id=show92 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser92 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B,C<BR>解析：根据地理要素的抽象特征，地图符号分为点状符号、线状符号和面状符号；地图符号按比例尺关系可分为不依比例尺符号、半依比例尺符号和依比例尺符号。</DIV></DIV>
+<DIV id=divid93 class=ti_content>
+<UL>
+<LI id=Qid_141089>93．变形测量中水平位移观测的方法有（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid93','141089',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,B,C><LABEL>A．地面测量方法</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid93','141089',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,B,C><LABEL>B．数字近景摄影测量方法</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid93','141089',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,B,C><LABEL>C．GPS测量方法及特殊测量方法</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid93','141089',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,B,C><LABEL>D．水准测量</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid93','141089',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,B,C><LABEL>E．三角高程测量</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show93','anwser93')" id=show93 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser93 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C<BR>解析：用于水平位移观测的技术方法包括地面测量方法、数字近景摄影测量方法、GPS测量方法及特殊测量方法（如视准线、激光准直线法）等。</DIV></DIV>
+<DIV id=divid94 class=ti_content>
+<UL>
+<LI id=Qid_141090>94．下面关于高斯投影的说法不正确的是（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid94','141090',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=B,C,D><LABEL>A．中央子午线投影为直线，且投影的长度无变形</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid94','141090',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=B,C,D><LABEL>B．离中央子午线越远，投影变形越小</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid94','141090',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=B,C,D><LABEL>C．经纬线投影后不正交</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid94','141090',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=B,C,D><LABEL>D．高斯投影为等面积投影</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid94','141090',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=B,C,D><LABEL>E．高斯投影是等角投影</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show94','anwser94')" id=show94 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser94 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：B,C,D<BR>解析：高斯投影有以下特性：①中央子午线投影后为直线，且长度不变；②赤道线投影后为直线；③经线与纬线投影后仍然保持正交；④离中央子午线愈远，长度变形愈大。高斯投影是一种等角投影。</DIV></DIV>
+<DIV id=divid95 class=ti_content>
+<UL>
+<LI id=Qid_141091>95．选择坐标网包括确定坐标网的（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid95','141091',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,B,D><LABEL>A．定位</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid95','141091',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,B,D><LABEL>B．密度</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid95','141091',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,B,D><LABEL>C．长度</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid95','141091',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,B,D><LABEL>D．表现形式</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid95','141091',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,B,D><LABEL>E．精度</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show95','anwser95')" id=show95 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser95 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,D<BR>解析：选择坐标网包括确定坐标网的种类、定位、密度和表现形式。</DIV></DIV>
+<DIV id=divid96 class=ti_content>
+<UL>
+<LI id=Qid_141092>96．专题地理数据更新的一般原则包括（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid96','141092',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,B,C><LABEL>A．精度匹配原则</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid96','141092',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,B,C><LABEL>B．现势性原则</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid96','141092',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,B,C><LABEL>C．空间信息与属性信息同步更新原则</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid96','141092',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,B,C><LABEL>D．空间信息更新比属性信息更新重要原则</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid96','141092',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,B,C><LABEL>E．经常更新原则</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show96','anwser96')" id=show96 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser96 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C<BR>解析：专题地理数据更新的一般原则包括：①精度匹配原则；②现势性原则；③空间信息与属性信息同步更新原则。</DIV></DIV>
+<DIV id=divid97 class=ti_content>
+<UL>
+<LI id=Qid_141093>97．房产图的种类可分为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid97','141093',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,B,D><LABEL>A．房产分幅平面图</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid97','141093',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,B,D><LABEL>B．房产分丘平面图</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid97','141093',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,B,D><LABEL>C．房屋分类平面图</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid97','141093',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,B,D><LABEL>D．房屋分户平面图</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid97','141093',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,B,D><LABEL>E．房产总图</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show97','anwser97')" id=show97 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser97 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,D<BR>解析：房产图按照管理的需要分为房产分幅平面图、房产分丘平面图和房屋分户平面图。</DIV></DIV>
+<DIV id=divid98 class=ti_content>
+<UL>
+<LI id=Qid_141094>98．界桩点的平面测量方法中的交会法，各种交会的交会角可以为（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid98','141094',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,B,D><LABEL>A．30°</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid98','141094',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,B,D><LABEL>B．60°</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid98','141094',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,B,D><LABEL>C．165°</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid98','141094',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,B,D><LABEL>D．138°</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid98','141094',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,B,D><LABEL>E．10°</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show98','anwser98')" id=show98 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser98 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,D<BR>解析：各种交会的交会角不应小于30°或大于150°，十分困难时，对个别角可适当放宽，但也不得小于20°或大于160°。</DIV></DIV>
+<DIV id=divid99 class=ti_content>
+<UL>
+<LI id=Qid_141095>99．在线地理信息数据的形式主要有（）。</LI></UL>
+<UL style="MARGIN-TOP: 10px">
+<LI><INPUT onclick="checkBoxAnwser('divid99','141095',this.value,this.id,'19','-1','','-1','2047');" id=2 title=A type=checkbox value=A,B,C><LABEL>A．地理实体数据</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid99','141095',this.value,this.id,'19','-1','','-1','2047');" id=2 title=B type=checkbox value=A,B,C><LABEL>B．地名地址数据</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid99','141095',this.value,this.id,'19','-1','','-1','2047');" id=2 title=C type=checkbox value=A,B,C><LABEL>C．电子地图数据</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid99','141095',this.value,this.id,'19','-1','','-1','2047');" id=2 title=D type=checkbox value=A,B,C><LABEL>D．遥感图片</LABEL>
+<LI><INPUT onclick="checkBoxAnwser('divid99','141095',this.value,this.id,'19','-1','','-1','2047');" id=2 title=E type=checkbox value=A,B,C><LABEL>E．元数据</LABEL></LI></UL>
+<UL id=anwer_r class=style_anwser_r>
+
+<LI><INPUT onclick="ShowAnwser('show99','anwser99')" id=show99 class="class_xsda btnClass" type=button value=显示答案></LI>
+
+</UL></DIV>
+<DIV id=anwser99 class=style_anwser name="showAll">
+<DIV style="PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">正确答案：A,B,C<BR>解析：在线地理信息数据的形式主要有地理实体数据、地名地址数据和电子地图数据。</DIV></DIV></DIV>
+<DIV id=anwser-card class=anwser-card>
+<DIV id=card-title class=card-title>答题卡 <A onclick=hideCard(); id=card-hide>─</A> </DIV>
+<DIV id=card-body class=card-body style="HEIGHT: 611px"><A id=Tip_140997 href="#Qid_140997">1</A><A id=Tip_140998 href="#Qid_140998">2</A><A id=Tip_140999 href="#Qid_140999">3</A><A id=Tip_141000 href="#Qid_141000">4</A><A id=Tip_141001 href="#Qid_141001">5</A><A id=Tip_141002 href="#Qid_141002">6</A><A id=Tip_141003 href="#Qid_141003">7</A><A id=Tip_141004 href="#Qid_141004">8</A><A id=Tip_141005 href="#Qid_141005">9</A><A id=Tip_141006 href="#Qid_141006">10</A><A id=Tip_141007 href="#Qid_141007">11</A><A id=Tip_141008 href="#Qid_141008">12</A><A id=Tip_141009 href="#Qid_141009">13</A><A id=Tip_141010 href="#Qid_141010">14</A><A id=Tip_141011 href="#Qid_141011">15</A><A id=Tip_141012 href="#Qid_141012">16</A><A id=Tip_141013 href="#Qid_141013">17</A><A id=Tip_141014 href="#Qid_141014">18</A><A id=Tip_141015 href="#Qid_141015">19</A><A id=Tip_141016 href="#Qid_141016">20</A><A id=Tip_141017 href="#Qid_141017">21</A><A id=Tip_141018 href="#Qid_141018">22</A><A id=Tip_141019 href="#Qid_141019">23</A><A id=Tip_141020 href="#Qid_141020">24</A><A id=Tip_141021 href="#Qid_141021">25</A><A id=Tip_141022 href="#Qid_141022">26</A><A id=Tip_141023 href="#Qid_141023">27</A><A id=Tip_141024 href="#Qid_141024">28</A><A id=Tip_141025 href="#Qid_141025">29</A><A id=Tip_141026 href="#Qid_141026">30</A><A id=Tip_141027 href="#Qid_141027">31</A><A id=Tip_141028 href="#Qid_141028">32</A><A id=Tip_141029 href="#Qid_141029">33</A><A id=Tip_141030 href="#Qid_141030">34</A><A id=Tip_141031 href="#Qid_141031">35</A><A id=Tip_141032 href="#Qid_141032">36</A><A id=Tip_141033 href="#Qid_141033">37</A><A id=Tip_141034 href="#Qid_141034">38</A><A id=Tip_141035 href="#Qid_141035">39</A><A id=Tip_141036 href="#Qid_141036">40</A><A id=Tip_141037 href="#Qid_141037">41</A><A id=Tip_141038 href="#Qid_141038">42</A><A id=Tip_141039 href="#Qid_141039">43</A><A id=Tip_141040 href="#Qid_141040">44</A><A id=Tip_141041 href="#Qid_141041">45</A><A id=Tip_141042 href="#Qid_141042">46</A><A id=Tip_141043 href="#Qid_141043">47</A><A id=Tip_141044 href="#Qid_141044">48</A><A id=Tip_141045 href="#Qid_141045">49</A><A id=Tip_141046 href="#Qid_141046">50</A><A id=Tip_141047 href="#Qid_141047">51</A><A id=Tip_141048 href="#Qid_141048">52</A><A id=Tip_141049 href="#Qid_141049">53</A><A id=Tip_141050 href="#Qid_141050">54</A><A id=Tip_141051 href="#Qid_141051">55</A><A id=Tip_141052 href="#Qid_141052">56</A><A id=Tip_141053 href="#Qid_141053">57</A><A id=Tip_141054 href="#Qid_141054">58</A><A id=Tip_141055 href="#Qid_141055">59</A><A id=Tip_141056 href="#Qid_141056">60</A><A id=Tip_141057 href="#Qid_141057">61</A><A id=Tip_141058 href="#Qid_141058">62</A><A id=Tip_141059 href="#Qid_141059">63</A><A id=Tip_141060 href="#Qid_141060">64</A><A id=Tip_141061 href="#Qid_141061">65</A><A id=Tip_141062 href="#Qid_141062">66</A><A id=Tip_141063 href="#Qid_141063">67</A><A id=Tip_141064 href="#Qid_141064">68</A><A id=Tip_141065 href="#Qid_141065">69</A><A id=Tip_141066 href="#Qid_141066">70</A><A id=Tip_141067 href="#Qid_141067">71</A><A id=Tip_141068 href="#Qid_141068">72</A><A id=Tip_141069 href="#Qid_141069">73</A><A id=Tip_141070 href="#Qid_141070">74</A><A id=Tip_141071 href="#Qid_141071">75</A><A id=Tip_141072 href="#Qid_141072">76</A><A id=Tip_141073 href="#Qid_141073">77</A><A id=Tip_141074 href="#Qid_141074">78</A><A id=Tip_141075 href="#Qid_141075">79</A><A id=Tip_141076 href="#Qid_141076">80</A><A id=Tip_141077 href="#Qid_141077">81</A><A id=Tip_141078 href="#Qid_141078">82</A><A id=Tip_141079 href="#Qid_141079">83</A><A id=Tip_141080 href="#Qid_141080">84</A><A id=Tip_141081 href="#Qid_141081">85</A><A id=Tip_141082 href="#Qid_141082">86</A><A id=Tip_141083 href="#Qid_141083">87</A><A id=Tip_141084 href="#Qid_141084">88</A><A id=Tip_141085 href="#Qid_141085">89</A><A id=Tip_141086 href="#Qid_141086">90</A><A id=Tip_141087 href="#Qid_141087">91</A><A id=Tip_141088 href="#Qid_141088">92</A><A id=Tip_141089 href="#Qid_141089">93</A><A id=Tip_141090 href="#Qid_141090">94</A><A id=Tip_141091 href="#Qid_141091">95</A><A id=Tip_141092 href="#Qid_141092">96</A><A id=Tip_141093 href="#Qid_141093">97</A><A id=Tip_141094 href="#Qid_141094">98</A><A id=Tip_141095 href="#Qid_141095">99</A> </DIV></DIV><script src='js/ph.js'></script></BODY></html>
