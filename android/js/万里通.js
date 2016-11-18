@@ -1,8 +1,10 @@
 
 
-runPackage("com.pingan.wanlitong",3000);
-click(229,963,"大号",15000);
-click(604,397,"关闭广告",3000);   
+runPackage("com.pingan.wanlitong",3000,true);
+click(229,963,"大号",10000);
+back();
+sleep(15000)
+//click(604,397,"关闭广告",3000);   
 click(626,303,"进入摇一摇",10000);   
 
 click(467,723,"摇一摇");

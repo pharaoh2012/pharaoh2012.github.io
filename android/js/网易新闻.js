@@ -3,12 +3,15 @@
 runPackage("com.netease.newsreader.activity",15000);
 
 click(163,149,"点击重庆",10000);
-click(181,849,"第二条新闻",15000);
+
+click(398,1002,"第二条新闻",15000);
+//click(181,849,"第二条新闻",15000);
 
 click(671,1232,"分享按钮",2000);
 
-click(577,679,"邮箱");
-sleep(10000);
+click(574,685,"邮箱",10000);
+
+
 execShellCmd("input keyevent 4");
 sleep(1000);
 execShellCmd("input keyevent 4");
@@ -56,12 +59,10 @@ sleep(2000);
 
 // 回主界面了
 // 视频
-click(248,153,"视频标签",5000);
-//click(358,1231,"视频标签");
-sleep(10000);
+click(248,153,"视频标签",15000);
 
-click(193,310,"第一个视频");
-sleep(10000);
+
+click(193,310,"第一个视频",10000);
 execShellCmd("input keyevent 4");
 sleep(3000);
 
@@ -80,10 +81,9 @@ sleep(3000);
 // 我
 click(644,1229,"我 标签");
 sleep(5000);
-click(332,719,"金币商城");
-sleep(15000);
-click(557,494,"每日签到");
-sleep(10000);
+click(406,879,"金币商城",18000);
+
+click(557,494,"每日签到",10000);
 
 // click(261,86,"我的订阅");
 // sleep(10000);

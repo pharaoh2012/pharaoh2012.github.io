@@ -1,10 +1,17 @@
 var G_jsName = "//jsname//";
 var G_isRunning = true;
 var G_packageName;
+var G_exitApp = true;
 
 function G_Running() {
 	ServerTools.toast("***开始运行：" + G_jsName);
-
+	var names = G_jsName.split("#");
+	if(names.length>1) {
+		ServerTools.putUserData("小号",names[1]);
+	}
+	else {
+		ServerTools.putUserData("小号","0");
+	}
 	//jscode//
 
 	toast("准备退出.");
@@ -13,14 +20,22 @@ function G_Running() {
 		return;
 	}
 
-	sleep(10000, true);
+	if (G_exitApp) {
+		sleep(10000, true);
 
-	ServerTools.exit(G_jsName);
-	ServerTools.toast("退出app:" + G_jsName, 1);
+		ServerTools.exit(G_jsName);
+		ServerTools.toast("退出app:" + G_jsName, 1);
 
-	//killAllApp();
-	killCurrentApp();
-	ServerTools.toast("***结束运行：" + G_jsName);
+		//killAllApp();
+		killCurrentApp();
+		ServerTools.toast("***结束运行：" + G_jsName);
+	} else {
+		ServerTools.toast("结束运行，但不退出。" + G_jsName);
+	}
+}
+
+function takePicture() {
+	ServerTools.takeCurPicture(G_jsName);
 }
 
 function swipe(x, y, x1, y1) {
@@ -66,17 +81,12 @@ function click(x, y, msg, ms) {
 	}
 }
 
-function takePicture(fn) {
-	//fn :  aaa.png
-	ServerTools.takePicture(fn);
-}
-
-function checkColors(xys,colors) {
-	return ServerTools.checkColors(xys,colors);
+function checkColors(xys, colors) {
+	return ServerTools.checkColors(xys, colors);
 }
 
 function toast(msg, time) {
-	ServerTools.toast(G_jsName +"：" +msg, time ? 0 : 1);
+	ServerTools.toast(G_jsName + "：" + msg, time ? 0 : 1);
 }
 
 function log(msg) {
@@ -109,14 +119,19 @@ function goHome() {
 	inputKey(3);
 }
 
-function runPackage(name, ms) {
+function runPackage(name, ms, noback) {
 	G_packageName = name;
 	ServerTools.runPackage(name);
 
 	if (ms) {
 		toast("运行：" + name + "  sleep:" + (ms / 1000) + " s");
 		ServerTools.sleep(ms);
+		if (!noback) {
+			back();
+			ServerTools.sleep(2000);
+		}
 	}
+
 }
 
 function exit(success) {
@@ -139,6 +154,21 @@ function QQZone() { //QQ空间
 	sleep(10000, true);
 	click(649, 98, "点击发表按钮", 5000);
 }
+
+function WeiXinFriends() { //微信朋友圈
+	toast("等待微信启动,10s", 1);
+	sleep(10000, true);
+	click(649, 98, "点击发送按钮", 5000);
+}
+
+function WeiXinFriend() { //微信朋友圈
+	toast("等待微信启动,10s", 1);
+	sleep(10000, true);
+	click(224, 474, "第一个好友", 5000);
+	click(541, 887, "分享按钮", 5000);
+	click(474, 759, "返回APP", 5000);
+}
+
 
 function killAllApp() {
 	toast("清理内存", 1);

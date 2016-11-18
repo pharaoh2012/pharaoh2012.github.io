@@ -1,5 +1,6 @@
 runPackage("com.alimama.aladdin.app", 3000, true);
-click(229, 963, "大号", 15000);
+click(489,961,"小号",15000);
+
 back();
 sleep(2000);
 
@@ -12,4 +13,4 @@ toast("等待微信启动 10s");
 sleep(10000, true);
 
 click(645, 99, "微信发送按钮", 5000);
-click(229, 963, "大号", 1500);
+click(489,961,"小号",1500);

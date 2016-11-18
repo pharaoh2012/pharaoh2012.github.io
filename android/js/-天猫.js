@@ -1,4 +1,4 @@
-
+G_exitApp = false;
 
 runPackage("com.tmall.wireless");
 sleep(15000);
