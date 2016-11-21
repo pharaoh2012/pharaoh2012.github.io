@@ -43,6 +43,7 @@
         <button onclick="swipe(100,500,400,500)">→</button>
         <br />
         <button onclick="getImg()">刷新图像</button>
+        <button onclick="getCurrentWinClass();">当前窗口Class</button>
         <br />
         <div>
             <span id='mousepoint'></span>
@@ -54,6 +55,7 @@
         <button onclick='leftdivclick();'>展开</button>
         <div id="leftbuttondiv" style="display:none;">
             <button onclick="getImg()">刷新图像</button>
+            
             <br />
             <select id="zoomSelect" onchange='zoomChanged();'>
                 <option value="1" q="zoom=1&q=50">1 good</option>
@@ -97,7 +99,7 @@
     </div>
     <div style="position: relative;">
         <!-- onerror="alert('加载图像错误');" -->
-        <img id='screenimg' alt="img" onload='imgloadok();' onmousemove='imgmousemove();return false;' oncontextmenu='imgRClick();return false;' onclick='imgClick();' src='/cmd?cmd=getimg&zoom=1.25' style="border:solid 1px red;" />
+        <img id='screenimg' alt="img" onload='imgloadok();' onmousemove='imgmousemove();return false;' oncontextmenu='imgRClick();return false;' onclick='imgClick();' src='' style="border:solid 1px red;" />
         <div onclick="iconImgDivClick();" id='imgClickIcon' style='position: absolute;z-index: 100;left:100px;top:60px;margin-left:-15px;margin-top: -13px;display:none;'>
             <img src='http://rmjs.qiniudn.com/game/mouseclick.gif' class="zoom" height="48" width="48" />
             <span id='clickMsgText' class="zoom" style="position: absolute;z-index: 101;left:0;bottom: 0"></span>
@@ -502,6 +504,17 @@
             d.style.display = 'none';
         }
     }
+
+    function getCurrentWinClass() {
+        loadUrl("/cmd?cmd=getClassName",function(ret){
+            console.info(ret);
+            ret = JSON.parse(ret);
+            var msg = "$"+ret.PackageName+"$"+ret.ClassName+".js";
+            console.info(msg);
+            document.getElementById('txtKey').value = msg;
+        });
+    }
+
     </script>
 </body>
 
