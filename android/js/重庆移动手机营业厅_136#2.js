@@ -1,5 +1,5 @@
-runPackage("com.cqmc.client", 3000,true);
-click(489,961,"小号",20000);
+runPackage("com.cqmc.client", 15000,true);
+//click(489,961,"小号",20000);
 
 click(539,1242,"关闭广告",5000); 
 

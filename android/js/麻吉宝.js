@@ -1,5 +1,5 @@
-runPackage("com.alimama.aladdin.app", 3000, true);
-click(229, 963, "大号", 15000);
+runPackage("com.alimama.aladdin.app", 15000, true);
+//click(229, 963, "大号", 15000);
 back();
 sleep(2000);
 
