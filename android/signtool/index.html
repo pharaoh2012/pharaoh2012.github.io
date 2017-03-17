@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style type="text/css">
+    div.element {
+        position: absolute;
+        border: 1px solid red;
+    }
+
+    div.android_widget_RelativeLayout {
+    	border-color: gray;
+    }
+    div.android_widget_LinearLayout {
+    	border-color: #e9e9e9;
+    }
+    div.android_widget_FrameLayout {
+    	border-color: #a3a3a3;
+    }
+
+    div.android_widget_TextView {
+    	border-color: blue;
+    }
+
+    div.android_widget_ImageView {
+    	border-color: #009688;
+    }
+
+    div.android_view_View {
+    	border-color:#ffb9b9;
+    }
+
+    div.android_widget_ProgressBar {
+    	border-color:#7e88ff;
+    }
+
+    footer {
+    	position: fixed;
+    	right: 0;
+    	top:0;
+    }
+    
+    body {
+/*        background-image: url(http://192.168.22.18:17701/cmd?cmd=getimg&zoom=1&q=25&r=1482915676964);*/
+        background-repeat: no-repeat;
+        /*background-image: url(1.png);*/
+        background-image: url(http://192.168.22.18:17701//cmd?cmd=getimg&zoom=1&q=25);
+    }
+    </style>
+</head>
+
+<body>
+
+<footer>
+<div><span id="ip" >192.168.22.18:17701</span> <button onclick="changeIp();">更改</button> </div>
+<div><button onclick="reloadImg();">重新加载图像</button><button onclick="reloadNodes();">重新加载布局</button></div>
+	<ul>
+
+	</ul>
+</footer>
+
+    <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript" src="nodes.js"></script>
+    <script>
+    var url = "tmp.json";
+    
+    var classCount = {};
+    var nodeInfo;
+    var url = "http://192.168.22.18:17701//cmd?cmd=getDump1";
+    function loadDump(url) {
+        $("div.element").remove();
+        $("ul").html("loading...");
+        $.getJSON(url, function(ret) {
+            //console.info(ret);
+            // window.json = JSON.parse(ret.json);
+            // console.info(json);
+            g_nodeId = 0;
+            if(!ret.json) {
+                alert("加载错误！");
+                return;
+            }
+            nodeInfo = new Nodes(ret.json);
+            var nodes = nodeInfo.getNodes();
+            
+            for (var i = nodes.length - 1; i >= 0; i--) {
+                addDiv(nodes[i]);
+            }
+
+            var clsHtml = [];
+            for(var cls in classCount) {
+                clsHtml.push(`<li><lable for='cls_${cls}'><input checked id='cls_${cls}' type='checkbox' />${cls}:${classCount[cls]}</lable></li>`);
+            }
+            $("ul").html(clsHtml.join(''));
+            // console.info(window.json);
+            // if($.isArray(window.json)) {
+            //  drawChildNode(window.json);
+            // }
+        });
+    }
+
+    loadDump(url);
+
+
+
+
+    function addDiv(obj) {
+    	var cls = obj.class;
+        var $dv = $("<div class='element'> </div>");
+        var width = obj.rect.right-obj.rect.left;
+        var height = obj.rect.bottom-obj.rect.top;
+        $dv.css({
+            "left": obj.rect.left + "px",
+            "top": obj.rect.top + "px",
+            "width": width + "px",
+            "height": height + "px",
+            "z-index":10000-width-height
+        });
+        var oldCount = classCount[cls] || 0;
+        classCount[cls] = 1+oldCount;
+        $dv.addClass(cls.replace(/\./g,"_"));
+
+        $dv.data("data", obj);
+        $dv.appendTo($(document.body));
+        //$dv.css("left")
+
+    }
+
+    $(document).on('click', ".element", function(e) {
+        var $this = $(this);
+        console.info(this);
+        console.info("click x,y=",e.pageX,e.pageY);
+        var data = $this.data("data");
+        console.info(data);
+        console.info("wight,height:",data.rect.right-data.rect.left,data.rect.bottom-data.rect.top);
+        if(data.text) console.info("text=",data.text);
+        if(data["resource-id"]) console.info("resource-id=",data["resource-id"]);
+        // var els = document.elementsFromPoint(e.offsetX,e.offsetY);
+        // console.info(els);
+    });
+
+    $('footer').on("click","input",function(){
+    	
+    	var cls = this.id.substr(4).replace(/\./g,"_");
+    	console.info(cls,this.checked);
+    	if(!this.checked) {
+    		$("."+cls).hide();
+    	}
+    	else {
+    		$("."+cls).show();
+    	}
+    });
+
+    function changeIp() {
+        var ip = document.getElementById("ip").innerText;
+        var newip = prompt("请输入ip：",ip);
+        if(newip) {
+            document.getElementById("ip").innerText = newip;
+            document.body.style.backgroundImage = `url(http://${newip}/cmd?cmd=getimg&zoom=1&q=25&t=${Date.now()})`;
+            loadDump(`http://${newip}//cmd?cmd=getDump1&t=${Date.now()}`);
+        }
+    }
+
+    function click(x,y) {
+        console.info("click",x,y);
+    }
+    window.node = nodeInfo;    
+    function reloadImg() {
+        var newip = document.getElementById("ip").innerText;
+        document.body.style.backgroundImage = `url(http://${newip}/cmd?cmd=getimg&zoom=1&q=25&t=${Date.now()})`;       
+    }
+    function reloadNodes() {
+        var newip = document.getElementById("ip").innerText;
+        loadDump(`http://${newip}//cmd?cmd=getDump1&t=${Date.now()}`);    
+    }
+
+    </script>
+</body>
+
+</html>

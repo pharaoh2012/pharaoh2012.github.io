@@ -46,6 +46,9 @@ var ServerTools = {
 	},
 	runJs:function (jsFilename) {
 		ph_sendCmd({cmd:"runjsfile",file:jsFilename});
+	},
+	checkColors:function(xys,colors) {
+		ph_sendCmd({cmd:"checkColors",xys:xys,color:colors});
 	}
 }
 
@@ -63,4 +66,8 @@ function click(x,y,name,ms) {
 
 function execShellCmd(cmd) {
 	ServerTools.execShellCmd(cmd);
+}
+
+function checkColors(xys,colors) {
+	ServerTools.checkColors(xys,colors);
 }

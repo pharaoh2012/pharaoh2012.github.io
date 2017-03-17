@@ -1,15 +1,15 @@
 
 //百度知道
-runPackage("com.baidu.iknow");
-sleep(10000);
+runPackage("com.baidu.iknow",15000);
+
 click(632,1220,"点击头像");
 sleep(5000);
 click(677,88,"签到日历按钮");
 sleep(10000);
-click(637,211,"签到按钮");
-sleep(2000);
-click(621,1231,"领取按钮");
-sleep(10000);
+click(644,409,"签到按钮",5000);
+//click(637,211,"签到按钮",5000);
+takePicture();
+sleep(5000);
 
 click(32,100,"返回按钮");
 sleep(3000);
@@ -18,7 +18,8 @@ click(493,1218,"活动按钮");
 sleep(10000);
 click(281,699,"我的任务");
 sleep(10000);
-click(402,406,"第一个任务");
+//click(402,406,"第一个任务");
+click(641,269,"第一个任务",5000);
 sleep(2000);
 
 

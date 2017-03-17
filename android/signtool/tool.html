@@ -274,6 +274,13 @@
         hotkey(document.getElementById('hotkeySelect').value);
     }
 
+    var colorInfos = {};
+
+    function initColorInfo() {
+        colorInfos.xys = [];
+        colorInfos.color = [];
+    }
+    initColorInfo();
     function imgClick(e) {
         var s = document.getElementById('cmdSelect');
         setmsg(s.options[s.selectedIndex].innerText);
@@ -289,24 +296,14 @@
             document.execCommand("Copy", false, null);
             console.info("   " + msg + "    ");
             return;
-        } else if (window.event.altKey) {
-            sendCmd({
-                cmd: "getColors",
-                xys: dx + "," + dy
-            }, function(ret) {
-                console.info(ret);
-            });
-            var color = getImageColor(dx, dy);
-            console.info(color);
-            color = (color[0] << 16) + (color[1] << 8) + color[2];
-            console.info(color - 16777216);
-            //console.info()
-            return;
-        } else if (window.event.shiftKey) {
+        } else if (window.event.altKey || window.event.shiftKey) {
             var color = getImageColor(dx, dy);
             console.info(color);
             color = (color[0] << 16) + (color[1] << 8) + color[2];
             console.info(dx + "," + dy, color - 16777216);
+            colorInfos.xys.push(dx,dy);
+            colorInfos.color.push(color - 16777216);
+            console.info(`ServerTools.checkColors("${colorInfos.xys.join(',')}", "${colorInfos.color.join(',')}")`)
             return;
         }
 
@@ -335,6 +332,7 @@
             }
         }
     }
+
     var tmImgClickIcon = 0;
     var lastImgClcikX = 0;
     var lastImgClcikY = 0;

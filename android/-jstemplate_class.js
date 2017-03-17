@@ -2,6 +2,8 @@
 
 
 var G_jsName = ServerTools.getJsName();
+var G_packageName = ServerTools.getPackageName();
+var G_ClassName = ServerTools.getClassName();
 
 function sleep(ms, notShowMsg) {
 	if (!notShowMsg) {
@@ -61,11 +63,15 @@ function exit() {
 	ServerTools.toast("退出app:" + G_jsName, 1);
 
 	//killCurrentApp();
-	var G_packageName = ServerTools.getPackageName();
 	if (G_packageName) {
 		execShellCmd("am force-stop " + G_packageName);
 	}
 	ServerTools.toast("***结束运行：" + G_jsName);
+}
+
+function isCurrentWindow() {
+	if((G_packageName == ServerTools.getPackageName()) && (G_ClassName == ServerTools.getClassName())) return true;
+	return false;
 }
 
 /**
@@ -75,13 +81,17 @@ function exit() {
  * @return {string}       点击的文本名称,null为没有发现。
  */
 function waitClickText(texts, count) {
+	var currentPackage = ServerTools.getPackageName();
+	var currentClassName = ServerTools.getClassName();
 	if (typeof texts === "string") {
 		for (var i = 0; i < count; i++) {
+			if(!isCurrentWindow()) return null;
 			if (AndroidNode.ClickByText(texts) > 0) return texts;
 			ServerTools.sleep(1000);
 		}
 	} else {
 		for (var i = 0; i < count; i++) {
+			if(!isCurrentWindow()) return null;
 			for (var j = texts.length - 1; j >= 0; j--) {
 				if (AndroidNode.ClickByText(texts[j]) > 0) return texts[j];
 			}
