@@ -3,6 +3,10 @@ var G_isRunning = true;
 var G_packageName;
 var G_exitApp = true;
 
+function runUserCode() {
+	//jscode//
+}
+
 function G_Running() {
 	ServerTools.toast("***开始运行：" + G_jsName);
 	var names = G_jsName.split("#");
@@ -12,7 +16,15 @@ function G_Running() {
 	else {
 		ServerTools.putUserData("小号","0");
 	}
-	//jscode//
+
+	try {
+		var returnCode = runUserCode();
+		if(returnCode) returnCode=1;
+		else returnCode = 0;
+	} catch(e) {
+		log(e);
+		returnCode=1;
+	}
 
 	toast("准备退出.");
 	if (!G_isRunning) {
@@ -23,8 +35,8 @@ function G_Running() {
 	if (G_exitApp) {
 		sleep(10000, true);
 
-		ServerTools.exit(G_jsName);
-		ServerTools.toast("退出app:" + G_jsName, 1);
+		ServerTools.exit(G_jsName, returnCode);
+		ServerTools.toast("退出app:" + G_jsName);
 
 		//killAllApp();
 		killCurrentApp();
@@ -34,8 +46,10 @@ function G_Running() {
 	}
 }
 
-function takePicture() {
-	ServerTools.takeCurPicture(G_jsName);
+function takePicture(type) {
+	if(type) type=1;
+	else type=0;
+	ServerTools.takeCurPicture(G_jsName,type);
 }
 
 function swipe(x, y, x1, y1) {
@@ -139,7 +153,7 @@ function runPackage(name, ms, noback) {
 }
 
 function exit(success) {
-	//ServerTools.exit(success);
+	ServerTools.exit(success);
 }
 
 G_Running();
@@ -209,10 +223,10 @@ function isCurrentApp() {
 
 //支持使用 JSON.parse(...);
 //
-function Nodes(nodeJson) {
+function Nodes(type) {
 	//var g_nodeId = 0;
 	var nodes = [];
-
+	var package;
 	function checkClass(o) {
 		if (o.class == "android.widget.FrameLayout") return false;
 		if (o.class == "android.widget.LinearLayout") return false;
@@ -239,6 +253,7 @@ function Nodes(nodeJson) {
 
 			//o.nodeId = g_nodeId;
 			//o.pId = pid;
+			package = o.package;
 			delete o.package;
 			//if(!o["content-desc"]) delete o["content-desc"];
 			nodes.push(o);
@@ -265,8 +280,11 @@ function Nodes(nodeJson) {
 	}
 
 	//g_nodeId = 0;
-	if (!nodeJson) {
+	var nodeJson;
+	if (type) {
 		nodeJson = ServerTools.getDump1();
+	} else {
+		nodeJson = ServerTools.getDump();
 	}
 	var json = JSON.parse(nodeJson);
 
@@ -341,6 +359,10 @@ function Nodes(nodeJson) {
 			}
 		}
 		return null;
+	};
+
+	this.getPackage=function() {
+		return package;
 	};
 
 

@@ -3,7 +3,22 @@ runPackage("com.jingdong.app.mall", 20000, true);
 var dy = 579; //760
 var tryCount = 0;
 
-var node = new Nodes();
+var node = new Nodes(1);
+
+log(node.getPackage());
+
+if(node.getPackage() != G_packageName) {
+	node = new Nodes(0);
+	log(node.getPackage());
+	if(node.getPackage() != G_packageName) {
+		exit(1);
+		return;
+	}
+}
+
+
+
+
 if (qiandao()) {
 	liuliang();
 	hzq();
@@ -18,9 +33,11 @@ function qiandao() {
 				"resource-id": "com.jingdong.app.mall:id/fx"
 			})) {
 			dy = y;
+			log("find:dy="+y);
 			//console.info(y);
 			sleep(10000);
-			click(565, 255, "签到", 15000);
+			click(565, 255, "签到", 8000);
+			click(356,630,"翻牌",7000);
 			takePicture();
 			back();
 			sleep(5000);
